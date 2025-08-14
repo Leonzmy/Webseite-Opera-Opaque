@@ -151,13 +151,12 @@ header:not(.site-header) a { color: var(--ink); text-decoration: none; }
 
 #aktuell .event-date {
   display: block;
-  font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 #aktuell .event-location {
   display: block;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 /* =========================
    Vergangene Projekte (Startseite)
