@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt – Opera Opaque</title>
+  <meta name="description" content="Kontakt zum Kollektiv Opera Opaque." />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+  <a href="index.html" class="brand">Opera Opaque</a>
+  <nav class="navlinks" aria-label="Hauptnavigation">
+    <a href="index.html">Home</a>
+    <a href="index.html#aktuell-wrapper">Demnächst</a>
+    <a href="index.html#past">Vergangene Projekte</a>
+    <a href="about.html">Über uns</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+</header>
+
+
+  <main>
+    <section id="kontakt" aria-label="Kontakt">
+      <h2 class="section-title">Kontakt</h2>
+      <div class="kontakt-wrap">
+        <p class="kontakt-intro">
+          Schreib uns eine Nachricht – wir melden uns so schnell wie möglich. Alternativ direkt per Mail:
+          <a class="mail-link" href="mailto:leon.zmelty@gmx.de">leon.zmelty@gmx.de</a>
+        </p>
+        <form id="kontaktForm" class="kontakt-form" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input class="input" type="text" id="name" name="name" placeholder="Ihr Name" required>
+          </div>
+          <div class="field">
+            <label for="email">E-Mail</label>
+            <input class="input" type="email" id="email" name="email" placeholder="Ihre E-Mail" required>
+          </div>
+          <div class="field field-full">
+            <label for="betreff">Betreff</label>
+            <input class="input" type="text" id="betreff" name="betreff" placeholder="Worum geht es?" required>
+          </div>
+          <div class="field field-full">
+            <label for="message" class="sr-only">Nachricht</label>
+            <textarea class="textarea" id="message" name="message" rows="6" placeholder="Ihre Nachricht" required></textarea>
+          </div>
+          <div class="submit-row">
+            <button class="btn" type="submit">Senden</button>
+            <span class="note">Beim Senden öffnet sich Ihr Mailprogramm.</span>
+          </div>
+          <p id="successMsg" class="success" role="status" aria-live="polite">Vielen Dank! Ihr Mailprogramm wurde geöffnet.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="impressum.html" class="footer-link">Impressum</a>
+  </footer>
+
+  <script>
+  (function () {{
+    const form = document.getElementById('kontaktForm');
+    const success = document.getElementById('successMsg');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = encodeURIComponent(document.getElementById('betreff').value.trim());
+      const message = encodeURIComponent(document.getElementById('message').value.trim() + (name ? `\n\n— ${name}` : '') + (email ? `\n${email}` : ''));
+      window.location.href = `mailto:leon.zmelty@gmx.de?subject=${subject}&body=${message}`;
+      if (success) success.style.display = 'block';
+    }});
+  }})();
+  </script>
+</body>
+</html>

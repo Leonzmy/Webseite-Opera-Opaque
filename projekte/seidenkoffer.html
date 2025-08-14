@@ -4,110 +4,65 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Seidenkoffer – Opera Opaque</title>
-  <meta name="description" content="Projektseite – Seidenkoffer (Opera Opaque)." />
-
-  <!-- Globale Styles -->
+  <meta name="description" content="Projektseite Seidenkoffer – Opera Opaque" />
+  <!-- Wichtig: Diese Seite liegt in /projekte, daher CSS relativ eine Ebene hoch -->
   <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
-  <header>
-    <a href="../index.html#aktuell">← Zurück</a>
-    <a href="../index.html" style="font-weight:bold">Opera Opaque</a>
+<body class="projekt-seidenkoffer">
+
+  <!-- Header wie auf der Frontpage -->
+  <header class="site-header">
+    <div class="brand">Opera Opaque</div>
+    <nav class="navlinks" aria-label="Hauptnavigation">
+      <a href="../index.html">Home</a>
+      <a href="../projekte.html">Projekte</a>
+      <a href="../about.html">Über uns</a>
+      <a href="../kontakt.html">Kontakt</a>
+    </nav>
   </header>
 
-  <!-- HERO SLIDESHOW -->
-  <section class="hero" aria-label="Galerie – Seidenkoffer">
-    <div class="slide active"><img src="../bilder/seidenkoffer-zeichnung.jpg" alt="Seidenkoffer – Zeichnung"></div>
-    <div class="slide"><img src="../bilder/seidenkoffer-1.jpg" alt="Seidenkoffer – Bild 1"></div>
-    <div class="slide"><img src="../bilder/seidenkoffer-2.jpg" alt="Seidenkoffer – Bild 2"></div>
-
-    <div class="caption">
-      <strong>Seidenkoffer</strong> · Zeichnungen von Anna Agafonova
+  <main>
+    <!-- Bild oben -->
+    <div class="projekt-bild">
+      <img src="../bilder/seidenkoffer-1.jpg" alt="Seidenkoffer">
     </div>
-    <div class="dots" aria-hidden="true">
-      <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
-    </div>
-  </section>
 
-  <main class="wrap">
-    <h1>Seidenkoffer</h1>
-    <p class="meta">28. Oktober 2025 | 20:00 Uhr<br>schwere reiter | München</p>
+    <!-- Beschreibung links -->
+<div class="projekt-beschreibung">
+  <p>
+    „Mit meinem Seidenkoffer reise ich in die Welt.“ Was bedeutet ein Leben im Exil in einer Realität,
+    die immer mehr ihre Grenzen schließt? Ausgehend von der Lyrik Rose Ausländers sucht Opera Opaque
+    nach Antworten in eigener und fremder Erfahrung und verwandelt sie in einen Liederabend für Sopran und Klavier.
+  </p>
+  <p class="projekt-datum-ort">
+    28.10. | 20:00<br>
+    schwere reiter | münchen
+  </p>
+</div>
 
-    <div class="cols">
-      <!-- Linke Spalte -->
-      <article class="section">
-        <h2>Über das Projekt</h2>
-        <p class="project-text">„Mit meinem Seidenkoffer reise ich in die Welt.“ Was bedeutet ein Leben im Exil in einer Realität, die immer mehr ihre Grenzen schließt? Wie können wir eine Utopie des Weltbürgertums gegen erstarkende Nationalismen setzen? Ausgehend von der Lyrik Rose Ausländers sucht das Musiktheaterkollektiv Opera Opaque nach Antworten in eigener und fremder Erfahrung und verwandelt sie in einen Liederabend für Sopran und Klavier.</p>
-      </article>
 
-      <!-- Rechte Spalte -->
-      <aside class="section">
+    <!-- Sidebar rechts -->
+    <aside class="projekt-sidebar">
+      <section>
         <h2>Credits</h2>
-        <dl class="credits">
-        <div class="credits">
-          <span><strong>Regie:</strong>Maria Chagina</span>
-        </div>
-          <div class="credits">
-          <span><strong>Komposition &amp; Gitarre:</strong>Leon Zmelty</span>
-        </div>
-          <div class="credits">
-          <span><strong>Dramaturgie &amp; Text:</strong>Sören Sarbeck</span>
-        </div>
-          <div class="credits">
-          <span><strong>Regie:</strong> Maria Chagina</span>
-        </div>
-          <div class="credits">
-          <span><strong>Sopran:</strong> Maria Chagina</span>
-        </div>
-          <dt>Komposition &amp; Gitarre</dt><dd>Leon Zmelty</dd>
-          <dt>Dramaturgie &amp; Text</dt><dd>Sören Sarbeck</dd> 
-          <dt>Bühne &amp; Kostüm</dt><dd>Anna Agafonova</dd> 
-          <dt>Sopran</dt><dd>Camilla Saba Davies</dd>
+        <p><strong>Regie:</strong> Maria Chagina</p>
+        <p><strong>Komposition &amp; Gitarre:</strong> Leon Zmelty</p>
+        <p><strong>Dramaturgie:</strong> Sören Sarbeck</p>
+        <p><strong>Bühne &amp; Kostüm:</strong> Anna Agafonova</p>
+        <p><strong>Sopran:</strong> Camilla Saba Davies</p>
+      </section>
 
-        </dl>
+      <section>
+        <h2>Gefördert von</h2>
+        <div class="logos">
+          <!-- Achte auf korrekte Groß-/Kleinschreibung und Dateiendung -->
+	<img src="../bilder/Logo1.png" alt="Logo 1">
+	<img src="../bilder/Logo2.png" alt="Logo 2">
 
-        <div class="section">
-          <h3>Gefördert von</h3>
-          <div class="sponsor-logos">
-            <img src="../bilder/logo1.png" alt="Förderer 1">
-            <img src="../bilder/logo2.png" alt="Förderer 2">
-          </div>
         </div>
-      </aside>
-    </div>
+      </section>
+    </aside>
   </main>
 
-  <footer class="wrap">
-    <a href="../index.html#aktuell">← Zurück zur Übersicht</a>
-  </footer>
-
-  <script>
-    // Auto-Fade der Hero-Galerie (mit Pause bei Hover)
-    (function(){
-      const slides = Array.from(document.querySelectorAll('.hero .slide'));
-      const dots = Array.from(document.querySelectorAll('.dots .dot'));
-      let i = 0, timer; const DUR = 5000;
-
-      function show(n){
-        i = (n + slides.length) % slides.length;
-        slides.forEach((s,idx)=> s.classList.toggle('active', idx===i));
-        dots.forEach((d,idx)=> d.classList.toggle('active', idx===i));
-      }
-      function start(){ if(timer) return; timer = setInterval(()=>show(i+1), DUR); }
-      function stop(){ clearInterval(timer); timer=null; }
-
-      const hero = document.querySelector('.hero');
-      hero.addEventListener('mouseenter', stop);
-      hero.addEventListener('mouseleave', start);
-      start();
-    })();
-  </script>
 </body>
 </html>
-
-
-
-
-
-
-
