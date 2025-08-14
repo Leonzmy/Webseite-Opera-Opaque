@@ -7,7 +7,7 @@
   --muted: #b8bac0;
   --veil: rgba(10,10,11,0.72);
 
-  --font-base: "Chiller", sans-serif; /* ggf. global auf 'Inter' umstellen */
+  --font-base: "Arial", sans-serif; /* ggf. global auf 'Inter' umstellen */
   --fs-base: 18px;
   --fs-meta: 13px;
   --fs-h2: 2.5rem;
