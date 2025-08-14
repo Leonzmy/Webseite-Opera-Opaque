@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Einladung zur Enthauptung – Opera Opaque</title>
+  <meta name="description" content="Projektseite – Einladung zur Enthauptung (Opera Opaque)." />
+  <style>
+    :root{ --bg:#0a0a0b; --ink:#f2f2f4; --muted:#b8bac0; --veil:rgba(10,10,11,.72);} 
+    *{box-sizing:border-box}
+    html,body{margin:0; background:var(--bg); color:var(--ink); font-family:"Garamond", serif; line-height:1.65; scroll-behavior:smooth}
+
+    header{position:fixed; top:0; left:0; right:0; z-index:10; display:flex; align-items:center; justify-content:space-between; padding:12px 16px; 
+	footer a {
+ 	 color: #ffffff;
+ 	 text-decoration: none;
+	}
+	footer a:hover {
+  	color: #cccccc;
+	}
+
+background:linear-gradient(180deg, rgba(10,10,11,.88), rgba(10,10,11,.55)); backdrop-filter:blur(8px)}
+    header a{color:var(--ink); text-decoration:none}
+    /* Linkfarbe im Pressestimmen-/Material-Bereich */
+    .section a {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .section a:hover {
+      color: #cccccc;
+    }
+
+
+    /* HERO GALLERY */
+    .hero{position:relative; height:80vh; min-height:480px; overflow:hidden}
+    .hero .slide{position:absolute; inset:0; opacity:0; transition:opacity .8s ease}
+    .hero .slide.active{opacity:1}
+    .hero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+    .hero .caption{position:absolute; bottom:0; left:0; width:100%; background:var(--veil); padding:14px 18px; opacity:0; transition:opacity .35s ease}
+    .hero:hover .caption{opacity:1}
+
+    .dots{position:absolute; bottom:14px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:2}
+    .dot{width:9px; height:9px; border-radius:50%; border:1px solid rgba(255,255,255,.7)}
+    .dot.active{background:#f2f2f4}
+
+    /* CONTENT */
+    .wrap{max-width:1100px; margin:24px auto 80px; padding:0 20px}
+    h1{font-size:2.2rem; margin:18px 0 8px}
+    .meta{color:var(--muted)}
+    .cols{display:grid; grid-template-columns: 2fr 1.2fr; gap:28px; margin-top:22px}
+    .section{margin:22px 0}
+    .credits dt{font-weight:bold}
+    .credits dd{margin:0 0 10px 0}
+
+    footer{padding:28px 16px; color:var(--muted); font-size:.95rem}
+
+    @media (max-width:900px){
+      .hero{height:64vh}
+      .cols{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../index.html">← Zurück</a>
+    <a href="../index.html" style="font-weight:bold">Opera Opaque</a>
+  </header>
+
+  <!-- HERO SLIDESHOW -->
+  <section class="hero" aria-label="Galerie – Einladung zur Enthauptung">
+    <div class="slide active"><img src="../bilder/enthauptung-1.jpg" alt="Einladung zur Enthauptung – Szene 1"></div>
+    <div class="slide"><img src="../bilder/enthauptung-2.jpg" alt="Einladung zur Enthauptung – Szene 2"></div>
+    <div class="slide"><img src="../bilder/enthauptung-3.jpg" alt="Einladung zur Enthauptung – Szene 3"></div>
+    <div class="slide"><img src="../bilder/enthauptung-4.jpg" alt="Einladung zur Enthauptung – Szene 4"></div>
+    <div class="caption">
+      <strong>Einladung zur Enthauptung</strong> · Fotoauswahl (Hover, um Titel einzublenden)
+    </div>
+    <div class="dots" aria-hidden="true">
+      <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <h1>Einladung zur Enthauptung</h1>
+<p class="meta">Musiktheater · Premiere: 22. Februar 2024 · Reaktorhalle, München</p>
+
+    <div class="cols">
+      <article class="section">
+        <h2>Über das Projekt</h2>
+        <p>Das Projekt <em>Einladung zur Enthauptung</em> befragt die Möglichkeit geistiger und körperlicher Freiheit innerhalb totalitärer Systeme. In einer reduzierten, schwarzweißen Bildwelt treffen fragile Körper auf harte Linien.</p>
+        <p>Text, Klang und Bewegung verdichten sich zu einer poetischen Versuchsanordnung, in der Nähe und Distanz, Blick und Gegenblick verhandelt werden.</p>
+  	     <div class="section">
+ 		 <h3>Pressestimmen / Material</h3>
+		  <ul>
+ 		   <li><a href="https://www.theaterakademie.de/service/presse/bilder-download?tx_sfculture_press%5Bsword%5D=enthauptung&tx_sfculture_press%5BfilterProduction%5D=&tx_sfculture_press%5BfilterStage%5D=&tx_sfculture_press%5BfilterEducation%5D=&tx_sfculture_press%5Bfilter-submit%5D=" target="_blank" rel="noopener">Pressebilder</a></li>
+   		 <li><a href="https://blog.theaterakademie.de/post/pressestimmen-zur-oper-einladung-zur-enthauptung-von-leon-zmelty" target="_blank" rel="noopener">Pressestimmen</a></li>
+ 		 </ul>
+		</div>
+      </article>
+
+      <aside class="section">
+        <h2>Credits</h2>
+        <dl class="credits">
+          <dt>Regie</dt><dd>Maria Chagina</dd>
+          <dt>Komposition</dt><dd>Leon Zmelty</dd>
+          <dt>Dramaturgie</dt><dd>Sören Sarbeck</dd>
+          <dt>Bühne & Kostüm</dt><dd>Anna Agafonova</dd>
+          <dt>Produktion</dt><dd>Opera Opaque</dd>
+        </dl>
+        <div class="section">
+          <h3>Besetzung</h3>
+          <p><em>(Bitte ergänzen)</em></p>
+        </div>
+        <div class="section">
+          <h3>Gefördert von</h3>
+          <p><em>(Logos / Nennungen einfügen)</em></p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+	<footer class="wrap">
+ 	 <a href="../index.html" style="color:#ffffff; text-decoration:none;">← Zurück zur Übersicht</a>
+	</footer>
+
+  <script>
+    // Leichtes Auto-Fade der Hero-Galerie (mit Pause bei Hover)
+    (function(){
+      const slides = Array.from(document.querySelectorAll('.hero .slide'));
+      const dots = Array.from(document.querySelectorAll('.dots .dot'));
+      let i = 0, timer; const DUR = 5000;
+      function show(n){
+        i = (n + slides.length) % slides.length;
+        slides.forEach((s,idx)=> s.classList.toggle('active', idx===i));
+        dots.forEach((d,idx)=> d.classList.toggle('active', idx===i));
+      }
+      function start(){ if(timer) return; timer = setInterval(()=>show(i+1), DUR); }
+      function stop(){ clearInterval(timer); timer=null; }
+      const hero = document.querySelector('.hero');
+      hero.addEventListener('mouseenter', stop);
+      hero.addEventListener('mouseleave', start);
+      start();
+    })();
+  </script>
+</body>
+</html>
