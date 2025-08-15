@@ -212,13 +212,13 @@ body.projekte .projekte-title {
   text-align: left;
 }
 
-/* Grid 2×2, keine Gaps; Außen: L/R/U = 80px */
+/* Grid 2×2, keine Gaps; Außen: L/R/U = 150px */
 body.projekte .projekte-grid--2x2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: 1fr;
   gap: 0;
-  margin: 0 80px 80px;
+  margin: 0 1500px 1500px;
   padding: 0;
 }
 
