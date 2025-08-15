@@ -205,7 +205,7 @@ body.projekte .projekte-wrap {
 /* Titel links oben, leicht eingerückt */
 body.projekte .projekte-title {
   margin: 0;
-  padding: 40px 0 16px; /* reduziertes Padding oben */
+  padding: 10px 0 16px; /* reduziertes Padding oben */
   margin-left: 80px;
   font-size: 2rem;
   line-height: 1.2;
