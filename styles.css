@@ -368,43 +368,5 @@ body.projekt-seidenkoffer .back-button a{
 body.projekt-seite .back-button a:hover,
 body.projekt-seidenkoffer .back-button a:hover{ background-color:var(--ink); color:var(--bg); }
 
-/* ===== Globale Bild-Defaults (vom Original beibehalten) ===== */
-img{
-  display:block;
-  max-width:100%;
-  height:100%;
-  margin:20px;
-  object-fit:contain;
-  background:#fff;
-  box-sizing:border-box;
-}
 
-body.about .fullwidth-gallery .person img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  background: #fff;
-  transition: opacity 0.6s ease-in-out;
-}
-
-body.about .fullwidth-gallery .person .image-default {
-  opacity: 1; /* Startbild sichtbar */
-  z-index: 1;
-}
-
-body.about .fullwidth-gallery .person .image-hover {
-  opacity: 0; /* Hover-Bild unsichtbar */
-  z-index: 2;
-}
-
-body.about .fullwidth-gallery .person:hover .image-default {
-  opacity: 0;
-}
-
-body.about .fullwidth-gallery .person:hover .image-hover {
-  opacity: 1;
-}
 
