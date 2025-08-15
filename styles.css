@@ -592,6 +592,16 @@ body.projekt-seidenkoffer .back-button a:hover {
   color: var(--bg);
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 8px;
+  object-fit: contain;
+  background: #fff; /* optional */
+  box-sizing: border-box;
+}
+
 /* === Fullwidth About Gallery Images (alle sichtbar, verteilt) === */
 body.about .fullwidth-gallery {
   display: grid;
