@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Projekte – Opera Opaque</title>
-  <meta name="description" content="Überblick über Projekte von Opera Opaque" />
+  <meta name="description" content="Projekte von Opera Opaque" />
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="bilder/favicon.png" type="image/png">
 </head>
@@ -21,38 +21,36 @@
     </nav>
   </header>
 
-  <main class="projekte-wrap">
-    <!-- Überschrift als Bild -->
-    <h1 class="projekte-title">
-      <img class="projekte-title-image" src="bilder/projekte-drawing.jpg" alt="Projekte">
+  <main>
+    <!-- Titel-Bild -->
+    <h1 class="section-title">
+      <img src="bilder/projekte-drawing.png" alt="Projekte">
     </h1>
 
-    <!-- 2×2 Grid ohne Zwischenräume -->
-    <section class="projekte-grid projekte-grid--2x2">
-      <!-- Kachel 1: Seidenkoffer -->
-      <a class="tile tile--swap" href="projekte/seidenkoffer.html" aria-label="Zur Projektseite: Seidenkoffer">
-        <img class="img default" src="bilder/seidenkoffer-1.jpg" alt="Seidenkoffer">
-        <img class="img hover"   src="bilder/seidenkoffer-2.jpg" alt="" aria-hidden="true">
+    <!-- Projekt-Grid -->
+    <div class="projects-grid">
+      <!-- Kachel 1 -->
+      <a href="projekt-seidenkoffer.html" class="tile">
+        <img class="image-default" src="bilder/seidenkoffer-1.jpg" alt="Seidenkoffer">
+        <img class="image-hover" src="bilder/seidenkoffer-2.jpg" alt="">
       </a>
-
-      <!-- Kachel 2: Phantom -->
-      <a class="tile tile--swap" href="projekte/phantom.html" aria-label="Zur Projektseite: Phantom">
-        <img class="img default" src="bilder/phantom-1.jpg" alt="Phantom">
-        <img class="img hover"   src="bilder/phantom-2.jpg" alt="" aria-hidden="true">
+      <!-- Kachel 2 -->
+      <a href="projekt-phantom.html" class="tile">
+        <img class="image-default" src="bilder/phantom-1.jpg" alt="Phantom">
+        <img class="image-hover" src="bilder/phantom-2.jpg" alt="">
       </a>
-
-      <!-- Kachel 3: Einladung zur Enthauptung -->
-      <a class="tile tile--swap" href="projekte/enthauptung.html" aria-label="Zur Projektseite: Einladung zur Enthauptung">
-        <img class="img default" src="bilder/enthauptung-1.jpg" alt="Einladung zur Enthauptung">
-        <img class="img hover"   src="bilder/enthauptung-2.jpg" alt="" aria-hidden="true">
+      <!-- Kachel 3 -->
+      <a href="projekt-enthauptung.html" class="tile">
+        <img class="image-default" src="bilder/enthauptung-1.jpg" alt="Enthauptung">
+        <img class="image-hover" src="bilder/enthauptung-2.jpg" alt="">
       </a>
-
-      <!-- Kachel 4: Orfeo -->
-      <a class="tile tile--swap" href="projekte/orfeo.html" aria-label="Zur Projektseite: Orfeo">
-        <img class="img default" src="bilder/orfeo-1.jpg" alt="Orfeo">
-        <img class="img hover"   src="bilder/orfeo-2.jpg" alt="" aria-hidden="true">
+      <!-- Kachel 4 -->
+      <a href="projekt-orfeo.html" class="tile">
+        <img class="image-default" src="bilder/orfeo-1.jpg" alt="Orfeo">
+        <img class="image-hover" src="bilder/orfeo-2.jpg" alt="">
       </a>
-    </section>
+    </div>
   </main>
+
 </body>
 </html>
