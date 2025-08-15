@@ -522,7 +522,7 @@ body.about .fullwidth-gallery .person:hover .image-hover { opacity:1; }
 body.about .section-title {
   display: block;       /* kein flex mehr */
   margin: 0 0 1.5rem 0; /* nur unten Abstand */
-  padding-top: 40px;    /* Abstand zum Header */
+  padding-top: 0;    /* Abstand zum Header */
 }
 
 body.about .section-title img {
