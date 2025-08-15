@@ -683,4 +683,85 @@ body.projekte .site-header {
   background: rgba(255,255,255,0.85);
   backdrop-filter: saturate(120%) blur(6px);
 }
+/* === PROJEKTE – GRID FIX (2×2, randlos zwischen Kacheln) === */
+
+/* Titel links, leicht eingerückt */
+body.projekte .projekte-title {
+  margin: 0;
+  padding: 100px 0 16px;
+  margin-left: 80px;
+  font-size: 2rem;
+  line-height: 1.2;
+  text-align: left;
+}
+
+/* Grid: 2x2, kein Abstand zwischen Kacheln, außen 80px (L/R/U) */
+body.projekte .projekte-grid--2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 0 !important;
+  margin: 0 80px 80px;
+}
+
+/* Kacheln: keine zusätzlichen Außenabstände/Schmuck */
+body.projekte .tile { 
+  margin: 0 !important;
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* Swap-Kachel mit zwei Bildern (zweites auf Hover) */
+body.projekte .tile--swap {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+/* Bilder vollständig, ohne Beschnitt; globales img-Margin neutralisieren */
+body.projekte .tile--swap .img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  margin: 0 !important;        /* überschreibt globales img{ margin:20px } */
+  max-width: none !important;
+  background: #fff;            /* „Letterbox“-Hintergrund */
+}
+
+/* Hover-Übergang */
+body.projekte .tile--swap .img.hover { 
+  opacity: 0; 
+  transition: opacity .35s ease; 
+}
+body.projekte .tile--swap:hover .img.hover { opacity: 1; }
+body.projekte .tile--swap:hover .img.default { opacity: 0; }
+
+/* Header sichtbar halten (deaktiviert die scroll-Logik nur hier) */
+body.projekte .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+body.projekte .projekte-wrap { padding-top: 100px; }
+
+/* Responsiv: <700px einspaltig, kleinere Außenränder */
+@media (max-width: 700px) {
+  body.projekte .projekte-grid--2x2 {
+    grid-template-columns: 1fr;
+    margin: 0 20px 60px;
+  }
+  body.projekte .projekte-title {
+    margin-left: 20px;
+    padding-top: 80px;
+  }
 
