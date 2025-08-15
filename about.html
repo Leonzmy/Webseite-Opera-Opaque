@@ -1,87 +1,556 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Über uns – Opera Opaque</title>
-  <meta name="description" content="Über das Kollektiv Opera Opaque" />
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="about">
+/* ==============================================
+   styles.css (tidied) – nur Formatierung/Einrückung bereinigt
+   Hinweis: Es wurden KEINE CSS-Regeln inhaltlich verändert.
+   ============================================== */
 
-  <!-- Header -->
-  <header class="site-header">
-    <div class="brand">Opera Opaque</div>
-    <nav class="navlinks" aria-label="Hauptnavigation">
-      <a href="index.html">Home</a>
-      <a href="projekte.html">Projekte</a>
-      <a href="about.html" aria-current="page">Über uns</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-  </header>
+/* ==== Grunddesign ==== */
+:root {
+  --bg: #ffffff;
+  --ink: #000000;
+  --muted: #444444;
+  --font-base: "Garamond", serif;
+  --fs-base: 18px;
+  --lh: 1.65;
+}
 
-  <main>
-    <p class="intro">
-      Opera Opaque ist ein Kollektiv für neues Musiktheater. 
-      Wir verbinden Komposition, Regie, Dramaturgie und Ausstattung 
-      in interdisziplinären Formaten zwischen Konzert und Bühne.
-    </p>
-  </main>
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-base);
+  font-size: var(--fs-base);
+  line-height: var(--lh);
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: #000; text-decoration: none; }
+a:hover, a:focus { color: #222; }
 
-  <!-- Vollbreite Team-Bilder -->
- <section class="team-wrap" aria-label="Team">
-  <div class="team-grid">
+/* ==== Video Hintergrund ==== */
+.frontpage .video-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: #fff url("bilder/frontpage.jpg") center/cover no-repeat;
+}
+.frontpage .video-bg .video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    <figure class="person">
-      <div class="media">
-        <img src="bilder/maria.jpg" alt="Maria Chagina – Regie">
-        <a class="person-link" href="personen/maria-chagina.html">Mehr</a>
-      </div>
-      <figcaption class="caption">
-        <div class="name">Maria Chagina</div>
-        <div class="role">Regie</div>
-        <p class="bio">Opern- und Theaterregisseurin …</p>
-      </figcaption>
-    </figure>
+/* ==== Hero-Cover ==== */
+.frontpage .hero-cover { height: 100vh; }
 
-    <figure class="person">
-      <div class="media">
-        <img src="bilder/leon.jpg" alt="Leon Zmelty – Komposition">
-        <a class="person-link" href="personen/leon-zmelty.html">Mehr</a>
-      </div>
-      <figcaption class="caption">
-        <div class="name">Leon Zmelty</div>
-        <div class="role">Komposition</div>
-        <p class="bio">Komponist zwischen Experiment und Tradition …</p>
-      </figcaption>
-    </figure>
+/* ==== Header (per JS ein-/ausblenden) ==== */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; width: 100%;
+  z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.85);
+  transition: opacity .4s ease;
+  opacity: 0;            /* unsichtbar am Anfang */
+  pointer-events: none;  /* nicht klickbar am Anfang */
+}
+body.scrolled .site-header { opacity: 1; pointer-events: auto; }
 
-    <figure class="person">
-      <div class="media">
-        <img src="bilder/soeren.jpg" alt="Sören Sarbeck – Dramaturgie &amp; Text">
-        <a class="person-link" href="personen/soeren.html">Mehr</a>
-      </div>
-      <figcaption class="caption">
-        <div class="name">Sören Sarbeck</div>
-        <div class="role">Dramaturgie &amp; Text</div>
-        <p class="bio">Dramaturg/Librettist …</p>
-      </figcaption>
-    </figure>
+.brand { font-weight: 600; }
+.navlinks a { padding: 6px 8px; border-radius: 8px; }
 
-    <figure class="person">
-      <div class="media">
-        <img src="bilder/anna.jpg" alt="Anna Agafonova – Bühne &amp; Kostüm">
-        <a class="person-link" href="personen/anna-agafonova.html">Mehr</a>
-      </div>
-      <figcaption class="caption">
-        <div class="name">Anna Agafonova</div>
-        <div class="role">Bühne &amp; Kostüm</div>
-        <p class="bio">Bühnen- und Kostümbildnerin …</p>
-      </figcaption>
-    </figure>
+/* ==== Inhalt ==== */
+.frontpage-content { position: relative; z-index: 5; }
 
-  </div>
-</section>
+.right-panel {
+  position: relative;
+  margin-left: 50vw; /* rechte Spalte */
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 4rem 3rem;
+  background: transparent;
+  color: var(--ink);
+}
+.right-content { max-width: 42rem; width: 100%; }
 
-</body>
-</html>
+/* 3x Abstand zwischen Titel und "Demnächst" */
+.lp-title {
+  font-size: clamp(1.8rem, 3.6vw, 3.2rem);
+  line-height: 1.1;
+  margin: 0 0 6em 0; /* dreifach vergrößert */
+}
+
+.lp-sub {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin: 0 0 .35rem;
+}
+.lp-what { font-size: 1.6rem; font-weight: 600; margin: .15rem 0; }
+.lp-when, .lp-where { margin: .1rem 0; color: var(--ink); }
+
+/* ===== Kachel: Bild linksbündig und Hover-Label "mehr Infos" ===== */
+.tile { position: relative; border-radius: 12px; overflow: clip; margin-top: 1.5rem; }
+.tile img { display: block; margin-left: 0; }
+
+/* Overlay zunächst unsichtbar, erscheint nur auf Hover */
+.tile .overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: .5rem .75rem;
+  background: transparent;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity .25s ease;
+  pointer-events: none; /* Klicks gehen an .tile-link */
+  text-align: left;
+}
+.tile:hover .overlay { opacity: 1; }
+
+.overlay-label {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.tile .tile-link { position: absolute; inset: 0; }
+
+/* Footer */
+.site-footer { padding: 20px; text-align: center; font-size: .85rem; background: transparent; }
+.footer-link { color: var(--muted); }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .right-panel { margin-left: 0; padding: 2rem 1.25rem; min-height: auto; }
+  .lp-title { font-size: clamp(1.6rem, 6vw, 2.4rem); margin-bottom: 6em; }
+}
+/* ==============================
+Projektseite: Seidenkoffer
+============================== */
+body.projekt-seidenkoffer {
+  background: #fff;
+  color: #000;
+}
+
+.projekt-seidenkoffer main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px 60px; /* Platz unter fixem Header */
+  display: grid;
+  grid-template-columns: 1fr 300px; /* links Inhalt, rechts Sidebar */
+  gap: 40px;
+}
+
+.projekt-seidenkoffer .projekt-bild {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.projekt-seidenkoffer .projekt-bild img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.projekt-seidenkoffer .projekt-beschreibung {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.projekt-seidenkoffer .projekt-sidebar {
+  font-size: 0.95rem;
+}
+
+.projekt-seidenkoffer .projekt-sidebar h2 {
+  font-size: 1.2rem;
+  margin-top: 0;
+}
+
+.projekt-seidenkoffer .projekt-sidebar .logos img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 12px;
+}
+/* ==============================
+Projektseite: Seidenkoffer – Header sichtbar
+============================== */
+body.projekt-seidenkoffer .site-header {
+  position: sticky;      /* oder fixed, wenn du willst, dass er immer oben bleibt */
+  top: 0;
+  z-index: 100;
+  opacity: 1 !important;           /* Header sofort sichtbar */
+  pointer-events: auto !important; /* wieder anklickbar */
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Platz unter dem Header auf der Projektseite */
+body.projekt-seidenkoffer main {
+  padding-top: 100px;  /* ggf. an tatsächliche Header-Höhe anpassen */
+}
+
+body.projekt-seidenkoffer {
+  background: #fff;
+  color: #000;
+}
+
+/* Header auf Projektseite sofort sichtbar und klickbar, ohne Linie */
+body.projekt-seidenkoffer .site-header {
+  position: sticky;          /* oder 'fixed' falls permanent oben gewünscht */
+  top: 0;
+  z-index: 100;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: rgba(255,255,255,0.85);
+  border-bottom: none;       /* keine schmale Linie */
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Layout: Bild oben (voll), darunter links Beschreibung, rechts Sidebar */
+body.projekt-seidenkoffer main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px 60px;  /* Platz unter Header */
+  display: grid;
+  grid-template-columns: 1fr 320px;   /* links Inhalt, rechts Sidebar */
+  grid-template-areas:
+  "bild bild"
+  "desc side";
+  gap: 32px 40px;
+}
+
+/* Bild oben, 500px breit, mittig */
+body.projekt-seidenkoffer .projekt-bild {
+  grid-area: bild;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body.projekt-seidenkoffer .projekt-bild img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Beschreibung links im Blocksatz */
+body.projekt-seidenkoffer .projekt-beschreibung {
+  grid-area: desc;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  hyphens: auto;
+  margin-top: 1.15em; /* Wert anpassen nach Geschmack */
+}
+
+/* Sidebar rechts – startet auf gleicher Höhe wie Beschreibung */
+body.projekt-seidenkoffer .projekt-sidebar {
+  grid-area: side;
+  font-size: 0.95rem;
+  align-self: start;
+}
+
+/* Überschriften enger */
+body.projekt-seidenkoffer .projekt-sidebar h2 {
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+}
+
+/* Credits-Abstände enger */
+body.projekt-seidenkoffer .projekt-sidebar p {
+  margin: 0 0 6px 0;
+  line-height: 1.35;
+}
+
+/* Logos sichtbar, einheitliche Höhe; Pfade/Dateinamen case-sensitiv beachten */
+body.projekt-seidenkoffer .projekt-sidebar .logos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+body.projekt-seidenkoffer .projekt-sidebar .logos img {
+  max-width: 100%;
+  height: auto;
+  max-height: 70px;
+  object-fit: contain;
+  display: block;
+  filter: none;
+  opacity: 1;
+}
+/* Abstand über "Gefördert von" verdoppeln */
+body.projekt-seidenkoffer .projekt-sidebar section:last-of-type {
+  margin-top: 2em; /* vorher evtl. 1em */
+}
+
+/* Logos mit neutralem Hintergrund sichtbar machen */
+body.projekt-seidenkoffer .projekt-sidebar .logos img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 70px;
+  object-fit: contain;
+
+}
+/* Zeit & Ort größer und fett */
+body.projekt-seidenkoffer .projekt-beschreibung .projekt-datum-ort {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1.5em;
+}
+
+/* ==============================
+Projekte-Übersicht
+============================== */
+body.projects .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.projects .projects-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 60px;
+}
+
+body.projects .page-title {
+  margin: 0 0 24px 0;
+  font-size: 2rem;
+}
+
+body.projects .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 40%);
+  justify-content: center; /* zentrieren */
+  gap: 24px;
+}
+
+body.projects .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 80px 0px; /* 10px horizontal, 24px vertikal */
+
+}
+
+body.projects .tile.slideshow {
+  aspect-ratio: 4 / 3; /* alle gleich hoch */
+  width: 0%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+body.projects .tile.slideshow {
+  width: 80%;
+  margin: 0 auto;
+}
+@media (max-width: 1100px) {
+  body.projects .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  body.projects .projects-grid { grid-template-columns: 1fr; }
+}
+
+/* Kachel-Slideshow (wiederverwendbar) */
+.tile.slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+.tile.slideshow img.layer {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity s ease-in-out;
+}
+.tile.slideshow img.layer.show { opacity: 1; }
+
+/* Overlay bei Hover: Titel + Premiereninfos */
+.tile.slideshow .overlay {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: .65rem .85rem;
+  background: rgba(255,255,255,.65);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.tile.slideshow:hover .overlay { opacity: 1; }
+.tile.slideshow .overlay-title { font-weight: 700; }
+.tile.slideshow .overlay-meta { font-size: .95rem; color: var(--muted); }
+
+.tile.slideshow .tile-link { position: absolute; inset: 0; }
+
+/* ==============================
+Generische Projektseiten (Phantom/Enthauptung/Orfeo)
+============================== */
+body.projekt-seite .site-header {
+  position: sticky; top: 0; z-index: 100;
+  opacity: 1; pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+body.projekt-seite .projekt-wrap {
+  max-width: 1100px; margin: 0 auto; padding: 100px 20px 60px;
+  display: grid; grid-template-columns: 1fr 320px; gap: 32px 40px;
+  grid-template-areas:
+  "bild bild"
+  "desc side";
+}
+body.projekt-seite .projekt-bild { grid-area: bild; display: flex; justify-content: center; }
+body.projekt-seite .projekt-bild img { max-width: 500px; width: 100%; height: auto; border-radius: 8px; }
+
+body.projekt-seite .projekt-beschreibung { grid-area: desc; text-align: justify; hyphens: auto; }
+body.projekt-seite .projekt-beschreibung .projekt-datum-ort { font-weight: 700; margin-top: 1.25em; }
+
+body.projekt-seite .projekt-sidebar { grid-area: side; align-self: start; }
+body.projekt-seite .projekt-sidebar h2 { font-size: 1.1rem; margin: 0 0 8px; }
+body.projekt-seite .projekt-sidebar p { margin: 0 0 6px; line-height: 1.35; }
+body.projekt-seite .projekt-sidebar .logos { display: grid; gap: 10px; margin-top: 10px; }
+body.projekt-seite .projekt-sidebar .logos img { max-width: 100%; max-height: 70px; object-fit: contain; }
+
+/* ==============================
+   Über uns (scoped auf body.about)
+   ============================== */
+body.about .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Intro oben */
+body.about main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px 40px; /* Platz unter Header */
+}
+body.about .intro {
+  max-width: 72ch;
+  margin: 0 auto 28px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  text-align: center;
+}
+
+/* Vollbreite Bildleiste, bilder direkt aneinander (edge-to-edge) */
+body.about .team-wrap {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%); /* echte Vollbreite unabhängig vom Container */
+}
+
+body.about .person img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* zeigt das komplette Bild ohne seitlichen Zuschnitt */
+  display: block;
+}
+
+body.about .team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0; /* keine Lücken zwischen den Bildern */
+}
+
+/* Einzelne Personen-Kachel – angelehnt an .tile, aber ohne Radius/Gaps */
+body.about .person {
+  position: relative;
+  margin: 0;
+  height: 100vh; /* oder eine feste px-Höhe, z. B. 600px */
+  overflow: hidden;
+}
+body.about .person img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay-Stil wie auf den Kacheln (weißer Schleier) */
+body.about .person .overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: .65rem .85rem;
+  background: rgba(255,255,255,.65);  /* einheitlich zu .tile .overlay */
+  opacity: 0;
+  transition: opacity .25s ease;
+  color: var(--ink);
+}
+body.about .person:hover .overlay,
+body.about .person:focus-within .overlay { opacity: 1; }
+
+/* Typo innerhalb des Overlays – angelehnt an Projekte-Kacheln */
+body.about .person .name { font-weight: 700; }
+body.about .person .role { font-size: .95rem; color: var(--muted); }
+body.about .person .bio  { font-size: .95rem; }
+
+/* Link über gesamter Kachel */
+body.about .person a.person-link {
+  position: absolute;
+  inset: 0;
+  text-indent: -9999px; /* rein klickbar, Text bleibt im Overlay */
+}
+
+/* Responsive: 2 Spalten, dann 1 Spalte */
+@media (max-width: 900px) {
+  body.about .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  body.about .team-grid { grid-template-columns: 1fr; }
+}
+
+body.about .person .media {
+  position: relative;
+  height: 90vh; /* nutzt fast die volle Fensterhöhe, weniger Beschnitt */
+  overflow: hidden;
+}
+
+body.about .person img {
+  width: 100%;
+  height: 90vH;
+  display: block;
+  object-fit: cover;
+  object-position: top; /* oben ausrichten, nur unten schneiden */
+}
+/* Bildwechsel bei Hover */
+body.about .person .image-hover {
+  display: none;
+}
+
+body.about .person:hover .image-default {
+  display: none;
+}
+
+body.about .person:hover .image-hover {
+  display: block;
+}
+
+/* Overlay erst bei Hover zeigen */
+body.about .person .overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: .65rem .85rem;
+  background: rgba(255,255,255,0.75); /* etwas stärker für Abhebung */
+  opacity: 0;
+  transition: opacity .3s ease;
+  color: var(--ink);
+}
+
+body.about .person:hover .overlay {
+  opacity: 1;
+}
+
