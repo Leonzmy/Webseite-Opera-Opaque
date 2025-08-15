@@ -518,20 +518,19 @@ body.about .fullwidth-gallery .person img.image-hover { opacity:0; z-index:2; tr
 body.about .fullwidth-gallery .person:hover .image-default{ opacity:0; }
 body.about .fullwidth-gallery .person:hover .image-hover { opacity:1; }
 
-/* ===== Überschrift-Bild in About ===== */
+/* ===== Überschrift-Bild in About (links ausgerichtet) ===== */
 body.about .section-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0 1.5rem 0; /* unten etwas Abstand zum Text */
-  padding-top: 40px;    /* kleiner Abstand zum Header */
+  display: block;       /* kein flex mehr */
+  margin: 0 0 1.5rem 0; /* nur unten Abstand */
+  padding-top: 40px;    /* Abstand zum Header */
 }
 
 body.about .section-title img {
-  max-width: 320px;     /* Bildbreite anpassen */
+  max-width: 320px;     /* gewünschte Maximalbreite */
   width: 100%;
   height: auto;
   display: block;
 }
+
 
 
