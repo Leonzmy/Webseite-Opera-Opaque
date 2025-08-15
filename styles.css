@@ -640,128 +640,208 @@ body.about .fullwidth-gallery .person {
   background: #fff; /* entfernt „durchscheinende“ Flächen um das Bild */
 }
 
-/* === FINAL FIX: About-Galerie Bilder vollständig, ohne Beschnitt === */
+/* === HARD RESET: Projekte-Übersicht 2×2 ohne Innenabstand === */
 
-/* 1) Kachelhöhe definieren (oder auf auto stellen) */
-body.about .fullwidth-gallery .person {
-  height: 70vh;                  /* nach Geschmack: 60–80vh */
-  overflow: hidden;              /* für Hover-Fade nötig */
-  background: #fff;              /* Letterbox-Hintergrund */
+/* Header fix (sichtbar) + Platz darunter */
+body.projekte .site-header {
+  position: sticky; top: 0; z-index: 100;
+  opacity: 1 !important; pointer-events: auto !important;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+body.projekte .projekte-wrap { padding-top: 100px !important; }
+
+/* Titel links, eingerückt */
+body.projekte .projekte-title,
+body.projekte .projects-title {  /* falls alter Klassenname */
+  margin: 0 !important;
+  padding: 100px 0 16px !important;
+  margin-left: 80px !important;
+  font-size: 2rem; line-height: 1.2; text-align: left;
 }
 
-/* 2) ALLE About-Galerie-Bilder vollständig anzeigen */
-body.about .fullwidth-gallery .person img,
-body.about .fullwidth-gallery .person img.image-default,
-body.about .fullwidth-gallery .person img.image-hover {
-  position: absolute !important; /* für den Fade-Stack */
+/* === GRID: 2×2, OHNE LÜCKEN, außen L/R/U = 80px === */
+/* Wir decken beide Varianten ab: .projekte-grid--2x2 und .projects-grid */
+body.projekte .projekte-grid--2x2,
+body.projekte .projects-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-auto-rows: 1fr !important;
+  gap: 0 !important;
+  margin: 0 80px 80px !important;
+  padding: 0 !important;
+  border: 0;
+}
+
+/* Entfernt ALLE alten Kachel-/Bild-Abstände */
+body.projekte .projekte-grid--2x2 > *,
+body.projekte .projects-grid > * {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Kacheln */
+body.projekte .tile,
+body.projekte .tile--swap,
+body.projekte .projekte-grid--2x2 a,
+body.projekte .projects-grid a {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important;
+  overflow: hidden !important;
+  border-radius: 0 !important;
+  text-decoration: none;
+}
+
+/* Bilder in den Kacheln (2 Stück, zweites auf Hover) */
+body.projekte .tile--swap .img,
+body.projekte .projekte-grid--2x2 a > img,
+body.projekte .projects-grid a > img {
+  position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  margin: 0 !important;          /* neutralisiert globales img{ margin:20px } */
-  object-fit: contain !important;/* kein Zuschneiden mehr */
-  object-position: center center !important;
-  max-width: none !important;    /* falls irgendwo begrenzt */
-}
-
-/* 3) Sicherheitsnetz gegen spätere cover-Regeln */
-body.about .fullwidth-gallery .person img { 
-  -webkit-mask-image: none;      /* falls Masken verwendet wurden */
-  mask-image: none;
-}
-
-/* 4) Optional: gleiche Höhe auch mobil anpassen */
-@media (max-width: 600px) {
-  body.about .fullwidth-gallery .person { height: 60vh; }
-}
-/* === Projekte: Header sichtbar & sticky === */
-body.projekte .site-header {
-  position: sticky;   /* bleibt oben kleben */
-  top: 0;
-  z-index: 100;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: saturate(120%) blur(6px);
-}
-/* === PROJEKTE – GRID FIX (2×2, randlos zwischen Kacheln) === */
-
-/* Titel links, leicht eingerückt */
-body.projekte .projekte-title {
-  margin: 0;
-  padding: 100px 0 16px;
-  margin-left: 80px;
-  font-size: 2rem;
-  line-height: 1.2;
-  text-align: left;
-}
-
-/* Grid: 2x2, kein Abstand zwischen Kacheln, außen 80px (L/R/U) */
-body.projekte .projekte-grid--2x2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: 1fr;
-  gap: 0 !important;
-  margin: 0 80px 80px;
-}
-
-/* Kacheln: keine zusätzlichen Außenabstände/Schmuck */
-body.projekte .tile { 
-  margin: 0 !important;
-  border: 0;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-/* Swap-Kachel mit zwei Bildern (zweites auf Hover) */
-body.projekte .tile--swap {
-  position: relative;
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-}
-
-/* Bilder vollständig, ohne Beschnitt; globales img-Margin neutralisieren */
-body.projekte .tile--swap .img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  margin: 0 !important;        /* überschreibt globales img{ margin:20px } */
+  margin: 0 !important;           /* neutralisiert globales img{ margin:20px } */
   max-width: none !important;
-  background: #fff;            /* „Letterbox“-Hintergrund */
+  object-fit: contain !important; /* komplett sichtbar, keine Beschneidung */
+  object-position: center center !important;
+  background: #fff;               /* Letterbox-Hintergrund */
+  transition: opacity .35s ease;
 }
 
-/* Hover-Übergang */
-body.projekte .tile--swap .img.hover { 
-  opacity: 0; 
-  transition: opacity .35s ease; 
+/* Hover-Logik: erstes Bild sichtbar, zweites erscheint auf Hover */
+body.projekte .tile--swap .img.hover,
+body.projekte .projekte-grid--2x2 a > img:nth-child(2),
+body.projekte .projects-grid a > img:nth-child(2) {
+  opacity: 0 !important;
 }
-body.projekte .tile--swap:hover .img.hover { opacity: 1; }
-body.projekte .tile--swap:hover .img.default { opacity: 0; }
-
-/* Header sichtbar halten (deaktiviert die scroll-Logik nur hier) */
-body.projekte .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+body.projekte .tile--swap:hover .img.hover,
+body.projekte .projekte-grid--2x2 a:hover > img:nth-child(2),
+body.projekte .projects-grid a:hover > img:nth-child(2) {
   opacity: 1 !important;
-  pointer-events: auto !important;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: saturate(120%) blur(6px);
 }
-body.projekte .projekte-wrap { padding-top: 100px; }
+body.projekte .tile--swap:hover .img.default,
+body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1),
+body.projekte .projects-grid a:hover > img:nth-child(1) {
+  opacity: 0 !important;
+}
 
 /* Responsiv: <700px einspaltig, kleinere Außenränder */
 @media (max-width: 700px) {
-  body.projekte .projekte-grid--2x2 {
-    grid-template-columns: 1fr;
-    margin: 0 20px 60px;
+  body.projekte .projekte-grid--2x2,
+  body.projekte .projects-grid {
+    grid-template-columns: 1fr !important;
+    margin: 0 20px 60px !important;
   }
-  body.projekte .projekte-title {
-    margin-left: 20px;
-    padding-top: 80px;
+  body.projekte .projekte-title,
+  body.projekte .projects-title {
+    margin-left: 20px !important;
+    padding-top: 80px !important;
   }
+}
 
+/* === HARD RESET: Projekte-Übersicht 2×2 ohne Innenabstand === */
+
+/* Header fix (sichtbar) + Platz darunter */
+body.projekte .site-header {
+  position: sticky; top: 0; z-index: 100;
+  opacity: 1 !important; pointer-events: auto !important;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+body.projekte .projekte-wrap { padding-top: 100px !important; }
+
+/* Titel links, eingerückt */
+body.projekte .projekte-title,
+body.projekte .projects-title {  /* falls alter Klassenname */
+  margin: 0 !important;
+  padding: 100px 0 16px !important;
+  margin-left: 80px !important;
+  font-size: 2rem; line-height: 1.2; text-align: left;
+}
+
+/* === GRID: 2×2, OHNE LÜCKEN, außen L/R/U = 80px === */
+/* Wir decken beide Varianten ab: .projekte-grid--2x2 und .projects-grid */
+body.projekte .projekte-grid--2x2,
+body.projekte .projects-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  grid-auto-rows: 1fr !important;
+  gap: 0 !important;
+  margin: 0 80px 80px !important;
+  padding: 0 !important;
+  border: 0;
+}
+
+/* Entfernt ALLE alten Kachel-/Bild-Abstände */
+body.projekte .projekte-grid--2x2 > *,
+body.projekte .projects-grid > * {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Kacheln */
+body.projekte .tile,
+body.projekte .tile--swap,
+body.projekte .projekte-grid--2x2 a,
+body.projekte .projects-grid a {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 4 / 3 !important;
+  overflow: hidden !important;
+  border-radius: 0 !important;
+  text-decoration: none;
+}
+
+/* Bilder in den Kacheln (2 Stück, zweites auf Hover) */
+body.projekte .tile--swap .img,
+body.projekte .projekte-grid--2x2 a > img,
+body.projekte .projects-grid a > img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;           /* neutralisiert globales img{ margin:20px } */
+  max-width: none !important;
+  object-fit: contain !important; /* komplett sichtbar, keine Beschneidung */
+  object-position: center center !important;
+  background: #fff;               /* Letterbox-Hintergrund */
+  transition: opacity .35s ease;
+}
+
+/* Hover-Logik: erstes Bild sichtbar, zweites erscheint auf Hover */
+body.projekte .tile--swap .img.hover,
+body.projekte .projekte-grid--2x2 a > img:nth-child(2),
+body.projekte .projects-grid a > img:nth-child(2) {
+  opacity: 0 !important;
+}
+body.projekte .tile--swap:hover .img.hover,
+body.projekte .projekte-grid--2x2 a:hover > img:nth-child(2),
+body.projekte .projects-grid a:hover > img:nth-child(2) {
+  opacity: 1 !important;
+}
+body.projekte .tile--swap:hover .img.default,
+body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1),
+body.projekte .projects-grid a:hover > img:nth-child(1) {
+  opacity: 0 !important;
+}
+
+/* Responsiv: <700px einspaltig, kleinere Außenränder */
+@media (max-width: 700px) {
+  body.projekte .projekte-grid--2x2,
+  body.projekte .projects-grid {
+    grid-template-columns: 1fr !important;
+    margin: 0 20px 60px !important;
+  }
+  body.projekte .projekte-title,
+  body.projekte .projects-title {
+    margin-left: 20px !important;
+    padding-top: 80px !important;
+  }
+}
