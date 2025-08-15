@@ -673,3 +673,19 @@ body.about .fullwidth-gallery .person img {
 @media (max-width: 600px) {
   body.about .fullwidth-gallery .person { height: 60vh; }
 }
+/* === Projekte: Header sichtbar & sticky === */
+body.projekte .site-header {
+  position: sticky;   /* bleibt oben kleben */
+  top: 0;
+  z-index: 100;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Platz unter dem Header, damit nichts überdeckt wird */
+body.projekte .projekte-wrap {
+  padding-top: 100px; /* ggf. an echte Header-Höhe anpassen */
+}
+
