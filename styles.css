@@ -595,7 +595,7 @@ body.projekt-seidenkoffer .back-button a:hover {
 img {
   display: block;
   max-width: 100%;
-  height: auto;
+  height: 100%;
   margin: 20px;
   object-fit: contain;
   background: #fff; /* optional */
