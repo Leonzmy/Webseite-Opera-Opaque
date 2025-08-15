@@ -284,78 +284,141 @@ body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1) { opacity: 0; }
     max-width: 220px;
   }
 }
+
 /* ==============================
    ÜBER UNS (About) – Vollbreite Galerie mit Hover-Fade
    ============================== */
-body.about .site-header{
-  position:sticky; top:0; z-index:100;
-  opacity:1; pointer-events:auto;
-  background:rgba(255,255,255,0.85);
-  backdrop-filter:saturate(120%) blur(6px);
+body.about .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(120%) blur(6px);
 }
 
 /* Intro oben */
-body.about main{ max-width:1100px; margin:0 auto; padding:100px 20px 40px; }
-body.about .intro{
-  max-width:72ch; margin:0 auto 28px;
-  font-size:1.05rem; line-height:1.65; text-align:center;
+body.about main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
 }
-body.about .about-intro{ text-align:justify; hyphens:none; }
+body.about .intro {
+  max-width: 72ch;
+  margin: 0 auto 28px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  text-align: center;
+}
+body.about .about-intro {
+  text-align: justify;
+  hyphens: none;
+}
 
 /* Galerie (volle Breite) */
-body.about .fullwidth-gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-  gap:0; margin:0; padding:0;
-  width:100vw; margin-left:50%; transform:translateX(-50%);
+body.about .fullwidth-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
-body.about .fullwidth-gallery .person{
-  position:relative; margin:0; padding:0;
-  height:70vh; /* gewünschte Kachelhöhe; bleibt wie zuletzt wirksam */
-  overflow:hidden; top:60px;
+body.about .fullwidth-gallery .person {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 70vh; /* gewünschte Kachelhöhe */
+  overflow: hidden;
+  top: 60px;
 }
-/* Bilder für Fade-Effekt übereinander legen – komplett sichtbar */
-body.about .fullwidth-gallery .person img,
-body.about .fullwidth-gallery .person img.image-default,
-body.about .fullwidth-gallery .person img.image-hover{
-  position:absolute; inset:0;
-  width:100%; height:100%;
-  object-fit:contain; object-position:center;
-  opacity:0; transition:opacity .6s ease-in-out;
-  background:#fff;
+
+/* Bilder für Fade-Effekt übereinander legen */
+body.about .fullwidth-gallery .person img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+  transition: opacity 0.6s ease-in-out;
 }
-body.about .fullwidth-gallery .person .image-default{ opacity:1; z-index:1; }
-body.about .fullwidth-gallery .person:hover .image-default{ opacity:0; }
-body.about .fullwidth-gallery .person:hover .image-hover{ opacity:1; z-index:2; }
+
+/* Startbild sichtbar */
+body.about .fullwidth-gallery .person .image-default {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Hoverbild unsichtbar */
+body.about .fullwidth-gallery .person .image-hover {
+  opacity: 0;
+  z-index: 2;
+}
+
+/* Hovereffekt */
+body.about .fullwidth-gallery .person:hover .image-default {
+  opacity: 0;
+}
+body.about .fullwidth-gallery .person:hover .image-hover {
+  opacity: 1;
+}
 
 /* Overlay-Stil */
-body.about .fullwidth-gallery .overlay{
-  position:absolute; left:0; right:0; bottom:0;
-  padding:1rem 1.5rem;
-  background:rgba(255,255,255,0.75);
-  opacity:0; transition:opacity .3s ease;
-  color:var(--ink); z-index:3; pointer-events:none;
+body.about .fullwidth-gallery .overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.75);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: var(--ink);
+  z-index: 3;
+  pointer-events: none;
 }
 body.about .fullwidth-gallery .person:hover .overlay,
-body.about .fullwidth-gallery .person:focus-within .overlay{ opacity:1; }
+body.about .fullwidth-gallery .person:focus-within .overlay {
+  opacity: 1;
+}
 
 /* Typo im Overlay */
-body.about .fullwidth-gallery .person .name{ font-weight:700; }
-body.about .fullwidth-gallery .person .role{ font-size:1.2rem; color:var(--muted); }
-body.about .fullwidth-gallery .person .bio{ font-size:.95rem; }
+body.about .fullwidth-gallery .person .name {
+  font-weight: 700;
+}
+body.about .fullwidth-gallery .person .role {
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+body.about .fullwidth-gallery .person .bio {
+  font-size: .95rem;
+}
 
 /* Link über gesamte Kachel */
-body.about .fullwidth-gallery .person a.person-link{
-  position:absolute; inset:0; text-indent:-9999px;
+body.about .fullwidth-gallery .person a.person-link {
+  position: absolute;
+  inset: 0;
+  text-indent: -9999px;
 }
 
 /* Responsive */
-@media (max-width:900px){
-  body.about .fullwidth-gallery{ grid-template-columns:repeat(2,1fr); }
+@media (max-width: 900px) {
+  body.about .fullwidth-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
-@media (max-width:560px){
-  body.about .fullwidth-gallery{ grid-template-columns:1fr; }
+@media (max-width: 560px) {
+  body.about .fullwidth-gallery {
+    grid-template-columns: 1fr;
+  }
 }
+
+
 
 /* ===== Zurück-Button (nur Projektseiten) ===== */
 body.projekt-seite .back-button,
