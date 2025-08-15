@@ -689,3 +689,36 @@ body.about .fullwidth-gallery .person {
   background: #fff; /* entfernt „durchscheinende“ Flächen um das Bild */
 }
 
+/* === FINAL FIX: About-Galerie Bilder vollständig, ohne Beschnitt === */
+
+/* 1) Kachelhöhe definieren (oder auf auto stellen) */
+body.about .fullwidth-gallery .person {
+  height: 70vh;                  /* nach Geschmack: 60–80vh */
+  overflow: hidden;              /* für Hover-Fade nötig */
+  background: #fff;              /* Letterbox-Hintergrund */
+}
+
+/* 2) ALLE About-Galerie-Bilder vollständig anzeigen */
+body.about .fullwidth-gallery .person img,
+body.about .fullwidth-gallery .person img.image-default,
+body.about .fullwidth-gallery .person img.image-hover {
+  position: absolute !important; /* für den Fade-Stack */
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;          /* neutralisiert globales img{ margin:20px } */
+  object-fit: contain !important;/* kein Zuschneiden mehr */
+  object-position: center center !important;
+  max-width: none !important;    /* falls irgendwo begrenzt */
+}
+
+/* 3) Sicherheitsnetz gegen spätere cover-Regeln */
+body.about .fullwidth-gallery .person img { 
+  -webkit-mask-image: none;      /* falls Masken verwendet wurden */
+  mask-image: none;
+}
+
+/* 4) Optional: gleiche Höhe auch mobil anpassen */
+@media (max-width: 600px) {
+  body.about .fullwidth-gallery .person { height: 60vh; }
+}
