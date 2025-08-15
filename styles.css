@@ -548,6 +548,7 @@ body.about .fullwidth-gallery .person:focus-within .overlay {
   opacity: 1;
 }
 
+
 /* Typo im Overlay */
 body.about .fullwidth-gallery .person .name { font-weight: 700; }
 body.about .fullwidth-gallery .person .role { font-size: 1.2rem; color: var(--muted); }
@@ -566,6 +567,17 @@ body.about .fullwidth-gallery .person a.person-link {
 }
 @media (max-width: 560px) {
   body.about .fullwidth-gallery { grid-template-columns: 1fr; }
+}
+/* --- Bilder in About-Galerie vollständig anzeigen --- */
+body.about .fullwidth-gallery .person {
+  height: auto; /* Höhe dynamisch nach Bild */
+}
+
+body.about .fullwidth-gallery .person img {
+  object-fit: contain; /* zeigt komplettes Bild, ohne Beschneidung */
+  height: auto;
+  max-height: 80vh; /* optional: Begrenzung, damit es nicht zu groß wird */
+  background: #fff; /* optionaler Hintergrund für leere Ränder */
 }
 
 /* ===== Zurück-Button (nur Projektseiten) ===== */
