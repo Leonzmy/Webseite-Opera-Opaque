@@ -286,9 +286,8 @@ body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1) { opacity: 0; }
 }
 
 /* ==============================
-   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 fade-in on hover
+   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 fade-in, Kachel klickbar
    ============================== */
-
 body.about .site-header{
   position: sticky;
   top: 0;
@@ -299,7 +298,7 @@ body.about .site-header{
   backdrop-filter: saturate(120%) blur(6px);
 }
 
-/* Intro oben (unverändert) */
+/* Intro oben */
 body.about main{
   max-width: 1100px;
   margin: 0 auto;
@@ -314,7 +313,7 @@ body.about .intro{
 }
 body.about .about-intro{ text-align: justify; hyphens: none; }
 
-/* Galerie: 4 Kacheln (oder auto-fit), volle Breite */
+/* Galerie (volle Breite) */
 body.about .fullwidth-gallery{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -331,13 +330,13 @@ body.about .fullwidth-gallery .person{
   position: relative;
   margin: 0;
   padding: 0;
-  height: 70vh;          /* gewünschte Kachelhöhe */
+  height: 70vh;        /* gewünschte Kachelhöhe */
   overflow: hidden;
-  top: 60px;             /* beibehalten, falls gewollt */
-  background: #fff;      /* neutraler Hintergrund für Letterboxing */
+  top: 60px;           /* beibehaltener Versatz */
+  background: #fff;    /* Letterbox-Hintergrund */
 }
 
-/* Bilder übereinander legen – GRUNDREGEL: sichtbar */
+/* Bilder übereinander legen */
 body.about .fullwidth-gallery .person img{
   position: absolute;
   inset: 0;
@@ -345,53 +344,57 @@ body.about .fullwidth-gallery .person img{
   height: 100%;
   object-fit: contain;
   object-position: center;
-  background: transparent;
   transition: opacity .6s ease-in-out;
-  opacity: 1 !important;                 /* <- macht Bild 1 sicher sichtbar */
+  background: transparent;
+  opacity: 1 !important;   /* Bild 1 standardmäßig sichtbar */
   z-index: 1;
+  pointer-events: none;     /* Klicks gehen an den Link darüber */
 }
 
-/* Variante A: Klassen verwendet */
+/* Variante mit Klassen */
 body.about .fullwidth-gallery .person img.image-hover{
-  opacity: 0 !important;                 /* Bild 2 versteckt */
+  opacity: 0 !important;
   z-index: 2;
 }
 body.about .fullwidth-gallery .person:hover img.image-hover{ opacity: 1 !important; }
 body.about .fullwidth-gallery .person:hover img.image-default{ opacity: 0 !important; }
 
-/* Variante B: keine Klassen, nur 2 <img> pro Kachel */
+/* Variante ohne Klassen (2 <img> je Kachel) */
 body.about .fullwidth-gallery .person img:nth-child(2){
-  opacity: 0 !important;                 /* zweites Bild ausblenden */
+  opacity: 0 !important;
   z-index: 2;
 }
 body.about .fullwidth-gallery .person:hover img:nth-child(2){ opacity: 1 !important; }
 body.about .fullwidth-gallery .person:hover img:nth-child(1){ opacity: 0 !important; }
 
-/* Overlay-Stil (unverändert) */
+/* Overlay-Infos */
 body.about .fullwidth-gallery .overlay{
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 1rem 1.5rem;
   background: rgba(255,255,255,0.75);
+  color: var(--ink);
   opacity: 0;
   transition: opacity .3s ease;
-  color: var(--ink);
   z-index: 3;
-  pointer-events: none;
+  pointer-events: none;  /* Overlay selbst nicht klickfangend */
 }
 body.about .fullwidth-gallery .person:hover .overlay,
 body.about .fullwidth-gallery .person:focus-within .overlay{ opacity: 1; }
 
-/* Typo im Overlay */
 body.about .fullwidth-gallery .person .name{ font-weight: 700; }
 body.about .fullwidth-gallery .person .role{ font-size: 1.2rem; color: var(--muted); }
 body.about .fullwidth-gallery .person .bio { font-size: .95rem; }
 
-/* Link über die gesamte Kachel */
+/* Der Link über der gesamten Kachel (KLICKBAR) */
 body.about .fullwidth-gallery .person a.person-link{
   position: absolute;
   inset: 0;
-  text-indent: -9999px;
+  display: block;
+  z-index: 5;            /* über Bildern & Overlay */
+  background: transparent;
+  text-indent: -9999px;  /* reine Klickfläche, kein Text sichtbar */
+  pointer-events: auto;  /* sicherstellen, dass Klicks greifen */
 }
 
 /* Responsive */
@@ -401,8 +404,6 @@ body.about .fullwidth-gallery .person a.person-link{
 @media (max-width: 560px){
   body.about .fullwidth-gallery{ grid-template-columns: 1fr; }
 }
-
-
 
 /* ===== Zurück-Button (nur Projektseiten) ===== */
 body.projekt-seite .back-button,
