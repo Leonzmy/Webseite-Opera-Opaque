@@ -596,7 +596,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 8px;
+  margin: 20px;
   object-fit: contain;
   background: #fff; /* optional */
   box-sizing: border-box;
