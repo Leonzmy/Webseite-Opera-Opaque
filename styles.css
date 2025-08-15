@@ -684,8 +684,3 @@ body.projekte .site-header {
   backdrop-filter: saturate(120%) blur(6px);
 }
 
-/* Platz unter dem Header, damit nichts überdeckt wird */
-body.projekte .projekte-wrap {
-  padding-top: 100px; /* ggf. an echte Header-Höhe anpassen */
-}
-
