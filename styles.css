@@ -8,13 +8,15 @@
   --bg: #ffffff;
   --ink: #000000;
   --muted: #444444;
-  --font-base: "Garamond", serif;
+  --font-base: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --fs-base: 18px;
   --lh: 1.65;
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
+html, body { height: 100%; margin: 0; 
+  font-weight: 100;
+}
 html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
@@ -419,8 +421,9 @@ body.projekt-seite .projekt-sidebar p { margin: 0 0 6px; line-height: 1.35; }
 body.projekt-seite .projekt-sidebar .logos { display: grid; gap: 10px; margin-top: 10px; }
 body.projekt-seite .projekt-sidebar .logos img { max-width: 100%; max-height: 70px; object-fit: contain; }
 
+
 /* ==============================
-   Über uns (scoped auf body.about)
+   Über uns (scoped auf body.about) – mit Fade-Effekt beim Bildwechsel
    ============================== */
 body.about .site-header {
   position: sticky;
@@ -436,7 +439,7 @@ body.about .site-header {
 body.about main {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 100px 20px 40px; /* Platz unter Header */
+  padding: 100px 20px 40px;
 }
 body.about .intro {
   max-width: 72ch;
@@ -446,111 +449,170 @@ body.about .intro {
   text-align: center;
 }
 
-/* Vollbreite Bildleiste, bilder direkt aneinander (edge-to-edge) */
-body.about .team-wrap {
+body.about .about-intro {
+  text-align: justify;
+  hyphens: none; /* Silbentrennung */
+}
+
+
+/* Vollbreite Galerie – alle sichtbar, gleichmäßig verteilt */
+body.about .fullwidth-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
   width: 100vw;
   margin-left: 50%;
-  transform: translateX(-50%); /* echte Vollbreite unabhängig vom Container */
+  transform: translateX(-50%);
 }
 
-body.about .person img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* zeigt das komplette Bild ohne seitlichen Zuschnitt */
-  display: block;
-}
-
-body.about .team-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0; /* keine Lücken zwischen den Bildern */
-}
-
-/* Einzelne Personen-Kachel – angelehnt an .tile, aber ohne Radius/Gaps */
-body.about .person {
+body.about .fullwidth-gallery .person {
   position: relative;
   margin: 0;
-  height: 100vh; /* oder eine feste px-Höhe, z. B. 600px */
+  top: 60px; 
+  padding: 0;
+  height: 60vh; /* Höhe anpassbar */
   overflow: hidden;
 }
-body.about .person img {
+
+/* Bilder für Fade-Effekt übereinander legen */
+body.about .fullwidth-gallery .person img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
 }
 
-/* Overlay-Stil wie auf den Kacheln (weißer Schleier) */
-body.about .person .overlay {
+body.about .fullwidth-gallery .person .image-default {
+  opacity: 1;
+  z-index: 1;
+}
+
+body.about .fullwidth-gallery .person:hover .image-default {
+  opacity: 0;
+}
+
+body.about .fullwidth-gallery .person:hover .image-hover {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Overlay-Stil */
+body.about .fullwidth-gallery .overlay {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  padding: .65rem .85rem;
-  background: rgba(255,255,255,.65);  /* einheitlich zu .tile .overlay */
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.75);
   opacity: 0;
-  transition: opacity .25s ease;
+  transition: opacity 0.3s ease;
   color: var(--ink);
-}
-body.about .person:hover .overlay,
-body.about .person:focus-within .overlay { opacity: 1; }
 
-/* Typo innerhalb des Overlays – angelehnt an Projekte-Kacheln */
-body.about .person .name { font-weight: 700; }
-body.about .person .role { font-size: .95rem; color: var(--muted); }
-body.about .person .bio  { font-size: .95rem; }
-
-/* Link über gesamter Kachel */
-body.about .person a.person-link {
-  position: absolute;
-  inset: 0;
-  text-indent: -9999px; /* rein klickbar, Text bleibt im Overlay */
+  z-index: 3;
+  pointer-events: none;
 }
 
-/* Responsive: 2 Spalten, dann 1 Spalte */
-@media (max-width: 900px) {
-  body.about .team-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 560px) {
-  body.about .team-grid { grid-template-columns: 1fr; }
-}
-
-body.about .person .media {
-  position: relative;
-  height: 90vh; /* nutzt fast die volle Fensterhöhe, weniger Beschnitt */
-  overflow: hidden;
-}
-
-body.about .person img {
-  width: 100%;
-  height: 90vH;
-  display: block;
-  object-fit: cover;
-  object-position: top; /* oben ausrichten, nur unten schneiden */
-}
-/* Bildwechsel bei Hover */
-body.about .person .image-hover {
-  display: none;
-}
-
-body.about .person:hover .image-default {
-  display: none;
-}
-
-body.about .person:hover .image-hover {
-  display: block;
-}
-
-/* Overlay erst bei Hover zeigen */
-body.about .person .overlay {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: .65rem .85rem;
-  background: rgba(255,255,255,0.75); /* etwas stärker für Abhebung */
-  opacity: 0;
-  transition: opacity .3s ease;
-  color: var(--ink);
-}
-
-body.about .person:hover .overlay {
+body.about .fullwidth-gallery .person:hover .overlay,
+body.about .fullwidth-gallery .person:focus-within .overlay {
   opacity: 1;
 }
 
+/* Typo im Overlay */
+body.about .fullwidth-gallery .person .name { font-weight: 700; }
+body.about .fullwidth-gallery .person .role { font-size: 1.2rem; color: var(--muted); }
+body.about .fullwidth-gallery .person .bio  { font-size: .95rem; }
+
+/* Link über gesamte Kachel */
+body.about .fullwidth-gallery .person a.person-link {
+  position: absolute;
+  inset: 0;
+  text-indent: -9999px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  body.about .fullwidth-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  body.about .fullwidth-gallery { grid-template-columns: 1fr; }
+}
+
+/* ===== Zurück-Button (nur Projektseiten) ===== */
+body.projekt-seite .back-button,
+body.projekt-seidenkoffer .back-button {
+  margin-bottom: 1rem;
+}
+
+body.projekt-seite .back-button a,
+body.projekt-seidenkoffer .back-button a {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.projekt-seite .back-button a:hover,
+body.projekt-seidenkoffer .back-button a:hover {
+  background-color: var(--ink);
+  color: var(--bg);
+}
+
+/* === Fullwidth About Gallery Images (alle sichtbar, verteilt) === */
+body.about .fullwidth-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+body.about .fullwidth-gallery .person {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 80vh; /* halbe Bildschirmhöhe für Sichtbarkeit aller */
+  overflow: hidden;
+}
+
+body.about .fullwidth-gallery .person img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+body.about .fullwidth-gallery .overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.75);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: var(--ink);
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+body.about .fullwidth-gallery .person:hover .overlay {
+  opacity: 1;
+}
+
+
+/* Klickfläche über die gesamte Kachel legen */
+body.about .fullwidth-gallery .person .card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 4;          /* über Bildern und Overlay */
+  display: block;
+  background: transparent;
+}
