@@ -666,3 +666,26 @@ body.about .fullwidth-gallery .person .card-link {
   display: block;
   background: transparent;
 }
+/* === FIX: About-Galerie – Bilder vollständig anzeigen === */
+/* Muss NACH allen anderen About-Regeln stehen */
+body.about .fullwidth-gallery .person {
+  /* Wenn du die Kachelhöhe behalten willst, lass 60–80vh stehen.
+     Für dynamische Höhe kannst du 'height:auto' verwenden. */
+  height: 70vh; /* oder 60/80vh – nach Geschmack */
+}
+
+body.about .fullwidth-gallery .person img,
+body.about .fullwidth-gallery .person img.image-default,
+body.about .fullwidth-gallery .person img.image-hover {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;   /* zeigt das ganze Bild */
+  object-position: center center !important;
+  inset: 0 !important;              /* wenn absolut positioniert */
+}
+
+/* Optional: weiße Letterbox-Ränder angenehmer machen */
+body.about .fullwidth-gallery .person {
+  background: #fff; /* entfernt „durchscheinende“ Flächen um das Bild */
+}
+
