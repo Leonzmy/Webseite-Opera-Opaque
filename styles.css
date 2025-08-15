@@ -199,7 +199,7 @@ body.projekte .site-header {
 }
 
 body.projekte .projekte-wrap {
-  padding-top: 60px; /* kleinerer Abstand über der Überschrift */
+  padding-top: 10px; /* kleinerer Abstand über der Überschrift */
 }
 
 /* Titel links oben, leicht eingerückt */
