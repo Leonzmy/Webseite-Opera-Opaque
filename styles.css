@@ -344,16 +344,44 @@ body.projects .projects-grid {
 }
 
 body.projects .tile.slideshow {
-  aspect-ratio: 4 / 3; /* alle gleich hoch */
-  width: 0%;
-  margin: 0 auto;
+  width: 80%;           /* 20% kleiner */
+  margin: 0 auto;       /* zentriert in der Zelle */
+}
+
+/* Crossfade-Layer für Projekt-Kacheln (Projekte-Seite) */
+.tile.slideshow {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;        /* behält einheitliche Höhe; anpassbar */
+  border-radius: 12px;
   overflow: hidden;
 }
 
-body.projects .tile.slideshow {
-  width: 80%;
-  margin: 0 auto;
+/* Basisbild (erste <img>) wird zur Ebene A */
+.tile.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
+
+/* Beide Ebenen (A/B) liegen absolut übereinander und faden via opacity */
+.tile.slideshow .layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out; /* <- Fade-Dauer hier ändern */
+}
+
+/* Sichtbare Ebene */
+.tile.slideshow .layer.show {
+  opacity: 1;
+}
+
+
 @media (max-width: 1100px) {
   body.projects .projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
