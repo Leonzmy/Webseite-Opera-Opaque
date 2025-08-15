@@ -198,18 +198,25 @@ body.projekte .site-header {
   backdrop-filter: saturate(120%) blur(6px);
 }
 
+/* Weniger Abstand über der Überschrift/Grafik */
 body.projekte .projekte-wrap {
-  padding-top: 60px; /* kleinerer Abstand über der Überschrift */
+  padding-top: 60px;
 }
 
-/* Titel links oben, leicht eingerückt */
+/* Titelgrafik links, leicht eingerückt */
 body.projekte .projekte-title {
   margin: 0;
-  padding: 40px 0 16px; /* reduziertes Padding oben */
-  margin-left: 80px;
-  font-size: 2rem;
-  line-height: 1.2;
+  padding: 24px 0 16px;     /* kleiner als zuvor */
+  margin-left: 80px;        /* „etwas eingerückt“ */
   text-align: left;
+  line-height: 1;
+}
+
+/* Bild statt Text im Titel */
+body.projekte .projekte-title .projekte-title-image {
+  display: block;
+  max-width: 320px;         /* Größe der Zeichnung anpassen */
+  height: auto;
 }
 
 /* Grid 2×2, keine Gaps; Außen: L/R/U = 80px */
@@ -247,26 +254,21 @@ body.projekte .projekte-grid--2x2 a > img {
   height: 100%;
   margin: 0;
   max-width: none;
-  object-fit: contain;
+  object-fit: contain;      /* komplett sichtbar */
   object-position: center;
-  background: #fff; /* Letterbox */
-  transition: opacity 0.6s ease-in-out; /* sanfteres Überblenden */
+  background: #fff;         /* Letterbox-Hintergrund */
+  transition: opacity .6s ease-in-out;
 }
 
+/* Startzustand */
 body.projekte .tile--swap .img.hover,
-body.projekte .projekte-grid--2x2 a > img:nth-child(2) {
-  opacity: 0;
-}
+body.projekte .projekte-grid--2x2 a > img:nth-child(2) { opacity: 0; }
 
+/* Hover-Übergang */
 body.projekte .tile--swap:hover .img.hover,
-body.projekte .projekte-grid--2x2 a:hover > img:nth-child(2) {
-  opacity: 1;
-}
-
+body.projekte .projekte-grid--2x2 a:hover > img:nth-child(2) { opacity: 1; }
 body.projekte .tile--swap:hover .img.default,
-body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1) {
-  opacity: 0;
-}
+body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1) { opacity: 0; }
 
 /* Responsiv */
 @media (max-width: 700px) {
@@ -278,10 +280,10 @@ body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1) {
     margin-left: 20px;
     padding-top: 40px;
   }
+  body.projekte .projekte-title .projekte-title-image {
+    max-width: 220px;
+  }
 }
-
-
-
 /* ==============================
    ÜBER UNS (About) – Vollbreite Galerie mit Hover-Fade
    ============================== */
