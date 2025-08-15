@@ -532,5 +532,19 @@ body.about .section-title img {
   display: block;
 }
 
+/* ===== Kein Abstand über/unter den Überschrift-Bildern ===== */
+body.projekte .section-title,
+body.about .section-title {
+  margin: 0;
+  padding: 0;
+}
+
+body.projekte .section-title img,
+body.about .section-title img {
+  display: block;
+  max-width: 320px; /* ggf. anpassen */
+  width: 100%;
+  height: auto;
+}
 
 
