@@ -419,4 +419,92 @@ body.projekt-seite .back-button a:hover,
 body.projekt-seidenkoffer .back-button a:hover{ background-color:var(--ink); color:var(--bg); }
 
 
+/* ==============================
+   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 Fade, Link garantiert klickbar
+   ============================== */
+
+body.about .site-header{
+  position: sticky; top: 0; z-index: 100;
+  opacity: 1; pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Intro */
+body.about main{ max-width:1100px; margin:0 auto; padding:100px 20px 40px; }
+body.about .intro{ max-width:72ch; margin:0 auto 28px; font-size:1.05rem; line-height:1.65; text-align:center; }
+body.about .about-intro{ text-align:justify; hyphens:none; }
+
+/* Galerie – volle Breite, 4 Kacheln (auto-fit) */
+body.about .fullwidth-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:0; margin:0; padding:0;
+  width:100vw; margin-left:50%; transform:translateX(-50%);
+}
+
+/* Kachel / Person */
+body.about .fullwidth-gallery .person{
+  position:relative;
+  margin:0; padding:0; height:70vh; overflow:hidden;
+  top:60px; background:#fff; /* Letterbox */
+}
+
+/* Basis: beide Bilder übereinander; Bild 1 sichtbar */
+body.about .fullwidth-gallery .person img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; object-position:center;
+  background:transparent;
+  transition:opacity .6s ease-in-out;
+  opacity:1 !important; z-index:1;
+  pointer-events:none; /* Bilder fangen keine Klicks ab */
+}
+
+/* Variante A: Klassen vorhanden */
+body.about .fullwidth-gallery .person img.image-hover{ opacity:0 !important; z-index:2; }
+body.about .fullwidth-gallery .person:hover img.image-hover{ opacity:1 !important; }
+body.about .fullwidth-gallery .person:hover img.image-default{ opacity:0 !important; }
+
+/* Variante B: genau 2 <img> ohne Klassen */
+body.about .fullwidth-gallery .person img:nth-child(2){ opacity:0 !important; z-index:2; }
+body.about .fullwidth-gallery .person:hover img:nth-child(2){ opacity:1 !important; }
+body.about .fullwidth-gallery .person:hover img:nth-child(1){ opacity:0 !important; }
+
+/* --- LINK-ABSICHERUNG: zwei mögliche HTML-Varianten --- */
+
+/* Variante 1: separater Overlay-Link <a class="person-link"> ... </a> */
+body.about .fullwidth-gallery .person a.person-link{
+  position:absolute; inset:0; z-index:5;
+  display:block; background:transparent;
+  text-indent:-9999px; /* unsichtbarer, aber voller Klickbereich */
+  pointer-events:auto; cursor:pointer;
+}
+
+/* Variante 2: der Link UMWRAPPT die Bilder ( <a class="person-link"><img><img></a> ) */
+body.about .fullwidth-gallery .person > a.person-link{
+  position:relative; inset:auto; z-index:5; display:block;
+  width:100%; height:100%;
+}
+/* Falls Bilder im Link liegen, bleiben sie klick-durchlässig */
+body.about .fullwidth-gallery .person > a.person-link img{
+  pointer-events:none;
+}
+
+/* Overlay-Infos (nicht klickfangend) */
+body.about .fullwidth-gallery .overlay{
+  position:absolute; left:0; right:0; bottom:0; z-index:3;
+  padding:1rem 1.5rem; background:rgba(255,255,255,0.75);
+  color:var(--ink); opacity:0; transition:opacity .3s ease;
+  pointer-events:none;
+}
+body.about .fullwidth-gallery .person:hover .overlay,
+body.about .fullwidth-gallery .person:focus-within .overlay{ opacity:1; }
+
+body.about .fullwidth-gallery .person .name{ font-weight:700; }
+body.about .fullwidth-gallery .person .role{ font-size:1.2rem; color:var(--muted); }
+body.about .fullwidth-gallery .person .bio{ font-size:.95rem; }
+
+/* Responsiv */
+@media (max-width:900px){ body.about .fullwidth-gallery{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ body.about .fullwidth-gallery{ grid-template-columns:1fr; } }
 
