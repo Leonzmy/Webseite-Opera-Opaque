@@ -812,4 +812,8 @@ body.projekt-seite .projekt-sidebar p strong {
   margin-right: .4em;   /* kleiner Abstand hinter dem Doppelpunkt */
 }
 
+body.projekt-seite .projekt-beschreibung strong {
+  font-weight: bold !important;
+}
+
 
