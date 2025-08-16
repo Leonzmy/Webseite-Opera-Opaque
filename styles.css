@@ -837,3 +837,32 @@ body.projekt-seite .projekt-beschreibung strong {
 }
 
 
+/* ==============================
+   FRONTPAGE VIDEO TWEAKS
+   - Linke Hälfte des Videos fix sichtbar
+   - Halbtransparentes Overlay hinter dem Textbereich
+   ============================== */
+
+/* Video: immer die linke Seite im Fokus */
+.frontpage .video-bg .video{
+  object-fit: cover;
+  object-position: left center; /* linke Hälfte sichtbar */
+}
+
+/* Overlay hinter dem Text (rechts) */
+.frontpage .video-bg::after{
+  content: "";
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 50vw; /* rechte Hälfte überlagern */
+  background: rgba(0,0,0,0.28);            /* leicht abgedunkelt */
+  z-index: 2;                               /* über Video (z-index der .video-bg ist 1), unter Content (z-index 5) */
+  pointer-events: none;                      /* Klicks nicht blockieren */
+}
+
+/* Mobile: Textbereich ist nicht mehr rechts → Overlay über ganze Breite legen (oder anpassen nach Wunsch) */
+@media (max-width: 900px){
+  .frontpage .video-bg::after{
+    left: 0;                /* gesamte Fläche leicht einfärben */
+    background: rgba(0,0,0,0.22);
+  }
+}
