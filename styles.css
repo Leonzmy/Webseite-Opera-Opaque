@@ -1015,6 +1015,7 @@ body.kontakt .sr-only{
     object-position: left center !important;
   }
 }
+
 /* ==============================================
    FRONT PAGE – MOBILE VIDEO FIX (≤ 900px)
    - Desktop unverändert
@@ -1028,6 +1029,7 @@ body.kontakt .sr-only{
     position: relative !important;
     height: 50svh !important; /* sichere Viewport-Höhe (iOS/Android) */
   }
+
   /* Videolayer füllt den Hero, kein Hintergrundbild/Overlay */
   .frontpage .video-bg{
     position: absolute !important;
@@ -1040,6 +1042,7 @@ body.kontakt .sr-only{
   .frontpage .video-bg::after{
     display: none !important; /* eventuelles globales Overlay abschalten */
   }
+
   /* Das <video> selbst: sichtbar, füllt komplett, linker Fokus */
   .frontpage .video-bg .video{
     display: block !important;
@@ -1050,13 +1053,11 @@ body.kontakt .sr-only{
     opacity: 1 !important;        /* überschreibt fades bis 'playing' */
     visibility: visible !important;
   }
+
   /* Der Content-Block bleibt lesbar (falls gewünscht minimaler Hintergrund) */
   .frontpage-content{
     position: relative;
     z-index: 5;
   }
 }
-0 commit comments
-Comments
-0
- (0)
+
