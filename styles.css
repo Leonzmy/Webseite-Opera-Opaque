@@ -853,7 +853,7 @@ body.projekt-seite .projekt-beschreibung strong {
 .frontpage-content {
   position: relative;
   z-index: 5; /* über Video und Overlay */
-  background: rgba(255, 255, 255, 0.3); /* Weiß, 60% transparent */
+  background: rgba(255, 255, 255, 0.1); /* Weiß, 60% transparent */
   padding: 1.5rem;
   border-radius: 8px; /* optional: abgerundete Ecken */
   max-width: 90%;     /* Textblock nicht über die ganze Breite ziehen */
