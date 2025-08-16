@@ -797,9 +797,18 @@ body.projekt-seite .projekt-maingrid{
   margin-top: 0 !important;
 }
 
-body.projekt-seite .projekt-sidebar p strong {
-  display: inline-block;
-  min-width: 90px;   /* sorgt für saubere Ausrichtung */
-  font-weight: bold;
+
+/* ==============================
+   GENERISCHE PROJEKTSEITEN – OVERRIDES v6
+   - Sidebar zweispaltig für Labels und Namen
+   ============================== */
+body.projekt-seite .projekt-sidebar p {
+  display: grid !important;
+  grid-template-columns: 140px 1fr !important;
+  margin: 0 0 6px 0 !important;
 }
+body.projekt-seite .projekt-sidebar p strong {
+  font-weight: bold !important;
+}
+
 
