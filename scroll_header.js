@@ -5,87 +5,95 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let videoFinished = false;
   let triedAuto = false;
+  let retriesLeft = 5;          // kurze Retry-Phase
+  const RETRY_DELAY = 350;      // ms
 
-  // --- HART sicherstellen: Inline + stumm + keine Controls ---
-  video.muted = true;
-  video.defaultMuted = true;         // iOS-Safari mag das
-  video.setAttribute("muted", "");   // Attribut zusätzlich setzen
-  video.playsInline = true;
-  video.setAttribute("playsinline", "");
-  video.setAttribute("webkit-playsinline", "");
-  video.removeAttribute("controls");
+  // --- Attribute & Properties doppelt absichern ---
+  const hardenAttrs = () => {
+    video.muted = true;
+    video.defaultMuted = true;
+    if (!video.hasAttribute("muted")) video.setAttribute("muted", "");
 
-  // Sichtbarkeit sofort heben, sobald es wirklich spielt
-  const markPlaying = () => video.classList.add("playing");
-  video.addEventListener("play", markPlaying);
-  video.addEventListener("playing", markPlaying);
+    video.playsInline = true;
+    if (!video.hasAttribute("playsinline")) video.setAttribute("playsinline", "");
+    if (!video.hasAttribute("webkit-playsinline")) video.setAttribute("webkit-playsinline", "");
 
-  // Wenn Video endet → letztes Frame + Header dauerhaft
+    // auch Autoplay als Attribut setzen (hilft bei manchen Engines)
+    if (!video.hasAttribute("autoplay")) video.setAttribute("autoplay", "");
+
+    video.removeAttribute("controls");
+    // keine Lautstärke – beruhigt manche Browser
+    video.volume = 0;
+  };
+  hardenAttrs();
+
+  // Sichtbarkeit: sobald irgendein Frame/Play ankommt
+  const markVisible = () => video.classList.add("playing");
+  video.addEventListener("play", markVisible);
+  video.addEventListener("playing", markVisible);
+  video.addEventListener("loadeddata", markVisible);
+  video.addEventListener("timeupdate", function onFirstTU() {
+    markVisible();
+    video.removeEventListener("timeupdate", onFirstTU);
+  });
+
+  // Ende: nur relevant, wenn du NICHT loopst. Mit loop wird dieses Event selten erreicht.
   video.addEventListener("ended", () => {
+    // Wenn du loop im <video> hast, kannst du diesen Block löschen.
     video.pause();
     video.currentTime = Math.max(0, video.duration || 0);
     videoFinished = true;
     document.body.classList.add("scrolled");
   });
 
-  // Header-Scroll-Handling (nur solange Video nicht fertig)
-  const onScroll = () => {
+  // Header-Scroll-Handling
+  window.addEventListener("scroll", () => {
     if (videoFinished) return;
-    if (window.scrollY > 50) {
-      document.body.classList.add("scrolled");
-    } else {
-      document.body.classList.remove("scrolled");
-    }
-  };
-  window.addEventListener("scroll", onScroll);
+    if (window.scrollY > 50) document.body.classList.add("scrolled");
+    else document.body.classList.remove("scrolled");
+  });
 
-  // --- Autoplay-Logik ---
+  // --- Autoplay versuchen (mit kurzen Retries) ---
   const tryPlay = async () => {
     if (videoFinished) return;
+    hardenAttrs(); // falls Browser Attribute „verliert“
+
     try {
-      // Manche Browser brauchen ein frisches load() vor play()
       if (video.readyState < 2) {
-        // sorgt dafür, dass die Source sicher geladen ist
         video.load();
-        // auf erstes abspielbares Frame warten (Timeout als Schutz)
         await Promise.race([
           new Promise(res => video.addEventListener("loadeddata", res, { once: true })),
           new Promise(res => video.addEventListener("canplay", res, { once: true })),
-          new Promise(res => setTimeout(res, 500)) // notfalls kurz warten
+          new Promise(res => setTimeout(res, 500))
         ]);
       }
       const p = video.play();
       if (p && typeof p.then === "function") await p;
       triedAuto = true;
+      markVisible();
     } catch (err) {
-      // Autoplay blockiert → Fallback: beim ersten User-Event starten
-      // (Nur EINMAL registrieren)
-      if (!triedAuto) {
+      // kurzer Retry-Zyklus (Browser braucht oft 1–2 Versuche)
+      if (retriesLeft-- > 0) {
+        setTimeout(tryPlay, RETRY_DELAY);
+      } else {
+        // finaler Fallback: beim ersten User-Event starten
         ["touchstart", "pointerdown", "click", "keydown"].forEach(ev => {
           window.addEventListener(ev, () => {
-            tryPlay(); // nochmal versuchen (nun ist Interaktion da)
+            tryPlay();
           }, { once: true, passive: true });
         });
       }
     }
   };
 
-  // Tab wird wieder sichtbar → ggf. erneut versuchen (solange nicht fertig)
+  // Wenn Tab wieder aktiv wird → nochmal probieren
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden && video.paused && !videoFinished) {
+      retriesLeft = Math.max(retriesLeft, 2); // kleine Retry-Reserve
       tryPlay();
     }
   });
 
-  // Manchmal feuert 'playing' nicht – sobald ein Frame da ist, sichtbar machen
-  const onFirstFrame = () => {
-    if (!video.classList.contains("playing")) {
-      video.classList.add("playing");
-    }
-    video.removeEventListener("timeupdate", onFirstFrame);
-  };
-  video.addEventListener("timeupdate", onFirstFrame);
-
-  // Sofort versuchen
+  // direkt loslegen
   tryPlay();
 });
