@@ -993,20 +993,13 @@ body.kontakt .sr-only{
   body.kontakt .kontakt-drawing img{ margin-left: 20px; max-width: 300px; }
   body.kontakt .kontakt-card{ padding: 18px; border-radius: 12px; }
 }
-/* Nur für Mobile */
-@media (max-width: 768px) {
-  .frontpage .video-bg .video {
-    object-fit: cover;
-    object-position: left center; /* Linke Hälfte sichtbar */
-    width: 100%;
-    height: 100%;
-  }
-}
+
 /* === Mobile: Video-Linksausrichtung erzwingen === */
 @media (max-width: 900px){
   .frontpage .video-bg .video{
     object-fit: cover !important;
     object-position: left center !important; /* linke Hälfte sichtbar */
+    height: 50vh !important;   /* nur halbe Höhe vom Viewport */
   }
 }
 
