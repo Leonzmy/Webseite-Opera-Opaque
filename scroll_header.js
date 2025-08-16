@@ -1,3 +1,4 @@
+document.addEventListener("scroll", function() {
 // Status merken, ob das Video fertig abgespielt ist
 let videoFinished = false;
 
@@ -12,39 +13,6 @@ document.addEventListener("scroll", function () {
   }
 });
 
-// Wenn Video endet, Header dauerhaft anzeigen – robust (auch mobil/loop)
-document.addEventListener("DOMContentLoaded", function () {
-  const video = document.querySelector(".frontpage .video-bg .video");
-  if (!video) return;
-
-  const showHeader = () => {
-    document.body.classList.add("scrolled");
-    videoFinished = true; // Ab jetzt Scroll-Entfernung deaktivieren
-    cleanup();
-  };
-
-  const onEnded = () => showHeader();
-
-  // Falls 'ended' wegen 'loop' nie feuert oder iOS zickt:
-  // 1) Track "nahe am Ende"
-  // 2) Erkenne Loop (Sprung von ~Ende zurück an den Anfang) => showHeader()
-  let sawNearEnd = false;
-  const onTimeupdate = () => {
-    if (videoFinished) return;
-    const d = video.duration;
-    if (!isFinite(d) || d <= 0) return;
-    const progress = video.currentTime / d;
-
-    if (progress >= 0.985) {
-      sawNearEnd = true;
-    }
-    // Loop erkannt: nach "nahe Ende" springt currentTime wieder nahe 0
-    if (sawNearEnd && video.currentTime < 0.2) {
-      showHeader();
-    }
-  };
-
- 
 // Wenn Video endet, Header dauerhaft anzeigen
 document.addEventListener("DOMContentLoaded", function () {
   const video = document.querySelector(".frontpage .video-bg .video");
@@ -55,4 +23,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
