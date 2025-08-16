@@ -24,14 +24,29 @@
     return;
   }
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && entry.intersectionRatio > 0.35) {
+ const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const rect = entry.target.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+
+      // Mitte des Elements
+      const elemMid = rect.top + rect.height / 2;
+
+      // Bedingung: Mitte liegt in oberer Bildschirmhälfte
+      if (elemMid < vh / 2) {
         entry.target.classList.add('inview');
       } else {
         entry.target.classList.remove('inview');
       }
-    });
+    } else {
+      entry.target.classList.remove('inview');
+    }
+  });
+}, {
+  threshold: [0] // nur grobe Sichtbarkeitsprüfung, Details machen wir selbst
+});
+
   }, {
     root: null,
     rootMargin: '0px 0px -10% 0px',
@@ -54,3 +69,4 @@
 
   console.debug('[projekte.js] aktiv: Mobile-Inview-Swap läuft für', tiles.length, 'Kacheln');
 })();
+
