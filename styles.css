@@ -1092,7 +1092,7 @@ body.kontakt .sr-only{
     clip-path: inset(0 0 25% 0); /* nur obere 25% sichtbar */
   }
   .frontpage .hero-cover {
-    height: 25vh !important; /* Platzhalter, damit Content unten nicht überlappt */
+    height: 50vh !important; /* Platzhalter, damit Content unten nicht überlappt */
   }
   .frontpage-content {
     margin-top: 10vh !important; /* Text nach unten verschieben */
