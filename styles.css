@@ -405,6 +405,20 @@ body.projekte .projekte-grid--2x2 a.inview > img:nth-child(1) { opacity: 0; }
 /* Optional: sanftere Animation beim Auto-Reveal */
 body.projekte .projekte-grid--2x2 a > img { transition: opacity .6s ease-in-out; }
 
+/* --- Mobile: zweites Bild zeigen, wenn im Viewport --- */
+@media (hover: none) and (pointer: coarse) {
+  body.projekte .projekte-grid--2x2 a.inview > img:nth-child(1) { opacity: 0; }
+  body.projekte .projekte-grid--2x2 a.inview > img:nth-child(2) { opacity: 1; }
+  body.projekte .projekte-grid--2x2 a > img { transition: opacity .6s ease-in-out; }
+}
+
+/* --- Mobile: zweites Bild zeigen, wenn im Viewport --- */
+@media (hover: none) and (pointer: coarse) {
+  body.projekte .projekte-grid--2x2 a.inview > img:nth-child(1) { opacity: 0; }
+  body.projekte .projekte-grid--2x2 a.inview > img:nth-child(2) { opacity: 1; }
+  body.projekte .projekte-grid--2x2 a > img { transition: opacity .6s ease-in-out; }
+}
+
 
 /* ==============================
    ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 fade-in, Kachel klickbar
