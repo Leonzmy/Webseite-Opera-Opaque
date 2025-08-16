@@ -1181,3 +1181,8 @@ body.touch .fullwidth-gallery .person:hover .image-hover {
   opacity: inherit !important;
 }
 
+/* Mobile (Touch): Hover-Effekt auf Projekte deaktivieren */
+body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(1),
+body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
+  opacity: inherit !important; /* verhindert das Umschalten beim Antippen */
+}
