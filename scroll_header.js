@@ -1,37 +1,50 @@
-// scroll_header.js (clean version)
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const video = document.querySelector(".frontpage .video-bg .video");
-  const header = document.querySelector("header");
+  if (!video) return;
+
   let videoFinished = false;
 
-  if (video) {
-    // Try autoplay immediately
-    const tryPlay = () => {
-      video.muted = true;
-      const p = video.play();
-      if (p && p.catch) {
-        p.catch(err => console.log("Autoplay blockiert:", err));
-      }
-    };
-    tryPlay();
+  // Wenn es spielt → sichtbar machen
+  video.addEventListener("playing", () => {
+    video.classList.add("playing");
+  });
 
-    // Retry autoplay on first user interaction (for mobile browsers)
-    ["touchstart","pointerdown","click","scroll"].forEach(ev => {
-      window.addEventListener(ev, tryPlay, { once: true, passive: true });
-    });
+  const tryPlay = () => {
+    if (videoFinished) return; // nach Ende nicht mehr starten
+    video.muted = true;
+    const p = video.play();
+    if (p && p.catch) {
+      p.catch(err => {
+        console.log("Autoplay blockiert:", err);
+      });
+    }
+  };
 
-    // When video ends, freeze on last frame and show header permanently
-    video.addEventListener("ended", function () {
-      video.pause();
-      video.currentTime = video.duration;
-      document.body.classList.add("scrolled");
-      videoFinished = true;
-    });
-  }
+  // sofort versuchen
+  tryPlay();
 
-  // Scroll handling for header visibility
-  window.addEventListener("scroll", function () {
+  // beim ersten User-Event nochmal versuchen
+  ["touchstart", "pointerdown", "click"].forEach(ev => {
+    window.addEventListener(ev, tryPlay, { once: true, passive: true });
+  });
+
+  // falls Tab zurückkehrt → nochmal probieren, solange Video nicht fertig
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && video.paused && !videoFinished) {
+      tryPlay();
+    }
+  });
+
+  // Wenn Video endet → auf letztem Frame stehen bleiben + Header dauerhaft
+  video.addEventListener("ended", () => {
+    video.pause();
+    video.currentTime = video.duration;
+    videoFinished = true;
+    document.body.classList.add("scrolled");
+  });
+
+  // Scroll-Handling für Header (nur solange Video nicht fertig)
+  window.addEventListener("scroll", () => {
     if (videoFinished) return;
     if (window.scrollY > 50) {
       document.body.classList.add("scrolled");
