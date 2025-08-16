@@ -1153,3 +1153,15 @@ body.kontakt .sr-only{
   }
 }
 
+/* About: Mobile-Autoreveal – überschreibt Hover dank !important */
+@media (hover: none) and (pointer: coarse) {
+  body.about .fullwidth-gallery .person.inview .image-default { opacity: 0 !important; }
+  body.about .fullwidth-gallery .person.inview .image-hover  { opacity: 1 !important; }
+
+  /* langsamere, weiche Transition */
+  body.about .fullwidth-gallery .person .image-default,
+  body.about .fullwidth-gallery .person .image-hover {
+    transition: opacity 1.5s ease-in-out !important;
+  }
+}
+
