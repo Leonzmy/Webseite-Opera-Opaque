@@ -5,13 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Seidenkoffer – Opera Opaque</title>
   <meta name="description" content="Projektseite Seidenkoffer – Opera Opaque" />
-  <!-- Wichtig: Diese Seite liegt in /projekte, daher CSS relativ eine Ebene hoch -->
   <link rel="stylesheet" href="../styles.css">
-<link rel="icon" href="/bilder/favicon.png" type="image/png">
+  <link rel="icon" href="/bilder/favicon.png" type="image/png">
 </head>
 <body class="projekt-seite">
 
-  <!-- Header wie auf der Frontpage -->
   <header class="site-header">
     <div class="brand">Opera Opaque</div>
     <nav class="navlinks" aria-label="Hauptnavigation">
@@ -22,29 +20,36 @@
     </nav>
   </header>
 
-  <main>
-    <div class="projekt-wrap"><!-- Bild oben -->
-    <div class="projekt-bild">
-      <img src="../bilder/seidenkoffer-1.jpg" alt="Seidenkoffer">
-    </div>
+  <!-- Full-bleed Hero -->
+  <figure class="projekt-hero">
+    <img src="../bilder/seidenkoffer-3.jpg" alt="Seidenkoffer – Hero">
+  </figure>
 
-    <!-- Beschreibung links -->
-<div class="projekt-beschreibung">
-  <p>
-    „Mit meinem Seidenkoffer reise ich in die Welt.“ Was bedeutet ein Leben im Exil in einer Realität,
+  <!-- Inhalt mit normaler Seitenbreite -->
+  <main class="projekt-wrap">
+
+    <!-- Drawing (bündig mit Text) -->
+    <figure class="projekt-drawing">
+      <img src="../bilder/seidenkoffer-drawing.jpg" alt="Seidenkoffer – Zeichnung">
+    </figure>
+
+    <!-- Grid: links Text, rechts Credits/Logos -->
+    <section class="projekt-maingrid">
+      <div class="content-left">
+        <div class="projekt-beschreibung">
+          <p>„Mit meinem Seidenkoffer reise ich in die Welt.“ Was bedeutet ein Leben im Exil in einer Realität,
     die immer mehr ihre Grenzen schließt? Ausgehend von der Lyrik Rose Ausländers sucht Opera Opaque
-    nach Antworten in eigener und fremder Erfahrung und verwandelt sie in einen Liederabend für Sopran und Klavier.
-  </p>
-  <p class="projekt-datum-ort">
-    28.10. | 20:00<br>
-    schwere reiter | münchen
-  </p>
-</div>
+    nach Antworten in eigener und fremder Erfahrung und verwandelt sie in einen Liederabend für Sopran und Klavier.</p>
+        </div>
+        <div class="premiere">
+          <div class="date">28.10.</div>
+          <div class="place">20:00 | 
+    schwere reiter | münchen</div>
+        </div>
+      </div>
 
-
-    <!-- Sidebar rechts -->
-    <aside class="projekt-sidebar">
-      <section>
+      <aside class="projekt-sidebar">
+<section>
         <h2>Credits</h2>
         <p><strong>Regie:</strong> Maria Chagina</p>
         <p><strong>Komposition &amp; Gitarre:</strong> Leon Zmelty</p>
@@ -62,8 +67,86 @@
 
         </div>
       </section>
-    </aside>    </div>
+      </aside>
+    </section>
+
+    <!-- Galerie 3×N mit 1:1 Kacheln + Lightbox -->
+    <section class="projekt-galerie" aria-label="Bildergalerie">
+      <a href="../bilder/Seidenkoffer-4.jpg" data-caption="">
+        <img src="../bilder/Seidenkoffer-4.jpg" alt="Seidenkoffer – Bild 4">
+      </a>
+      <a href="../bilder/Seidenkoffer-5.jpg" data-caption="">
+        <img src="../bilder/Seidenkoffer-5.jpg" alt="Seidenkoffer – Bild 5">
+      </a>
+      <a href="../bilder/Seidenkoffer-6.jpg" data-caption="">
+        <img src="../bilder/Seidenkoffer-6.jpg" alt="Seidenkoffer – Bild 6">
+      </a>
+      <a href="../bilder/Seidenkoffer-7.jpg" data-caption="">
+        <img src="../bilder/Seidenkoffer-7.jpg" alt="Seidenkoffer – Bild 7">
+      </a>
+      <a href="../bilder/Seidenkoffer-8.jpg" data-caption="">
+        <img src="../bilder/Seidenkoffer-8.jpg" alt="Seidenkoffer – Bild 8">
+      </a>
+    </section>
+
   </main>
+
+  <!-- Lightbox-Elemente (einmalig) -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Bildanzeige">
+    <button class="lightbox-close" aria-label="Schließen"></button>
+    <button class="lightbox-prev" aria-label="Vorheriges Bild"></button>
+    <div class="lightbox-content">
+      <img alt="">
+      <div class="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-next" aria-label="Nächstes Bild"></button>
+  </div>
+
+  <script>
+    (function(){
+      const gallery = Array.from(document.querySelectorAll('.projekt-galerie a'));
+      const lb = document.querySelector('.lightbox');
+      const img = lb.querySelector('img');
+      const cap = lb.querySelector('.lightbox-caption');
+      const btnClose = lb.querySelector('.lightbox-close');
+      const btnPrev = lb.querySelector('.lightbox-prev');
+      const btnNext = lb.querySelector('.lightbox-next');
+      let idx = 0;
+
+      function open(i){
+        idx = i;
+        const a = gallery[idx];
+        img.src = a.getAttribute('href');
+        img.alt = a.querySelector('img')?.alt || 'Bild in voller Größe';
+        cap.textContent = a.getAttribute('data-caption') || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      function next(){ open((idx + 1) % gallery.length); }
+      function prev(){ open((idx - 1 + gallery.length) % gallery.length); }
+
+      gallery.forEach((a, i) => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          open(i);
+        });
+      });
+      btnClose.addEventListener('click', close);
+      btnNext.addEventListener('click', next);
+      btnPrev.addEventListener('click', prev);
+      lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
+      document.addEventListener('keydown', (e) => {
+        if(!lb.classList.contains('open')) return;
+        if(e.key === 'Escape') close();
+        if(e.key === 'ArrowRight') next();
+        if(e.key === 'ArrowLeft') prev();
+      });
+    })();
+  </script>
 
 </body>
 </html>
