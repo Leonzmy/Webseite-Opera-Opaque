@@ -712,6 +712,18 @@ height: 100% !important;
 object-fit: contain !important;
 }
 
+/* About: Mobile-Autoreveal pro Scrollabschnitt */
+@media (hover: none) and (pointer: coarse) {
+  /* Wechsel durch JS: .inview auf <figure.person> */
+  body.about .about-gallery .person.inview .image-default { opacity: 0; }
+  body.about .about-gallery .person.inview .image-hover  { opacity: 1; }
+
+  /* Weiche, langsamere Transition */
+  body.about .about-gallery .person .image-default,
+  body.about .about-gallery .person .image-hover {
+    transition: opacity 1.5s ease-in-out;
+  }
+}
 
 
 /* ==============================
