@@ -1174,4 +1174,10 @@ body.about.touch .fullwidth-gallery .person .image-hover {
   transition: opacity 1.5s ease-in-out !important;
 }
 
+/* Mobile (Touch): Hover-Effekt deaktivieren */
+body.touch .fullwidth-gallery .person:hover .image-default,
+body.touch .fullwidth-gallery .person:hover .image-hover {
+  /* verhindert, dass die Hover-Opacity auf Touch greift */
+  opacity: inherit !important;
+}
 
