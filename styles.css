@@ -1135,7 +1135,7 @@ body.projekt-seite .projekt-hero img{
 
 /* ========== 2) Zeichnung darunter, links leicht eingerückt, kein vertikaler Abstand ========== */
 body.projekt-seite .projekt-drawing{
-  margin: 0 0 0 80px;       /* links eingerückt */
+  margin: 0 0 0 20px;       /* links eingerückt */
   padding: 0;
 }
 body.projekt-seite .projekt-drawing img{
@@ -1146,10 +1146,11 @@ body.projekt-seite .projekt-drawing img{
 }
 
 /* ========== 3) Hauptbereich: links Text, rechts Credits/Logos ========== */
-body.projekt-seite .projekt-maingrid{
+/* Hauptgrid: linke Spalte breiter, rechte bleibt fix */
+body.projekt-seite .projekt-maingrid {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 32px 40px;
+  grid-template-columns: minmax(0, calc(100% - 340px)) 320px; /* linker Block ~ breiter */
+  gap: 40px;
   margin-top: 28px;
   align-items: start;
 }
@@ -1158,6 +1159,11 @@ body.projekt-seite .content-left .projekt-beschreibung{
   text-align: justify;
   hyphens: auto;
 }
+/* Projektbeschreibung – kein extra max-width, nutzt volle Spaltenbreite */
+body.projekt-seite .content-left .projekt-beschreibung {
+  max-width: none;
+}
+
 body.projekt-seite .content-left .premiere{
   margin-top: 1.25em;
   font-size: 1.05rem;
