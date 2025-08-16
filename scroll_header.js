@@ -58,4 +58,18 @@ document.addEventListener("DOMContentLoaded", function () {
   video.addEventListener("ended", onEnded, { passive: true });
   video.addEventListener("timeupdate", onTimeupdate, { passive: true });
   video.addEventListener("error", showHeader, { passive: true });
+
+  // 3) Autoplay-Kick für Mobile (falls blockiert)
+  const tryPlay = () => {
+    video.muted = true;
+    const p = video.play();
+    if (p && typeof p.catch === "function") p.catch(() => {});
+  };
+  tryPlay(); // sofort versuchen
+  ["touchstart","pointerdown","click","scroll"].forEach(ev => {
+    window.addEventListener(ev, tryPlay, { once: true, passive: true });
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden && video.paused) tryPlay();
+  });
 });
