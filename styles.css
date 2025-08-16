@@ -876,3 +876,115 @@ body.projekt-seite .projekt-beschreibung strong {
 }
 
 
+/* ==============================
+   KONTAKT – Styling
+   ============================== */
+
+/* Header sichtbar & sticky wie auf Projektseiten */
+body.kontakt .site-header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: none;
+}
+
+/* Drawing ohne Abstände, bündig */
+body.kontakt .kontakt-drawing{ margin: 0; padding: 0; }
+body.kontakt .kontakt-drawing img{
+  display: block;
+  width: 100%;
+  max-width: 420px;   /* Größe der Zeichnung, anpassbar */
+  height: auto;
+  margin-left: 20px;  /* leicht eingerückt wie Text */
+}
+
+/* Wrapper Breite wie bei anderen Seiten */
+body.kontakt main{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px 60px; /* Platz unter Header */
+}
+
+/* Karte um das Formular: abgehoben */
+body.kontakt .kontakt-card{
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #e6e6e6;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  padding: 24px;
+  margin-top: 16px;
+}
+
+/* Formular-Layout */
+body.kontakt .kontakt-form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+  margin-top: 12px;
+}
+body.kontakt .kontakt-form .field-full{ grid-column: 1 / -1; }
+
+/* Inputs/Textareas */
+body.kontakt .kontakt-form label{
+  display: block;
+  font-size: .9rem;
+  margin: 0 0 6px;
+}
+body.kontakt .kontakt-form .input,
+body.kontakt .kontakt-form .textarea{
+  width: 100%;
+  padding: .7rem .9rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+body.kontakt .kontakt-form .input:focus,
+body.kontakt .kontakt-form .textarea:focus{
+  border-color: #999;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.06);
+}
+
+/* Button-Zeile */
+body.kontakt .submit-row{
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+}
+body.kontakt .btn{
+  display: inline-block;
+  padding: .7rem 1.2rem;
+  border-radius: 10px;
+  border: 2px solid #000;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+body.kontakt .btn:hover{ background: #333; }
+body.kontakt .note{ color: var(--muted); font-size: .9rem; }
+
+/* Erfolgsmeldung verstecken, bis aktiv */
+body.kontakt .success{ display: none; margin-top: 10px; color: #0a7a3d; font-weight: 600; }
+
+/* Kleine Helfer */
+body.kontakt .sr-only{
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,1,1); border: 0;
+}
+
+/* Responsive */
+@media (max-width: 700px){
+  body.kontakt .kontakt-form{ grid-template-columns: 1fr; }
+  body.kontakt .kontakt-drawing img{ margin-left: 20px; max-width: 300px; }
+  body.kontakt .kontakt-card{ padding: 18px; border-radius: 12px; }
+}
+
