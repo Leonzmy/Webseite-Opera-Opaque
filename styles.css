@@ -1011,7 +1011,7 @@ body.kontakt .sr-only{
 /* Mobile: Textblock weiter nach unten */
 @media (max-width: 900px){
   .frontpage-content{
-    margin: 20vh auto 1rem !important; /* mehr Abstand nach oben */
+    margin: 35vh auto 1rem !important; /* mehr Abstand nach oben */
   }
   .right-panel{
     padding-top: 1rem !important;     /* etwas Luft im Panel */
@@ -1061,6 +1061,25 @@ body.kontakt .sr-only{
   .frontpage-content{
     position: relative;
     z-index: 5;
+  }
+}
+/* Mobile: Video nur noch 25vh hoch + nicht mehr full-screen */
+@media (max-width: 900px){
+  .frontpage .video-bg {
+    position: relative !important;  /* statt fixed */
+    height: 25vh !important;        /* nur 25% der Höhe */
+    overflow: hidden;               /* alles außerhalb abschneiden */
+  }
+  .frontpage .video-bg .video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;                   /* füllt den 25vh-Container */
+    object-fit: cover !important;
+    object-position: left center !important;
+  }
+  .frontpage .hero-cover {
+    height: 25vh !important;        /* Abstandshalter passend */
   }
 }
 
