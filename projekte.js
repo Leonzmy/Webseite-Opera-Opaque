@@ -1,51 +1,48 @@
-// projekte.js
+// projekte.js — mobile in-view swap (ohne Debug)
 (function () {
-  // Falls du die Body-Klasse sicher hast, kannst du das einkommentieren:
-  // if (!document.body.classList.contains('projekte')) return;
+  const SELECTOR = '.projekte-grid--2x2 a';
 
   // Mobile-/Touch-Erkennung
   const mm = window.matchMedia('(hover: none) and (pointer: coarse)');
   const looksLikeTouch = mm.matches || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
-  if (!looksLikeTouch) {
-    console.debug('[projekte.js] nicht auf Mobile → Script beendet');
-    return;
+  if (!looksLikeTouch) return;
+
+  const tiles = Array.from(document.querySelectorAll(SELECTOR));
+  if (!tiles.length) return;
+
+  // Hilfsfunktion: prüfen, ob Mitte der Kachel in oberer Hälfte liegt
+  function isInUpperHalf(el) {
+    const r = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const visible = r.top < vh && r.bottom > 0; // Kachel sichtbar?
+    if (!visible) return false;
+    const elemMid = r.top + r.height / 2;
+    return elemMid < vh / 2;
   }
 
-  const tiles = document.querySelectorAll('.projekte-grid--2x2 a');
-  if (!tiles.length) {
-    console.warn('[projekte.js] keine Projekt-Kacheln gefunden');
-    return;
-  }
+  // IO zur Überwachung
+  const io = ('IntersectionObserver' in window)
+    ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.toggle('inview', isInUpperHalf(entry.target));
+          } else {
+            entry.target.classList.remove('inview');
+          }
+        });
+      }, { threshold: [0] })
+    : null;
 
-  // Fallback: ohne IO alles sofort sichtbar
-  if (!('IntersectionObserver' in window)) {
-    tiles.forEach(el => el.classList.add('inview'));
-    console.debug('[projekte.js] IntersectionObserver fehlt → alle Kacheln inview');
-    return;
-  }
+  if (io) tiles.forEach(el => io.observe(el));
 
-  // Neuer IO: prüft, ob Kachel-Mitte in oberer Hälfte liegt
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const rect = entry.target.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight;
-        const elemMid = rect.top + rect.height / 2;
-
-        if (elemMid < vh / 2) {
-          entry.target.classList.add('inview');
-        } else {
-          entry.target.classList.remove('inview');
-        }
-      } else {
-        entry.target.classList.remove('inview');
-      }
+  // Fallback + Live-Update bei Scroll/Resize
+  function updateAll() {
+    tiles.forEach(el => {
+      el.classList.toggle('inview', isInUpperHalf(el));
     });
-  }, {
-    threshold: [0] // nur grob prüfen, Rest machen wir mit getBoundingClientRect
-  });
-
-  tiles.forEach(el => io.observe(el));
-
-  console.debug('[projekte.js] aktiv für', tiles.length, 'Kacheln');
+  }
+  window.addEventListener('scroll', updateAll, { passive: true });
+  window.addEventListener('resize', updateAll, { passive: true });
+  window.addEventListener('orientationchange', updateAll);
+  updateAll();
 })();
