@@ -849,15 +849,24 @@ body.projekt-seite .projekt-beschreibung strong {
   object-position: left center; /* linke Hälfte sichtbar */
 }
 
-/* Overlay hinter dem Text (rechts) */
-.frontpage .video-bg::after{
-  content: "";
-  position: fixed;
-  top: 0; right: 0; bottom: 0; left: 50vw; /* rechte Hälfte überlagern */
-  background: rgba(0,0,0,0.28);            /* leicht abgedunkelt */
-  z-index: 2;                               /* über Video (z-index der .video-bg ist 1), unter Content (z-index 5) */
-  pointer-events: none;                      /* Klicks nicht blockieren */
+/* Halbtransparentes Hintergrundfeld nur hinter dem Text */
+.frontpage-content {
+  position: relative;
+  z-index: 5; /* über Video und Overlay */
+  background: rgba(255, 255, 255, 0.6); /* Weiß, 60% transparent */
+  padding: 1.5rem;
+  border-radius: 8px; /* optional: abgerundete Ecken */
+  max-width: 90%;     /* Textblock nicht über die ganze Breite ziehen */
+  margin: 1rem auto;  /* etwas Abstand oben/unten */
 }
+
+/* Auf größeren Screens Hintergrund wieder entfernen, wenn gewünscht */
+@media (min-width: 900px) {
+  .frontpage-content {
+    background: none;
+  }
+}
+
 
 /* Mobile: Textbereich ist nicht mehr rechts → Overlay über ganze Breite legen (oder anpassen nach Wunsch) */
 @media (max-width: 900px){
