@@ -1028,4 +1028,26 @@ body.kontakt .sr-only{
   }
 }
 
+/* === Mobile Video Fix === */
+@media (max-width: 900px){
+  .frontpage .hero-cover {
+    height: 50vh !important;          /* feste Höhe für den gesamten Block */
+    position: relative !important;
+  }
+
+  .frontpage .video-bg {
+    height: 100% !important;          /* füllt hero-cover */
+    background: none !important;      /* kein JPG */
+    position: relative !important;
+    overflow: hidden !important;      /* Video sauber beschneiden */
+  }
+
+  .frontpage .video-bg .video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: left center !important; /* linke Hälfte */
+    display: block !important;        /* Video sichtbar halten */
+  }
+}
 
