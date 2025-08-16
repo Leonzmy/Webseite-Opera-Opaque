@@ -1,59 +1,37 @@
-// about.js — gleichmäßig verteilter Scroll-Fortschritt für 4 Kacheln
-// Down: kumulativ aktivieren, Up: wieder deaktivieren (nur Mobile/Touch)
+// about.js — 4 Kacheln: runter = kumulativ aktivieren, hoch = zurücknehmen
 (function () {
-  // Nur auf der About-Seite laufen (optional einkommentieren, wenn du die Body-Klasse sicher hast)
-  // if (!document.body.classList.contains('about')) return;
+  const SELECTOR = '.fullwidth-gallery .person';
+  const FORCE_ENABLE = false; // zum Desktop-Testen auf true setzen
 
-  const SELECTOR = '.about-gallery .person'; // 4 Figuren in einer Reihe
-  const OFFSET = 0; // 0 = pro Abschnitt genau eine weitere Kachel
-
-  // Nur Mobile/Touch (Desktop behält :hover)
+  // Nur Mobile/Touch (oder FORCE)
   const mm = window.matchMedia('(hover: none) and (pointer: coarse)');
   const looksLikeTouch = mm.matches || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
-  if (!looksLikeTouch) return;
+  if (!looksLikeTouch && !FORCE_ENABLE) { console.debug('[about.js] skip (kein Touch)'); return; }
 
   const tiles = Array.from(document.querySelectorAll(SELECTOR));
+  console.debug('[about.js] tiles gefunden:', tiles.length);
   if (!tiles.length) return;
 
-  let maxActivatedDown = 0;   // höchster Stand beim Runterscrollen
+  let maxActivatedDown = 0;
   let lastScrollTop = getScrollTop();
 
   function getScrollTop() {
-    const doc = document.documentElement;
-    const body = document.body;
-    return window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
+    const d = document.documentElement, b = document.body;
+    return window.pageYOffset || d.scrollTop || b.scrollTop || 0;
   }
 
   function getProgressCount() {
-    const doc = document.documentElement;
-    const body = document.body;
-
+    const d = document.documentElement, b = document.body;
     const scrollTop = getScrollTop();
-    const clientH   = window.innerHeight || doc.clientHeight || 0;
-
-    // robuste Gesamthöhe
-    const scrollH = Math.max(
-      body.scrollHeight, doc.scrollHeight,
-      body.offsetHeight, doc.offsetHeight,
-      body.clientHeight, doc.clientHeight
-    );
-
+    const clientH   = window.innerHeight || d.clientHeight || 0;
+    const scrollH   = Math.max(b.scrollHeight, d.scrollHeight, b.offsetHeight, d.offsetHeight, b.clientHeight, d.clientHeight);
     const maxScroll = Math.max(1, scrollH - clientH);
-    let p = scrollTop / maxScroll; // 0..1
-    if (p < 0) p = 0;
-    if (p > 1) p = 1;
-
-    // N Abschnitte → bei p >= k/N wird die k-te Kachel aktiviert (1-basiert)
-    let count = Math.floor(p * tiles.length) + OFFSET; // 0..N
-    if (count < 0) count = 0;
-    if (count > tiles.length) count = tiles.length;
-    return count;
+    const p = Math.min(1, Math.max(0, scrollTop / maxScroll)); // 0..1
+    return Math.floor(p * tiles.length); // 0..N (N=4)
   }
 
   function applyActive(count) {
-    tiles.forEach((el, i) => {
-      el.classList.toggle('inview', i < count);
-    });
+    tiles.forEach((el, i) => el.classList.toggle('inview', i < count));
   }
 
   function updateFromScroll() {
@@ -63,33 +41,26 @@
 
     let activeCount;
     if (scrollingDown) {
-      // Beim Runterscrollen nie weniger aktiv als bisher
-      if (progressCount > maxActivatedDown) maxActivatedDown = progressCount;
+      if (progressCount > maxActivatedDown) maxActivatedDown = progressCount; // kumulativ
       activeCount = maxActivatedDown;
     } else {
-      // Beim Hochscrollen nach Position zurücknehmen
-      activeCount = Math.min(progressCount, maxActivatedDown);
+      activeCount = Math.min(progressCount, maxActivatedDown); // hoch: zurücknehmen
     }
-
     applyActive(activeCount);
     lastScrollTop = currentTop;
   }
 
-  // rAF-Throttle
   let ticking = false;
   function onScrollResize() {
     if (ticking) return;
     ticking = true;
-    requestAnimationFrame(() => {
-      updateFromScroll();
-      ticking = false;
-    });
+    requestAnimationFrame(() => { updateFromScroll(); ticking = false; });
   }
 
   window.addEventListener('scroll', onScrollResize, { passive: true });
   window.addEventListener('resize', onScrollResize, { passive: true });
   window.addEventListener('orientationchange', onScrollResize);
 
-  // Initial
   updateFromScroll();
+  console.debug('[about.js] aktiv');
 })();
