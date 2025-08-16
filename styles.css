@@ -1001,3 +1001,12 @@ body.kontakt .sr-only{
     height: 50vh !important;   /* nur halbe Höhe vom Viewport */
   }
 }
+@media (max-width: 900px){
+  .frontpage .hero-cover {
+    height: 50vh !important;   /* halbe Bildschirmhöhe */
+  }
+  .frontpage .video-bg .video {
+    object-fit: cover !important;
+    object-position: left center !important;
+  }
+}
