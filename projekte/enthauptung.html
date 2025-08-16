@@ -20,19 +20,33 @@
     </nav>
   </header>
 
+  <!-- Full-bleed Hero -->
+  <figure class="projekt-hero">
+    <img src="../bilder/enthauptung-3.jpg" alt="Einladung zur Enthauptung – Hero">
+  </figure>
+
+  <!-- Inhalt mit normaler Seitenbreite -->
   <main class="projekt-wrap">
-    <div class="projekt-bild">
-      <img src="../bilder/enthauptung-1.jpg" alt="Einladung zur Enthauptung">
-    </div>
 
-    <div class="projekt-beschreibung">
-      <h1>Einladung zur Enthauptung</h1>
-      <p>Ein Musiktheaterprojekt über Freiheit und Körper im totalitären System.</p>
-      <p class="projekt-datum-ort">Premiere: 22.02.2024 · Reaktorhalle · München</p>
-    </div>
+    <!-- Drawing (bündig mit Text) -->
+    <figure class="projekt-drawing">
+      <img src="../bilder/enthauptung-drawing.jpg" alt="Einladung zur Enthauptung – Zeichnung">
+    </figure>
 
-    <aside class="projekt-sidebar">
-      <section>
+    <!-- Grid: links Text, rechts Credits/Logos -->
+    <section class="projekt-maingrid">
+      <div class="content-left">
+        <div class="projekt-beschreibung">
+          <p>Ein Musiktheaterprojekt über Freiheit und Körper im totalitären System.</p>
+        </div>
+        <div class="premiere">
+          <div class="date">22.02.2024</div>
+          <div class="place">Reaktorhalle · München</div>
+        </div>
+      </div>
+
+      <aside class="projekt-sidebar">
+<section>
         <h2>Credits</h2>
         <p><strong>Regie:</strong> —</p>
         <p><strong>Musik:</strong> —</p>
@@ -45,7 +59,86 @@
           <img src="../bilder/Logo2.png" alt="Logo 2">
         </div>
       </section>
-    </aside>
+      </aside>
+    </section>
+
+    <!-- Galerie 3×N mit 1:1 Kacheln + Lightbox -->
+    <section class="projekt-galerie" aria-label="Bildergalerie">
+      <a href="../bilder/Enthauptung-4.jpg" data-caption="">
+        <img src="../bilder/Enthauptung-4.jpg" alt="Einladung zur Enthauptung – Bild 4">
+      </a>
+      <a href="../bilder/Enthauptung-5.jpg" data-caption="">
+        <img src="../bilder/Enthauptung-5.jpg" alt="Einladung zur Enthauptung – Bild 5">
+      </a>
+      <a href="../bilder/Enthauptung-6.jpg" data-caption="">
+        <img src="../bilder/Enthauptung-6.jpg" alt="Einladung zur Enthauptung – Bild 6">
+      </a>
+      <a href="../bilder/Enthauptung-7.jpg" data-caption="">
+        <img src="../bilder/Enthauptung-7.jpg" alt="Einladung zur Enthauptung – Bild 7">
+      </a>
+      <a href="../bilder/Enthauptung-8.jpg" data-caption="">
+        <img src="../bilder/Enthauptung-8.jpg" alt="Einladung zur Enthauptung – Bild 8">
+      </a>
+    </section>
+
   </main>
+
+  <!-- Lightbox-Elemente (einmalig) -->
+  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Bildanzeige">
+    <button class="lightbox-close" aria-label="Schließen"></button>
+    <button class="lightbox-prev" aria-label="Vorheriges Bild"></button>
+    <div class="lightbox-content">
+      <img alt="">
+      <div class="lightbox-caption"></div>
+    </div>
+    <button class="lightbox-next" aria-label="Nächstes Bild"></button>
+  </div>
+
+  <script>
+    (function(){
+      const gallery = Array.from(document.querySelectorAll('.projekt-galerie a'));
+      const lb = document.querySelector('.lightbox');
+      const img = lb.querySelector('img');
+      const cap = lb.querySelector('.lightbox-caption');
+      const btnClose = lb.querySelector('.lightbox-close');
+      const btnPrev = lb.querySelector('.lightbox-prev');
+      const btnNext = lb.querySelector('.lightbox-next');
+      let idx = 0;
+
+      function open(i){
+        idx = i;
+        const a = gallery[idx];
+        img.src = a.getAttribute('href');
+        img.alt = a.querySelector('img')?.alt || 'Bild in voller Größe';
+        cap.textContent = a.getAttribute('data-caption') || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close(){
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      function next(){ open((idx + 1) % gallery.length); }
+      function prev(){ open((idx - 1 + gallery.length) % gallery.length); }
+
+      gallery.forEach((a, i) => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          open(i);
+        });
+      });
+      btnClose.addEventListener('click', close);
+      btnNext.addEventListener('click', next);
+      btnPrev.addEventListener('click', prev);
+      lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
+      document.addEventListener('keydown', (e) => {
+        if(!lb.classList.contains('open')) return;
+        if(e.key === 'Escape') close();
+        if(e.key === 'ArrowRight') next();
+        if(e.key === 'ArrowLeft') prev();
+      });
+    })();
+  </script>
+
 </body>
 </html>
