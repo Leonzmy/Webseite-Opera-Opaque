@@ -27,11 +27,23 @@
     );
     const maxScroll = Math.max(1, scrollH - clientH);
     const p = Math.min(1, Math.max(0, scrollTop / maxScroll)); // 0..1
-    let count = Math.floor(p * tiles.length); // 0..N (N=4)
+
+    // --- Startversatz: erst ab 10% beginnen ---
+    const START_OFFSET = 0.1; // = 10%, passe an (0.2 = 20% usw.)
+
+    if (p < START_OFFSET) {
+      return 0; // noch nichts aktiv
+    }
+
+    // Reststrecke (ab Offset bis 100%) gleichmäßig auf Kacheln verteilen
+    const effectiveP = (p - START_OFFSET) / (1 - START_OFFSET); // 0..1
+    let count = Math.floor(effectiveP * tiles.length);
+
     if (count < 0) count = 0;
     if (count > tiles.length) count = tiles.length;
     return count;
   }
+
   function applyActive(count) {
     tiles.forEach((el, i) => el.classList.toggle('inview', i < count));
   }
@@ -53,3 +65,4 @@
 
   updateFromScroll();
 })();
+
