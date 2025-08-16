@@ -688,3 +688,47 @@ width: 100% !important;
 height: 100% !important;
 object-fit: contain !important;
 }
+
+
+/* ==============================
+   GENERISCHE PROJEKTSEITEN – OVERRIDES v3
+   ============================== */
+
+/* Hero: full-bleed + kein vertikaler Abstand */
+body.projekt-seite .projekt-hero{
+  width: 100vw !important;
+  margin: 0 !important;             /* reset all margins */
+  margin-left: 50% !important;       /* re-center to viewport */
+  transform: translateX(-50%) !important;
+  padding: 0 !important;
+}
+body.projekt-seite .projekt-hero img{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* Zeichnung: weiterhin ohne vertikale Abstände */
+body.projekt-seite .projekt-drawing{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Lightbox: Container und Bild strikt auf Viewport begrenzen */
+body.projekt-seite .lightbox-content{
+  width: 96vw !important;
+  max-width: 96vw !important;
+  max-height: 92vh !important;   /* etwas Platz für Caption und Buttons */
+  padding: 0 !important;
+}
+body.projekt-seite .lightbox-content img{
+  width: auto !important;
+  height: auto !important;
+  max-width: 96vw !important;
+  max-height: 86vh !important;   /* unterhalb der 92vh des Containers */
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
+
