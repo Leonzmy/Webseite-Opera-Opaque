@@ -1,26 +1,31 @@
+‎styles.css
++47
+Lines changed: 47 additions & 0 deletions
+Original file line number	Diff line number	Diff line change
+@@ -1,1012 +1,1059 @@
 /* ==============================================
-  styles.css (CLEANED) — gleiche Optik, weniger Redundanz
-  Hinweis: Keine inhaltlichen Änderungen am Design; nur Ordnung & Dubletten entfernt.
-  ============================================== */
+   styles.css (CLEANED) — gleiche Optik, weniger Redundanz
+   Hinweis: Keine inhaltlichen Änderungen am Design; nur Ordnung & Dubletten entfernt.
+   ============================================== */
 
 /* ==== Grunddesign ==== */
 :root{
---bg:#ffffff;
---ink:#000000;
---muted:#444444;
---font-base:"Helvetica Neue",Helvetica,Arial,sans-serif;
---fs-base:18px;
---lh:1.65;
+  --bg:#ffffff;
+  --ink:#000000;
+  --muted:#444444;
+  --font-base:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --fs-base:18px;
+  --lh:1.65;
 }
 *{ box-sizing:border-box; }
 html,body{ height:100%; margin:0; font-weight:100; }
 html{ scroll-behavior:smooth; }
 body{
-background:var(--bg);
-color:var(--ink);
-font-family:var(--font-base);
-font-size:var(--fs-base);
-line-height:var(--lh);
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-base);
+  font-size:var(--fs-base);
+  line-height:var(--lh);
 }
 img{ display:block; max-width:100%; height:auto; }
 a{ color:#000; text-decoration:none; }
@@ -28,14 +33,14 @@ a:hover,a:focus{ color:#222; }
 
 /* ==== Video Hintergrund (Frontpage) ==== */
 .frontpage .video-bg{
-position:fixed; inset:0; z-index:1;
+  position:fixed; inset:0; z-index:1;
 }
 .frontpage .video-bg .video {
-opacity: 0;
-transition: opacity 0.4s ease;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 .frontpage .video-bg .video.playing {
-opacity: 1;
+  opacity: 1;
 }
 
 /* ==== Hero-Cover ==== */
@@ -43,13 +48,13 @@ opacity: 1;
 
 /* ==== Header (per JS ein-/ausblenden) ==== */
 .site-header{
-position:fixed; top:0; left:0; width:100%; z-index:100;
-display:flex; align-items:center; justify-content:space-between;
-padding:14px 16px;
-background:rgba(255,255,255,0.85);
-transition:opacity .4s ease;
-opacity:0;              /* unsichtbar am Anfang */
-pointer-events:none;    /* nicht klickbar am Anfang */
+  position:fixed; top:0; left:0; width:100%; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px;
+  background:rgba(255,255,255,0.85);
+  transition:opacity .4s ease;
+  opacity:0;              /* unsichtbar am Anfang */
+  pointer-events:none;    /* nicht klickbar am Anfang */
 }
 body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 
@@ -59,26 +64,26 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 /* ==== Inhalt (Frontpage) ==== */
 .frontpage-content{ position:relative; z-index:5; }
 .right-panel{
-position:relative;
-margin-left:50vw; /* rechte Spalte */
-min-height:100vh;
-display:flex; align-items:center;
-padding:4rem 3rem;
-background:transparent; color:var(--ink);
+  position:relative;
+  margin-left:50vw; /* rechte Spalte */
+  min-height:100vh;
+  display:flex; align-items:center;
+  padding:4rem 3rem;
+  background:transparent; color:var(--ink);
 }
 .right-content{ max-width:42rem; width:100%; }
 
 /* 3x Abstand zwischen Titel und "Demnächst" */
 .lp-title{
-font-size:clamp(1.8rem,3.6vw,3.2rem);
-line-height:1.1;
-margin:0 0 6em 0;
+  font-size:clamp(1.8rem,3.6vw,3.2rem);
+  line-height:1.1;
+  margin:0 0 6em 0;
 }
 .lp-sub{
-font-size:1.05rem;
-text-transform:uppercase;
-letter-spacing:.12em;
-margin:0 0 .35rem;
+  font-size:1.05rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin:0 0 .35rem;
 }
 .lp-what{ font-size:1.6rem; font-weight:600; margin:.15rem 0; }
 .lp-when,.lp-where{ margin:.1rem 0; color:var(--ink); }
@@ -87,11 +92,11 @@ margin:0 0 .35rem;
 .tile{ position:relative; border-radius:12px; overflow:clip; margin-top:1.5rem; }
 .tile img{ display:block; margin-left:0; }
 .tile .overlay{
-position:absolute; left:0; right:0; bottom:0;
-padding:.5rem .75rem;
-background:transparent; color:var(--ink);
-opacity:0; transition:opacity .25s ease;
-pointer-events:none; text-align:left;
+  position:absolute; left:0; right:0; bottom:0;
+  padding:.5rem .75rem;
+  background:transparent; color:var(--ink);
+  opacity:0; transition:opacity .25s ease;
+  pointer-events:none; text-align:left;
 }
 .tile:hover .overlay{ opacity:1; }
 .overlay-label{ font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
@@ -103,278 +108,278 @@ pointer-events:none; text-align:left;
 
 /* ==== Responsive (Frontpage) ==== */
 @media (max-width:900px){
-.right-panel{ margin-left:0; padding:2rem 1.25rem; min-height:auto; }
-.lp-title{ font-size:clamp(1.6rem,6vw,2.4rem); margin-bottom:6em; }
+  .right-panel{ margin-left:0; padding:2rem 1.25rem; min-height:auto; }
+  .lp-title{ font-size:clamp(1.6rem,6vw,2.4rem); margin-bottom:6em; }
 }
 
 /* ==============================
-  GENERISCHE PROJEKTSEITEN – NEUES LAYOUT (sauber, konfliktfrei)
-  ============================== */
+   GENERISCHE PROJEKTSEITEN – NEUES LAYOUT (sauber, konfliktfrei)
+   ============================== */
 
 /* Header sichtbar auf Projektseiten */
 body.projekt-seite .site-header{
-position: sticky;
-top: 0;
-z-index: 100;
-opacity: 1;
-pointer-events: auto;
-background: rgba(255,255,255,0.85);
-backdrop-filter: saturate(120%) blur(6px);
-border-bottom: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: none;
 }
 
 /* Wrapper (kein Grid!) */
 body.projekt-seite .projekt-wrap{
-max-width: 1100px;
-margin: 0 auto;
-padding: 0 20px 60px;
-display: block;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  display: block;
 }
 
 /* 1) Full-bleed Hero (nicht abgeschnitten) */
 body.projekt-seite .projekt-hero{
-width: 100vw;
-margin-left: 50%;
-transform: translateX(-50%);
-margin-top: 80px;
-margin-bottom: 0;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 80px;
+  margin-bottom: 0;
 }
 body.projekt-seite .projekt-hero img{
-display: block;
-width: 100%;
-height: auto;
-object-fit: contain;
-background: #fff;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
 }
 
 /* 2) Zeichnung unter Hero – fluchtet mit Text */
 body.projekt-seite .projekt-wrap figure{ margin: 0; }
 body.projekt-seite .projekt-drawing{ margin: 0; padding: 0; }
 body.projekt-seite .projekt-drawing img{
-display: block;
-width: 100%;
-max-width: 320px;
-height: auto;
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
 }
 
 /* 3) Hauptbereich: links Text (breit), rechts Credits (320px) */
 body.projekt-seite .projekt-maingrid{
-display: grid;
-grid-template-columns: 1fr 320px;
-gap: 40px;
-margin-top: 0;
-align-items: start; /* Credits oben bündig mit Text */
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  margin-top: 0;
+  align-items: start; /* Credits oben bündig mit Text */
 }
 body.projekt-seite .content-left .projekt-beschreibung{
-text-align: justify;
-hyphens: auto;
-max-width: none;  /* volle Spaltenbreite */
+  text-align: justify;
+  hyphens: auto;
+  max-width: none;  /* volle Spaltenbreite */
 }
 body.projekt-seite .content-left .premiere{
-margin-top: 1.25em;
-font-size: 1.05rem;
-line-height: 1.35;
+  margin-top: 1.25em;
+  font-size: 1.05rem;
+  line-height: 1.35;
 }
 body.projekt-seite .content-left .premiere .date{ font-weight: 700; }
 body.projekt-seite .content-left .premiere .place{
-margin-top: .15rem;
-font-weight: 700; 
+  margin-top: .15rem;
+  font-weight: 700; 
 }
 body.projekt-seite .projekt-sidebar h2{ font-size: 1.1rem; margin: 0 0 8px; }
 body.projekt-seite .projekt-sidebar p{ margin: 0 0 6px; line-height: 1.35; }
 body.projekt-seite .projekt-sidebar .logos{
-display: grid;
-grid-template-columns: 1fr;
-gap: 10px;
-margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
 }
 body.projekt-seite .projekt-sidebar .logos img{
-max-width: 100%;
-max-height: 70px;
-height: auto;
-object-fit: contain;
+  max-width: 100%;
+  max-height: 70px;
+  height: auto;
+  object-fit: contain;
 }
 
 /* 4) Galerie: 3 Spalten, 1:1 Kacheln + Lightbox */
 body.projekt-seite .projekt-galerie{
-margin-top: 36px;
-display: grid;
-grid-template-columns: repeat(3, minmax(0,1fr));
-gap: 12px;
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
 }
 body.projekt-seite .projekt-galerie a{
-display: block;
-position: relative;
-aspect-ratio: 1 / 1;
-overflow: hidden;
-border-radius: 8px;
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
 }
 body.projekt-seite .projekt-galerie img{
-position: absolute;
-inset: 0;
-width: 100%;
-height: 100%;
-object-fit: cover;
-object-position: center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* Lightbox */
 body.projekt-seite .lightbox{
-position: fixed;
-inset: 0;
-display: none;
-align-items: center;
-justify-content: center;
-background: rgba(0,0,0,.8);
-z-index: 1000;
-padding: 20px;
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.8);
+  z-index: 1000;
+  padding: 20px;
 }
 body.projekt-seite .lightbox.open{ display: flex; }
 body.projekt-seite .lightbox-content{
-max-width: min(1200px, 96vw);
-max-height: 90vh;
-display: grid;
-grid-template-rows: 1fr auto;
-gap: 12px;
+  max-width: min(1200px, 96vw);
+  max-height: 90vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 12px;
 }
 body.projekt-seite .lightbox-content img{
-width: 100%;
-height: 100%;
-object-fit: contain;
-background: #111;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #111;
 }
 body.projekt-seite .lightbox-caption{
-color: #fff;
-font-size: .95rem;
-line-height: 1.4;
-text-align: center;
+  color: #fff;
+  font-size: .95rem;
+  line-height: 1.4;
+  text-align: center;
 }
 body.projekt-seite .lightbox-close,
 body.projekt-seite .lightbox-prev,
 body.projekt-seite .lightbox-next{
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-background: rgba(255,255,255,.9);
-border: 0;
-border-radius: 999px;
-width: 42px;
-height: 42px;
-cursor: pointer;
-font-size: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.9);
+  border: 0;
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 0;
 }
 body.projekt-seite .lightbox-close{
-top: 28px;
-right: 28px;
-transform: none;
+  top: 28px;
+  right: 28px;
+  transform: none;
 }
 body.projekt-seite .lightbox-prev{ left: 20px; }
 body.projekt-seite .lightbox-next{ right: 20px; }
 body.projekt-seite .lightbox-prev::after,
 body.projekt-seite .lightbox-next::after{
-content: '';
-display: block;
-width: 100%;
-height: 100%;
-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
-background: #000;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
+  background: #000;
 }
 body.projekt-seite .lightbox-next::after{
-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
 }
 body.projekt-seite .lightbox-close::after{
-content: '×';
-display: block;
-font-size: 28px;
-line-height: 42px;
-text-align: center;
-color: #000;
+  content: '×';
+  display: block;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  color: #000;
 }
 
 /* Responsive */
 @media (max-width: 900px){
-body.projekt-seite .projekt-maingrid{ grid-template-columns: 1fr; }
-body.projekt-seite .projekt-sidebar{ margin-top: 10px; }
-body.projekt-seite .projekt-galerie{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  body.projekt-seite .projekt-maingrid{ grid-template-columns: 1fr; }
+  body.projekt-seite .projekt-sidebar{ margin-top: 10px; }
+  body.projekt-seite .projekt-galerie{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 @media (max-width: 560px){
-body.projekt-seite .projekt-galerie{ grid-template-columns: 1fr; }
+  body.projekt-seite .projekt-galerie{ grid-template-columns: 1fr; }
 }
 /* ==============================
-  PROJEKTE-ÜBERSICHT (2×2 Grid, ohne Innenabstände, mit Fade)
-  ============================== */
+   PROJEKTE-ÜBERSICHT (2×2 Grid, ohne Innenabstände, mit Fade)
+   ============================== */
 
 /* Header sichtbar & Platz darunter nur auf der Projekte-Seite */
 body.projekte .site-header {
-position: sticky;
-top: 0;
-z-index: 100;
-opacity: 1 !important;
-pointer-events: auto !important;
-background: rgba(255, 255, 255, 0.85);
-backdrop-filter: saturate(120%) blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(120%) blur(6px);
 }
 
 /* Weniger Abstand über der Überschrift/Grafik */
 body.projekte .projekte-wrap {
-padding-top: 0;
+  padding-top: 0;
 }
 
 /* Titelgrafik links, leicht eingerückt */
 body.projekte .projekte-title {
-margin: 0;
-padding: 0 0 0;     /* kleiner als zuvor */
-margin-left: 80px;        /* „etwas eingerückt“ */
-text-align: left;
-line-height: 1;
+  margin: 0;
+  padding: 0 0 0;     /* kleiner als zuvor */
+  margin-left: 80px;        /* „etwas eingerückt“ */
+  text-align: left;
+  line-height: 1;
 }
 
 /* Bild statt Text im Titel */
 body.projekte .projekte-title .projekte-title-image {
-display: block;
-max-width: 320px;         /* Größe der Zeichnung anpassen */
-height: auto;
+  display: block;
+  max-width: 320px;         /* Größe der Zeichnung anpassen */
+  height: auto;
 }
 
 /* Grid 2×2, keine Gaps; Außen: L/R/U = 80px */
 body.projekte .projekte-grid--2x2 {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-grid-auto-rows: 1fr;
-gap: 0;
-margin: 0 80px 80px;
-padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 0;
+  margin: 0 80px 80px;
+  padding: 0;
 }
 
 /* Kachel-Links */
 body.projekte .tile,
 body.projekte .tile--swap,
 body.projekte .projekte-grid--2x2 a {
-position: relative;
-display: block;
-width: 100%;
-aspect-ratio: 4 / 3;
-overflow: hidden;
-border-radius: 0;
-text-decoration: none;
-margin: 0;
-border: 0;
-box-shadow: none;
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 0;
+  text-decoration: none;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
 }
 
 /* Bild-Swap: zweites Bild erscheint auf Hover, sanfter Fade */
 body.projekte .tile--swap .img,
 body.projekte .projekte-grid--2x2 a > img {
-position: absolute;
-inset: 0;
-width: 100%;
-height: 100%;
-margin: 0;
-max-width: none;
-object-fit: contain;      /* komplett sichtbar */
-object-position: center;
-background: #fff;         /* Letterbox-Hintergrund */
-transition: opacity .6s ease-in-out;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: none;
+  object-fit: contain;      /* komplett sichtbar */
+  object-position: center;
+  background: #fff;         /* Letterbox-Hintergrund */
+  transition: opacity .6s ease-in-out;
 }
 
 /* Startzustand */
@@ -389,112 +394,112 @@ body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1) { opacity: 0; }
 
 /* Responsiv */
 @media (max-width: 700px) {
-body.projekte .projekte-grid--2x2 {
-grid-template-columns: 1fr;
-margin: 0 20px 60px;
-}
-body.projekte .projekte-title {
-margin-left: 20px;
-padding-top: 40px;
-}
-body.projekte .projekte-title .projekte-title-image {
-max-width: 220px;
-}
+  body.projekte .projekte-grid--2x2 {
+    grid-template-columns: 1fr;
+    margin: 0 20px 60px;
+  }
+  body.projekte .projekte-title {
+    margin-left: 20px;
+    padding-top: 40px;
+  }
+  body.projekte .projekte-title .projekte-title-image {
+    max-width: 220px;
+  }
 }
 
 /* ==============================
-  ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 fade-in, Kachel klickbar
-  ============================== */
+   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 fade-in, Kachel klickbar
+   ============================== */
 body.about .site-header{
-position: sticky;
-top: 0;
-z-index: 100;
-opacity: 1;
-pointer-events: auto;
-background: rgba(255,255,255,0.85);
-backdrop-filter: saturate(120%) blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
 }
 
 /* Intro oben */
 body.about main{
-max-width: 1100px;
-margin: 0 auto;
-padding: 100px 20px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
 }
 body.about .intro{
-max-width: 72ch;
-margin: 0 auto 28px;
-font-size: 1.05rem;
-line-height: 1.65;
-text-align: center;
+  max-width: 72ch;
+  margin: 0 auto 28px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  text-align: center;
 }
 body.about .about-intro{ text-align: justify; hyphens: none; }
 
 /* Galerie (volle Breite) */
 body.about .fullwidth-gallery{
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-gap: 0;
-margin: 0;
-padding: 0;
-width: 100vw;
-margin-left: 50%;
-transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 
 /* Kachel */
 body.about .fullwidth-gallery .person{
-position: relative;
-margin: 0;
-padding: 0;
-height: 70vh;        /* gewünschte Kachelhöhe */
-overflow: hidden;
-top: 60px;           /* beibehaltener Versatz */
-background: #fff;    /* Letterbox-Hintergrund */
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 70vh;        /* gewünschte Kachelhöhe */
+  overflow: hidden;
+  top: 60px;           /* beibehaltener Versatz */
+  background: #fff;    /* Letterbox-Hintergrund */
 }
 
 /* Bilder übereinander legen */
 body.about .fullwidth-gallery .person img{
-position: absolute;
-inset: 0;
-width: 100%;
-height: 100%;
-object-fit: contain;
-object-position: center;
-transition: opacity .6s ease-in-out;
-background: transparent;
-opacity: 1 !important;   /* Bild 1 standardmäßig sichtbar */
-z-index: 1;
-pointer-events: none;     /* Klicks gehen an den Link darüber */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity .6s ease-in-out;
+  background: transparent;
+  opacity: 1 !important;   /* Bild 1 standardmäßig sichtbar */
+  z-index: 1;
+  pointer-events: none;     /* Klicks gehen an den Link darüber */
 }
 
 /* Variante mit Klassen */
 body.about .fullwidth-gallery .person img.image-hover{
-opacity: 0 !important;
-z-index: 2;
+  opacity: 0 !important;
+  z-index: 2;
 }
 body.about .fullwidth-gallery .person:hover img.image-hover{ opacity: 1 !important; }
 body.about .fullwidth-gallery .person:hover img.image-default{ opacity: 0 !important; }
 
 /* Variante ohne Klassen (2 <img> je Kachel) */
 body.about .fullwidth-gallery .person img:nth-child(2){
-opacity: 0 !important;
-z-index: 2;
+  opacity: 0 !important;
+  z-index: 2;
 }
 body.about .fullwidth-gallery .person:hover img:nth-child(2){ opacity: 1 !important; }
 body.about .fullwidth-gallery .person:hover img:nth-child(1){ opacity: 0 !important; }
 
 /* Overlay-Infos */
 body.about .fullwidth-gallery .overlay{
-position: absolute;
-left: 0; right: 0; bottom: 0;
-padding: 1rem 1.5rem;
-background: rgba(255,255,255,0.75);
-color: var(--ink);
-opacity: 0;
-transition: opacity .3s ease;
-z-index: 3;
-pointer-events: none;  /* Overlay selbst nicht klickfangend */
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.75);
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity .3s ease;
+  z-index: 3;
+  pointer-events: none;  /* Overlay selbst nicht klickfangend */
 }
 body.about .fullwidth-gallery .person:hover .overlay,
 body.about .fullwidth-gallery .person:focus-within .overlay{ opacity: 1; }
@@ -505,21 +510,21 @@ body.about .fullwidth-gallery .person .bio { font-size: .95rem; }
 
 /* Der Link über der gesamten Kachel (KLICKBAR) */
 body.about .fullwidth-gallery .person a.person-link{
-position: absolute;
-inset: 0;
-display: block;
-z-index: 5;            /* über Bildern & Overlay */
-background: transparent;
-text-indent: -9999px;  /* reine Klickfläche, kein Text sichtbar */
-pointer-events: auto;  /* sicherstellen, dass Klicks greifen */
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 5;            /* über Bildern & Overlay */
+  background: transparent;
+  text-indent: -9999px;  /* reine Klickfläche, kein Text sichtbar */
+  pointer-events: auto;  /* sicherstellen, dass Klicks greifen */
 }
 
 /* Responsive */
 @media (max-width: 900px){
-body.about .fullwidth-gallery{ grid-template-columns: repeat(2,1fr); }
+  body.about .fullwidth-gallery{ grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 560px){
-body.about .fullwidth-gallery{ grid-template-columns: 1fr; }
+  body.about .fullwidth-gallery{ grid-template-columns: 1fr; }
 }
 
 /* ===== Zurück-Button (nur Projektseiten) ===== */
@@ -527,24 +532,24 @@ body.projekt-seite .back-button,
 body.projekt-seidenkoffer .back-button{ margin-bottom:1rem; }
 body.projekt-seite .back-button a,
 body.projekt-seidenkoffer .back-button a{
-display:inline-block; padding:.4rem .8rem;
-border:2px solid var(--ink); color:var(--ink);
-font-weight:bold; text-decoration:none; border-radius:4px;
-transition:background-color .3s ease, color .3s ease;
+  display:inline-block; padding:.4rem .8rem;
+  border:2px solid var(--ink); color:var(--ink);
+  font-weight:bold; text-decoration:none; border-radius:4px;
+  transition:background-color .3s ease, color .3s ease;
 }
 body.projekt-seite .back-button a:hover,
 body.projekt-seidenkoffer .back-button a:hover{ background-color:var(--ink); color:var(--bg); }
 
 
 /* ==============================
-  ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 Fade, Link garantiert klickbar
-  ============================== */
+   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 Fade, Link garantiert klickbar
+   ============================== */
 
 body.about .site-header{
-position: sticky; top: 0; z-index: 100;
-opacity: 1; pointer-events: auto;
-background: rgba(255,255,255,0.85);
-backdrop-filter: saturate(120%) blur(6px);
+  position: sticky; top: 0; z-index: 100;
+  opacity: 1; pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
 }
 
 /* Intro */
@@ -554,27 +559,27 @@ body.about .about-intro{ text-align:justify; hyphens:none; }
 
 /* Galerie – volle Breite, 4 Kacheln (auto-fit) */
 body.about .fullwidth-gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-gap:0; margin:0; padding:0;
-width:100vw; margin-left:50%; transform:translateX(-50%);
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:0; margin:0; padding:0;
+  width:100vw; margin-left:50%; transform:translateX(-50%);
 }
 
 /* Kachel / Person */
 body.about .fullwidth-gallery .person{
-position:relative;
-margin:0; padding:0; height:70vh; overflow:hidden;
-top:60px; background:#fff; /* Letterbox */
+  position:relative;
+  margin:0; padding:0; height:70vh; overflow:hidden;
+  top:60px; background:#fff; /* Letterbox */
 }
 
 /* Basis: beide Bilder übereinander; Bild 1 sichtbar */
 body.about .fullwidth-gallery .person img{
-position:absolute; inset:0; width:100%; height:100%;
-object-fit:contain; object-position:center;
-background:transparent;
-transition:opacity .6s ease-in-out;
-opacity:1 !important; z-index:1;
-pointer-events:none; /* Bilder fangen keine Klicks ab */
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; object-position:center;
+  background:transparent;
+  transition:opacity .6s ease-in-out;
+  opacity:1 !important; z-index:1;
+  pointer-events:none; /* Bilder fangen keine Klicks ab */
 }
 
 /* Variante A: Klassen vorhanden */
@@ -591,28 +596,28 @@ body.about .fullwidth-gallery .person:hover img:nth-child(1){ opacity:0 !importa
 
 /* Variante 1: separater Overlay-Link <a class="person-link"> ... </a> */
 body.about .fullwidth-gallery .person a.person-link{
-position:absolute; inset:0; z-index:5;
-display:block; background:transparent;
-text-indent:-9999px; /* unsichtbarer, aber voller Klickbereich */
-pointer-events:auto; cursor:pointer;
+  position:absolute; inset:0; z-index:5;
+  display:block; background:transparent;
+  text-indent:-9999px; /* unsichtbarer, aber voller Klickbereich */
+  pointer-events:auto; cursor:pointer;
 }
 
 /* Variante 2: der Link UMWRAPPT die Bilder ( <a class="person-link"><img><img></a> ) */
 body.about .fullwidth-gallery .person > a.person-link{
-position:relative; inset:auto; z-index:5; display:block;
-width:100%; height:100%;
+  position:relative; inset:auto; z-index:5; display:block;
+  width:100%; height:100%;
 }
 /* Falls Bilder im Link liegen, bleiben sie klick-durchlässig */
 body.about .fullwidth-gallery .person > a.person-link img{
-pointer-events:none;
+  pointer-events:none;
 }
 
 /* Overlay-Infos (nicht klickfangend) */
 body.about .fullwidth-gallery .overlay{
-position:absolute; left:0; right:0; bottom:0; z-index:3;
-padding:1rem 1.5rem; background:rgba(255,255,255,0.75);
-color:var(--ink); opacity:0; transition:opacity .3s ease;
-pointer-events:none;
+  position:absolute; left:0; right:0; bottom:0; z-index:3;
+  padding:1rem 1.5rem; background:rgba(255,255,255,0.75);
+  color:var(--ink); opacity:0; transition:opacity .3s ease;
+  pointer-events:none;
 }
 body.about .fullwidth-gallery .person:hover .overlay,
 body.about .fullwidth-gallery .person:focus-within .overlay{ opacity:1; }
@@ -626,9 +631,9 @@ body.about .fullwidth-gallery .person .bio{ font-size:.95rem; }
 @media (max-width:560px){ body.about .fullwidth-gallery{ grid-template-columns:1fr; } }
 
 body.about .fullwidth-gallery .person a.card-link{
-position:absolute; inset:0; z-index:5;
-display:block; background:transparent;
-text-indent:-9999px;
+  position:absolute; inset:0; z-index:5;
+  display:block; background:transparent;
+  text-indent:-9999px;
 }
 body.about .fullwidth-gallery .person img.image-default{ opacity:1; z-index:1; }
 body.about .fullwidth-gallery .person img.image-hover { opacity:0; z-index:2; transition:opacity .6s ease-in-out; }
@@ -637,31 +642,31 @@ body.about .fullwidth-gallery .person:hover .image-hover { opacity:1; }
 
 /* ===== Überschrift-Bild in About (links ausgerichtet) ===== */
 body.about .section-title {
-display: block;       /* kein flex mehr */
-margin: 0 0 1.5rem 0; /* nur unten Abstand */
-padding-top: 0;    /* Abstand zum Header */
+  display: block;       /* kein flex mehr */
+  margin: 0 0 1.5rem 0; /* nur unten Abstand */
+  padding-top: 0;    /* Abstand zum Header */
 }
 
 body.about .section-title img {
-max-width: 320px;     /* gewünschte Maximalbreite */
-width: 100%;
-height: auto;
-display: block;
+  max-width: 320px;     /* gewünschte Maximalbreite */
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ===== Kein Abstand über/unter den Überschrift-Bildern ===== */
 body.projekte .section-title,
 body.about .section-title {
-margin: 0;
-padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body.projekte .section-title img,
 body.about .section-title img {
-display: block;
-max-width: 320px; /* ggf. anpassen */
-width: 100%;
-height: auto;
+  display: block;
+  max-width: 320px; /* ggf. anpassen */
+  width: 100%;
+  height: auto;
 }
 
 /* === AUTO-APPEND OVERRIDES === */
@@ -697,81 +702,81 @@ object-fit: contain !important;
 
 
 /* ==============================
-  GENERISCHE PROJEKTSEITEN – OVERRIDES v3
-  ============================== */
+   GENERISCHE PROJEKTSEITEN – OVERRIDES v3
+   ============================== */
 
 /* Hero: full-bleed + kein vertikaler Abstand */
 body.projekt-seite .projekt-hero{
-width: 100vw !important;
-margin: 0 !important;             /* reset all margins */
-margin-left: 50% !important;       /* re-center to viewport */
-transform: translateX(-50%) !important;
-padding: 0 !important;
+  width: 100vw !important;
+  margin: 0 !important;             /* reset all margins */
+  margin-left: 50% !important;       /* re-center to viewport */
+  transform: translateX(-50%) !important;
+  padding: 0 !important;
 }
 body.projekt-seite .projekt-hero img{
-display: block !important;
-width: 100% !important;
-height: auto !important;
-object-fit: contain !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
 }
 
 /* Zeichnung: weiterhin ohne vertikale Abstände */
 body.projekt-seite .projekt-drawing{
-margin: 0 !important;
-padding: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 /* Lightbox: Container und Bild strikt auf Viewport begrenzen */
 body.projekt-seite .lightbox-content{
-width: 96vw !important;
-max-width: 96vw !important;
-max-height: 92vh !important;   /* etwas Platz für Caption und Buttons */
-padding: 0 !important;
+  width: 96vw !important;
+  max-width: 96vw !important;
+  max-height: 92vh !important;   /* etwas Platz für Caption und Buttons */
+  padding: 0 !important;
 }
 body.projekt-seite .lightbox-content img{
-width: auto !important;
-height: auto !important;
-max-width: 96vw !important;
-max-height: 86vh !important;   /* unterhalb der 92vh des Containers */
-object-fit: contain !important;
-display: block !important;
-margin: 0 auto !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 96vw !important;
+  max-height: 86vh !important;   /* unterhalb der 92vh des Containers */
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
 }
 
 
 /* ==============================
-  GENERISCHE PROJEKTSEITEN – OVERRIDES v4
-  - Drawing bündig (kein Abstand)
-  - Grid ohne Abstand nach oben
-  - Credits auf gleicher Höhe wie Textblock
-  ============================== */
+   GENERISCHE PROJEKTSEITEN – OVERRIDES v4
+   - Drawing bündig (kein Abstand)
+   - Grid ohne Abstand nach oben
+   - Credits auf gleicher Höhe wie Textblock
+   ============================== */
 
 /* Drawing ohne Abstände (Figur hat oft Browser-Default-Margins) */
 body.projekt-seite .projekt-drawing{
-margin: 0 !important;
-padding: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 body.projekt-seite .projekt-drawing img{
-display: block;
+  display: block;
 }
 
 /* Grid direkt unter dem Drawing (kein Abstand) */
 body.projekt-seite .projekt-maingrid{
-margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 /* Credits-Spalte bündig oben mit dem Textblock */
 body.projekt-seite .projekt-sidebar{
-margin-top: 0 !important;
-align-self: start !important;
+  margin-top: 0 !important;
+  align-self: start !important;
 }
 
 
 /* ==============================
-  GENERISCHE PROJEKTSEITEN – OVERRIDES v5
-  - Entfernt kollabierende Top-Margins im Textblock
-  - Stellt gleiche Oberkante für Text & Credits her
-  ============================== */
+   GENERISCHE PROJEKTSEITEN – OVERRIDES v5
+   - Entfernt kollabierende Top-Margins im Textblock
+   - Stellt gleiche Oberkante für Text & Credits her
+   ============================== */
 
 /* Sicherheitsnetz: keine zusätzlichen Ränder am Wrapper/Blöcken */
 body.projekt-seite .projekt-wrap{ padding-top: 0 !important; }
@@ -780,199 +785,199 @@ body.projekt-seite .projekt-drawing{ margin-bottom: 0 !important; }
 /* 1) Verhindere Top-Margin-Kollaps im Textblock */
 body.projekt-seite .content-left,
 body.projekt-seite .content-left .projekt-beschreibung{
-margin-top: 0 !important;
-padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 /* Wichtig: erstes Kindelement im Text bekommt KEINEN oberen Rand */
 body.projekt-seite .content-left .projekt-beschreibung > *:first-child{
-margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 /* 2) Sidebar: ebenfalls keinen Top-Rand beim ersten Kindelement */
 body.projekt-seite .projekt-sidebar{
-margin-top: 0 !important;
-align-self: start !important;
+  margin-top: 0 !important;
+  align-self: start !important;
 }
 body.projekt-seite .projekt-sidebar > *:first-child{
-margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 /* 3) Grid selbst darf keinen Top-Abstand haben */
 body.projekt-seite .projekt-maingrid{
-margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 
 /* ==============================
-  GENERISCHE PROJEKTSEITEN – OVERRIDES v6
-  - Sidebar zweispaltig für Labels und Namen
-  ============================== */
+   GENERISCHE PROJEKTSEITEN – OVERRIDES v6
+   - Sidebar zweispaltig für Labels und Namen
+   ============================== */
 body.projekt-seite .projekt-sidebar p {
-display: block !important;
-margin: 0 0 6px 0 !important;
+  display: block !important;
+  margin: 0 0 6px 0 !important;
 }
 
 body.projekt-seite .projekt-sidebar p strong {
-font-weight: bold !important;
-margin-right: .4em;   /* kleiner Abstand hinter dem Doppelpunkt */
+  font-weight: bold !important;
+  margin-right: .4em;   /* kleiner Abstand hinter dem Doppelpunkt */
 }
 
 body.projekt-seite .projekt-beschreibung strong {
-font-weight: bold !important;
+  font-weight: bold !important;
 }
 
 .back-nav {
-text-align: center;
-margin: 3em 0 2em;
+  text-align: center;
+  margin: 3em 0 2em;
 }
 
 .back-button {
-display: inline-block;
-padding: 0.6em 1.2em;
-border-radius: 8px;
-background: #222;
-color: #fff;
-text-decoration: none;
-font-size: 1rem;
-transition: background 0.2s ease;
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s ease;
 }
 
 .back-button:hover {
-background: #444;
+  background: #444;
 }
 
 
 /* ==============================
-  FRONTPAGE VIDEO TWEAKS
-  - Linke Hälfte des Videos fix sichtbar
-  - Halbtransparentes Overlay hinter dem Textbereich
-  ============================== */
+   FRONTPAGE VIDEO TWEAKS
+   - Linke Hälfte des Videos fix sichtbar
+   - Halbtransparentes Overlay hinter dem Textbereich
+   ============================== */
 
 /* Video: immer die linke Seite im Fokus */
 .frontpage .video-bg .video{
-object-fit: cover;
-object-position: left center; /* linke Hälfte sichtbar */
+  object-fit: cover;
+  object-position: left center; /* linke Hälfte sichtbar */
 }
 
 /* Halbtransparentes Hintergrundfeld nur hinter dem Text */
 .frontpage-content {
-position: relative;
-z-index: 5; /* über Video und Overlay */
-background: rgba(255, 255, 255, 0.9); /* Weiß, 60% transparent */
-padding: 1.5rem;
-border-radius: 8px; /* optional: abgerundete Ecken */
-max-width: 90%;     /* Textblock nicht über die ganze Breite ziehen */
-margin: 1rem auto;  /* etwas Abstand oben/unten */
+  position: relative;
+  z-index: 5; /* über Video und Overlay */
+  background: rgba(255, 255, 255, 0.9); /* Weiß, 60% transparent */
+  padding: 1.5rem;
+  border-radius: 8px; /* optional: abgerundete Ecken */
+  max-width: 90%;     /* Textblock nicht über die ganze Breite ziehen */
+  margin: 1rem auto;  /* etwas Abstand oben/unten */
 }
 
 /* Auf größeren Screens Hintergrund wieder entfernen, wenn gewünscht */
 @media (min-width: 900px) {
-.frontpage-content {
-background: none;
-}
+  .frontpage-content {
+    background: none;
+  }
 }
 
 /* Mobile: Textbereich ist nicht mehr rechts → Overlay über ganze Breite legen (oder anpassen nach Wunsch) */
 @media (max-width: 900px){
-.frontpage .video-bg::after{
-left: 0;                /* gesamte Fläche leicht einfärben */
-background: rgba(0,0,0,0.22);
-}
+  .frontpage .video-bg::after{
+    left: 0;                /* gesamte Fläche leicht einfärben */
+    background: rgba(0,0,0,0.22);
+  }
 }
 
 
 /* ==============================
-  KONTAKT – Styling
-  ============================== */
+   KONTAKT – Styling
+   ============================== */
 
 /* Header sichtbar & sticky wie auf Projektseiten */
 body.kontakt .site-header{
-position: sticky;
-top: 0;
-z-index: 100;
-opacity: 1;
-pointer-events: auto;
-background: rgba(255,255,255,0.85);
-backdrop-filter: saturate(120%) blur(6px);
-border-bottom: none;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: none;
 }
 
 /* Drawing ohne Abstände, bündig */
 body.kontakt .kontakt-drawing{ margin: 0; padding: 0; }
 body.kontakt .kontakt-drawing img{
-display: block;
-width: 100%;
-max-width: 420px;   /* Größe der Zeichnung, anpassbar */
-height: auto;
-margin-left: 20px;  /* leicht eingerückt wie Text */
+  display: block;
+  width: 100%;
+  max-width: 420px;   /* Größe der Zeichnung, anpassbar */
+  height: auto;
+  margin-left: 20px;  /* leicht eingerückt wie Text */
 }
 
 /* Wrapper Breite wie bei anderen Seiten */
 body.kontakt main{
-max-width: 1100px;
-margin: 0 auto;
-padding: 80px 20px 60px; /* Platz unter Header */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 20px 60px; /* Platz unter Header */
 }
 
 /* Karte um das Formular: abgehoben */
 body.kontakt .kontakt-card{
-background: rgba(255,255,255,0.8);
-border: 1px solid #e6e6e6;
-border-radius: 16px;
-box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-padding: 24px;
-margin-top: 16px;
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #e6e6e6;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  padding: 24px;
+  margin-top: 16px;
 }
 
 /* Formular-Layout */
 body.kontakt .kontakt-form{
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 16px 20px;
-margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+  margin-top: 12px;
 }
 body.kontakt .kontakt-form .field-full{ grid-column: 1 / -1; }
 
 /* Inputs/Textareas */
 body.kontakt .kontakt-form label{
-display: block;
-font-size: .9rem;
-margin: 0 0 6px;
+  display: block;
+  font-size: .9rem;
+  margin: 0 0 6px;
 }
 body.kontakt .kontakt-form .input,
 body.kontakt .kontakt-form .textarea{
-width: 100%;
-padding: .7rem .9rem;
-border-radius: 10px;
-border: 1px solid #ddd;
-background: #fff;
-outline: none;
-transition: border-color .2s ease, box-shadow .2s ease;
+  width: 100%;
+  padding: .7rem .9rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
 body.kontakt .kontakt-form .input:focus,
 body.kontakt .kontakt-form .textarea:focus{
-border-color: #999;
-box-shadow: 0 0 0 3px rgba(0,0,0,.06);
+  border-color: #999;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.06);
 }
 
 /* Button-Zeile */
 body.kontakt .submit-row{
-grid-column: 1 / -1;
-display: flex;
-align-items: center;
-gap: 12px;
-margin-top: 6px;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
 }
 body.kontakt .btn{
-display: inline-block;
-padding: .7rem 1.2rem;
-border-radius: 10px;
-border: 2px solid #000;
-background: #000;
-color: #fff;
-font-weight: 700;
-cursor: pointer;
-transition: background .2s ease, color .2s ease;
+  display: inline-block;
+  padding: .7rem 1.2rem;
+  border-radius: 10px;
+  border: 2px solid #000;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
 }
 body.kontakt .btn:hover{ background: #333; }
 body.kontakt .note{ color: var(--muted); font-size: .9rem; }
@@ -982,90 +987,76 @@ body.kontakt .success{ display: none; margin-top: 10px; color: #0a7a3d; font-wei
 
 /* Kleine Helfer */
 body.kontakt .sr-only{
-position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-overflow: hidden; clip: rect(0,0,1,1); border: 0;
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,1,1); border: 0;
 }
 
 /* Responsive */
 @media (max-width: 700px){
-body.kontakt .kontakt-form{ grid-template-columns: 1fr; }
-body.kontakt .kontakt-drawing img{ margin-left: 20px; max-width: 300px; }
-body.kontakt .kontakt-card{ padding: 18px; border-radius: 12px; }
+  body.kontakt .kontakt-form{ grid-template-columns: 1fr; }
+  body.kontakt .kontakt-drawing img{ margin-left: 20px; max-width: 300px; }
+  body.kontakt .kontakt-card{ padding: 18px; border-radius: 12px; }
 }
 
 /* === Mobile: Video-Linksausrichtung erzwingen === */
 @media (max-width: 900px){
-.frontpage .video-bg .video{
-object-fit: cover !important;
-object-position: left center !important; /* linke Hälfte sichtbar */
-height: 50vh !important;   /* nur halbe Höhe vom Viewport */
-}
+  .frontpage .video-bg .video{
+    object-fit: cover !important;
+    object-position: left center !important; /* linke Hälfte sichtbar */
+    height: 50vh !important;   /* nur halbe Höhe vom Viewport */
+  }
 }
 @media (max-width: 900px){
-.frontpage .hero-cover {
-height: 50vh !important;   /* halbe Bildschirmhöhe */
+  .frontpage .hero-cover {
+    height: 50vh !important;   /* halbe Bildschirmhöhe */
+  }
+  .frontpage .video-bg .video {
+    object-fit: cover !important;
+    object-position: left center !important;
+  }
 }
-.frontpage .video-bg .video {
-object-fit: cover !important;
-object-position: left center !important;
-}
-}
-
-
 /* ==============================================
-  FRONT PAGE – MOBILE VIDEO FIX (≤ 900px)
-  - Desktop unverändert
-  - Video sichtbar & links fokussiert
-  - Keine JPG-Backdrops oder Overlays
-  - Stabile Höhe (50svh – anpassbar)
-  ============================================== */
+   FRONT PAGE – MOBILE VIDEO FIX (≤ 900px)
+   - Desktop unverändert
+   - Video sichtbar & links fokussiert
+   - Keine JPG-Backdrops oder Overlays
+   - Stabile Höhe (50svh – anpassbar)
+   ============================================== */
 @media (max-width: 900px){
-/* Gesamter Hero-Block kleiner und stabil */
-.frontpage .hero-cover{
-position: relative !important;
-height: 50svh !important; /* sichere Viewport-Höhe (iOS/Android) */
-}
-   @media (max-width: 900px){
-  /* Video-Höhe nur 50% vom Screen */
-  .frontpage .hero-cover {
-    height: 50vh !important;  /* 50% Bildschirmhöhe */
+  /* Gesamter Hero-Block kleiner und stabil */
+  .frontpage .hero-cover{
+    position: relative !important;
+    height: 50svh !important; /* sichere Viewport-Höhe (iOS/Android) */
   }
-
-  /* Abstand unterhalb des Videos vergrößern */
-  .frontpage .hero-cover {
-    margin-bottom: 200% !important; /* Abstand = doppelt so hoch wie Block */
+  /* Videolayer füllt den Hero, kein Hintergrundbild/Overlay */
+  .frontpage .video-bg{
+    position: absolute !important;
+    inset: 0 !important;
+    height: 100% !important;
+    background: none !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
+  }
+  .frontpage .video-bg::after{
+    display: none !important; /* eventuelles globales Overlay abschalten */
+  }
+  /* Das <video> selbst: sichtbar, füllt komplett, linker Fokus */
+  .frontpage .video-bg .video{
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: left center !important;
+    opacity: 1 !important;        /* überschreibt fades bis 'playing' */
+    visibility: visible !important;
+  }
+  /* Der Content-Block bleibt lesbar (falls gewünscht minimaler Hintergrund) */
+  .frontpage-content{
+    position: relative;
+    z-index: 5;
   }
 }
-
-
-/* Videolayer füllt den Hero, kein Hintergrundbild/Overlay */
-.frontpage .video-bg{
-position: absolute !important;
-inset: 0 !important;
-height: 100% !important;
-background: none !important;
-overflow: hidden !important;
-z-index: 1 !important;
-}
-.frontpage .video-bg::after{
-display: none !important; /* eventuelles globales Overlay abschalten */
-}
-
-/* Das <video> selbst: sichtbar, füllt komplett, linker Fokus */
-.frontpage .video-bg .video{
-display: block !important;
-width: 100% !important;
-height: 100% !important;
-object-fit: cover !important;
-object-position: left center !important;
-opacity: 1 !important;        /* überschreibt fades bis 'playing' */
-visibility: visible !important;
-}
-
-/* Der Content-Block bleibt lesbar (falls gewünscht minimaler Hintergrund) */
-.frontpage-content{
-position: relative;
-z-index: 5;
-}
-}
-~
+0 commit comments
+Comments
+0
+ (0)
