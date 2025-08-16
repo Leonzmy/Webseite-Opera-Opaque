@@ -754,3 +754,30 @@ body.projekt-seite .lightbox-close::after{
 body.projekt-seite .projekt-wrap figure{
   margin: 0;
 }
+/* Altes Grid auf .projekt-wrap abschalten */
+body.projekt-seite .projekt-wrap{
+  display:block !important;
+  grid-template-columns:none !important;
+  grid-template-areas:none !important;
+  gap:0 !important;
+}
+
+/* Neues Hauptgrid */
+body.projekt-seite .projekt-maingrid{
+  display:grid !important;
+  grid-template-columns:1fr 320px !important; /* breite Textspalte + Credits */
+  gap:40px !important;
+  margin-top:28px !important;
+  align-items:start !important; /* Credits oben bündig */
+}
+
+/* Zeichnung fluchtet mit Text, kein Zusatzabstand */
+body.projekt-seite .projekt-wrap figure{ margin:0 !important; }
+body.projekt-seite .projekt-drawing{ margin:0 !important; padding:0 !important; }
+
+/* Sicherheit: Hero bleibt vollbreit */
+body.projekt-seite .projekt-hero{ width:100vw !important; margin-left:50% !important; transform:translateX(-50%) !important; margin-top:80px !important; }
+body.projekt-seite .projekt-hero img{ width:100% !important; height:auto !important; object-fit:contain !important; }
+
+/* Text darf volle Spaltenbreite nutzen */
+body.projekt-seite .content-left .projekt-beschreibung{ max-width:none !important; }
