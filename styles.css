@@ -543,3 +543,757 @@ body.about .section-title img {
   width: 100%;
   height: auto;
 }
+/* ==============================================
+   styles.css (CLEANED) — gleiche Optik, weniger Redundanz
+   Hinweis: Keine inhaltlichen Änderungen am Design; nur Ordnung & Dubletten entfernt.
+   ============================================== */
+
+/* ==== Grunddesign ==== */
+:root{
+  --bg:#ffffff;
+  --ink:#000000;
+  --muted:#444444;
+  --font-base:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --fs-base:18px;
+  --lh:1.65;
+}
+*{ box-sizing:border-box; }
+html,body{ height:100%; margin:0; font-weight:100; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-base);
+  font-size:var(--fs-base);
+  line-height:var(--lh);
+}
+img{ display:block; max-width:100%; height:auto; }
+a{ color:#000; text-decoration:none; }
+a:hover,a:focus{ color:#222; }
+
+/* ==== Video Hintergrund (Frontpage) ==== */
+.frontpage .video-bg{
+  position:fixed; inset:0; z-index:1;
+  background:#fff url("bilder/frontpage.jpg") center/cover no-repeat;
+}
+.frontpage .video-bg .video{ width:100%; height:100%; object-fit:cover; }
+
+/* ==== Hero-Cover ==== */
+.frontpage .hero-cover{ height:100vh; }
+
+/* ==== Header (per JS ein-/ausblenden) ==== */
+.site-header{
+  position:fixed; top:0; left:0; width:100%; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px;
+  background:rgba(255,255,255,0.85);
+  transition:opacity .4s ease;
+  opacity:0;              /* unsichtbar am Anfang */
+  pointer-events:none;    /* nicht klickbar am Anfang */
+}
+body.scrolled .site-header{ opacity:1; pointer-events:auto; }
+
+.brand{ font-weight:600; }
+.navlinks a{ padding:6px 8px; border-radius:8px; }
+
+/* ==== Inhalt (Frontpage) ==== */
+.frontpage-content{ position:relative; z-index:5; }
+.right-panel{
+  position:relative;
+  margin-left:50vw; /* rechte Spalte */
+  min-height:100vh;
+  display:flex; align-items:center;
+  padding:4rem 3rem;
+  background:transparent; color:var(--ink);
+}
+.right-content{ max-width:42rem; width:100%; }
+
+/* 3x Abstand zwischen Titel und "Demnächst" */
+.lp-title{
+  font-size:clamp(1.8rem,3.6vw,3.2rem);
+  line-height:1.1;
+  margin:0 0 6em 0;
+}
+.lp-sub{
+  font-size:1.05rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  margin:0 0 .35rem;
+}
+.lp-what{ font-size:1.6rem; font-weight:600; margin:.15rem 0; }
+.lp-when,.lp-where{ margin:.1rem 0; color:var(--ink); }
+
+/* ===== Kachel: Bild linksbündig und Hover-Label "mehr Infos" ===== */
+.tile{ position:relative; border-radius:12px; overflow:clip; margin-top:1.5rem; }
+.tile img{ display:block; margin-left:0; }
+.tile .overlay{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:.5rem .75rem;
+  background:transparent; color:var(--ink);
+  opacity:0; transition:opacity .25s ease;
+  pointer-events:none; text-align:left;
+}
+.tile:hover .overlay{ opacity:1; }
+.overlay-label{ font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
+.tile .tile-link{ position:absolute; inset:0; }
+
+/* ==== Footer ==== */
+.site-footer{ padding:20px; text-align:center; font-size:.85rem; background:transparent; }
+.footer-link{ color:var(--muted); }
+
+/* ==== Responsive (Frontpage) ==== */
+@media (max-width:900px){
+  .right-panel{ margin-left:0; padding:2rem 1.25rem; min-height:auto; }
+  .lp-title{ font-size:clamp(1.6rem,6vw,2.4rem); margin-bottom:6em; }
+}
+
+/* ==============================
+   PROJEKT: Seidenkoffer (spezifisch)
+   ============================== */
+body.projekt-seidenkoffer{ background:#fff; color:#000; }
+
+/* Header sichtbar/sticky auf Projektseite */
+body.projekt-seidenkoffer .site-header{
+  position:sticky; top:0; z-index:100;
+  opacity:1 !important; pointer-events:auto !important;
+  background:rgba(255,255,255,0.85);
+  border-bottom:none;
+  backdrop-filter:saturate(120%) blur(6px);
+}
+
+/* Layout: Bild oben (voll), darunter links Beschreibung, rechts Sidebar */
+body.projekt-seidenkoffer main{
+  max-width:1100px; margin:0 auto;
+  padding:100px 20px 60px;   /* Platz unter Header */
+  display:grid;
+  grid-template-columns:1fr 320px;   /* links Inhalt, rechts Sidebar */
+  grid-template-areas:
+    "bild bild"
+    "desc side";
+  gap:32px 40px;
+}
+
+/* Bild oben, 500px breit, mittig */
+body.projekt-seidenkoffer .projekt-bild{
+  grid-area:bild; display:flex; justify-content:center; align-items:center;
+}
+body.projekt-seidenkoffer .projekt-bild img{
+  width:100%; max-width:500px; height:auto; border-radius:8px;
+}
+
+/* Beschreibung links im Blocksatz */
+body.projekt-seidenkoffer .projekt-beschreibung{
+  grid-area:desc; font-size:1rem; line-height:1.6; text-align:justify; hyphens:auto;
+  margin-top:1.15em;
+}
+/* Zeit & Ort größer und fett */
+body.projekt-seidenkoffer .projekt-beschreibung .projekt-datum-ort{
+  font-size:1.2rem; font-weight:bold; margin-top:1.5em;
+}
+
+/* Sidebar rechts – startet auf gleicher Höhe wie Beschreibung */
+body.projekt-seidenkoffer .projekt-sidebar{ grid-area:side; font-size:.95rem; align-self:start; }
+body.projekt-seidenkoffer .projekt-sidebar h2{ font-size:1.1rem; margin:0 0 8px 0; }
+body.projekt-seidenkoffer .projekt-sidebar p{ margin:0 0 6px 0; line-height:1.35; }
+body.projekt-seidenkoffer .projekt-sidebar .logos{
+  display:grid; grid-template-columns:1fr; gap:10px; margin-top:10px;
+}
+body.projekt-seidenkoffer .projekt-sidebar .logos img{
+  max-width:100%; height:auto; max-height:70px; object-fit:contain; display:block; filter:none; opacity:1;
+}
+
+/* ==============================
+   GENERISCHE PROJEKTSEITEN (Phantom/Enthauptung/Orfeo)
+   ============================== */
+body.projekt-seite .site-header{
+  position:sticky; top:0; z-index:100;
+  opacity:1; pointer-events:auto;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:saturate(120%) blur(6px);
+}
+body.projekt-seite .projekt-wrap{
+  max-width:1100px; margin:0 auto; padding:100px 20px 60px;
+  display:grid; grid-template-columns:1fr 320px; gap:32px 40px;
+  grid-template-areas:
+    "bild bild"
+    "desc side";
+}
+body.projekt-seite .projekt-bild{ grid-area:bild; display:flex; justify-content:center; }
+body.projekt-seite .projekt-bild img{ max-width:500px; width:100%; height:auto; border-radius:8px; }
+body.projekt-seite .projekt-beschreibung{ grid-area:desc; text-align:justify; hyphens:auto; }
+body.projekt-seite .projekt-beschreibung .projekt-datum-ort{ font-weight:700; margin-top:1.25em; }
+body.projekt-seite .projekt-sidebar{ grid-area:side; align-self:start; }
+body.projekt-seite .projekt-sidebar h2{ font-size:1.1rem; margin:0 0 8px; }
+body.projekt-seite .projekt-sidebar p{ margin:0 0 6px; line-height:1.35; }
+body.projekt-seite .projekt-sidebar .logos{ display:grid; gap:10px; margin-top:10px; }
+body.projekt-seite .projekt-sidebar .logos img{ max-width:100%; max-height:70px; object-fit:contain; }
+
+/* ==============================
+   PROJEKTE-ÜBERSICHT (2×2 Grid, ohne Innenabstände, mit Fade)
+   ============================== */
+
+/* Header sichtbar & Platz darunter nur auf der Projekte-Seite */
+body.projekte .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Weniger Abstand über der Überschrift/Grafik */
+body.projekte .projekte-wrap {
+  padding-top: 0;
+}
+
+/* Titelgrafik links, leicht eingerückt */
+body.projekte .projekte-title {
+  margin: 0;
+  padding: 0 0 0;     /* kleiner als zuvor */
+  margin-left: 80px;        /* „etwas eingerückt“ */
+  text-align: left;
+  line-height: 1;
+}
+
+/* Bild statt Text im Titel */
+body.projekte .projekte-title .projekte-title-image {
+  display: block;
+  max-width: 320px;         /* Größe der Zeichnung anpassen */
+  height: auto;
+}
+
+/* Grid 2×2, keine Gaps; Außen: L/R/U = 80px */
+body.projekte .projekte-grid--2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 0;
+  margin: 0 80px 80px;
+  padding: 0;
+}
+
+/* Kachel-Links */
+body.projekte .tile,
+body.projekte .tile--swap,
+body.projekte .projekte-grid--2x2 a {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 0;
+  text-decoration: none;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Bild-Swap: zweites Bild erscheint auf Hover, sanfter Fade */
+body.projekte .tile--swap .img,
+body.projekte .projekte-grid--2x2 a > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  max-width: none;
+  object-fit: contain;      /* komplett sichtbar */
+  object-position: center;
+  background: #fff;         /* Letterbox-Hintergrund */
+  transition: opacity .6s ease-in-out;
+}
+
+/* Startzustand */
+body.projekte .tile--swap .img.hover,
+body.projekte .projekte-grid--2x2 a > img:nth-child(2) { opacity: 0; }
+
+/* Hover-Übergang */
+body.projekte .tile--swap:hover .img.hover,
+body.projekte .projekte-grid--2x2 a:hover > img:nth-child(2) { opacity: 1; }
+body.projekte .tile--swap:hover .img.default,
+body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1) { opacity: 0; }
+
+/* Responsiv */
+@media (max-width: 700px) {
+  body.projekte .projekte-grid--2x2 {
+    grid-template-columns: 1fr;
+    margin: 0 20px 60px;
+  }
+  body.projekte .projekte-title {
+    margin-left: 20px;
+    padding-top: 40px;
+  }
+  body.projekte .projekte-title .projekte-title-image {
+    max-width: 220px;
+  }
+}
+
+/* ==============================
+   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 fade-in, Kachel klickbar
+   ============================== */
+body.about .site-header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Intro oben */
+body.about main{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 100px 20px 40px;
+}
+body.about .intro{
+  max-width: 72ch;
+  margin: 0 auto 28px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  text-align: center;
+}
+body.about .about-intro{ text-align: justify; hyphens: none; }
+
+/* Galerie (volle Breite) */
+body.about .fullwidth-gallery{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Kachel */
+body.about .fullwidth-gallery .person{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 70vh;        /* gewünschte Kachelhöhe */
+  overflow: hidden;
+  top: 60px;           /* beibehaltener Versatz */
+  background: #fff;    /* Letterbox-Hintergrund */
+}
+
+/* Bilder übereinander legen */
+body.about .fullwidth-gallery .person img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: opacity .6s ease-in-out;
+  background: transparent;
+  opacity: 1 !important;   /* Bild 1 standardmäßig sichtbar */
+  z-index: 1;
+  pointer-events: none;     /* Klicks gehen an den Link darüber */
+}
+
+/* Variante mit Klassen */
+body.about .fullwidth-gallery .person img.image-hover{
+  opacity: 0 !important;
+  z-index: 2;
+}
+body.about .fullwidth-gallery .person:hover img.image-hover{ opacity: 1 !important; }
+body.about .fullwidth-gallery .person:hover img.image-default{ opacity: 0 !important; }
+
+/* Variante ohne Klassen (2 <img> je Kachel) */
+body.about .fullwidth-gallery .person img:nth-child(2){
+  opacity: 0 !important;
+  z-index: 2;
+}
+body.about .fullwidth-gallery .person:hover img:nth-child(2){ opacity: 1 !important; }
+body.about .fullwidth-gallery .person:hover img:nth-child(1){ opacity: 0 !important; }
+
+/* Overlay-Infos */
+body.about .fullwidth-gallery .overlay{
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.75);
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity .3s ease;
+  z-index: 3;
+  pointer-events: none;  /* Overlay selbst nicht klickfangend */
+}
+body.about .fullwidth-gallery .person:hover .overlay,
+body.about .fullwidth-gallery .person:focus-within .overlay{ opacity: 1; }
+
+body.about .fullwidth-gallery .person .name{ font-weight: 700; }
+body.about .fullwidth-gallery .person .role{ font-size: 1.2rem; color: var(--muted); }
+body.about .fullwidth-gallery .person .bio { font-size: .95rem; }
+
+/* Der Link über der gesamten Kachel (KLICKBAR) */
+body.about .fullwidth-gallery .person a.person-link{
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 5;            /* über Bildern & Overlay */
+  background: transparent;
+  text-indent: -9999px;  /* reine Klickfläche, kein Text sichtbar */
+  pointer-events: auto;  /* sicherstellen, dass Klicks greifen */
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  body.about .fullwidth-gallery{ grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 560px){
+  body.about .fullwidth-gallery{ grid-template-columns: 1fr; }
+}
+
+/* ===== Zurück-Button (nur Projektseiten) ===== */
+body.projekt-seite .back-button,
+body.projekt-seidenkoffer .back-button{ margin-bottom:1rem; }
+body.projekt-seite .back-button a,
+body.projekt-seidenkoffer .back-button a{
+  display:inline-block; padding:.4rem .8rem;
+  border:2px solid var(--ink); color:var(--ink);
+  font-weight:bold; text-decoration:none; border-radius:4px;
+  transition:background-color .3s ease, color .3s ease;
+}
+body.projekt-seite .back-button a:hover,
+body.projekt-seidenkoffer .back-button a:hover{ background-color:var(--ink); color:var(--bg); }
+
+
+/* ==============================
+   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 Fade, Link garantiert klickbar
+   ============================== */
+
+body.about .site-header{
+  position: sticky; top: 0; z-index: 100;
+  opacity: 1; pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+
+/* Intro */
+body.about main{ max-width:1100px; margin:0 auto; padding:0 0 0; }
+body.about .intro{ max-width:72ch; margin:0 auto 28px; font-size:1.05rem; line-height:1.65; text-align:center; }
+body.about .about-intro{ text-align:justify; hyphens:none; }
+
+/* Galerie – volle Breite, 4 Kacheln (auto-fit) */
+body.about .fullwidth-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:0; margin:0; padding:0;
+  width:100vw; margin-left:50%; transform:translateX(-50%);
+}
+
+/* Kachel / Person */
+body.about .fullwidth-gallery .person{
+  position:relative;
+  margin:0; padding:0; height:70vh; overflow:hidden;
+  top:60px; background:#fff; /* Letterbox */
+}
+
+/* Basis: beide Bilder übereinander; Bild 1 sichtbar */
+body.about .fullwidth-gallery .person img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; object-position:center;
+  background:transparent;
+  transition:opacity .6s ease-in-out;
+  opacity:1 !important; z-index:1;
+  pointer-events:none; /* Bilder fangen keine Klicks ab */
+}
+
+/* Variante A: Klassen vorhanden */
+body.about .fullwidth-gallery .person img.image-hover{ opacity:0 !important; z-index:2; }
+body.about .fullwidth-gallery .person:hover img.image-hover{ opacity:1 !important; }
+body.about .fullwidth-gallery .person:hover img.image-default{ opacity:0 !important; }
+
+/* Variante B: genau 2 <img> ohne Klassen */
+body.about .fullwidth-gallery .person img:nth-child(2){ opacity:0 !important; z-index:2; }
+body.about .fullwidth-gallery .person:hover img:nth-child(2){ opacity:1 !important; }
+body.about .fullwidth-gallery .person:hover img:nth-child(1){ opacity:0 !important; }
+
+/* --- LINK-ABSICHERUNG: zwei mögliche HTML-Varianten --- */
+
+/* Variante 1: separater Overlay-Link <a class="person-link"> ... </a> */
+body.about .fullwidth-gallery .person a.person-link{
+  position:absolute; inset:0; z-index:5;
+  display:block; background:transparent;
+  text-indent:-9999px; /* unsichtbarer, aber voller Klickbereich */
+  pointer-events:auto; cursor:pointer;
+}
+
+/* Variante 2: der Link UMWRAPPT die Bilder ( <a class="person-link"><img><img></a> ) */
+body.about .fullwidth-gallery .person > a.person-link{
+  position:relative; inset:auto; z-index:5; display:block;
+  width:100%; height:100%;
+}
+/* Falls Bilder im Link liegen, bleiben sie klick-durchlässig */
+body.about .fullwidth-gallery .person > a.person-link img{
+  pointer-events:none;
+}
+
+/* Overlay-Infos (nicht klickfangend) */
+body.about .fullwidth-gallery .overlay{
+  position:absolute; left:0; right:0; bottom:0; z-index:3;
+  padding:1rem 1.5rem; background:rgba(255,255,255,0.75);
+  color:var(--ink); opacity:0; transition:opacity .3s ease;
+  pointer-events:none;
+}
+body.about .fullwidth-gallery .person:hover .overlay,
+body.about .fullwidth-gallery .person:focus-within .overlay{ opacity:1; }
+
+body.about .fullwidth-gallery .person .name{ font-weight:700; }
+body.about .fullwidth-gallery .person .role{ font-size:1.2rem; color:var(--muted); }
+body.about .fullwidth-gallery .person .bio{ font-size:.95rem; }
+
+/* Responsiv */
+@media (max-width:900px){ body.about .fullwidth-gallery{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ body.about .fullwidth-gallery{ grid-template-columns:1fr; } }
+
+body.about .fullwidth-gallery .person a.card-link{
+  position:absolute; inset:0; z-index:5;
+  display:block; background:transparent;
+  text-indent:-9999px;
+}
+body.about .fullwidth-gallery .person img.image-default{ opacity:1; z-index:1; }
+body.about .fullwidth-gallery .person img.image-hover { opacity:0; z-index:2; transition:opacity .6s ease-in-out; }
+body.about .fullwidth-gallery .person:hover .image-default{ opacity:0; }
+body.about .fullwidth-gallery .person:hover .image-hover { opacity:1; }
+
+/* ===== Überschrift-Bild in About (links ausgerichtet) ===== */
+body.about .section-title {
+  display: block;       /* kein flex mehr */
+  margin: 0 0 1.5rem 0; /* nur unten Abstand */
+  padding-top: 0;    /* Abstand zum Header */
+}
+
+body.about .section-title img {
+  max-width: 320px;     /* gewünschte Maximalbreite */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== Kein Abstand über/unter den Überschrift-Bildern ===== */
+body.projekte .section-title,
+body.about .section-title {
+  margin: 0;
+  padding: 0;
+}
+
+body.projekte .section-title img,
+body.about .section-title img {
+  display: block;
+  max-width: 320px; /* ggf. anpassen */
+  width: 100%;
+  height: auto;
+}
+
+
+/* ==============================
+   GENERISCHE PROJEKTSEITEN – NEUES LAYOUT
+   ============================== */
+
+/* Header sichtbar auf Projektseiten */
+body.projekt-seite .site-header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: none;
+}
+
+/* Wrapper für Seiteninhalt (alles außer full-bleed Bereichen) */
+body.projekt-seite .projekt-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  display: block;
+}
+
+/* ========== 1) Full-bleed Hero-Bild (nicht abgeschnitten) ========== */
+body.projekt-seite .projekt-hero{
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 80px;         /* Platz unter dem Header */
+  margin-bottom: 0;         /* kein zusätzlicher Abstand unten */
+}
+body.projekt-seite .projekt-hero img{
+  display: block;
+  width: 100%;
+  height: auto;             /* nicht beschneiden */
+  object-fit: contain;      /* Sicherheit, falls Höhe begrenzt würde */
+  background: #fff;
+}
+
+/* ========== 2) Zeichnung darunter, links leicht eingerückt, kein vertikaler Abstand ========== */
+body.projekt-seite .projekt-drawing{
+  margin: 0 0 0 80px;       /* links eingerückt */
+  padding: 0;
+}
+body.projekt-seite .projekt-drawing img{
+  display: block;
+  width: 100%;
+  max-width: 320px;         /* typische Breite, kann projektspezifisch angepasst werden */
+  height: auto;
+}
+
+/* ========== 3) Hauptbereich: links Text, rechts Credits/Logos ========== */
+body.projekt-seite .projekt-maingrid{
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px 40px;
+  margin-top: 28px;
+  align-items: start;
+}
+body.projekt-seite .content-left{}
+body.projekt-seite .content-left .projekt-beschreibung{
+  text-align: justify;
+  hyphens: auto;
+}
+body.projekt-seite .content-left .premiere{
+  margin-top: 1.25em;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+body.projekt-seite .content-left .premiere .date{
+  font-weight: 700;
+}
+body.projekt-seite .content-left .premiere .place{
+  margin-top: .15rem;
+  color: var(--muted);
+}
+body.projekt-seite .projekt-sidebar h2{ font-size: 1.1rem; margin: 0 0 8px; }
+body.projekt-seite .projekt-sidebar p{ margin: 0 0 6px; line-height: 1.35; }
+body.projekt-seite .projekt-sidebar .logos{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+body.projekt-seite .projekt-sidebar .logos img{
+  max-width: 100%;
+  max-height: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ========== 4) Galerie: 3 Spalten, 1:1 Kacheln, Klick öffnet Lightbox ========== */
+body.projekt-seite .projekt-galerie{
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+body.projekt-seite .projekt-galerie a{
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+body.projekt-seite .projekt-galerie img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* Kachel füllt 1:1 */
+  object-position: center;
+}
+
+/* Lightbox Overlay */
+body.projekt-seite .lightbox{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.8);
+  z-index: 1000;
+  padding: 20px;
+}
+body.projekt-seite .lightbox.open{ display: flex; }
+body.projekt-seite .lightbox-content{
+  max-width: min(1200px, 96vw);
+  max-height: 90vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 12px;
+}
+body.projekt-seite .lightbox-content img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* volle Größe, möglichst ohne Zuschnitt */
+  background: #111;
+}
+body.projekt-seite .lightbox-caption{
+  color: #fff;
+  font-size: .95rem;
+  line-height: 1.4;
+  text-align: center;
+}
+body.projekt-seite .lightbox-close,
+body.projekt-seite .lightbox-prev,
+body.projekt-seite .lightbox-next{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.9);
+  border: 0;
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 0;
+}
+body.projekt-seite .lightbox-close{
+  top: 28px;
+  right: 28px;
+  transform: none;
+}
+body.projekt-seite .lightbox-prev{ left: 20px; }
+body.projekt-seite .lightbox-next{ right: 20px; }
+body.projekt-seite .lightbox-prev::after,
+body.projekt-seite .lightbox-next::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
+  background: #000;
+}
+body.projekt-seite .lightbox-next::after{
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
+}
+body.projekt-seite .lightbox-close::after{
+  content: '×';
+  display: block;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  color: #000;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  body.projekt-seite .projekt-drawing{ margin-left: 20px; }
+  body.projekt-seite .projekt-maingrid{
+    grid-template-columns: 1fr;
+  }
+  body.projekt-seite .projekt-sidebar{ margin-top: 10px; }
+  body.projekt-seite .projekt-galerie{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+@media (max-width: 560px){
+  body.projekt-seite .projekt-galerie{
+    grid-template-columns: 1fr;
+  }
+}
