@@ -1164,3 +1164,14 @@ body.kontakt .sr-only{
   }
 }
 
+/* About (Touch): Scroll-Umschaltung – überschreibt Hover dank !important */
+body.about.touch .fullwidth-gallery .person.inview .image-default { opacity: 0 !important; }
+body.about.touch .fullwidth-gallery .person.inview .image-hover  { opacity: 1 !important; }
+
+/* Sanfter Wechsel */
+body.about.touch .fullwidth-gallery .person .image-default,
+body.about.touch .fullwidth-gallery .person .image-hover {
+  transition: opacity 1.5s ease-in-out !important;
+}
+
+
