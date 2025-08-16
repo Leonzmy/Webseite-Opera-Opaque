@@ -157,7 +157,7 @@ body.projekt-seite .projekt-maingrid{
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 40px;
-  margin-top: 28px;
+  margin-top: 0;
   align-items: start; /* Credits oben bündig mit Text */
 }
 body.projekt-seite .content-left .projekt-beschreibung{
@@ -173,7 +173,7 @@ body.projekt-seite .content-left .premiere{
 body.projekt-seite .content-left .premiere .date{ font-weight: 700; }
 body.projekt-seite .content-left .premiere .place{
   margin-top: .15rem;
-  color: var(--muted);
+  font-weight: 700; 
 }
 body.projekt-seite .projekt-sidebar h2{ font-size: 1.1rem; margin: 0 0 8px; }
 body.projekt-seite .projekt-sidebar p{ margin: 0 0 6px; line-height: 1.35; }
