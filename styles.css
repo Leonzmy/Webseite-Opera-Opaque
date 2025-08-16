@@ -131,8 +131,8 @@ body.projekt-seite .projekt-hero{
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
-  margin: 0 !important;
-  padding: 0;
+  margin-top: 80px;
+  margin-bottom: 0;
 }
 body.projekt-seite .projekt-hero img{
   display: block;
@@ -157,7 +157,7 @@ body.projekt-seite .projekt-maingrid{
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 40px;
-  margin-top: 0;
+  margin-top: 28px;
   align-items: start; /* Credits oben bündig mit Text */
 }
 body.projekt-seite .content-left .projekt-beschreibung{
@@ -226,16 +226,16 @@ body.projekt-seite .lightbox{
 }
 body.projekt-seite .lightbox.open{ display: flex; }
 body.projekt-seite .lightbox-content{
-  max-width: 96vw;     /* nicht breiter als Bildschirm */
-  max-height: 96vh;    /* nicht höher als Bildschirm */
+  max-width: min(1200px, 96vw);
+  max-height: 90vh;
   display: grid;
   grid-template-rows: 1fr auto;
   gap: 12px;
 }
-body.projekt-seite .lightbox-content img {
+body.projekt-seite .lightbox-content img{
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Bild vollständig einpassen */
+  object-fit: contain;
   background: #111;
 }
 body.projekt-seite .lightbox-caption{
@@ -657,4 +657,34 @@ body.about .section-title img {
   max-width: 320px; /* ggf. anpassen */
   width: 100%;
   height: auto;
+}
+
+/* === AUTO-APPEND OVERRIDES === */
+body.projekt-seite .projekt-hero{
+margin: 0 !important;
+padding: 0;
+}
+
+/* === AUTO-APPEND OVERRIDES === */
+body.projekt-seite .projekt-drawing{
+margin: 0 !important;
+padding: 0;
+}
+
+/* === AUTO-APPEND OVERRIDES === */
+body.projekt-seite .projekt-wrap figure{
+margin: 0 !important;
+}
+
+/* === AUTO-APPEND OVERRIDES === */
+body.projekt-seite .lightbox-content{
+max-width: 96vw !important;
+max-height: 96vh !important;
+}
+
+/* === AUTO-APPEND OVERRIDES === */
+body.projekt-seite .lightbox-content img{
+width: 100% !important;
+height: 100% !important;
+object-fit: contain !important;
 }
