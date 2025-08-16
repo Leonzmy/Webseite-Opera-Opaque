@@ -731,4 +731,8 @@ body.projekt-seite .lightbox-content img{
   display: block !important;
   margin: 0 auto !important;
 }
+/* Textblock & Credits direkt unter dem Drawing-Bild ohne Abstand */
+body.projekt-seite .projekt-maingrid {
+  margin-top: 0 !important;   /* Abstand entfernen */
+}
 
