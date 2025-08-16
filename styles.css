@@ -690,6 +690,7 @@ object-fit: contain !important;
 }
 
 
+
 /* ==============================
    GENERISCHE PROJEKTSEITEN – OVERRIDES v3
    ============================== */
@@ -731,27 +732,31 @@ body.projekt-seite .lightbox-content img{
   display: block !important;
   margin: 0 auto !important;
 }
-/* Textblock & Credits direkt unter dem Drawing-Bild ohne Abstand */
-body.projekt-seite .projekt-maingrid {
-  margin-top: 0 !important;   /* Abstand entfernen */
-}
 
-/* === Override: Drawing bündig mit Textblock + Credits === */
-body.projekt-seite .projekt-drawing {
+
+/* ==============================
+   GENERISCHE PROJEKTSEITEN – OVERRIDES v4
+   - Drawing bündig (kein Abstand)
+   - Grid ohne Abstand nach oben
+   - Credits auf gleicher Höhe wie Textblock
+   ============================== */
+
+/* Drawing ohne Abstände (Figur hat oft Browser-Default-Margins) */
+body.projekt-seite .projekt-drawing{
   margin: 0 !important;
   padding: 0 !important;
 }
-body.projekt-seite .projekt-drawing img {
+body.projekt-seite .projekt-drawing img{
   display: block;
 }
 
-/* Grid ohne Abstand */
-body.projekt-seite .projekt-maingrid {
+/* Grid direkt unter dem Drawing (kein Abstand) */
+body.projekt-seite .projekt-maingrid{
   margin-top: 0 !important;
 }
 
-/* Credits-Spalte bündig oben */
-body.projekt-seite .projekt-sidebar {
+/* Credits-Spalte bündig oben mit dem Textblock */
+body.projekt-seite .projekt-sidebar{
   margin-top: 0 !important;
   align-self: start !important;
 }
