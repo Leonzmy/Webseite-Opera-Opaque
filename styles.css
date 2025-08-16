@@ -206,7 +206,7 @@ body.projekte .projekte-wrap {
 /* Titelgrafik links, leicht eingerückt */
 body.projekte .projekte-title {
   margin: 0;
-  padding: 24px 0 16px;     /* kleiner als zuvor */
+  padding: 0 0 0;     /* kleiner als zuvor */
   margin-left: 80px;        /* „etwas eingerückt“ */
   text-align: left;
   line-height: 1;
