@@ -5,29 +5,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let videoFinished = false;
   let triedAuto = false;
-  let retriesLeft = 5;          // kurze Retry-Phase
-  const RETRY_DELAY = 350;      // ms
+  let retriesLeft = 4;
+  const RETRY_DELAY = 300; // ms
 
-  // --- Attribute & Properties doppelt absichern ---
+  // --- 1) Attribute/Properties VOR dem Laden hart setzen ---
   const hardenAttrs = () => {
     video.muted = true;
     video.defaultMuted = true;
-    if (!video.hasAttribute("muted")) video.setAttribute("muted", "");
-
+    video.setAttribute("muted", "");
     video.playsInline = true;
-    if (!video.hasAttribute("playsinline")) video.setAttribute("playsinline", "");
-    if (!video.hasAttribute("webkit-playsinline")) video.setAttribute("webkit-playsinline", "");
-
-    // auch Autoplay als Attribut setzen (hilft bei manchen Engines)
-    if (!video.hasAttribute("autoplay")) video.setAttribute("autoplay", "");
-
+    video.setAttribute("playsinline", "");
+    video.setAttribute("webkit-playsinline", "");
+    video.setAttribute("autoplay", ""); // hilft manchen Engines
     video.removeAttribute("controls");
-    // keine Lautstärke – beruhigt manche Browser
     video.volume = 0;
   };
   hardenAttrs();
 
-  // Sichtbarkeit: sobald irgendein Frame/Play ankommt
+  // Falls im HTML <source> steckt, Source in src übernehmen,
+  // damit wir die Lade-Reihenfolge kontrollieren.
+  const sourceEl = video.querySelector("source");
+  if (sourceEl && !video.src) {
+    video.src = sourceEl.src; // resolved URL
+    // optional: Source-Element entfernen, damit nur noch src zählt
+    // sourceEl.parentNode.removeChild(sourceEl);
+  }
+
+  // --- Sichtbarkeit: sobald irgendein Frame/Play da ist ---
   const markVisible = () => video.classList.add("playing");
   video.addEventListener("play", markVisible);
   video.addEventListener("playing", markVisible);
@@ -37,63 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
     video.removeEventListener("timeupdate", onFirstTU);
   });
 
-  // Ende: nur relevant, wenn du NICHT loopst. Mit loop wird dieses Event selten erreicht.
+  // --- KEIN LOOP: am Ende auf letztem Frame stehen bleiben ---
   video.addEventListener("ended", () => {
-    // Wenn du loop im <video> hast, kannst du diesen Block löschen.
     video.pause();
-    video.currentTime = Math.max(0, video.duration || 0);
+    // auf letztem Frame einfrieren
+    try { video.currentTime = Math.max(0, video.duration || 0); } catch {}
     videoFinished = true;
     document.body.classList.add("scrolled");
   });
 
-  // Header-Scroll-Handling
-  window.addEventListener("scroll", () => {
-    if (videoFinished) return;
-    if (window.scrollY > 50) document.body.classList.add("scrolled");
-    else document.body.classList.remove("scrolled");
-  });
-
-  // --- Autoplay versuchen (mit kurzen Retries) ---
-  const tryPlay = async () => {
-    if (videoFinished) return;
-    hardenAttrs(); // falls Browser Attribute „verliert“
-
-    try {
-      if (video.readyState < 2) {
-        video.load();
-        await Promise.race([
-          new Promise(res => video.addEventListener("loadeddata", res, { once: true })),
-          new Promise(res => video.addEventListener("canplay", res, { once: true })),
-          new Promise(res => setTimeout(res, 500))
-        ]);
-      }
-      const p = video.play();
-      if (p && typeof p.then === "function") await p;
-      triedAuto = true;
-      markVisible();
-    } catch (err) {
-      // kurzer Retry-Zyklus (Browser braucht oft 1–2 Versuche)
-      if (retriesLeft-- > 0) {
-        setTimeout(tryPlay, RETRY_DELAY);
-      } else {
-        // finaler Fallback: beim ersten User-Event starten
-        ["touchstart", "pointerdown", "click", "keydown"].forEach(ev => {
-          window.addEventListener(ev, () => {
-            tryPlay();
-          }, { once: true, passive: true });
-        });
-      }
-    }
-  };
-
-  // Wenn Tab wieder aktiv wird → nochmal probieren
-  document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && video.paused && !videoFinished) {
-      retriesLeft = Math.max(retriesLeft, 2); // kleine Retry-Reserve
-      tryPlay();
-    }
-  });
-
-  // direkt loslegen
-  tryPlay();
-});
+  // --- Header-
