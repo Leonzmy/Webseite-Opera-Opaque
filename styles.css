@@ -803,12 +803,13 @@ body.projekt-seite .projekt-maingrid{
    - Sidebar zweispaltig für Labels und Namen
    ============================== */
 body.projekt-seite .projekt-sidebar p {
-  display: grid !important;
-  grid-template-columns: 140px 1fr !important;
+  display: block !important;
   margin: 0 0 6px 0 !important;
 }
+
 body.projekt-seite .projekt-sidebar p strong {
   font-weight: bold !important;
+  margin-right: .4em;   /* kleiner Abstand hinter dem Doppelpunkt */
 }
 
 
