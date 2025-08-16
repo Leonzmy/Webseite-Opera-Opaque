@@ -103,86 +103,198 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 }
 
 /* ==============================
-   PROJEKT: Seidenkoffer (spezifisch)
+   GENERISCHE PROJEKTSEITEN – NEUES LAYOUT (sauber, konfliktfrei)
    ============================== */
-body.projekt-seidenkoffer{ background:#fff; color:#000; }
 
-/* Header sichtbar/sticky auf Projektseite */
-body.projekt-seidenkoffer .site-header{
-  position:sticky; top:0; z-index:100;
-  opacity:1 !important; pointer-events:auto !important;
-  background:rgba(255,255,255,0.85);
-  border-bottom:none;
-  backdrop-filter:saturate(120%) blur(6px);
-}
-
-/* Layout: Bild oben (voll), darunter links Beschreibung, rechts Sidebar */
-body.projekt-seidenkoffer main{
-  max-width:1100px; margin:0 auto;
-  padding:100px 20px 60px;   /* Platz unter Header */
-  display:grid;
-  grid-template-columns:1fr 320px;   /* links Inhalt, rechts Sidebar */
-  grid-template-areas:
-    "bild bild"
-    "desc side";
-  gap:32px 40px;
-}
-
-/* Bild oben, 500px breit, mittig */
-body.projekt-seidenkoffer .projekt-bild{
-  grid-area:bild; display:flex; justify-content:center; align-items:center;
-}
-body.projekt-seidenkoffer .projekt-bild img{
-  width:100%; max-width:500px; height:auto; border-radius:8px;
-}
-
-/* Beschreibung links im Blocksatz */
-body.projekt-seidenkoffer .projekt-beschreibung{
-  grid-area:desc; font-size:1rem; line-height:1.6; text-align:justify; hyphens:auto;
-  margin-top:1.15em;
-}
-/* Zeit & Ort größer und fett */
-body.projekt-seidenkoffer .projekt-beschreibung .projekt-datum-ort{
-  font-size:1.2rem; font-weight:bold; margin-top:1.5em;
-}
-
-/* Sidebar rechts – startet auf gleicher Höhe wie Beschreibung */
-body.projekt-seidenkoffer .projekt-sidebar{ grid-area:side; font-size:.95rem; align-self:start; }
-body.projekt-seidenkoffer .projekt-sidebar h2{ font-size:1.1rem; margin:0 0 8px 0; }
-body.projekt-seidenkoffer .projekt-sidebar p{ margin:0 0 6px 0; line-height:1.35; }
-body.projekt-seidenkoffer .projekt-sidebar .logos{
-  display:grid; grid-template-columns:1fr; gap:10px; margin-top:10px;
-}
-body.projekt-seidenkoffer .projekt-sidebar .logos img{
-  max-width:100%; height:auto; max-height:70px; object-fit:contain; display:block; filter:none; opacity:1;
-}
-
-/* ==============================
-   GENERISCHE PROJEKTSEITEN (Phantom/Enthauptung/Orfeo)
-   ============================== */
+/* Header sichtbar auf Projektseiten */
 body.projekt-seite .site-header{
-  position:sticky; top:0; z-index:100;
-  opacity:1; pointer-events:auto;
-  background:rgba(255,255,255,0.85);
-  backdrop-filter:saturate(120%) blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: none;
 }
-body.projekt-seite .projekt-wrap{
-  max-width:1100px; margin:0 auto; padding:100px 20px 60px;
-  display:grid; grid-template-columns:1fr 320px; gap:32px 40px;
-  grid-template-areas:
-    "bild bild"
-    "desc side";
-}
-body.projekt-seite .projekt-bild{ grid-area:bild; display:flex; justify-content:center; }
-body.projekt-seite .projekt-bild img{ max-width:500px; width:100%; height:auto; border-radius:8px; }
-body.projekt-seite .projekt-beschreibung{ grid-area:desc; text-align:justify; hyphens:auto; }
-body.projekt-seite .projekt-beschreibung .projekt-datum-ort{ font-weight:700; margin-top:1.25em; }
-body.projekt-seite .projekt-sidebar{ grid-area:side; align-self:start; }
-body.projekt-seite .projekt-sidebar h2{ font-size:1.1rem; margin:0 0 8px; }
-body.projekt-seite .projekt-sidebar p{ margin:0 0 6px; line-height:1.35; }
-body.projekt-seite .projekt-sidebar .logos{ display:grid; gap:10px; margin-top:10px; }
-body.projekt-seite .projekt-sidebar .logos img{ max-width:100%; max-height:70px; object-fit:contain; }
 
+/* Wrapper (kein Grid!) */
+body.projekt-seite .projekt-wrap{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+  display: block;
+}
+
+/* 1) Full-bleed Hero (nicht abgeschnitten) */
+body.projekt-seite .projekt-hero{
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 80px;
+  margin-bottom: 0;
+}
+body.projekt-seite .projekt-hero img{
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: #fff;
+}
+
+/* 2) Zeichnung unter Hero – fluchtet mit Text */
+body.projekt-seite .projekt-wrap figure{ margin: 0; }
+body.projekt-seite .projekt-drawing{ margin: 0; padding: 0; }
+body.projekt-seite .projekt-drawing img{
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+}
+
+/* 3) Hauptbereich: links Text (breit), rechts Credits (320px) */
+body.projekt-seite .projekt-maingrid{
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  margin-top: 28px;
+  align-items: start; /* Credits oben bündig mit Text */
+}
+body.projekt-seite .content-left .projekt-beschreibung{
+  text-align: justify;
+  hyphens: auto;
+  max-width: none;  /* volle Spaltenbreite */
+}
+body.projekt-seite .content-left .premiere{
+  margin-top: 1.25em;
+  font-size: 1.05rem;
+  line-height: 1.35;
+}
+body.projekt-seite .content-left .premiere .date{ font-weight: 700; }
+body.projekt-seite .content-left .premiere .place{
+  margin-top: .15rem;
+  color: var(--muted);
+}
+body.projekt-seite .projekt-sidebar h2{ font-size: 1.1rem; margin: 0 0 8px; }
+body.projekt-seite .projekt-sidebar p{ margin: 0 0 6px; line-height: 1.35; }
+body.projekt-seite .projekt-sidebar .logos{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+body.projekt-seite .projekt-sidebar .logos img{
+  max-width: 100%;
+  max-height: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 4) Galerie: 3 Spalten, 1:1 Kacheln + Lightbox */
+body.projekt-seite .projekt-galerie{
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+body.projekt-seite .projekt-galerie a{
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+body.projekt-seite .projekt-galerie img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Lightbox */
+body.projekt-seite .lightbox{
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.8);
+  z-index: 1000;
+  padding: 20px;
+}
+body.projekt-seite .lightbox.open{ display: flex; }
+body.projekt-seite .lightbox-content{
+  max-width: min(1200px, 96vw);
+  max-height: 90vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 12px;
+}
+body.projekt-seite .lightbox-content img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #111;
+}
+body.projekt-seite .lightbox-caption{
+  color: #fff;
+  font-size: .95rem;
+  line-height: 1.4;
+  text-align: center;
+}
+body.projekt-seite .lightbox-close,
+body.projekt-seite .lightbox-prev,
+body.projekt-seite .lightbox-next{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.9);
+  border: 0;
+  border-radius: 999px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 0;
+}
+body.projekt-seite .lightbox-close{
+  top: 28px;
+  right: 28px;
+  transform: none;
+}
+body.projekt-seite .lightbox-prev{ left: 20px; }
+body.projekt-seite .lightbox-next{ right: 20px; }
+body.projekt-seite .lightbox-prev::after,
+body.projekt-seite .lightbox-next::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
+  background: #000;
+}
+body.projekt-seite .lightbox-next::after{
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
+}
+body.projekt-seite .lightbox-close::after{
+  content: '×';
+  display: block;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  color: #000;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  body.projekt-seite .projekt-maingrid{ grid-template-columns: 1fr; }
+  body.projekt-seite .projekt-sidebar{ margin-top: 10px; }
+  body.projekt-seite .projekt-galerie{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 560px){
+  body.projekt-seite .projekt-galerie{ grid-template-columns: 1fr; }
+}
 /* ==============================
    PROJEKTE-ÜBERSICHT (2×2 Grid, ohne Innenabstände, mit Fade)
    ============================== */
@@ -546,238 +658,3 @@ body.about .section-title img {
   width: 100%;
   height: auto;
 }
-
-
-/* ==============================
-   GENERISCHE PROJEKTSEITEN – NEUES LAYOUT
-   ============================== */
-
-/* Header sichtbar auf Projektseiten */
-body.projekt-seite .site-header{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  opacity: 1;
-  pointer-events: auto;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: saturate(120%) blur(6px);
-  border-bottom: none;
-}
-
-/* Wrapper für Seiteninhalt (alles außer full-bleed Bereichen) */
-body.projekt-seite .projekt-wrap{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px 60px;
-  display: block;
-}
-
-/* 1) Full-bleed Hero-Bild (nicht abgeschnitten) */
-body.projekt-seite .projekt-hero{
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  margin-top: 80px;
-  margin-bottom: 0;
-}
-body.projekt-seite .projekt-hero img{
-  display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  background: #fff;
-}
-
-/* 2) Zeichnung unter Hero */
-body.projekt-seite .projekt-drawing{
-  margin: 0;    /* kein Abstand oben/unten/links/rechts */
-  padding: 0;
-}
-body.projekt-seite .projekt-drawing img{
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-}
-
-/* 3) Hauptbereich: links Text, rechts Credits/Logos */
-body.projekt-seite .projekt-maingrid{
-  display: grid;
-  grid-template-columns: 1fr 320px; /* linke Spalte so breit wie möglich */
-  gap: 40px;
-  margin-top: 28px;
-  align-items: start; /* Text & Credits gleiche Höhe */
-}
-body.projekt-seite .content-left .projekt-beschreibung{
-  text-align: justify;
-  hyphens: auto;
-  max-width: none;   /* volle Spaltenbreite */
-}
-body.projekt-seite .content-left .premiere{
-  margin-top: 1.25em;
-  font-size: 1.05rem;
-  line-height: 1.35;
-}
-body.projekt-seite .content-left .premiere .date{ font-weight: 700; }
-body.projekt-seite .content-left .premiere .place{
-  margin-top: .15rem;
-  color: var(--muted);
-}
-body.projekt-seite .projekt-sidebar h2{ font-size: 1.1rem; margin: 0 0 8px; }
-body.projekt-seite .projekt-sidebar p{ margin: 0 0 6px; line-height: 1.35; }
-body.projekt-seite .projekt-sidebar .logos{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 10px;
-}
-body.projekt-seite .projekt-sidebar .logos img{
-  max-width: 100%;
-  max-height: 70px;
-  height: auto;
-  object-fit: contain;
-}
-
-/* 4) Galerie: 3 Spalten, 1:1 Kacheln + Lightbox */
-body.projekt-seite .projekt-galerie{
-  margin-top: 36px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 12px;
-}
-body.projekt-seite .projekt-galerie a{
-  display: block;
-  position: relative;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: 8px;
-}
-body.projekt-seite .projekt-galerie img{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Lightbox */
-body.projekt-seite .lightbox{
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,.8);
-  z-index: 1000;
-  padding: 20px;
-}
-body.projekt-seite .lightbox.open{ display: flex; }
-body.projekt-seite .lightbox-content{
-  max-width: min(1200px, 96vw);
-  max-height: 90vh;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 12px;
-}
-body.projekt-seite .lightbox-content img{
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #111;
-}
-body.projekt-seite .lightbox-caption{
-  color: #fff;
-  font-size: .95rem;
-  line-height: 1.4;
-  text-align: center;
-}
-body.projekt-seite .lightbox-close,
-body.projekt-seite .lightbox-prev,
-body.projekt-seite .lightbox-next{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,.9);
-  border: 0;
-  border-radius: 999px;
-  width: 42px;
-  height: 42px;
-  cursor: pointer;
-  font-size: 0;
-}
-body.projekt-seite .lightbox-close{
-  top: 28px;
-  right: 28px;
-  transform: none;
-}
-body.projekt-seite .lightbox-prev{ left: 20px; }
-body.projekt-seite .lightbox-next{ right: 20px; }
-body.projekt-seite .lightbox-prev::after,
-body.projekt-seite .lightbox-next::after{
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
-  background: #000;
-}
-body.projekt-seite .lightbox-next::after{
-  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
-}
-body.projekt-seite .lightbox-close::after{
-  content: '×';
-  display: block;
-  font-size: 28px;
-  line-height: 42px;
-  text-align: center;
-  color: #000;
-}
-
-/* Responsive */
-@media (max-width: 900px){
-  body.projekt-seite .projekt-maingrid{
-    grid-template-columns: 1fr;
-  }
-  body.projekt-seite .projekt-sidebar{ margin-top: 10px; }
-  body.projekt-seite .projekt-galerie{
-    grid-template-columns: repeat(2, minmax(0,1fr));
-  }
-}
-@media (max-width: 560px){
-  body.projekt-seite .projekt-galerie{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Safety: remove default figure margins inside projekt-wrap */
-body.projekt-seite .projekt-wrap figure{
-  margin: 0;
-}
-/* Altes Grid auf .projekt-wrap abschalten */
-body.projekt-seite .projekt-wrap{
-  display:block !important;
-  grid-template-columns:none !important;
-  grid-template-areas:none !important;
-  gap:0 !important;
-}
-
-/* Neues Hauptgrid */
-body.projekt-seite .projekt-maingrid{
-  display:grid !important;
-  grid-template-columns:1fr 320px !important; /* breite Textspalte + Credits */
-  gap:40px !important;
-  margin-top:28px !important;
-  align-items:start !important; /* Credits oben bündig */
-}
-
-/* Zeichnung fluchtet mit Text, kein Zusatzabstand */
-body.projekt-seite .projekt-wrap figure{ margin:0 !important; }
-body.projekt-seite .projekt-drawing{ margin:0 !important; padding:0 !important; }
-
-/* Sicherheit: Hero bleibt vollbreit */
-body.projekt-seite .projekt-hero{ width:100vw !important; margin-left:50% !important; transform:translateX(-50%) !important; margin-top:80px !important; }
-body.projekt-seite .projekt-hero img{ width:100% !important; height:auto !important; object-fit:contain !important; }
-
-/* Text darf volle Spaltenbreite nutzen */
-body.projekt-seite .content-left .projekt-beschreibung{ max-width:none !important; }
