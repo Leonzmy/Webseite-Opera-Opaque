@@ -1192,3 +1192,22 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(1),
 body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   opacity: inherit !important; /* verhindert das Umschalten beim Antippen */
 }
+
+/* Mobile (Touch): Kacheln in Projekte größer darstellen */
+@media (max-width: 768px) {
+  body.projekte .projekte-grid--2x2 a {
+    flex: 1 1 100%;       /* jede Kachel nimmt volle Breite */
+    max-width: 100%;
+  }
+
+  body.projekte .projekte-grid--2x2 {
+    grid-template-columns: 1fr;  /* statt 2 Spalten nur noch 1 */
+    gap: 2rem;                   /* mehr Abstand dazwischen */
+  }
+
+  body.projekte .projekte-grid--2x2 a img {
+    width: 100%;
+    height: auto;
+  }
+}
+
