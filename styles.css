@@ -29,7 +29,6 @@ a:hover,a:focus{ color:#222; }
 /* ==== Video Hintergrund (Frontpage) ==== */
 .frontpage .video-bg{
   position:fixed; inset:0; z-index:1;
-  background:#fff url("bilder/frontpage.jpg") center/cover no-repeat;
 }
 .frontpage .video-bg .video {
   opacity: 0;
