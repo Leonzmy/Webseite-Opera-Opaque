@@ -1082,4 +1082,21 @@ body.kontakt .sr-only{
     height: 50vh !important;        /* Abstandshalter passend */
   }
 }
+/* Mobile: Fixiertes Video, aber nur oberes Viertel sichtbar */
+@media (max-width: 900px){
+  .frontpage .video-bg {
+    position: fixed !important;
+    inset: 0;
+    z-index: 1;
+    height: 100vh; /* Video weiterhin voller Viewport */
+    clip-path: inset(0 0 75% 0); /* nur obere 25% sichtbar */
+  }
+  .frontpage .hero-cover {
+    height: 25vh !important; /* Platzhalter, damit Content unten nicht überlappt */
+  }
+  .frontpage-content {
+    margin-top: 10vh !important; /* Text nach unten verschieben */
+  }
+}
+
 
