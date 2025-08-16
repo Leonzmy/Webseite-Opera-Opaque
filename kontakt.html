@@ -6,36 +6,44 @@
   <title>Kontakt – Opera Opaque</title>
   <meta name="description" content="Kontakt zum Kollektiv Opera Opaque." />
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="/bilder/favicon.png" type="image/png">
 </head>
-<body>
-  <header>
-  <a href="index.html" class="brand">Opera Opaque</a>
-  <nav class="navlinks" aria-label="Hauptnavigation">
-    <a href="index.html">Home</a>
-    <a href="index.html#aktuell-wrapper">Demnächst</a>
-    <a href="index.html#past">Vergangene Projekte</a>
-    <a href="about.html">Über uns</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
-</header>
+<body class="kontakt">
 
+  <!-- Einheitlicher Header wie auf den anderen Seiten -->
+  <header class="site-header">
+    <div class="brand">Opera Opaque</div>
+    <nav class="navlinks" aria-label="Hauptnavigation">
+      <a href="index.html">Home</a>
+      <a href="projekte.html">Projekte</a>
+      <a href="about.html">Über uns</a>
+      <a href="kontakt.html" aria-current="page">Kontakt</a>
+    </nav>
+  </header>
 
   <main>
-    <section id="kontakt" aria-label="Kontakt">
-      <h2 class="section-title">Kontakt</h2>
-      <div class="kontakt-wrap">
+    <!-- Zeichnung statt Überschrift, bündig ohne Rand -->
+    <figure class="kontakt-drawing" aria-label="Kontakt">
+      <img src="bilder/kontakt-drawing.jpg" alt="Kontakt Zeichnung">
+    </figure>
+
+    <!-- Intro + Formular als abgehobene Karte -->
+    <section class="kontakt-wrap" aria-label="Kontaktformular">
+      <div class="kontakt-card">
         <p class="kontakt-intro">
-          Schreib uns eine Nachricht – wir melden uns so schnell wie möglich. Alternativ direkt per Mail:
+          Schreib uns eine Nachricht – wir melden uns so schnell wie möglich.
+          Alternativ direkt per Mail:
           <a class="mail-link" href="mailto:leon.zmelty@gmx.de">leon.zmelty@gmx.de</a>
         </p>
+
         <form id="kontaktForm" class="kontakt-form" novalidate>
           <div class="field">
             <label for="name">Name</label>
             <input class="input" type="text" id="name" name="name" placeholder="Ihr Name" required>
           </div>
           <div class="field">
-            <label for="email">E-Mail</label>
-            <input class="input" type="email" id="email" name="email" placeholder="Ihre E-Mail" required>
+            <label for="email">E‑Mail</label>
+            <input class="input" type="email" id="email" name="email" placeholder="Ihre E‑Mail" required>
           </div>
           <div class="field field-full">
             <label for="betreff">Betreff</label>
@@ -45,10 +53,12 @@
             <label for="message" class="sr-only">Nachricht</label>
             <textarea class="textarea" id="message" name="message" rows="6" placeholder="Ihre Nachricht" required></textarea>
           </div>
+
           <div class="submit-row">
             <button class="btn" type="submit">Senden</button>
             <span class="note">Beim Senden öffnet sich Ihr Mailprogramm.</span>
           </div>
+
           <p id="successMsg" class="success" role="status" aria-live="polite">Vielen Dank! Ihr Mailprogramm wurde geöffnet.</p>
         </form>
       </div>
@@ -60,7 +70,7 @@
   </footer>
 
   <script>
-  (function () {{
+(function () {{
     const form = document.getElementById('kontaktForm');
     const success = document.getElementById('successMsg');
     if (!form) return;
