@@ -65,3 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
   video.addEventListener("timeupdate", onTimeupdate, { passive: true });
   video.addEventListener("error", showHeader, { passive: true });
 });
+
+  }
+});
