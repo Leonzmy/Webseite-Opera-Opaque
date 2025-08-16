@@ -1089,7 +1089,7 @@ body.kontakt .sr-only{
     inset: 0;
     z-index: 1;
     height: 100vh; /* Video weiterhin voller Viewport */
-    clip-path: inset(0 0 50% 0); /* nur obere 25% sichtbar */
+    clip-path: inset(0 0 25% 0); /* nur obere 25% sichtbar */
   }
   .frontpage .hero-cover {
     height: 25vh !important; /* Platzhalter, damit Content unten nicht überlappt */
