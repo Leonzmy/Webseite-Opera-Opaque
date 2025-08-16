@@ -736,3 +736,23 @@ body.projekt-seite .projekt-maingrid {
   margin-top: 0 !important;   /* Abstand entfernen */
 }
 
+/* === Override: Drawing bündig mit Textblock + Credits === */
+body.projekt-seite .projekt-drawing {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.projekt-seite .projekt-drawing img {
+  display: block;
+}
+
+/* Grid ohne Abstand */
+body.projekt-seite .projekt-maingrid {
+  margin-top: 0 !important;
+}
+
+/* Credits-Spalte bündig oben */
+body.projekt-seite .projekt-sidebar {
+  margin-top: 0 !important;
+  align-self: start !important;
+}
+
