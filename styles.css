@@ -816,4 +816,24 @@ body.projekt-seite .projekt-beschreibung strong {
   font-weight: bold !important;
 }
 
+.back-nav {
+  text-align: center;
+  margin: 3em 0 2em;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  background: #222;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.back-button:hover {
+  background: #444;
+}
+
 
