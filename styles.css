@@ -1003,3 +1003,29 @@ body.kontakt .sr-only{
   }
 }
 
+/* JPG-Hintergrund überall entfernen */
+.frontpage .video-bg {
+  background: none !important;         /* entfernt evtl. background-image */
+}
+
+/* Nur Mobile: linke Hälfte des Videos zeigen, konsistente Höhe */
+@media (max-width: 900px){
+  .frontpage .hero-cover{
+    height: 50vh !important;           /* gewünschte Gesamthöhe (anpassbar) */
+  }
+  .frontpage .video-bg{
+    position: relative !important;
+    height: 50vh !important;           /* Container = Video-Höhe */
+    background: none !important;       /* falls noch gesetzt */
+  }
+  .frontpage .video-bg .video{
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: left center !important; /* linke Hälfte im Fokus */
+  }
+}
+
+
