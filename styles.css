@@ -1164,5 +1164,14 @@ body.kontakt .sr-only{
   }
 }
 
+/* TEMP: Desktop-Test für Scroll-Umschaltung auf About */
+body.force-inview .fullwidth-gallery .person.inview .image-default { opacity: 0 !important; }
+body.force-inview .fullwidth-gallery .person.inview .image-hover  { opacity: 1 !important; }
+
+/* Gleiche Transition wie mobil */
+body.force-inview .fullwidth-gallery .person .image-default,
+body.force-inview .fullwidth-gallery .person .image-hover {
+  transition: opacity 1.5s ease-in-out !important;
+}
 
 
