@@ -1011,7 +1011,7 @@ body.kontakt .sr-only{
 /* Mobile: Textblock weiter nach unten */
 @media (max-width: 900px){
   .frontpage-content{
-    margin: 8vh auto 1rem !important; /* mehr Abstand nach oben */
+    margin: 200vh auto 1rem !important; /* mehr Abstand nach oben */
   }
   .right-panel{
     padding-top: 1rem !important;     /* etwas Luft im Panel */
