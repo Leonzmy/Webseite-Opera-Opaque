@@ -761,3 +761,38 @@ body.projekt-seite .projekt-sidebar{
   align-self: start !important;
 }
 
+
+/* ==============================
+   GENERISCHE PROJEKTSEITEN – OVERRIDES v5
+   - Entfernt kollabierende Top-Margins im Textblock
+   - Stellt gleiche Oberkante für Text & Credits her
+   ============================== */
+
+/* Sicherheitsnetz: keine zusätzlichen Ränder am Wrapper/Blöcken */
+body.projekt-seite .projekt-wrap{ padding-top: 0 !important; }
+body.projekt-seite .projekt-drawing{ margin-bottom: 0 !important; }
+
+/* 1) Verhindere Top-Margin-Kollaps im Textblock */
+body.projekt-seite .content-left,
+body.projekt-seite .content-left .projekt-beschreibung{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+/* Wichtig: erstes Kindelement im Text bekommt KEINEN oberen Rand */
+body.projekt-seite .content-left .projekt-beschreibung > *:first-child{
+  margin-top: 0 !important;
+}
+
+/* 2) Sidebar: ebenfalls keinen Top-Rand beim ersten Kindelement */
+body.projekt-seite .projekt-sidebar{
+  margin-top: 0 !important;
+  align-self: start !important;
+}
+body.projekt-seite .projekt-sidebar > *:first-child{
+  margin-top: 0 !important;
+}
+
+/* 3) Grid selbst darf keinen Top-Abstand haben */
+body.projekt-seite .projekt-maingrid{
+  margin-top: 0 !important;
+}
