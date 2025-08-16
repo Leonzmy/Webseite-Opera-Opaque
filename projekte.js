@@ -1,8 +1,10 @@
-// projekte.js — 10%-Scroll -> genau eine Kachel aktiv
+// projekte.js — gleichmäßig verteilter Scroll-Fortschritt
+// Down: kumulativ aktivieren, Up: wieder deaktivieren
 (function () {
   const SELECTOR = '.projekte-grid--2x2 a';
+  const OFFSET = 0; // 0 = pro Abschnitt genau eine weitere Kachel
 
-  // Nur Mobile/Touch (Desktop behält Hover)
+  // Nur Mobile/Touch (Desktop behält :hover)
   const mm = window.matchMedia('(hover: none) and (pointer: coarse)');
   const looksLikeTouch = mm.matches || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
   if (!looksLikeTouch) return;
@@ -10,44 +12,61 @@
   const tiles = Array.from(document.querySelectorAll(SELECTOR));
   if (!tiles.length) return;
 
-  // Config
-  const STEP_PERCENT = 10;   // pro 10 % Scroll ein Schritt
-  const START_AT = 10;       // ab 10 % startet Kachel 1
+  let maxActivatedDown = 0;   // bisher höchster Stand beim Runterscrollen
+  let lastScrollTop = getScrollTop();
 
-  function setActiveIndex(idx) {
-    // idx: 0 = keine aktiv, 1 = erste Kachel, 2 = zweite, ...
-    tiles.forEach((el, i) => {
-      el.classList.toggle('inview', i === (idx - 1));
-    });
+  function getScrollTop() {
+    const doc = document.documentElement;
+    const body = document.body;
+    return window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
   }
 
-  function updateFromScroll() {
+  function getProgressCount() {
     const doc = document.documentElement;
     const body = document.body;
 
-    const scrollTop = window.pageYOffset || doc.scrollTop || body.scrollTop || 0;
-    const clientH = window.innerHeight || doc.clientHeight || 0;
+    const scrollTop = getScrollTop();
+    const clientH   = window.innerHeight || doc.clientHeight || 0;
     const scrollH = Math.max(
       body.scrollHeight, doc.scrollHeight,
       body.offsetHeight, doc.offsetHeight,
       body.clientHeight, doc.clientHeight
     );
 
-    const maxScroll = Math.max(1, scrollH - clientH); // Schutz vor /0
-    const pct = (scrollTop / maxScroll) * 100;        // 0..100
+    const maxScroll = Math.max(1, scrollH - clientH);
+    let p = scrollTop / maxScroll; // 0..1
+    if (p < 0) p = 0;
+    if (p > 1) p = 1;
 
-    // Schrittberechnung:
-    // 0–9% -> stepRaw=0 => idx=0 (keine)
-    // 10–19% -> stepRaw=1 => idx=1 (erste) ...
-    const stepRaw = Math.floor((pct - (START_AT - STEP_PERCENT)) / STEP_PERCENT);
-    let idx = stepRaw; // 0..∞
+    let count = Math.floor(p * tiles.length) + OFFSET; // 0..N
+    if (count < 0) count = 0;
+    if (count > tiles.length) count = tiles.length;
+    return count;
+  }
 
-    // Begrenzen: 0..tiles.length
-    if (idx < 0) idx = 0;
-    if (idx > tiles.length) idx = tiles.length;
+  function applyActive(count) {
+    tiles.forEach((el, i) => {
+      el.classList.toggle('inview', i < count);
+    });
+  }
 
-    // Genau eine Kachel aktiv (oder keine, wenn idx=0)
-    setActiveIndex(idx);
+  function updateFromScroll() {
+    const currentTop = getScrollTop();
+    const scrollingDown = currentTop > lastScrollTop;
+    const progressCount = getProgressCount();
+
+    let activeCount;
+    if (scrollingDown) {
+      // Beim Runterscrollen nie weniger aktiv als bisher
+      if (progressCount > maxActivatedDown) maxActivatedDown = progressCount;
+      activeCount = maxActivatedDown;
+    } else {
+      // Beim Hochscrollen Kacheln nach Position zurücknehmen
+      activeCount = Math.min(progressCount, maxActivatedDown);
+    }
+
+    applyActive(activeCount);
+    lastScrollTop = currentTop;
   }
 
   // rAF-Throttle
