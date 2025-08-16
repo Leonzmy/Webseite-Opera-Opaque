@@ -1011,7 +1011,7 @@ body.kontakt .sr-only{
 /* Mobile: Textblock weiter nach unten */
 @media (max-width: 900px){
   .frontpage-content{
-    margin: 35vh auto 1rem !important; /* mehr Abstand nach oben */
+    margin: 40vh auto 1rem !important; /* mehr Abstand nach oben */
   }
   .right-panel{
     padding-top: 1rem !important;     /* etwas Luft im Panel */
@@ -1067,7 +1067,7 @@ body.kontakt .sr-only{
 @media (max-width: 900px){
   .frontpage .video-bg {
     position: relative !important;  /* statt fixed */
-    height: 25vh !important;        /* nur 25% der Höhe */
+    height: 50vh !important;        /* nur 25% der Höhe */
     overflow: hidden;               /* alles außerhalb abschneiden */
   }
   .frontpage .video-bg .video {
@@ -1079,7 +1079,7 @@ body.kontakt .sr-only{
     object-position: left center !important;
   }
   .frontpage .hero-cover {
-    height: 25vh !important;        /* Abstandshalter passend */
+    height: 50vh !important;        /* Abstandshalter passend */
   }
 }
 
