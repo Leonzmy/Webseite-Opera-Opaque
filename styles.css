@@ -875,22 +875,4 @@ body.projekt-seite .projekt-beschreibung strong {
   }
 }
 
-@media (max-width: 900px){
-  html, body{ overflow-x: hidden; }
-  .frontpage .video-bg{
-    position: fixed; inset: 0; width: 100%; height: 100%;
-    overflow: hidden; z-index: 1;
-  }
-  .frontpage .video-bg .video{
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    object-fit: cover; object-position: left center;
-    transform: none !important;
-  }
-  .frontpage .frontpage-content{
-    background: rgba(255,255,255,0.6);
-    padding: 1rem 1.25rem; border-radius: 8px;
-    max-width: 90%; margin: 1rem auto;
-    position: relative; z-index: 5;
-  }
-}
 
