@@ -23,11 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // sofort versuchen
   tryPlay();
 
-  // beim ersten User-Event nochmal versuchen
-  ["touchstart", "pointerdown", "click"].forEach(ev => {
-    window.addEventListener(ev, tryPlay, { once: true, passive: true });
-  });
-
   // falls Tab zurückkehrt → nochmal probieren, solange Video nicht fertig
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden && video.paused && !videoFinished) {
