@@ -796,3 +796,10 @@ body.projekt-seite .projekt-sidebar > *:first-child{
 body.projekt-seite .projekt-maingrid{
   margin-top: 0 !important;
 }
+
+body.projekt-seite .projekt-sidebar p strong {
+  display: inline-block;
+  min-width: 90px;   /* sorgt für saubere Ausrichtung */
+  font-weight: bold;
+}
+
