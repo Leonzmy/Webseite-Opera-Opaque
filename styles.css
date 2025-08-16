@@ -1002,16 +1002,16 @@ body.kontakt .sr-only{
   .frontpage .video-bg .video{
     object-fit: cover !important;
     object-position: left center !important;
-    height: 25vh !important;   /* 50% kleiner als zuvor */
+    height: 12vh !important;   /* 50% kleiner als zuvor */
   }
   .frontpage .hero-cover{
-    height: 25vh !important;   /* Platzhalter passend zum Video */
+    height: 12vh !important;   /* Platzhalter passend zum Video */
   }
 }
 /* Mobile: Textblock weiter nach unten */
 @media (max-width: 900px){
   .frontpage-content{
-    margin: 200vh auto 1rem !important; /* mehr Abstand nach oben */
+    margin: 20vh auto 1rem !important; /* mehr Abstand nach oben */
   }
   .right-panel{
     padding-top: 1rem !important;     /* etwas Luft im Panel */
