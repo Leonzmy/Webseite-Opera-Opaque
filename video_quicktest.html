@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Quick Test</title>
+  <style>
+    html,body{margin:0;height:100%;}
+    .wrap{position:relative;height:100vh;overflow:hidden;background:#000;}
+    video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s;}
+    video.playing{opacity:1;}
+    .fallback{
+      position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+      color:#fff;font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .btn{background:#fff;color:#000;border:0;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer}
+    .log{position:fixed;left:0;right:0;bottom:0;max-height:35vh;overflow:auto;background:#111;color:#0f0;font:12px/1.3 monospace;padding:8px;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <video id="vid" autoplay muted playsinline webkit-playsinline loop preload="auto">
+      <source src="bilder/frontpage.mp4" type="video/mp4">
+    </video>
+    <div class="fallback"><button class="btn" id="playBtn">► Play</button></div>
+  </div>
+  <pre class="log" id="log"></pre>
+  <script>
+    const v = document.getElementById('vid');
+    const logEl = document.getElementById('log');
+    const playBtn = document.getElementById('playBtn');
+    const log = (msg) => { console.log(msg); logEl.textContent += msg + "\\n"; }
+
+    const canMp4 = !!document.createElement('video').canPlayType('video/mp4; codecs=\"avc1.42E01E, mp4a.40.2\"');
+    log('canPlayType H.264/AAC: ' + (canMp4 ? 'yes' : 'no'));
+
+    ['loadedmetadata','loadeddata','canplay','canplaythrough','playing','pause','ended','error','stalled','waiting','suspend'].forEach(ev=>{
+      v.addEventListener(ev, () => {
+        if(ev==='playing') v.classList.add('playing');
+        if(ev==='error') {
+          const e = v.error;
+          log(`event: ${ev} code:${e && e.code} networkState:${v.networkState} readyState:${v.readyState}`);
+        } else {
+          log(`event: ${ev} networkState:${v.networkState} readyState:${v.readyState} t=${v.currentTime.toFixed(2)}/${isFinite(v.duration)?v.duration.toFixed(2):'?'}`);
+        }
+      });
+    });
+
+    const tryPlay = () => {
+      v.muted = true;
+      let p = v.play();
+      if (p && p.catch) p.catch(err => log('play() rejected: ' + err));
+    };
+
+    // attempt autoplay + user gesture fallback
+    tryPlay();
+    ['touchstart','pointerdown','click','scroll'].forEach(ev => {
+      window.addEventListener(ev, tryPlay, { once:true, passive:true });
+    });
+
+    playBtn.addEventListener('click', tryPlay);
+  </script>
+</body>
+</html>
