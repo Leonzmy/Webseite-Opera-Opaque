@@ -1,11 +1,12 @@
-// about.js — 4 Kacheln: runter = kumulativ, hoch = zurücknehmen (nur Mobile/Touch)
+// about.js — 4 Kacheln: runter = kumulativ, hoch = zurücknehmen (robust für Android)
 (function () {
   const SELECTOR = '.fullwidth-gallery .person';
 
-  // Nur Mobile/Touch
-  const mm = window.matchMedia('(hover: none) and (pointer: coarse)');
-  const looksLikeTouch = mm.matches || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
-  if (!looksLikeTouch) return;
+  // Touch-Erkennung (Android-sicher) + Body-Flag setzen
+  const isTouch = (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+                  window.matchMedia('(pointer: coarse)').matches;
+  if (!isTouch) return;
+  document.body.classList.add('touch');
 
   const tiles = Array.from(document.querySelectorAll(SELECTOR));
   if (!tiles.length) return;
@@ -24,7 +25,7 @@
     const scrollH   = Math.max(b.scrollHeight, d.scrollHeight, b.offsetHeight, d.offsetHeight, b.clientHeight, d.clientHeight);
     const maxScroll = Math.max(1, scrollH - clientH);
     const p = Math.min(1, Math.max(0, scrollTop / maxScroll)); // 0..1
-    let count = Math.floor(p * tiles.length); // 0..N
+    let count = Math.floor(p * tiles.length); // 0..N (N=4)
     if (count < 0) count = 0;
     if (count > tiles.length) count = tiles.length;
     return count;
@@ -36,6 +37,7 @@
     const currentTop = getScrollTop();
     const scrollingDown = currentTop > lastScrollTop;
     const progressCount = getProgressCount();
+
     let activeCount;
     if (scrollingDown) {
       if (progressCount > maxActivatedDown) maxActivatedDown = progressCount; // kumulativ
@@ -46,14 +48,17 @@
     applyActive(activeCount);
     lastScrollTop = currentTop;
   }
+
   let ticking = false;
   function onScrollResize() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => { updateFromScroll(); ticking = false; });
   }
+
   window.addEventListener('scroll', onScrollResize, { passive: true });
   window.addEventListener('resize', onScrollResize, { passive: true });
   window.addEventListener('orientationchange', onScrollResize);
+
   updateFromScroll();
 })();
