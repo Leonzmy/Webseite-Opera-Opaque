@@ -1,17 +1,26 @@
-// projekte.js
+// projekte.js (robust v2)
 (function () {
-  // Nur auf der Projekte-Seite laufen
-  if (!document.body.classList.contains('projekte')) return;
+  // OPTIONAL: Nur auf Projekte-Seite laufen lassen (auskommentieren, wenn unsicher)
+//  if (!document.body.classList.contains('projekte')) return;
 
-  // Nur Mobile: Hover gibt's nicht, Eingabe ist "coarse" (Finger)
-  const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-  if (!isMobile) return;
+  // Mobile-/Touch-Heuristik (breiter gefasst: MatchMedia ODER maxTouchPoints)
+  const mm = window.matchMedia('(hover: none) and (pointer: coarse)');
+  const looksLikeTouch = mm.matches || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+  if (!looksLikeTouch) {
+    console.debug('[projekte.js] skip: kein Touch/Mobile erkannt');
+    return;
+  }
 
   const tiles = document.querySelectorAll('.projekte-grid--2x2 a');
+  if (!tiles.length) {
+    console.warn('[projekte.js] keine Kacheln gefunden: .projekte-grid--2x2 a');
+    return;
+  }
 
-  // Fallback: wenn kein IntersectionObserver verfügbar -> alle sichtbar
+  // Fallback ohne IO → alles sichtbar
   if (!('IntersectionObserver' in window)) {
     tiles.forEach(el => el.classList.add('inview'));
+    console.debug('[projekte.js] IO fehlt → alle Kacheln inview');
     return;
   }
 
@@ -30,4 +39,18 @@
   });
 
   tiles.forEach(el => io.observe(el));
+
+  // Initialprüfung: Elemente, die beim Laden schon sichtbar sind, sofort markieren
+  const initialCheck = () => {
+    tiles.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const visible = r.top < vh * 0.65 && r.bottom > vh * 0.15;
+      if (visible) el.classList.add('inview');
+    });
+  };
+  initialCheck();
+  window.addEventListener('resize', initialCheck, { passive: true });
+
+  console.debug('[projekte.js] aktiv: Mobile-Inview-Swap läuft für', tiles.length, 'Kacheln');
 })();
