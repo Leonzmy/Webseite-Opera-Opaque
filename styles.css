@@ -1010,3 +1010,39 @@ body.kontakt .sr-only{
     object-position: left center !important;
   }
 }
+
+
+/* ==============================
+   MOBILE VIDEO – FORCE VISIBLE & LEFT-FOCUSED
+   ============================== */
+@media (max-width: 900px){
+  /* 1) Container bekommt feste Höhe und Position */
+  .frontpage .hero-cover{
+    position: relative !important;
+    height: 50vh !important;              /* anpassen (z.B. 60vh), falls größer gewünscht */
+  }
+
+  /* 2) Videolayer: füllt den Container, kein Hintergrundbild */
+  .frontpage .video-bg{
+    position: absolute !important;
+    inset: 0 !important;
+    background: none !important;          /* JPG/Pattern vollständig entfernen */
+    overflow: hidden !important;
+    z-index: 1 !important;
+  }
+  .frontpage .video-bg::after{
+    display: none !important;             /* evtl. Overlay entfernen */
+  }
+
+  /* 3) Video: sichtbar & links fokussiert (überstimmt evtl. opacity:0) */
+  .frontpage .video-bg .video{
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: left center !important;
+    opacity: 1 !important;                /* überschreibt Fade-Out-Regeln */
+    visibility: visible !important;
+  }
+}
+
