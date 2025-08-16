@@ -1,11 +1,18 @@
 // about.js — 4 Kacheln: runter = kumulativ, hoch = zurücknehmen
 (function () {
-  const SELECTOR = '.fullwidth-gallery .person';
-  const FORCE_ENABLE = true;   // <<< zum Testen am Desktop; nach Erfolg auf false setzen!
+  const SELECTOR = '.about-gallery.fullwidth-gallery .person, .fullwidth-gallery .person';
+  const FORCE_ENABLE = true;   // <<< Desktop-Test: nach erfolgreichem Test wieder auf false!
 
-  // Mobile-/Touch-Erkennung (oder FORCE)
+  // Touch-Erkennung (oder FORCE)
   const mm = window.matchMedia('(hover: none) and (pointer: coarse)');
   const looksLikeTouch = mm.matches || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
+
+  // Body-Flag für Desktop-Test setzen/entfernen
+  if (FORCE_ENABLE && !looksLikeTouch) {
+    document.body.classList.add('force-inview');
+  } else {
+    document.body.classList.remove('force-inview');
+  }
   if (!looksLikeTouch && !FORCE_ENABLE) return;
 
   const tiles = Array.from(document.querySelectorAll(SELECTOR));
@@ -26,8 +33,7 @@
     const scrollH   = Math.max(b.scrollHeight, d.scrollHeight, b.offsetHeight, d.offsetHeight, b.clientHeight, d.clientHeight);
     const maxScroll = Math.max(1, scrollH - clientH);
     const p = Math.min(1, Math.max(0, scrollTop / maxScroll)); // 0..1
-    // Bei 4 Kacheln: 0..4 gleichmäßig verteilt
-    let count = Math.floor(p * tiles.length);
+    let count = Math.floor(p * tiles.length);                  // 0..N
     if (count < 0) count = 0;
     if (count > tiles.length) count = tiles.length;
     return count;
@@ -54,7 +60,6 @@
     lastScrollTop = currentTop;
   }
 
-  // rAF-Throttle
   let ticking = false;
   function onScrollResize() {
     if (ticking) return;
@@ -65,5 +70,6 @@
   window.addEventListener('scroll', onScrollResize, { passive: true });
   window.addEventListener('resize', onScrollResize, { passive: true });
   window.addEventListener('orientationchange', onScrollResize);
+
   updateFromScroll();
 })();
