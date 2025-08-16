@@ -1,72 +1,51 @@
-// projekte.js (robust v2)
+// projekte.js
 (function () {
-  // OPTIONAL: Nur auf Projekte-Seite laufen lassen (auskommentieren, wenn unsicher)
-//  if (!document.body.classList.contains('projekte')) return;
+  // Falls du die Body-Klasse sicher hast, kannst du das einkommentieren:
+  // if (!document.body.classList.contains('projekte')) return;
 
-  // Mobile-/Touch-Heuristik (breiter gefasst: MatchMedia ODER maxTouchPoints)
+  // Mobile-/Touch-Erkennung
   const mm = window.matchMedia('(hover: none) and (pointer: coarse)');
   const looksLikeTouch = mm.matches || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0);
   if (!looksLikeTouch) {
-    console.debug('[projekte.js] skip: kein Touch/Mobile erkannt');
+    console.debug('[projekte.js] nicht auf Mobile → Script beendet');
     return;
   }
 
   const tiles = document.querySelectorAll('.projekte-grid--2x2 a');
   if (!tiles.length) {
-    console.warn('[projekte.js] keine Kacheln gefunden: .projekte-grid--2x2 a');
+    console.warn('[projekte.js] keine Projekt-Kacheln gefunden');
     return;
   }
 
-  // Fallback ohne IO → alles sichtbar
+  // Fallback: ohne IO alles sofort sichtbar
   if (!('IntersectionObserver' in window)) {
     tiles.forEach(el => el.classList.add('inview'));
-    console.debug('[projekte.js] IO fehlt → alle Kacheln inview');
+    console.debug('[projekte.js] IntersectionObserver fehlt → alle Kacheln inview');
     return;
   }
 
- const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const rect = entry.target.getBoundingClientRect();
-      const vh = window.innerHeight || document.documentElement.clientHeight;
+  // Neuer IO: prüft, ob Kachel-Mitte in oberer Hälfte liegt
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const rect = entry.target.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const elemMid = rect.top + rect.height / 2;
 
-      // Mitte des Elements
-      const elemMid = rect.top + rect.height / 2;
-
-      // Bedingung: Mitte liegt in oberer Bildschirmhälfte
-      if (elemMid < vh / 2) {
-        entry.target.classList.add('inview');
+        if (elemMid < vh / 2) {
+          entry.target.classList.add('inview');
+        } else {
+          entry.target.classList.remove('inview');
+        }
       } else {
         entry.target.classList.remove('inview');
       }
-    } else {
-      entry.target.classList.remove('inview');
-    }
-  });
-}, {
-  threshold: [0] // nur grobe Sichtbarkeitsprüfung, Details machen wir selbst
-});
-
+    });
   }, {
-    root: null,
-    rootMargin: '0px 0px -10% 0px',
-    threshold: [0, 0.35, 0.6]
+    threshold: [0] // nur grob prüfen, Rest machen wir mit getBoundingClientRect
   });
 
   tiles.forEach(el => io.observe(el));
 
-  // Initialprüfung: Elemente, die beim Laden schon sichtbar sind, sofort markieren
-  const initialCheck = () => {
-    tiles.forEach(el => {
-      const r = el.getBoundingClientRect();
-      const vh = window.innerHeight || document.documentElement.clientHeight;
-      const visible = r.top < vh * 0.65 && r.bottom > vh * 0.15;
-      if (visible) el.classList.add('inview');
-    });
-  };
-  initialCheck();
-  window.addEventListener('resize', initialCheck, { passive: true });
-
-  console.debug('[projekte.js] aktiv: Mobile-Inview-Swap läuft für', tiles.length, 'Kacheln');
+  console.debug('[projekte.js] aktiv für', tiles.length, 'Kacheln');
 })();
-
