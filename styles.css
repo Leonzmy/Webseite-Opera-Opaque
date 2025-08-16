@@ -1025,6 +1025,18 @@ body.kontakt .sr-only{
     position: relative !important;
     height: 50svh !important; /* sichere Viewport-Höhe (iOS/Android) */
   }
+   @media (max-width: 900px){
+  /* Video-Höhe nur 50% vom Screen */
+  .frontpage .hero-cover {
+    height: 50vh !important;  /* 50% Bildschirmhöhe */
+  }
+
+  /* Abstand unterhalb des Videos vergrößern */
+  .frontpage .hero-cover {
+    margin-bottom: 200% !important; /* Abstand = doppelt so hoch wie Block */
+  }
+}
+
 
   /* Videolayer füllt den Hero, kein Hintergrundbild/Overlay */
   .frontpage .video-bg{
