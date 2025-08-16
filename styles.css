@@ -997,15 +997,27 @@ body.kontakt .sr-only{
     height: 50vh !important;   /* nur halbe Höhe vom Viewport */
   }
 }
+/* Mobile: Video nur noch 25vh (statt 50vh) */
 @media (max-width: 900px){
-  .frontpage .hero-cover {
-    height: 50vh !important;   /* halbe Bildschirmhöhe */
-  }
-  .frontpage .video-bg .video {
+  .frontpage .video-bg .video{
     object-fit: cover !important;
     object-position: left center !important;
+    height: 25vh !important;   /* 50% kleiner als zuvor */
+  }
+  .frontpage .hero-cover{
+    height: 25vh !important;   /* Platzhalter passend zum Video */
   }
 }
+/* Mobile: Textblock weiter nach unten */
+@media (max-width: 900px){
+  .frontpage-content{
+    margin: 8vh auto 1rem !important; /* mehr Abstand nach oben */
+  }
+  .right-panel{
+    padding-top: 1rem !important;     /* etwas Luft im Panel */
+  }
+}
+
 
 /* ==============================================
    FRONT PAGE – MOBILE VIDEO FIX (≤ 900px)
