@@ -200,7 +200,7 @@ body.projekte .site-header {
 
 /* Weniger Abstand über der Überschrift/Grafik */
 body.projekte .projekte-wrap {
-  padding-top: 60px;
+  padding-top: 0;
 }
 
 /* Titelgrafik links, leicht eingerückt */
