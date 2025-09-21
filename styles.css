@@ -1211,3 +1211,24 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   }
 }
 
+/* ---- Mehr Infos -----
+/* Link-Style für "Mehr Infos" */
+.more-info {
+  margin-top: 1rem;
+}
+
+.more-info a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #222;   /* dunkler Hintergrund */
+  color: #fff;              /* weiße Schrift */
+  text-decoration: none;    /* Unterstreichung weg */
+  border-radius: 0.5rem;    /* abgerundete Ecken */
+  transition: background-color 0.3s ease;
+}
+
+.more-info a:hover,
+.more-info a:focus {
+  background-color: #444;   /* beim Hover etwas heller */
+}
+
