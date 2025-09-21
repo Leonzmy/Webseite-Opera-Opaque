@@ -895,7 +895,12 @@ body.projekt-seite .projekt-beschreibung strong {
   margin: 1rem auto;  /* etwas Abstand oben/unten */
 }
 
-
+/* Auf größeren Screens Hintergrund wieder entfernen, wenn gewünscht */
+@media (min-width: 900px) {
+  .frontpage-content {
+    background: none;
+  }
+}
 
 /* Mobile: Textbereich ist nicht mehr rechts → Overlay über ganze Breite legen (oder anpassen nach Wunsch) */
 @media (max-width: 900px){
