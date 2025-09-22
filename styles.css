@@ -1319,3 +1319,9 @@ a.btn-cta {
 a.btn-cta:hover, a.btn-cta:focus {
   background-color: #444;
 }
+
+/* Trailer etwas tiefer setzen */
+.trailer {
+  margin-top: 2rem; /* statt 1rem, z.B. doppelt so viel Abstand */
+}
+
