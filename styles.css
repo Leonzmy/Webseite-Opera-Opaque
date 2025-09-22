@@ -1261,3 +1261,45 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   border: 0 !important;
   position: relative !important;
 }
+
+/* ---- Trailer -----
+/* Link-Style für "Mehr Infos" */
+.trailer {
+  margin-top: 1rem;
+}
+
+.trailer {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #222;   /* dunkler Hintergrund */
+  color: #fff;              /* weiße Schrift */
+  text-decoration: none;    /* Unterstreichung weg */
+  border-radius: 0.5rem;    /* abgerundete Ecken */
+  transition: background-color 0.3s ease;
+}
+
+.trailer a:hover,
+.trailer a:focus {
+  background-color: #444;   /* beim Hover etwas heller */
+}
+
+/* ---- Pressestimmmen -----
+/* Link-Style für "Mehr Infos" */
+.press {
+  margin-top: 1rem;
+}
+
+.press {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #222;   /* dunkler Hintergrund */
+  color: #fff;              /* weiße Schrift */
+  text-decoration: none;    /* Unterstreichung weg */
+  border-radius: 0.5rem;    /* abgerundete Ecken */
+  transition: background-color 0.3s ease;
+}
+
+.press a:hover,
+.press a:focus {
+  background-color: #444;   /* beim Hover etwas heller */
+}
