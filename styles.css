@@ -1488,7 +1488,7 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !impo
     height: 100% !important;
     width: auto !important;
     transform-origin: left center !important; /* Skalierung vom linken Rand */
-    transform: scale(0.25) !important;         /* auf 50% verkleinern */
+    transform: scale(0.5) !important;         /* auf 50% verkleinern */
     object-fit: contain !important;           /* Proportionen wahren */
     object-position: left center !important;
   }
