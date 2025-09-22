@@ -1232,3 +1232,20 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   background-color: #444;   /* beim Hover etwas heller */
 }
 
+/* ===========================================
+   Mobile: Text nicht im Blocksatz + Randabstand
+   =========================================== */
+@media (max-width: 900px) {
+  body.projekt-seite .content-left .projekt-beschreibung {
+    text-align: left;     /* kein Blocksatz */
+    hyphens: none;        /* Silbentrennung aus */
+    padding: 0 1rem;      /* Abstand links/rechts */
+  }
+
+  body.projekt-seite .content-left .projekt-beschreibung p {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+
