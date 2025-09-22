@@ -1281,7 +1281,7 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
 }
 
 /* Pressestimmen-Button */
-.pressestimmen a {
+.press a {
   display: inline-block;
   background-color: #222;
   color: #fff;
