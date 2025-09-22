@@ -1334,3 +1334,38 @@ body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung > 
 body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar{ margin-top: 0 !important; align-self: start !important; }
 body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar > *:first-child{ margin-top: 0 !important; }
 body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !important; }
+
+
+/* ===========================================
+   Mobile (≤900px): nur linke 50% des Videos zeigen
+   =========================================== */
+@media (max-width: 900px){
+  /* Hero bleibt voll hoch, Video bleibt darunter fix */
+  .frontpage .hero-cover{
+    height: 100vh !important;
+  }
+
+  /* Videolayer füllt den Viewport und wird rechts halb abgeschnitten */
+  .frontpage .video-bg{
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
+    clip-path: inset(0 50% 0 0) !important;  /* rechte Hälfte ausblenden */
+    background: none !important;
+  }
+
+  .frontpage .video-bg .video{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: left center !important; /* Fokus bleibt links */
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Option: Frontpage-Text ohne extra Box-Hintergrund */
+  .frontpage-content{
+    background: none !important; /* falls die weiße Box stört */
+  }
+}
