@@ -1339,33 +1339,42 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !impo
 /* ===========================================
    Mobile (≤900px): nur linke 50% des Videos zeigen
    =========================================== */
-@media (max-width: 900px){
-  /* Hero bleibt voll hoch, Video bleibt darunter fix */
-  .frontpage .hero-cover{
-    height: 100vh !important;
-  }
 
-  /* Videolayer füllt den Viewport und wird rechts halb abgeschnitten */
+/* ===========================================
+   MOBILE FRONT PAGE – Vollbild, links fokussiert
+   =========================================== */
+@media (max-width: 900px){
+  /* Videolayer füllt den kompletten Viewport */
   .frontpage .video-bg{
     position: fixed !important;
     inset: 0 !important;
     z-index: 0 !important;
     overflow: hidden !important;
-    clip-path: inset(0 50% 0 0) !important;  /* rechte Hälfte ausblenden */
+    clip-path: none !important;          /* entfernt das Halb-Viewport-Clipping */
     background: none !important;
   }
+  .frontpage .video-bg::after{ display: none !important; } /* kein Overlay */
 
+  /* Video selbst: cover + linker Fokus = linker Ausschnitt des Videos */
   .frontpage .video-bg .video{
+    display: block !important;
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
-    object-position: left center !important; /* Fokus bleibt links */
+    object-fit: cover !important;        /* füllt ohne Ränder */
+    object-position: left center !important; /* sichtbarer Ausschnitt: links */
     opacity: 1 !important;
     visibility: visible !important;
   }
 
-  /* Option: Frontpage-Text ohne extra Box-Hintergrund */
+  /* Hero auf volle Höhe, damit nichts „darunterrutscht“ */
+  .frontpage .hero-cover{
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Optional: falls eine weiße Box über dem Video lag */
   .frontpage-content{
-    background: none !important; /* falls die weiße Box stört */
+    background: none !important;
   }
 }
