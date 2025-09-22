@@ -1500,5 +1500,52 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !impo
   }
 }
 
+/* ===========================================
+   MOBIL (Index): Textfeld mit weißem, halbtransparentem Hintergrund
+   =========================================== */
+@media (max-width: 900px){
+  /* Stelle sicher, dass der Text-Container über dem Video liegt */
+  .frontpage-content{
+    position: relative;
+    z-index: 5;
+  }
+
+  /* Box-Optik für den Textbereich */
+  .frontpage-content,
+  .frontpage .right-panel .right-content{
+    background: rgba(255,255,255,0.85);   /* halbtransparentes Weiß */
+    backdrop-filter: saturate(120%) blur(4px); /* dezent: hebt Text von Video ab */
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+  }
+
+  /* etwas Luft außen herum */
+  .frontpage .right-panel{
+    padding: 2rem 1.25rem;
+  }
+}
+
+/* ===========================================
+   DESKTOP: Header rechts-zentriert (ohne "Opera Opaque"/Brand)
+   =========================================== */
+@media (min-width: 900px){
+  /* Der Header bleibt volle Breite, aber Inhalt wird
+     in der rechten Bildschirmhälfte zentriert */
+  .site-header{
+    justify-content: center;   /* Inhalt zentrieren */
+    padding-left: 50vw;        /* … innerhalb der rechten Hälfte */
+  }
+
+  /* Optional: Brand ausblenden, wenn "Opera Opaque" entfernt wurde */
+  .site-header .brand{
+    display: none;
+  }
+
+  /* Links im Header leicht zusammenrücken */
+  .site-header .navlinks a{
+    margin: 0 .125rem;
+  }
+}
 
 
