@@ -1395,12 +1395,16 @@ a.btn-cta {
 .premiere .pressestimmen a:hover,
 .premiere .trailer a:hover { background: #444 !important; }
 
-/* Feinjustierung: gleicher Abstand oben/unten */
+/* Buttons: symmetrisches Padding */
 .premiere .pressestimmen a,
 .premiere .trailer a {
-  line-height: 1.2 !important;   /* nicht so gedrungen wie 1.0 */
+  display: block !important;
   padding-top: 0.5rem !important;
-  padding-bottom: 0rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-left: 1.2rem !important;
+  padding-right: 1.2rem !important;
+  line-height: 1.2 !important;   /* neutrale Zeilenhöhe */
 }
+
 
 
