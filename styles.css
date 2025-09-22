@@ -1395,16 +1395,30 @@ a.btn-cta {
 .premiere .pressestimmen a:hover,
 .premiere .trailer a:hover { background: #444 !important; }
 
-/* Buttons: symmetrisches Padding */
+
+/* ===========================================
+   CTA FLEX-CENTER (symmetrisch, identische Höhe)
+   =========================================== */
 .premiere .pressestimmen a,
 .premiere .trailer a {
-  display: block !important;
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
-  padding-left: 1.2rem !important;
-  padding-right: 1.2rem !important;
-  line-height: 1.2 !important;   /* neutrale Zeilenhöhe */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 2.5rem !important;     /* feste Höhe */
+  padding: 0 1.2rem !important;      /* nur links/rechts */
+  line-height: 1.2 !important;
 }
 
 
-
+/* ===========================================
+   CTA SYMMETRY: exakte vertikale Zentrierung
+   =========================================== */
+.premiere .pressestimmen a,
+.premiere .trailer a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 1.2rem !important;   /* nur seitlich Padding */
+  height: 2.6rem !important;      /* feste Gesamthöhe (symmetrisch) */
+  line-height: 1 !important;      /* kein Einfluss auf Höhe */
+}
