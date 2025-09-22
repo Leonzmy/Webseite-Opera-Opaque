@@ -1283,6 +1283,10 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   background-color: #444;   /* beim Hover etwas heller */
 }
 
+/* Trailer etwas tiefer setzen */
+.trailer {
+  margin-top: 2rem; /* statt 1rem, z.B. doppelt so viel Abstand */
+}
 
 
 /* ===========================================
