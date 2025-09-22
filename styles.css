@@ -1248,4 +1248,23 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   }
 }
 
+/* ===========================================
+   Mobile: Kein Blocksatz + Randabstand
+   für Projekt- und About-Seiten
+   =========================================== */
+@media (max-width: 900px) {
+  /* Projektseiten */
+  body.projekt-seite .content-left .projekt-beschreibung {
+    text-align: left;     /* kein Blocksatz */
+    hyphens: none;        /* Silbentrennung aus */
+    padding: 0 1rem;      /* Abstand links/rechts */
+  }
+
+  /* Über uns */
+  body.about .about-intro {
+    text-align: left;     /* kein Blocksatz */
+    hyphens: none;        /* Silbentrennung aus */
+    padding: 0 1rem;      /* Abstand links/rechts */
+  }
+}
 
