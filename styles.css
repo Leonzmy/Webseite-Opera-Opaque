@@ -1262,9 +1262,9 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
 
   /* Über uns */
   body.about .about-intro {
-    text-align: left;     /* kein Blocksatz */
+    text-align: justify;     /* kein Blocksatz */
     hyphens: none;        /* Silbentrennung aus */
-    padding: 0 1rem;      /* Abstand links/rechts */
+    padding: 0 2rem;      /* Abstand links/rechts */
   }
 }
 
