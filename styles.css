@@ -1508,3 +1508,35 @@ a.btn-cta {
   display: none !important;
 }
 
+
+
+
+/* PHANTOM – Sidebar bündig oben + alle Top-Abstände neutralisieren */
+body.projekt-seite .projekt-maingrid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;             /* Sidebar startet oben */
+  margin-top: 0 !important;       /* kein Extra-Top-Abstand */
+}
+
+/* Kollabierende Top-Margins verhindern */
+body.projekt-seite .content-left,
+body.projekt-seite .content-left .projekt-beschreibung,
+body.projekt-seite .projekt-sidebar {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+body.projekt-seite .content-left .projekt-beschreibung > *:first-child,
+body.projekt-seite .projekt-sidebar > *:first-child {
+  margin-top: 0 !important;       /* erstes Element ohne oberen Rand */
+}
+
+/* Hero/Drawing ohne Zusatzabstände direkt darüber */
+body.projekt-seite .projekt-hero,
+body.projekt-seite .projekt-drawing {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.projekt-seite .projekt-wrap { padding-top: 0 !important; }
+
