@@ -1450,3 +1450,61 @@ a.btn-cta {
   border: none !important;
 }
 
+/* --- CTAs fixen: identische Höhe in allen Zuständen + keine Deko --- */
+.premiere .pressestimmen a,
+.premiere .trailer a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 2.6rem !important;          /* feste, identische Gesamthöhe */
+  padding: 0 1.2rem !important;       /* nur seitlich, oben/unten = 0 */
+  line-height: 1 !important;          /* neutral, beeinflusst Höhe nicht */
+  box-sizing: border-box !important;
+  width: fit-content !important;
+
+  /* Optik */
+  background: #222 !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+
+  /* Keine Effekte, die die Höhe beeinflussen könnten */
+  box-shadow: none !important;
+  outline: none !important;
+  transform: none !important;
+  filter: none !important;
+  margin: 0 !important;
+
+  /* Nur Farbe animieren, nicht Padding/Height */
+  transition: background-color .2s ease !important;
+}
+
+/* Hover/Focus/Active: exakt gleiche Maße wie normal */
+.premiere .pressestimmen a:hover,
+.premiere .pressestimmen a:focus,
+.premiere .pressestimmen a:active,
+.premiere .trailer a:hover,
+.premiere .trailer a:focus,
+.premiere .trailer a:active {
+  background: #444 !important;
+  height: 2.6rem !important;
+  padding: 0 1.2rem !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+  outline: none !important;
+}
+
+/* Eventuelle pseudo-Elemente entfernen (z. B. Glanz/Layer) */
+.premiere .pressestimmen a::before,
+.premiere .pressestimmen a::after,
+.premiere .trailer a::before,
+.premiere .trailer a::after {
+  content: none !important;
+  display: none !important;
+}
+
