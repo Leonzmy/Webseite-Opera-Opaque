@@ -1422,3 +1422,31 @@ a.btn-cta {
   height: 2.6rem !important;      /* feste Gesamthöhe (symmetrisch) */
   line-height: 1 !important;      /* kein Einfluss auf Höhe */
 }
+
+/* Einheitliche Buttons (normal & hover) */
+.premiere .pressestimmen a,
+.premiere .trailer a {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 2.6rem !important;         /* feste Höhe */
+  padding: 0 1.2rem !important;      /* nur seitlich */
+  background: #222 !important;
+  color: #fff !important;
+  border: none !important;           /* kein Border-Sprung */
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+
+.premiere .pressestimmen a:hover,
+.premiere .trailer a:hover {
+  background: #444 !important;
+  height: 2.6rem !important;         /* gleiche Höhe im Hover */
+  padding: 0 1.2rem !important;      /* gleiche Padding im Hover */
+  border: none !important;
+}
+
