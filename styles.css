@@ -1283,10 +1283,6 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   background-color: #444;   /* beim Hover etwas heller */
 }
 
-/* Trailer etwas tiefer setzen */
-.trailer {
-  margin-top: 2rem; /* statt 1rem, z.B. doppelt so viel Abstand */
-}
 
 
 /* ===========================================
@@ -1320,20 +1316,29 @@ a.btn-cta:hover, a.btn-cta:focus {
   background-color: #444;
 }
 
-/* Trailer etwas tiefer setzen */
-.trailer {
-  margin-top: 4rem; /* statt 1rem, z.B. doppelt so viel Abstand */
+
+/* ===========================================
+   CTA OVERRIDE: untereinander + Abstand
+   (setzt sich gegen ältere inline-block-Regeln durch)
+   =========================================== */
+.premiere .pressestimmen a,
+.premiere .trailer a,
+.more-info a,
+.press a,
+.pressestimmen a,
+.trailer a,
+a.btn-cta {
+  display: block !important;
+  width: fit-content;
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
 }
 
-<div class="premiere">
-  <div class="date">22.02.2024</div>
-  <div class="place">Reaktorhalle · München</div>
-
-  <div class="pressestimmen"><a href="…">Pressestimmen</a></div>
-  <div class="trailer"><a href="…">Trailer</a></div>
-</div>
-
-
-
-
-
+.premiere .pressestimmen,
+.premiere .trailer,
+.more-info,
+.pressestimmen,
+.press,
+.trailer { margin-top: 1rem !important; }
