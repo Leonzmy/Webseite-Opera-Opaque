@@ -1435,7 +1435,7 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !impo
     object-fit: cover !important;       /* füllt Höhe, keine weißen Ränder */
     object-position: left center !important; /* Fokus links */
     transform-origin: left center !important;
-    transform: scaleX(0.5) !important;  /* zurück auf Viewportbreite -> zeigt linke Hälfte vollständig */
+    transform: scaleX(0.25) !important;  /* zurück auf Viewportbreite -> zeigt linke Hälfte vollständig */
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
