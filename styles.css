@@ -1283,260 +1283,55 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   background-color: #444;   /* beim Hover etwas heller */
 }
 
+/* ---- Pressestimmmen -----
+/* Link-Style für "Mehr Infos" */
+.press {
+  margin-top: 1rem;
+}
 
-
-/* ===========================================
-   CTA-Buttons vereinheitlichen (wie "Mehr Infos")
-   Gilt für: .more-info a, .trailer a, .pressestimmen a, .press a
-   =========================================== */
-.more-info,
-.trailer,
-.pressestimmen,
-.press { margin-top: 1rem; }
-
-.more-info a,
-.trailer a,
-.pressestimmen a,
-.press a,
-a.btn-cta {
+.press {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: #222;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 0.5rem;
+  background-color: #222;   /* dunkler Hintergrund */
+  color: #fff;              /* weiße Schrift */
+  text-decoration: none;    /* Unterstreichung weg */
+  border-radius: 0.5rem;    /* abgerundete Ecken */
   transition: background-color 0.3s ease;
 }
 
-.more-info a:hover, .more-info a:focus,
-.trailer a:hover, .trailer a:focus,
-.pressestimmen a:hover, .pressestimmen a:focus,
-.press a:hover, .press a:focus,
-a.btn-cta:hover, a.btn-cta:focus {
-  background-color: #444;
+.press a:hover,
+.press a:focus {
+  background-color: #444;   /* beim Hover etwas heller */
 }
-
-
 /* ===========================================
-   CTA OVERRIDE: untereinander + Abstand
-   (setzt sich gegen ältere inline-block-Regeln durch)
+   PHANTOM = ENTHAUPTUNG/ORFEO Layout-Alias
    =========================================== */
-.premiere .pressestimmen a,
-.premiere .trailer a,
-.more-info a,
-.press a,
-.pressestimmen a,
-.trailer a,
-a.btn-cta {
-  display: block !important;
-  width: fit-content;
-  margin-bottom: 0.6rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.5rem;
-  text-decoration: none;
-}
-
-.premiere .pressestimmen,
-.premiere .trailer,
-.more-info,
-.pressestimmen,
-.press,
-.trailer { margin-top: 1rem !important; }
-
-
-/* ===========================================
-   CTA HEIGHT NORMALIZATION (identische Höhe)
-   =========================================== */
-.premiere .pressestimmen a,
-.premiere .trailer a,
-.more-info a,
-.pressestimmen a,
-.press a,
-a.btn-cta {
-  display: inline-flex !important;   /* Inhalt zentrieren, Höhe konsistent */
-  align-items: center !important;
-  justify-content: center !important;
-  line-height: 1 !important;         /* Reset */
-  font-size: 1rem !important;
-  font-weight: 600;                   /* optional: konsistente Stärke */
-  padding: 0.7rem 1.2rem !important;  /* identisches Padding */
-  min-height: 2.75rem !important;     /* feste Mindesthöhe */
-  white-space: nowrap !important;     /* kein Umbruch */
-  box-sizing: border-box !important;
-}
-
-
-/* ===========================================
-   CTA FINAL RESET (Pressestimmen & Trailer identisch)
-   =========================================== */
-.premiere .pressestimmen,
-.premiere .trailer { padding: 0 !important; margin-top: 1rem !important; }
-
-.premiere .pressestimmen a,
-.premiere .trailer a {
-  display: block !important;
-  box-sizing: border-box !important;
-  width: fit-content !important;
-  min-height: 2.75rem !important;
-  padding: 0.7rem 1.2rem !important;
-  background: #222 !important;
-  color: #fff !important;
-  border: 0 !important;
-  border-radius: 0.5rem !important;
-  text-decoration: none !important;
-  line-height: 1 !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  font-family: inherit !important;
-  letter-spacing: 0 !important;
-  white-space: nowrap !important;
-}
-
-.premiere .pressestimmen a:hover,
-.premiere .trailer a:hover { background: #444 !important; }
-
-
-/* ===========================================
-   CTA FLEX-CENTER (symmetrisch, identische Höhe)
-   =========================================== */
-.premiere .pressestimmen a,
-.premiere .trailer a {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  min-height: 2.5rem !important;     /* feste Höhe */
-  padding: 0 1.2rem !important;      /* nur links/rechts */
-  line-height: 1.2 !important;
-}
-
-
-/* ===========================================
-   CTA SYMMETRY: exakte vertikale Zentrierung
-   =========================================== */
-.premiere .pressestimmen a,
-.premiere .trailer a {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 1.2rem !important;   /* nur seitlich Padding */
-  height: 2.6rem !important;      /* feste Gesamthöhe (symmetrisch) */
-  line-height: 1 !important;      /* kein Einfluss auf Höhe */
-}
-
-/* Einheitliche Buttons (normal & hover) */
-.premiere .pressestimmen a,
-.premiere .trailer a {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  height: 2.6rem !important;         /* feste Höhe */
-  padding: 0 1.2rem !important;      /* nur seitlich */
-  background: #222 !important;
-  color: #fff !important;
-  border: none !important;           /* kein Border-Sprung */
-  border-radius: 0.5rem !important;
-  text-decoration: none !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  line-height: 1 !important;
-  box-sizing: border-box !important;
-}
-
-.premiere .pressestimmen a:hover,
-.premiere .trailer a:hover {
-  background: #444 !important;
-  height: 2.6rem !important;         /* gleiche Höhe im Hover */
-  padding: 0 1.2rem !important;      /* gleiche Padding im Hover */
-  border: none !important;
-}
-
-/* --- CTAs fixen: identische Höhe in allen Zuständen + keine Deko --- */
-.premiere .pressestimmen a,
-.premiere .trailer a {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  height: 2.6rem !important;          /* feste, identische Gesamthöhe */
-  padding: 0 1.2rem !important;       /* nur seitlich, oben/unten = 0 */
-  line-height: 1 !important;          /* neutral, beeinflusst Höhe nicht */
-  box-sizing: border-box !important;
-  width: fit-content !important;
-
-  /* Optik */
-  background: #222 !important;
-  color: #fff !important;
-  border: 0 !important;
-  border-radius: 0.5rem !important;
-  text-decoration: none !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-
-  /* Keine Effekte, die die Höhe beeinflussen könnten */
-  box-shadow: none !important;
-  outline: none !important;
-  transform: none !important;
-  filter: none !important;
-  margin: 0 !important;
-
-  /* Nur Farbe animieren, nicht Padding/Height */
-  transition: background-color .2s ease !important;
-}
-
-/* Hover/Focus/Active: exakt gleiche Maße wie normal */
-.premiere .pressestimmen a:hover,
-.premiere .pressestimmen a:focus,
-.premiere .pressestimmen a:active,
-.premiere .trailer a:hover,
-.premiere .trailer a:focus,
-.premiere .trailer a:active {
-  background: #444 !important;
-  height: 2.6rem !important;
-  padding: 0 1.2rem !important;
-  border: 0 !important;
-  box-shadow: none !important;
-  transform: none !important;
-  filter: none !important;
-  outline: none !important;
-}
-
-/* Eventuelle pseudo-Elemente entfernen (z. B. Glanz/Layer) */
-.premiere .pressestimmen a::before,
-.premiere .pressestimmen a::after,
-.premiere .trailer a::before,
-.premiere .trailer a::after {
-  content: none !important;
-  display: none !important;
-}
-
-
-
-
-/* PHANTOM – Sidebar bündig oben + alle Top-Abstände neutralisieren */
-body.projekt-seite .projekt-maingrid {
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 40px;
-  align-items: start;             /* Sidebar startet oben */
-  margin-top: 0 !important;       /* kein Extra-Top-Abstand */
-}
-
-/* Kollabierende Top-Margins verhindern */
-body.projekt-seite .content-left,
-body.projekt-seite .content-left .projekt-beschreibung,
-body.projekt-seite .projekt-sidebar {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-body.projekt-seite .content-left .projekt-beschreibung > *:first-child,
-body.projekt-seite .projekt-sidebar > *:first-child {
-  margin-top: 0 !important;       /* erstes Element ohne oberen Rand */
-}
-
-/* Hero/Drawing ohne Zusatzabstände direkt darüber */
-body.projekt-seite .projekt-hero,
-body.projekt-seite .projekt-drawing {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-body.projekt-seite .projekt-wrap { padding-top: 0 !important; }
-
+body:is(.projekt-seite, .projekt-phantom) .site-header{ position: sticky; top: 0; z-index: 100; opacity: 1; pointer-events: auto; background: rgba(255,255,255,0.85); backdrop-filter: saturate(120%) blur(6px); border-bottom: none; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-wrap{ max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; display: block; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-hero{ width: 100vw; margin-left: 50%; transform: translateX(-50%); margin-top: 80px; margin-bottom: 0; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-hero img{ display: block; width: 100%; height: auto; object-fit: contain; background: #fff; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-wrap figure{ margin: 0; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-drawing{ margin: 0; padding: 0; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-drawing img{ display: block; width: 100%; max-width: 320px; height: auto; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ display: grid; grid-template-columns: 1fr 320px; gap: 40px; margin-top: 0; align-items: start; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung{ text-align: justify; hyphens: auto; max-width: none; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .premiere{ margin-top: 1.25em; font-size: 1.05rem; line-height: 1.35; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .premiere .date{ font-weight: 700; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .premiere .place{ margin-top: .15rem; font-weight: 700; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar h2{ font-size: 1.1rem; margin: 0 0 8px; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar p{ margin: 0 0 6px; line-height: 1.35; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos{ display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos img{ max-width: 100%; max-height: 70px; height: auto; object-fit: contain; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-galerie a{ display: block; position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 8px; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-galerie img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+@media (max-width: 900px){ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ grid-template-columns: 1fr; } body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar{ margin-top: 10px; } body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 560px){ body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ grid-template-columns: 1fr; } }
+body:is(.projekt-seite, .projekt-phantom) .projekt-wrap{ padding-top: 0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-drawing{ margin-bottom: 0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .content-left,
+body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung{ margin-top: 0 !important; padding-top: 0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung > *:first-child{ margin-top: 0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar{ margin-top: 0 !important; align-self: start !important; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar > *:first-child{ margin-top: 0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !important; }
