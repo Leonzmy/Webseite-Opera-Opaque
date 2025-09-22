@@ -1325,6 +1325,15 @@ a.btn-cta:hover, a.btn-cta:focus {
   margin-top: 4rem; /* statt 1rem, z.B. doppelt so viel Abstand */
 }
 
+<div class="premiere">
+  <div class="date">22.02.2024</div>
+  <div class="place">Reaktorhalle · München</div>
+
+  <div class="pressestimmen"><a href="…">Pressestimmen</a></div>
+  <div class="trailer"><a href="…">Trailer</a></div>
+</div>
+
+
 
 
 
