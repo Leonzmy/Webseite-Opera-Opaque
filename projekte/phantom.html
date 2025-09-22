@@ -2,153 +2,85 @@
 <html lang="de">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Phantom – Opera Opaque</title>
-  <meta name="description" content="Projektseite Phantom – Opera Opaque" />
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="icon" href="/bilder/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Phantom – Projekt</title>
+  <!-- Deine konsolidierte CSS -->
+  <link rel="stylesheet" href="../styles.css" />
 </head>
-<body class="projekt-seite projekt-phantom">
 
+<body class="projekt-seite projekt-phantom">
+  <!-- Optionaler Header -->
   <header class="site-header">
-    <div class="brand">Opera Opaque</div>
-    <nav class="navlinks" aria-label="Hauptnavigation">
-      <a href="../index.html">Home</a>
-      <a href="../projekte.html">Projekte</a>
-      <a href="../about.html">Über uns</a>
-      <a href="../kontakt.html">Kontakt</a>
-    </nav>
+    <div class="brand">Projekt: Phantom</div>
   </header>
 
-  <!-- Full-bleed Hero -->
-  <figure class="projekt-hero">
-    <img src="../bilder/phantom-3.jpg" alt="Phantom – Hero">
-  </figure>
-
-  <!-- Inhalt mit normaler Seitenbreite -->
   <main class="projekt-wrap">
-
-    <!-- Drawing (bündig mit Text) -->
-    <figure class="projekt-drawing">
-      <img src="../bilder/phantom-drawing.jpg" alt="Phantom – Zeichnung">
+    <!-- Hero (volle Breite) -->
+    <figure class="projekt-hero" aria-label="Projekt-Hero">
+      <!-- Wenn du ein Bild hast, hier einfügen -->
+      <!-- <img src="../bilder/phantom-hero.jpg" alt="Phantom – Hero"> -->
     </figure>
 
-    <!-- Grid: links Text, rechts Credits/Logos -->
+    <!-- Zeichnung / Titelgrafik -->
+    <figure class="projekt-drawing" aria-label="Titelgrafik">
+      <!-- <img src="../bilder/phantom-drawing.png" alt="Phantom – Zeichnung"> -->
+    </figure>
+
+    <!-- ZWEI SPALTEN: links Inhalt, rechts Sidebar -->
     <section class="projekt-maingrid">
+      <!-- LINKE SPALTE -->
       <div class="content-left">
         <div class="projekt-beschreibung">
-          <p>Phantom ist ein Musiktheaterabend über die Stimme im Zeitalter digitaler Manipulierbarkeit. Fast alle Gesangs- und Sprechstimmen sind KI-generiert; nur ein Kinderchor ist echt. Die Inszenierung verbindet Labor, Liederabend und Drag-Show, zeigt Live-Generierung aus Publikumsstimmen und fragt nach Identität, wenn wir der Stimme nicht mehr trauen.</p>
-          <p>Die Produktion wurde ausgewählt für das Stipendium „Junge Kunst / Neue Medien“ der Stadt München.</p>
+          <p>
+            <strong>Phantom</strong> ist ein Musiktheaterabend über die Stimme im Zeitalter digitaler
+            Manipulierbarkeit. Fast alle Gesangs- und Sprechstimmen sind KI-generiert; nur ein Kinderchor
+            ist echt. Die Inszenierung verbindet Labor, Liederabend und Drag-Show, zeigt Live-Generierung
+            aus Publikumsstimmen und fragt nach Identität, wenn wir der Stimme nicht mehr trauen.
+          </p>
+          <p>
+            Die Produktion wurde mit dem Stipendium „Junge Kunst / Neue Medien“ der Stadt München ausgezeichnet.
+          </p>
         </div>
+
         <div class="premiere">
-          <div class="date">Premiere: tba</div>
-                  		  <div class="more-info">
-      <a href="https://stadt.muenchen.de/infos/projektstipendien-neue-medien-musik.html" target="_blank">
-        Mehr Infos
-      </a>
-                
-      </div>
+          <p class="date"><strong>Premiere:</strong> tba</p>
+          <!-- CTAs (untereinander, gleich gestylt) -->
+          <div class="more-info"><a href="#mehr-infos">Mehr Infos</a></div>
+          <!-- Wenn du stattdessen Trailer/Pressestimmen willst, diese nehmen:
+          <div class="pressestimmen"><a href="LINK-ZU-PRESSE">Pressestimmen</a></div>
+          <div class="trailer"><a href="LINK-ZU-TRAILER">Trailer</a></div>
+          -->
         </div>
+      </div>
 
-
-      <aside class="projekt-sidebar">
-<section>
+      <!-- RECHTE SPALTE (SIDEBAR) -->
+      <aside class="projekt-sidebar" aria-label="Credits">
         <p><strong>Regie:</strong> Maria Chagina</p>
         <p><strong>Komposition:</strong> Leon Zmelty</p>
         <p><strong>Dramaturgie:</strong> Sören Sarbeck</p>
-        <p><strong>Bühne & Kostüm:</strong> Anna Agafonova</p>
-      </section>
-      <section>
+        <p><strong>Bühne &amp; Kostüm:</strong> Anna Agafonova</p>
+
         <h2>Gefördert von</h2>
         <div class="logos">
-          <img src="../bilder/Logo1.png" alt="Logo 1">
+          <!-- Beispiel-Logos:
+          <img src="../logos/logo1.svg" alt="Förderer 1">
+          <img src="../logos/logo2.svg" alt="Förderer 2">
+          -->
         </div>
-      </section>
       </aside>
     </section>
 
-    <!-- Galerie 3×N mit 1:1 Kacheln + Lightbox -->
-    <!-- section class="projekt-galerie" aria-label="Bildergalerie" -->
-      <!-- a href="../bilder/Phantom-4.jpg" data-caption="">
-        <!img src="../bilder/Phantom-4.jpg" alt="Phantom – Bild 4">
-      a -->
-      <!-- a href="../bilder/Phantom-5.jpg" data-caption="">
-        <!img src="../bilder/Phantom-5.jpg" alt="Phantom – Bild 5">
-      a -->
-      <!-- a href="../bilder/Phantom-6.jpg" data-caption="">
-        <!img src="../bilder/Phantom-6.jpg" alt="Phantom – Bild 6">
-      a -->
-      <!-- a href="../bilder/Phantom-7.jpg" data-caption="">
-        <!img src="../bilder/Phantom-7.jpg" alt="Phantom – Bild 7">
-      a -->
-      <!-- a href="../bilder/Phantom-8.jpg" data-caption="">
-        <!img src="../bilder/Phantom-8.jpg" alt="Phantom – Bild 8" -->
-      a -->
-    <!-- /section -->
-    
-    <!-- Zurück-Button -->
-    <nav class="back-nav">
-      <a href="../projekte.html" class="back-button">← Zurück zu den Projekten</a>
-    </nav>
-    
+    <!-- Galerie (derzeit auskommentiert; bei Bedarf aktivieren)
+    <section class="projekt-galerie" aria-label="Bildergalerie">
+      <a href="../bilder/Phantom-1.jpg"><img src="../bilder/Phantom-1.jpg" alt="Phantom – Bild 1"></a>
+      <a href="../bilder/Phantom-2.jpg"><img src="../bilder/Phantom-2.jpg" alt="Phantom – Bild 2"></a>
+      <a href="../bilder/Phantom-3.jpg"><img src="../bilder/Phantom-3.jpg" alt="Phantom – Bild 3"></a>
+    </section>
+    -->
   </main>
 
-  <!-- Lightbox-Elemente (einmalig) -->
-  <div class="lightbox" role="dialog" aria-modal="true" aria-label="Bildanzeige">
-    <button class="lightbox-close" aria-label="Schließen"></button>
-    <button class="lightbox-prev" aria-label="Vorheriges Bild"></button>
-    <div class="lightbox-content">
-      <img alt="">
-      <div class="lightbox-caption"></div>
-    </div>
-    <button class="lightbox-next" aria-label="Nächstes Bild"></button>
-  </div>
-
-  <script>
-    (function(){
-      const gallery = Array.from(document.querySelectorAll('.projekt-galerie a'));
-      const lb = document.querySelector('.lightbox');
-      const img = lb.querySelector('img');
-      const cap = lb.querySelector('.lightbox-caption');
-      const btnClose = lb.querySelector('.lightbox-close');
-      const btnPrev = lb.querySelector('.lightbox-prev');
-      const btnNext = lb.querySelector('.lightbox-next');
-      let idx = 0;
-
-      function open(i){
-        idx = i;
-        const a = gallery[idx];
-        img.src = a.getAttribute('href');
-        img.alt = a.querySelector('img')?.alt || 'Bild in voller Größe';
-        cap.textContent = a.getAttribute('data-caption') || '';
-        lb.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-      function close(){
-        lb.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-      function next(){ open((idx + 1) % gallery.length); }
-      function prev(){ open((idx - 1 + gallery.length) % gallery.length); }
-
-      gallery.forEach((a, i) => {
-        a.addEventListener('click', (e) => {
-          e.preventDefault();
-          open(i);
-        });
-      });
-      btnClose.addEventListener('click', close);
-      btnNext.addEventListener('click', next);
-      btnPrev.addEventListener('click', prev);
-      lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
-      document.addEventListener('keydown', (e) => {
-        if(!lb.classList.contains('open')) return;
-        if(e.key === 'Escape') close();
-        if(e.key === 'ArrowRight') next();
-        if(e.key === 'ArrowLeft') prev();
-      });
-    })();
-  </script>
-
+  <footer class="site-footer">
+    <a class="footer-link" href="/">Zurück zur Übersicht</a>
+  </footer>
 </body>
 </html>
