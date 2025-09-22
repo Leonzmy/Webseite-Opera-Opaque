@@ -1283,23 +1283,35 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   background-color: #444;   /* beim Hover etwas heller */
 }
 
-/* ---- Pressestimmmen -----
-/* Link-Style für "Mehr Infos" */
-.press {
-  margin-top: 1rem;
-}
 
-.press {
+
+/* ===========================================
+   CTA-Buttons vereinheitlichen (wie "Mehr Infos")
+   Gilt für: .more-info a, .trailer a, .pressestimmen a, .press a
+   =========================================== */
+.more-info,
+.trailer,
+.pressestimmen,
+.press { margin-top: 1rem; }
+
+.more-info a,
+.trailer a,
+.pressestimmen a,
+.press a,
+a.btn-cta {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background-color: #222;   /* dunkler Hintergrund */
-  color: #fff;              /* weiße Schrift */
-  text-decoration: none;    /* Unterstreichung weg */
-  border-radius: 0.5rem;    /* abgerundete Ecken */
+  background-color: #222;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.5rem;
   transition: background-color 0.3s ease;
 }
 
-.press a:hover,
-.press a:focus {
-  background-color: #444;   /* beim Hover etwas heller */
+.more-info a:hover, .more-info a:focus,
+.trailer a:hover, .trailer a:focus,
+.pressestimmen a:hover, .pressestimmen a:focus,
+.press a:hover, .press a:focus,
+a.btn-cta:hover, a.btn-cta:focus {
+  background-color: #444;
 }
