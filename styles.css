@@ -1273,7 +1273,7 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   padding: 0.2em 0.6em;         /* etwas Luft links/rechts, kaum oben/unten */
   font-size: 1rem;              /* gleiche Größe wie normaler Text */
   line-height: 1.2;             /* knappes Zeilenmaß */
-  margin-top: 2rem; /* oder 3rem, je nachdem wie viel Abstand du willst */
+  margin-top: 1rem; /* oder 3rem, je nachdem wie viel Abstand du willst */
 }
 
 .trailer a:hover,
