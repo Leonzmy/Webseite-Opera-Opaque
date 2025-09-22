@@ -1342,3 +1342,17 @@ a.btn-cta {
 .pressestimmen,
 .press,
 .trailer { margin-top: 1rem !important; }
+
+/* Einheitliche Buttons (gleiche Höhe) */
+.premiere .pressestimmen a,
+.premiere .trailer a,
+.more-info a,
+.press a,
+a.btn-cta {
+  font-size: 1rem;       /* gleiche Schriftgröße */
+  line-height: 1.4;      /* einheitlicher Zeilenabstand */
+  padding: 0.6rem 1.2rem;/* identisches Padding */
+  box-sizing: border-box;
+  white-space: nowrap;   /* kein Zeilenumbruch im Text */
+}
+
