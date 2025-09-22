@@ -1322,6 +1322,6 @@ a.btn-cta:hover, a.btn-cta:focus {
 
 /* Trailer etwas tiefer setzen */
 .trailer {
-  margin-top: 2rem; /* statt 1rem, z.B. doppelt so viel Abstand */
+  margin-top: 4rem; /* statt 1rem, z.B. doppelt so viel Abstand */
 }
 
