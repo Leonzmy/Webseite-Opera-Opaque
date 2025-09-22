@@ -1364,3 +1364,34 @@ a.btn-cta {
   white-space: nowrap !important;     /* kein Umbruch */
   box-sizing: border-box !important;
 }
+
+
+/* ===========================================
+   CTA FINAL RESET (Pressestimmen & Trailer identisch)
+   =========================================== */
+.premiere .pressestimmen,
+.premiere .trailer { padding: 0 !important; margin-top: 1rem !important; }
+
+.premiere .pressestimmen a,
+.premiere .trailer a {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: fit-content !important;
+  min-height: 2.75rem !important;
+  padding: 0.7rem 1.2rem !important;
+  background: #222 !important;
+  color: #fff !important;
+  border: 0 !important;
+  border-radius: 0.5rem !important;
+  text-decoration: none !important;
+  line-height: 1 !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  font-family: inherit !important;
+  letter-spacing: 0 !important;
+  white-space: nowrap !important;
+}
+
+.premiere .pressestimmen a:hover,
+.premiere .trailer a:hover { background: #444 !important; }
+
