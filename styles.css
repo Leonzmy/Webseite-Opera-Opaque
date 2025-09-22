@@ -1378,3 +1378,32 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !impo
     background: none !important;
   }
 }
+
+/* ===========================================
+   MOBILE FRONT PAGE – nur linke Hälfte des Videos
+   =========================================== */
+@media (max-width: 900px){
+  .frontpage .video-bg{
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 0 !important;
+    overflow: hidden !important;
+    background: none !important;
+  }
+
+  .frontpage .video-bg .video{
+    display: block !important;
+    width: 200% !important;             /* Video doppelt so breit */
+    height: 100% !important;
+    object-fit: cover !important;       /* füllt Höhe */
+    object-position: left center !important; /* Fokus auf linke Seite */
+    margin-left: 0 !important;          /* nicht verschieben */
+  }
+
+  .frontpage .hero-cover{
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
