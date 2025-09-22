@@ -1023,15 +1023,7 @@ body.kontakt .sr-only{
   body.kontakt .kontakt-card{ padding: 18px; border-radius: 12px; }
 }
 
-/* === Mobile: Video-Linksausrichtung erzwingen === */
-@media (max-width: 900px){
-  .frontpage .video-bg .video{
-    object-fit: cover !important;
-    object-position: left center !important; /* linke Hälfte sichtbar */
-    height: 50vh !important;   /* nur halbe Höhe vom Viewport */
-  }
-}
-/* Mobile: Video nur noch 25vh (statt 50vh) */
+
 @media (max-width: 900px){
   .frontpage .video-bg .video{
     object-fit: cover !important;
@@ -1053,51 +1045,7 @@ body.kontakt .sr-only{
 }
 
 
-/* ==============================================
-   FRONT PAGE – MOBILE VIDEO FIX (≤ 900px)
-   - Desktop unverändert
-   - Video sichtbar & links fokussiert
-   - Keine JPG-Backdrops oder Overlays
-   - Stabile Höhe (50svh – anpassbar)
-   ============================================== */
-@media (max-width: 900px){
-  /* Gesamter Hero-Block kleiner und stabil */
-  .frontpage .hero-cover{
-    position: relative !important;
-    height: 50svh !important; /* sichere Viewport-Höhe (iOS/Android) */
-  }
 
-  /* Videolayer füllt den Hero, kein Hintergrundbild/Overlay */
-  .frontpage .video-bg{
-    position: absolute !important;
-    inset: 0 !important;
-    height: 100% !important;
-    background: none !important;
-    overflow: hidden !important;
-    z-index: 1 !important;
-  }
-  .frontpage .video-bg::after{
-    display: none !important; /* eventuelles globales Overlay abschalten */
-  }
-
-  /* Das <video> selbst: sichtbar, füllt komplett, linker Fokus */
-  .frontpage .video-bg .video{
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: left center !important;
-    opacity: 1 !important;        /* überschreibt fades bis 'playing' */
-    visibility: visible !important;
-  }
-
-  /* Der Content-Block bleibt lesbar (falls gewünscht minimaler Hintergrund) */
-  .frontpage-content{
-    position: relative;
-    z-index: 5;
-  }
-}
-/* Mobile: Video nur noch 25vh hoch + nicht mehr full-screen */
 @media (max-width: 900px){
   .frontpage .video-bg {
     position: relative !important;  /* statt fixed */
@@ -1116,13 +1064,7 @@ body.kontakt .sr-only{
     height: 50vh !important;        /* Abstandshalter passend */
   }
 }
-/* Mobile: Fixiertes Video, aber nur oberes Viertel sichtbar */
-@media (max-width: 900px){
-  .frontpage .video-bg {
-    position: fixed !important;
-    inset: 0;
-    z-index: 1;
-    height: 100vh; /* Video weiterhin voller Viewport */
+/* Video weiterhin voller Viewport */
     clip-path: inset(0 0 25% 0); /* nur obere 25% sichtbar */
   }
   .frontpage .hero-cover {
@@ -1268,12 +1210,26 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   }
 }
 
+.frontpage .video-bg,
+.frontpage .hero-cover {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.frontpage .video-bg .video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* statt contain */
+  object-position: center;
+  display: block;
+}
 /* ===========================================
-   Frontpage Video: randlos fullscreen
+   FRONTPAGE VIDEO – randlos fullscreen (bereinigt)
    =========================================== */
 .frontpage .video-bg {
   position: fixed !important;
-  inset: 0 !important;     /* füllt gesamten Viewport */
+  inset: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
@@ -1281,7 +1237,9 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   height: 100% !important;
   overflow: hidden !important;
   z-index: 0 !important;
+  background: none !important;
 }
+.frontpage .video-bg::after { display: none !important; }
 
 .frontpage .video-bg .video {
   display: block !important;
@@ -1290,14 +1248,16 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
-  object-fit: cover !important;     /* kein Letterbox-Effekt */
-  object-position: center center !important;
+  object-fit: cover !important;          /* füllt ohne Ränder */
+  object-position: left center !important; /* Fokus links, wie gewünscht */
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .frontpage .hero-cover {
+  height: 100vh !important;
   margin: 0 !important;
   padding: 0 !important;
-  border: none !important;
-  height: 100vh !important;         /* volle Höhe */
+  border: 0 !important;
+  position: relative !important;
 }
-
