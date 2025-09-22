@@ -1262,47 +1262,42 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   position: relative !important;
 }
 
-/* ---- Trailer -----
-/* Link-Style für "Mehr Infos" */
-.trailer {
-  margin-top: 1rem;
-}
-
-.trailer {
-  display: block;
-  padding: 0.5rem 1rem;
-  background-color: #222;   /* dunkler Hintergrund */
-  color: #fff;              /* weiße Schrift */
-  text-decoration: none;    /* Unterstreichung weg */
-  border-radius: 0.5rem;    /* abgerundete Ecken */
+/* Trailer-Button */
+.trailer a {
+  display: inline-block;        /* passt sich an die Schriftgröße an */
+  background-color: #222;       /* dunkler Hintergrund */
+  color: #fff;                  /* weiße Schrift */
+  text-decoration: none;        /* keine Unterstreichung */
+  border-radius: 0.5rem;        /* runde Ecken */
   transition: background-color 0.3s ease;
+  padding: 0.2em 0.6em;         /* etwas Luft links/rechts, kaum oben/unten */
+  font-size: 1rem;              /* gleiche Größe wie normaler Text */
+  line-height: 1.2;             /* knappes Zeilenmaß */
 }
 
 .trailer a:hover,
 .trailer a:focus {
-  background-color: #444;   /* beim Hover etwas heller */
+  background-color: #444;       /* beim Hover etwas heller */
 }
 
-/* ---- Pressestimmmen -----
-/* Link-Style für "Mehr Infos" */
-.press {
-  margin-top: 1rem;
-}
-
-.press {
-  display: block;
-  padding: 0.5rem 1rem;
-  background-color: #222;   /* dunkler Hintergrund */
-  color: #fff;              /* weiße Schrift */
-  text-decoration: none;    /* Unterstreichung weg */
-  border-radius: 0.5rem;    /* abgerundete Ecken */
+/* Pressestimmen-Button */
+.pressestimmen a {
+  display: inline-block;
+  background-color: #222;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.5rem;
   transition: background-color 0.3s ease;
+  padding: 0.2em 0.6em;
+  font-size: 1rem;
+  line-height: 1.2;
 }
 
-.press a:hover,
-.press a:focus {
-  background-color: #444;   /* beim Hover etwas heller */
+.pressestimmen a:hover,
+.pressestimmen a:focus {
+  background-color: #444;
 }
+
 /* ===========================================
    PHANTOM = ENTHAUPTUNG/ORFEO Layout-Alias
    =========================================== */
