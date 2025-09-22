@@ -1408,30 +1408,40 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !impo
 }
 
 /* ===========================================
-   MOBILE FRONT PAGE – gesamte linke Hälfte sichtbar
+   MOBILE FRONT PAGE – komplette linke Hälfte sichtbar
    =========================================== */
 @media (max-width: 900px){
-  .frontpage .video-bg{
+  /* 1) Alte, widersprüchliche Regeln neutralisieren */
+  .frontpage .video-bg {
     position: fixed !important;
     inset: 0 !important;
     z-index: 0 !important;
     overflow: hidden !important;
     background: none !important;
+    clip-path: none !important;         /* frühere Clippings aus */
+    height: 100vh !important;           /* keine 12/25/50vh mehr */
   }
-
-  .frontpage .video-bg .video{
-    display: block !important;
-    width: 200% !important;               /* Video doppelt so breit */
-    height: 100% !important;
-    object-fit: contain !important;       /* alles proportional sichtbar */
-    object-position: left center !important;
-    transform: translateX(-25%) !important;
-  }
-
-  .frontpage .hero-cover{
+  .frontpage .hero-cover {
     height: 100vh !important;
     margin: 0 !important;
     padding: 0 !important;
   }
+
+  /* 2) Trick: Video doppelt so breit + auf halbe Breite skaliert */
+  .frontpage .video-bg .video{
+    display: block !important;
+    width: 200% !important;             /* Element ist 2× so breit wie der Viewport */
+    height: 100% !important;
+    object-fit: cover !important;       /* füllt Höhe, keine weißen Ränder */
+    object-position: left center !important; /* Fokus links */
+    transform-origin: left center !important;
+    transform: scaleX(0.5) !important;  /* zurück auf Viewportbreite -> zeigt linke Hälfte vollständig */
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  /* Optional: falls noch ein halbtransparentes Overlay vorhanden war */
+  .frontpage .video-bg::after { display:none !important; }
 }
 
