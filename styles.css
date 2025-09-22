@@ -1292,7 +1292,7 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   padding: 0.2em 0.6em;
   font-size: 1rem;
   line-height: 1.2;
-  margin-top: 0.5rem; /* oder 3rem, je nachdem wie viel Abstand du willst */
+  margin-top: 1rem; /* oder 3rem, je nachdem wie viel Abstand du willst */
 
 }
 }
