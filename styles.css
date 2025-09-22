@@ -1445,3 +1445,33 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !impo
   .frontpage .video-bg::after { display:none !important; }
 }
 
+/* ===========================================
+   MOBILE FRONT PAGE – Ausschnitt am linken Rand
+   =========================================== */
+@media (max-width: 900px){
+  .frontpage .video-bg{
+    position: fixed !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    background: none !important;
+  }
+
+  .frontpage .video-bg .video{
+    position: absolute !important;
+    top: 0; left: 0; bottom: 0;       /* an linken Rand pinnen */
+    height: 100% !important;          /* Höhe bestimmt die Größe */
+    width: auto !important;           /* Breite folgt proportional */
+    min-width: 100% !important;       /* muss min. Viewportbreite füllen */
+    object-fit: cover !important;     /* keine Ränder */
+    object-position: 0% 50% !important; /* Fokus exakt: linke Kante, Mitte vertikal */
+    transform: none !important;       /* frühere scale/translate ausschalten */
+    margin: 0 !important; padding: 0 !important; border: 0 !important;
+  }
+
+  .frontpage .hero-cover{
+    height: 100vh !important;
+    margin: 0 !important; padding: 0 !important;
+  }
+}
+
+
