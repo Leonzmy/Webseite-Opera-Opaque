@@ -1269,7 +1269,7 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
 }
 
 .trailer {
-  display: inline-block;
+  display: block;
   padding: 0.5rem 1rem;
   background-color: #222;   /* dunkler Hintergrund */
   color: #fff;              /* weiße Schrift */
@@ -1290,7 +1290,7 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
 }
 
 .press {
-  display: inline-block;
+  display: block;
   padding: 0.5rem 1rem;
   background-color: #222;   /* dunkler Hintergrund */
   color: #fff;              /* weiße Schrift */
