@@ -33,7 +33,7 @@
         <p class="kontakt-intro">
           Schreib uns eine Nachricht – wir melden uns so schnell wie möglich.
           Alternativ direkt per Mail:
-          <a class="mail-link" href="mailto:leon.zmelty@gmx.de">leon.zmelty@gmx.de</a>
+          <a class="mail-link" href="mailto:opera.opaque@gmail.com">opera.opaque@gmail.com</a>
         </p>
 
         <form id="kontaktForm" class="kontakt-form" novalidate>
@@ -80,7 +80,7 @@
       const email = document.getElementById('email').value.trim();
       const subject = encodeURIComponent(document.getElementById('betreff').value.trim());
       const message = encodeURIComponent(document.getElementById('message').value.trim() + (name ? `\n\n— ${name}` : '') + (email ? `\n${email}` : ''));
-      window.location.href = `mailto:leon.zmelty@gmx.de?subject=${subject}&body=${message}`;
+      window.location.href = `mailto:opera.opaque@gmail.com?subject=${subject}&body=${message}`;
       if (success) success.style.display = 'block';
     }});
   }})();
