@@ -115,68 +115,66 @@
     <button class="lightbox-next" aria-label="Nächstes Bild"></button>
   </div>
 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/justified-layout/4.1.0/justified-layout.min.js"></script>
-<script>
-(function(){
-  const galerie = document.querySelector('.projekt-galerie');
-  const links = Array.from(galerie.querySelectorAll('a'));
-  const ratios = new Array(links.length);
-  let geladen = 0;
+<script type="module">
+import justifiedLayout from "https://esm.sh/justified-layout";
 
-  function layout(){
-    console.log('layout called, containerBreite:', galerie.offsetWidth, 'ratios:', ratios);
-    const containerBreite = galerie.offsetWidth;
-    if(!containerBreite) return;
+const galerie = document.querySelector('.projekt-galerie');
+const links = Array.from(galerie.querySelectorAll('a'));
+const ratios = new Array(links.length);
+let geladen = 0;
 
-    const result = justifiedLayout(ratios, {
-      containerWidth: containerBreite,
-      targetRowHeight: 280,
-      boxSpacing: 12,
-      containerPadding: 0,
-    });
+function layout(){
+  const containerBreite = galerie.offsetWidth;
+  if(!containerBreite) return;
 
-    galerie.style.position = 'relative';
-    galerie.style.height = result.containerHeight + 'px';
+  const result = justifiedLayout(ratios, {
+    containerWidth: containerBreite,
+    targetRowHeight: 280,
+    boxSpacing: 12,
+    containerPadding: 0,
+  });
 
-    links.forEach((a, i) => {
-      const box = result.boxes[i];
-      a.style.position = 'absolute';
-      a.style.left = box.left + 'px';
-      a.style.top = box.top + 'px';
-      a.style.width = box.width + 'px';
-      a.style.height = box.height + 'px';
-      a.style.overflow = 'hidden';
-      a.style.borderRadius = '8px';
-      const img = a.querySelector('img');
-      if(img){
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'cover';
-        img.style.display = 'block';
-        img.style.position = 'static';
-      }
-    });
-  }
+  galerie.style.position = 'relative';
+  galerie.style.height = result.containerHeight + 'px';
 
   links.forEach((a, i) => {
+    const box = result.boxes[i];
+    a.style.position = 'absolute';
+    a.style.left = box.left + 'px';
+    a.style.top = box.top + 'px';
+    a.style.width = box.width + 'px';
+    a.style.height = box.height + 'px';
+    a.style.overflow = 'hidden';
+    a.style.borderRadius = '8px';
     const img = a.querySelector('img');
-    function onLoad(){
-      ratios[i] = img.naturalWidth / img.naturalHeight || 1.5;
-      geladen++;
-      if(geladen === links.length) layout();
-    }
-    if(img.complete && img.naturalWidth > 0) onLoad();
-    else{
-      img.addEventListener('load', onLoad);
-      img.addEventListener('error', () => {
-        ratios[i] = 1.5; geladen++;
-        if(geladen === links.length) layout();
-      });
+    if(img){
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.objectFit = 'cover';
+      img.style.display = 'block';
+      img.style.position = 'static';
     }
   });
-  window.addEventListener('resize', layout);
-  window.addEventListener('load', layout); // ← neu
-})();
+}
+
+links.forEach((a, i) => {
+  const img = a.querySelector('img');
+  function onLoad(){
+    ratios[i] = img.naturalWidth / img.naturalHeight || 1.5;
+    geladen++;
+    if(geladen === links.length) layout();
+  }
+  if(img.complete && img.naturalWidth > 0) onLoad();
+  else{
+    img.addEventListener('load', onLoad);
+    img.addEventListener('error', () => {
+      ratios[i] = 1.5; geladen++;
+      if(geladen === links.length) layout();
+    });
+  }
+});
+
+window.addEventListener('resize', layout);
 </script>
 
 </body>
