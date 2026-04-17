@@ -6,7 +6,7 @@
   const GALERIE_HOEHE = 900; // px
   const GAP = 12; // px
   const SPALTEN = 3;
-  const SPAN_INDEX = 4; // 0-basiert: Bild 5 = Index 4
+  const SPAN_INDEX = 2; // 0-basiert: Bild 5 = Index 4
 
   function layoutGalerie(links) {
     const galerie = document.querySelector('.projekt-galerie');
