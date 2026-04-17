@@ -1052,6 +1052,9 @@ body.kontakt .sr-only{
   .right-panel{
     padding-top: 1rem !important;     /* etwas Luft im Panel */
   }
+  .right-content h1:first-child{
+  margin-top:0;
+}
 }
 
 
