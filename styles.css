@@ -541,3 +541,20 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos img{ max-width
   .frontpage .right-panel{ margin-left:0; padding:2rem 1.25rem; min-height:auto; }
   .right-content h1:first-child{ margin-top:0; }
 }
+
+body.projekt-seite .projekt-hero {
+  width: calc(100vw) !important;
+  margin-left: calc(-50vw + 50%) !important;
+  transform: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body.projekt-seite .projekt-hero img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
