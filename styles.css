@@ -64,7 +64,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   min-height:100vh;
   display:flex;
   align-items:flex-start;
-  padding:2rem 3rem 4rem;
+  padding:8rem 3rem 4rem;
   background:transparent;
   color:var(--ink);
 }
