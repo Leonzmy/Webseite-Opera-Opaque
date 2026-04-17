@@ -833,32 +833,39 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top:0 !impor
   .frontpage .right-panel{ margin-left:0; padding:2rem 1.25rem; min-height:auto; }
   .right-content h1:first-child{ margin-top:0; }
 }
+
+/* ==============================
+   GALERIE – Masonry Layout
+   ============================== */
 body.projekt-seite .projekt-galerie {
-  columns: 3;
-  column-gap: 12px;
+  columns: 3 !important;
+  column-gap: 12px !important;
   margin-top: 36px;
+  display: block !important; /* überschreibt das alte grid */
 }
 
 body.projekt-seite .projekt-galerie a {
-  display: block;
+  display: block !important;
   break-inside: avoid;
   margin-bottom: 12px;
   border-radius: 8px;
   overflow: hidden;
+  aspect-ratio: unset !important; /* altes 1/1 entfernen */
+  position: relative !important;
 }
 
 body.projekt-seite .projekt-galerie img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: unset;
-  position: static;
-  inset: auto;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: unset !important;
+  position: static !important; /* altes absolute entfernen */
+  inset: auto !important;
 }
 
 @media (max-width: 900px) {
-  body.projekt-seite .projekt-galerie { columns: 2; }
+  body.projekt-seite .projekt-galerie { columns: 2 !important; }
 }
 @media (max-width: 560px) {
-  body.projekt-seite .projekt-galerie { columns: 1; }
+  body.projekt-seite .projekt-galerie { columns: 1 !important; }
 }
