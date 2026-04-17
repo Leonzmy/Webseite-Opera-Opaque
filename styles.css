@@ -558,3 +558,15 @@ body.projekt-seite .projekt-hero img {
   object-fit: cover !important;
 }
 
+body.projekt-seite .projekt-hero {
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  transform: none !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+}
+
