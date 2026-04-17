@@ -913,3 +913,11 @@ body.projekt-seite .projekt-galerie {
   margin-top: 36px;
   columns: unset !important;
 }
+
+body.projekt-seite .projekt-galerie {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: flex-start !important;  /* oben gerade */
+  margin-top: 36px;
+  columns: unset !important;
+}
