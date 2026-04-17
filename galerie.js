@@ -3,7 +3,7 @@
    ============================== */
 
 (function () {
-  const GALERIE_HOEHE = 600; // px
+  const GALERIE_HOEHE = 900; // px
   const GAP = 12; // px zwischen Bildern und Spalten
 
   function bewerteSpalten(bilder, anzahl, spaltenBreite) {
@@ -29,7 +29,7 @@
     // Optimale Spaltenanzahl (2–4) berechnen
     let besteSpalten = 2;
     let bestScore = Infinity;
-    for (let s = 2; s <= 4; s++) {
+    for (let s = 2; s <= 3; s++) {
       const sw = (containerBreite - GAP * (s - 1)) / s;
       const score = bewerteSpalten(bilder, s, sw);
       if (score < bestScore) {
