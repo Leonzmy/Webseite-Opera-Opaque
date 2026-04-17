@@ -91,19 +91,21 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   letter-spacing:.12em;
   margin:0 0 .35rem;
 }
-.lp-what{ font-size:1.6rem; font-weight:600; margin:.15rem 0; }
-.lp-when,.lp-where{ margin:.1rem 0; color:var(--ink); }
 .lp-coming {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 6rem;
+  gap: 10rem;  /* ← weiter rechts */
+}
+
+.lp-when, .lp-where {
+  white-space: nowrap;  /* ← kein Umbruch */
 }
 
 .lp-tile {
   flex: 0 0 auto;
   width: 160px;
-  margin-top: 2.5rem;  /* ← nach unten schieben bis auf Höhe Datum */
+  margin-top: 4rem;  /* ← tiefer, auf Höhe Datum */
 }
 
 /* ===== Kachel: Bild linksbündig und Hover-Label "mehr Infos" ===== */
