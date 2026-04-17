@@ -504,6 +504,12 @@ body.kontakt .sr-only{ position:absolute; width:1px; height:1px; padding:0; marg
   body.kontakt .kontakt-drawing img{ margin-left:20px; max-width:300px; }
   body.kontakt .kontakt-card{ padding:18px; border-radius:12px; }
 }
+body.kontakt {
+  background-image: url('bilder/kontakt-hintergrund.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
 /* ==============================
    BUTTONS
