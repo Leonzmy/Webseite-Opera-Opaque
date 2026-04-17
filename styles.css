@@ -1,4 +1,3 @@
-
 /* ==== Grunddesign ==== */
 :root{
   --bg:#ffffff;
@@ -49,8 +48,8 @@ a:hover,a:focus{ color:#222; }
   padding:14px 16px;
   background:rgba(255,255,255,0.85);
   transition:opacity .4s ease;
-  opacity:0;              /* unsichtbar am Anfang */
-  pointer-events:none;    /* nicht klickbar am Anfang */
+  opacity:0;
+  pointer-events:none;
 }
 body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 
@@ -73,17 +72,17 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 .right-content{
   max-width:52rem;
   width:100%;
-  margin-top:0;        /* ← sicherstellen, kein versteckter Abstand */
+  margin-top:0;
   padding-top:0;
 }
 .right-content h1:first-child{
   margin-top:0;
 }
-/* 3x Abstand zwischen Titel und "Demnächst" */
+
 .lp-title{
   font-size:clamp(1.8rem,3.6vw,3.2rem);
   line-height:1.1;
-  margin:0 0 2em 0;    /* ← kleinerer Abstand zu "soon:" */
+  margin:0 0 2em 0;
 }
 .lp-sub{
   font-size:1.05rem;
@@ -95,21 +94,26 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 4rem;  /* ← weiter rechts */
+  gap: 4rem;
 }
-
+.lp-coming-text {
+  flex: 0 0 auto;
+}
+.lp-what{ font-size:1.6rem; font-weight:600; margin:.15rem 0; }
 .lp-when, .lp-where {
-  white-space: nowrap;  /* ← kein Umbruch */
+  margin:.1rem 0;
+  color:var(--ink);
+  white-space: nowrap;
 }
 
 .lp-tile {
   flex: 0 0 auto;
   width: 160px;
-  margin-top: 4rem;  /* ← tiefer, auf Höhe Datum */
+  margin-top: 4rem;
 }
 
 /* ===== Kachel: Bild linksbündig und Hover-Label "mehr Infos" ===== */
-.tile{ position:relative; border-radius:12px; overflow:clip; margin-top:1.5rem; }
+.tile{ position:relative; border-radius:12px; overflow:clip; margin-top:0; }
 .tile img{ display:block; margin-left:0; }
 .tile .overlay{
   position:absolute; left:0; right:0; bottom:0;
@@ -129,14 +133,13 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 /* ==== Responsive (Frontpage) ==== */
 @media (max-width:900px){
   .right-panel{ margin-left:0; padding:2rem 1.25rem; min-height:auto; }
-  .lp-title{ font-size:clamp(1.6rem,6vw,2.4rem); margin-bottom:6em; }
+  .lp-title{ font-size:clamp(1.6rem,6vw,2.4rem); margin-bottom:2em; }
 }
 
 /* ==============================
-   GENERISCHE PROJEKTSEITEN – NEUES LAYOUT (sauber, konfliktfrei)
+   GENERISCHE PROJEKTSEITEN
    ============================== */
 
-/* Header sichtbar auf Projektseiten */
 body.projekt-seite .site-header{
   position: sticky;
   top: 0;
@@ -148,7 +151,6 @@ body.projekt-seite .site-header{
   border-bottom: none;
 }
 
-/* Wrapper (kein Grid!) */
 body.projekt-seite .projekt-wrap{
   max-width: 1100px;
   margin: 0 auto;
@@ -156,7 +158,6 @@ body.projekt-seite .projekt-wrap{
   display: block;
 }
 
-/* 1) Full-bleed Hero (nicht abgeschnitten) */
 body.projekt-seite .projekt-hero{
   width: 100vw;
   margin-left: 50%;
@@ -172,7 +173,6 @@ body.projekt-seite .projekt-hero img{
   background: #fff;
 }
 
-/* 2) Zeichnung unter Hero – fluchtet mit Text */
 body.projekt-seite .projekt-wrap figure{ margin: 0; }
 body.projekt-seite .projekt-drawing{ margin: 0; padding: 0; }
 body.projekt-seite .projekt-drawing img{
@@ -182,18 +182,17 @@ body.projekt-seite .projekt-drawing img{
   height: auto;
 }
 
-/* 3) Hauptbereich: links Text (breit), rechts Credits (320px) */
 body.projekt-seite .projekt-maingrid{
   display: grid;
   grid-template-columns: 1fr 320px;
   gap: 40px;
   margin-top: 0;
-  align-items: start; /* Credits oben bündig mit Text */
+  align-items: start;
 }
 body.projekt-seite .content-left .projekt-beschreibung{
   text-align: justify;
   hyphens: auto;
-  max-width: none;  /* volle Spaltenbreite */
+  max-width: none;
 }
 body.projekt-seite .content-left .premiere{
   margin-top: 1.25em;
@@ -203,7 +202,7 @@ body.projekt-seite .content-left .premiere{
 body.projekt-seite .content-left .premiere .date{ font-weight: 700; }
 body.projekt-seite .content-left .premiere .place{
   margin-top: .15rem;
-  font-weight: 700; 
+  font-weight: 700;
 }
 body.projekt-seite .projekt-sidebar h2{ font-size: 1.1rem; margin: 0 0 8px; }
 body.projekt-seite .projekt-sidebar p{ margin: 0 0 6px; line-height: 1.35; }
@@ -220,7 +219,6 @@ body.projekt-seite .projekt-sidebar .logos img{
   object-fit: contain;
 }
 
-/* 4) Galerie: 3 Spalten, 1:1 Kacheln + Lightbox */
 body.projekt-seite .projekt-galerie{
   margin-top: 36px;
   display: grid;
@@ -256,17 +254,22 @@ body.projekt-seite .lightbox{
 }
 body.projekt-seite .lightbox.open{ display: flex; }
 body.projekt-seite .lightbox-content{
-  max-width: min(1200px, 96vw);
-  max-height: 90vh;
+  width: 96vw;
+  max-width: 96vw;
+  max-height: 92vh;
   display: grid;
   grid-template-rows: 1fr auto;
   gap: 12px;
+  padding: 0;
 }
 body.projekt-seite .lightbox-content img{
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  max-width: 96vw;
+  max-height: 86vh;
   object-fit: contain;
-  background: #111;
+  display: block;
+  margin: 0 auto;
 }
 body.projekt-seite .lightbox-caption{
   color: #fff;
@@ -316,20 +319,49 @@ body.projekt-seite .lightbox-close::after{
   color: #000;
 }
 
-/* Responsive */
+/* Projekt Overrides */
+body.projekt-seite .projekt-wrap{ padding-top: 0 !important; }
+body.projekt-seite .projekt-drawing{ margin: 0 !important; padding: 0 !important; margin-bottom: 0 !important; }
+body.projekt-seite .projekt-drawing img{ display: block; }
+body.projekt-seite .projekt-wrap figure{ margin: 0 !important; }
+body.projekt-seite .projekt-maingrid{ margin-top: 0 !important; }
+body.projekt-seite .projekt-hero{
+  width: 100vw !important;
+  margin: 0 !important;
+  margin-left: 50% !important;
+  transform: translateX(-50%) !important;
+  padding: 0 !important;
+}
+body.projekt-seite .projekt-hero img{ display: block !important; width: 100% !important; height: auto !important; object-fit: contain !important; }
+body.projekt-seite .content-left,
+body.projekt-seite .content-left .projekt-beschreibung{ margin-top: 0 !important; padding-top: 0 !important; }
+body.projekt-seite .content-left .projekt-beschreibung > *:first-child{ margin-top: 0 !important; }
+body.projekt-seite .projekt-sidebar{ margin-top: 0 !important; align-self: start !important; }
+body.projekt-seite .projekt-sidebar > *:first-child{ margin-top: 0 !important; }
+body.projekt-seite .projekt-sidebar p{ display: block !important; margin: 0 0 6px 0 !important; }
+body.projekt-seite .projekt-sidebar p strong{ font-weight: bold !important; margin-right: .4em; }
+body.projekt-seite .projekt-beschreibung strong{ font-weight: bold !important; }
+
+/* Responsive Projektseiten */
 @media (max-width: 900px){
   body.projekt-seite .projekt-maingrid{ grid-template-columns: 1fr; }
   body.projekt-seite .projekt-sidebar{ margin-top: 10px; }
   body.projekt-seite .projekt-galerie{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+  body.projekt-seite .content-left .projekt-beschreibung{
+    text-align: left;
+    hyphens: none;
+    padding: 0 1rem;
+  }
+  body.projekt-seite .content-left .projekt-beschreibung p{ margin-left: 0; margin-right: 0; }
 }
 @media (max-width: 560px){
   body.projekt-seite .projekt-galerie{ grid-template-columns: 1fr; }
 }
+
 /* ==============================
-   PROJEKTE-ÜBERSICHT (2×2 Grid, ohne Innenabstände, mit Fade)
+   PROJEKTE-ÜBERSICHT
    ============================== */
 
-/* Header sichtbar & Platz darunter nur auf der Projekte-Seite */
 body.projekte .site-header {
   position: sticky;
   top: 0;
@@ -340,28 +372,22 @@ body.projekte .site-header {
   backdrop-filter: saturate(120%) blur(6px);
 }
 
-/* Weniger Abstand über der Überschrift/Grafik */
-body.projekte .projekte-wrap {
-  padding-top: 0;
-}
+body.projekte .projekte-wrap { padding-top: 0; }
 
-/* Titelgrafik links, leicht eingerückt */
 body.projekte .projekte-title {
   margin: 0;
-  padding: 0 0 0;     /* kleiner als zuvor */
-  margin-left: 80px;        /* „etwas eingerückt“ */
+  padding: 0;
+  margin-left: 80px;
   text-align: left;
   line-height: 1;
 }
 
-/* Bild statt Text im Titel */
 body.projekte .projekte-title .projekte-title-image {
   display: block;
-  max-width: 320px;         /* Größe der Zeichnung anpassen */
+  max-width: 320px;
   height: auto;
 }
 
-/* Grid 2×2, keine Gaps; Außen: L/R/U = 80px */
 body.projekte .projekte-grid--2x2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -371,7 +397,6 @@ body.projekte .projekte-grid--2x2 {
   padding: 0;
 }
 
-/* Kachel-Links */
 body.projekte .tile,
 body.projekte .tile--swap,
 body.projekte .projekte-grid--2x2 a {
@@ -387,7 +412,6 @@ body.projekte .projekte-grid--2x2 a {
   box-shadow: none;
 }
 
-/* Bild-Swap: zweites Bild erscheint auf Hover, sanfter Fade */
 body.projekte .tile--swap .img,
 body.projekte .projekte-grid--2x2 a > img {
   position: absolute;
@@ -396,195 +420,59 @@ body.projekte .projekte-grid--2x2 a > img {
   height: 100%;
   margin: 0;
   max-width: none;
-  object-fit: contain;      /* komplett sichtbar */
+  object-fit: contain;
   object-position: center;
-  background: #fff;         /* Letterbox-Hintergrund */
+  background: #fff;
   transition: opacity .6s ease-in-out;
 }
 
-/* Startzustand */
 body.projekte .tile--swap .img.hover,
 body.projekte .projekte-grid--2x2 a > img:nth-child(2) { opacity: 0; }
 
-/* Hover-Übergang */
 body.projekte .tile--swap:hover .img.hover,
 body.projekte .projekte-grid--2x2 a:hover > img:nth-child(2) { opacity: 1; }
 body.projekte .tile--swap:hover .img.default,
 body.projekte .projekte-grid--2x2 a:hover > img:nth-child(1) { opacity: 0; }
 
-/* Responsiv */
-@media (max-width: 700px) {
-  body.projekte .projekte-grid--2x2 {
-    grid-template-columns: 1fr;
-    margin: 0 20px 60px;
-  }
-  body.projekte .projekte-title {
-    margin-left: 20px;
-    padding-top: 40px;
-  }
-  body.projekte .projekte-title .projekte-title-image {
-    max-width: 220px;
-  }
-}
-
-/* --- Projekte: "zweites Bild zeigen, wenn im Viewport" --- */
+body.projekte .projekte-grid--2x2 a > img { transition: opacity .6s ease-in-out; }
 body.projekte .projekte-grid--2x2 a.inview > img:nth-child(2) { opacity: 1; }
 body.projekte .projekte-grid--2x2 a.inview > img:nth-child(1) { opacity: 0; }
 
-/* Optional: sanftere Animation beim Auto-Reveal */
-body.projekte .projekte-grid--2x2 a > img { transition: opacity .6s ease-in-out; }
-
-/* --- Mobile: zweites Bild zeigen, wenn im Viewport --- */
-@media (hover: none) and (pointer: coarse) {
-  body.projekte .projekte-grid--2x2 a.inview > img:nth-child(1) { opacity: 0; }
-  body.projekte .projekte-grid--2x2 a.inview > img:nth-child(2) { opacity: 1; }
-  body.projekte .projekte-grid--2x2 a > img { transition: opacity 2s ease-in-out; }
+@media (max-width: 768px) {
+  body.projekte .projekte-grid--2x2 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  body.projekte .projekte-grid--2x2 a {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+  body.projekte .projekte-grid--2x2 a img { width: 100%; height: auto; }
 }
 
-/* --- Mobile: zweites Bild zeigen, wenn im Viewport --- */
+@media (max-width: 700px) {
+  body.projekte .projekte-grid--2x2 { margin: 0 20px 60px; }
+  body.projekte .projekte-title { margin-left: 20px; padding-top: 40px; }
+  body.projekte .projekte-title .projekte-title-image { max-width: 220px; }
+}
+
+body.projekte .section-title,
+body.about .section-title { margin: 0; padding: 0; }
+body.projekte .section-title img,
+body.about .section-title img { display: block; max-width: 320px; width: 100%; height: auto; }
+
+/* Mobile Touch – Projekte */
+body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(1),
+body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) { opacity: inherit !important; }
+
 @media (hover: none) and (pointer: coarse) {
   body.projekte .projekte-grid--2x2 a.inview > img:nth-child(1) { opacity: 0; }
   body.projekte .projekte-grid--2x2 a.inview > img:nth-child(2) { opacity: 1; }
   body.projekte .projekte-grid--2x2 a > img { transition: opacity .6s ease-in-out; }
 }
 
-
 /* ==============================
-   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 fade-in, Kachel klickbar
-   ============================== */
-body.about .site-header{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  opacity: 1;
-  pointer-events: auto;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: saturate(120%) blur(6px);
-}
-
-/* Intro oben */
-body.about main{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 100px 20px 40px;
-}
-body.about .intro{
-  max-width: 72ch;
-  margin: 0 auto 28px;
-  font-size: 1.05rem;
-  line-height: 1.65;
-  text-align: center;
-}
-body.about .about-intro{ text-align: justify; hyphens: none; }
-
-/* Galerie (volle Breite) */
-body.about .fullwidth-gallery{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 0;
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-
-/* Kachel */
-body.about .fullwidth-gallery .person{
-  position: relative;
-  margin: 0;
-  padding: 0;
-  height: 70vh;        /* gewünschte Kachelhöhe */
-  overflow: hidden;
-  top: 60px;           /* beibehaltener Versatz */
-  background: #fff;    /* Letterbox-Hintergrund */
-}
-
-/* Bilder übereinander legen */
-body.about .fullwidth-gallery .person img{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  transition: opacity .6s ease-in-out;
-  background: transparent;
-  opacity: 1 !important;   /* Bild 1 standardmäßig sichtbar */
-  z-index: 1;
-  pointer-events: none;     /* Klicks gehen an den Link darüber */
-}
-
-/* Variante mit Klassen */
-body.about .fullwidth-gallery .person img.image-hover{
-  opacity: 0 !important;
-  z-index: 2;
-}
-body.about .fullwidth-gallery .person:hover img.image-hover{ opacity: 1 !important; }
-body.about .fullwidth-gallery .person:hover img.image-default{ opacity: 0 !important; }
-
-/* Variante ohne Klassen (2 <img> je Kachel) */
-body.about .fullwidth-gallery .person img:nth-child(2){
-  opacity: 0 !important;
-  z-index: 2;
-}
-body.about .fullwidth-gallery .person:hover img:nth-child(2){ opacity: 1 !important; }
-body.about .fullwidth-gallery .person:hover img:nth-child(1){ opacity: 0 !important; }
-
-/* Overlay-Infos */
-body.about .fullwidth-gallery .overlay{
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: 1rem 1.5rem;
-  background: rgba(255,255,255,0.75);
-  color: var(--ink);
-  opacity: 0;
-  transition: opacity .3s ease;
-  z-index: 3;
-  pointer-events: none;  /* Overlay selbst nicht klickfangend */
-}
-body.about .fullwidth-gallery .person:hover .overlay,
-body.about .fullwidth-gallery .person:focus-within .overlay{ opacity: 1; }
-
-body.about .fullwidth-gallery .person .name{ font-weight: 700; }
-body.about .fullwidth-gallery .person .role{ font-size: 1.2rem; color: var(--muted); }
-body.about .fullwidth-gallery .person .bio { font-size: .95rem; }
-
-/* Der Link über der gesamten Kachel (KLICKBAR) */
-body.about .fullwidth-gallery .person a.person-link{
-  position: absolute;
-  inset: 0;
-  display: block;
-  z-index: 5;            /* über Bildern & Overlay */
-  background: transparent;
-  text-indent: -9999px;  /* reine Klickfläche, kein Text sichtbar */
-  pointer-events: auto;  /* sicherstellen, dass Klicks greifen */
-}
-
-/* Responsive */
-@media (max-width: 900px){
-  body.about .fullwidth-gallery{ grid-template-columns: repeat(2,1fr); }
-}
-@media (max-width: 560px){
-  body.about .fullwidth-gallery{ grid-template-columns: 1fr; }
-}
-
-/* ===== Zurück-Button (nur Projektseiten) ===== */
-body.projekt-seite .back-button,
-body.projekt-seidenkoffer .back-button{ margin-bottom:1rem; }
-body.projekt-seite .back-button a,
-body.projekt-seidenkoffer .back-button a{
-  display:inline-block; padding:.4rem .8rem;
-  border:2px solid var(--ink); color:var(--ink);
-  font-weight:bold; text-decoration:none; border-radius:4px;
-  transition:background-color .3s ease, color .3s ease;
-}
-body.projekt-seite .back-button a:hover,
-body.projekt-seidenkoffer .back-button a:hover{ background-color:var(--ink); color:var(--bg); }
-
-
-/* ==============================
-   ÜBER UNS (About) – 4 Kacheln, Bild 1 sichtbar, Bild 2 Fade, Link garantiert klickbar
+   ÜBER UNS (About)
    ============================== */
 
 body.about .site-header{
@@ -594,12 +482,10 @@ body.about .site-header{
   backdrop-filter: saturate(120%) blur(6px);
 }
 
-/* Intro */
-body.about main{ max-width:1100px; margin:0 auto; padding:0 0 0; }
+body.about main{ max-width:1100px; margin:0 auto; padding:0; }
 body.about .intro{ max-width:72ch; margin:0 auto 28px; font-size:1.05rem; line-height:1.65; text-align:center; }
 body.about .about-intro{ text-align:justify; hyphens:none; }
 
-/* Galerie – volle Breite, 4 Kacheln (auto-fit) */
 body.about .fullwidth-gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
@@ -607,54 +493,42 @@ body.about .fullwidth-gallery{
   width:100vw; margin-left:50%; transform:translateX(-50%);
 }
 
-/* Kachel / Person */
 body.about .fullwidth-gallery .person{
   position:relative;
   margin:0; padding:0; height:70vh; overflow:hidden;
-  top:60px; background:#fff; /* Letterbox */
+  top:60px; background:#fff;
 }
 
-/* Basis: beide Bilder übereinander; Bild 1 sichtbar */
 body.about .fullwidth-gallery .person img{
   position:absolute; inset:0; width:100%; height:100%;
   object-fit:contain; object-position:center;
   background:transparent;
   transition:opacity .6s ease-in-out;
   opacity:1 !important; z-index:1;
-  pointer-events:none; /* Bilder fangen keine Klicks ab */
+  pointer-events:none;
 }
 
-/* Variante A: Klassen vorhanden */
 body.about .fullwidth-gallery .person img.image-hover{ opacity:0 !important; z-index:2; }
 body.about .fullwidth-gallery .person:hover img.image-hover{ opacity:1 !important; }
 body.about .fullwidth-gallery .person:hover img.image-default{ opacity:0 !important; }
 
-/* Variante B: genau 2 <img> ohne Klassen */
 body.about .fullwidth-gallery .person img:nth-child(2){ opacity:0 !important; z-index:2; }
 body.about .fullwidth-gallery .person:hover img:nth-child(2){ opacity:1 !important; }
 body.about .fullwidth-gallery .person:hover img:nth-child(1){ opacity:0 !important; }
 
-/* --- LINK-ABSICHERUNG: zwei mögliche HTML-Varianten --- */
-
-/* Variante 1: separater Overlay-Link <a class="person-link"> ... </a> */
 body.about .fullwidth-gallery .person a.person-link{
   position:absolute; inset:0; z-index:5;
   display:block; background:transparent;
-  text-indent:-9999px; /* unsichtbarer, aber voller Klickbereich */
+  text-indent:-9999px;
   pointer-events:auto; cursor:pointer;
 }
 
-/* Variante 2: der Link UMWRAPPT die Bilder ( <a class="person-link"><img><img></a> ) */
 body.about .fullwidth-gallery .person > a.person-link{
   position:relative; inset:auto; z-index:5; display:block;
   width:100%; height:100%;
 }
-/* Falls Bilder im Link liegen, bleiben sie klick-durchlässig */
-body.about .fullwidth-gallery .person > a.person-link img{
-  pointer-events:none;
-}
+body.about .fullwidth-gallery .person > a.person-link img{ pointer-events:none; }
 
-/* Overlay-Infos (nicht klickfangend) */
 body.about .fullwidth-gallery .overlay{
   position:absolute; left:0; right:0; bottom:0; z-index:3;
   padding:1rem 1.5rem; background:rgba(255,255,255,0.75);
@@ -668,597 +542,71 @@ body.about .fullwidth-gallery .person .name{ font-weight:700; }
 body.about .fullwidth-gallery .person .role{ font-size:1.2rem; color:var(--muted); }
 body.about .fullwidth-gallery .person .bio{ font-size:.95rem; }
 
-/* Responsiv */
-@media (max-width:900px){ body.about .fullwidth-gallery{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width:560px){ body.about .fullwidth-gallery{ grid-template-columns:1fr; } }
-
 body.about .fullwidth-gallery .person a.card-link{
   position:absolute; inset:0; z-index:5;
   display:block; background:transparent;
   text-indent:-9999px;
 }
 body.about .fullwidth-gallery .person img.image-default{ opacity:1; z-index:1; }
-body.about .fullwidth-gallery .person img.image-hover { opacity:0; z-index:2; transition:opacity .6s ease-in-out; }
+body.about .fullwidth-gallery .person img.image-hover{ opacity:0; z-index:2; transition:opacity .6s ease-in-out; }
 body.about .fullwidth-gallery .person:hover .image-default{ opacity:0; }
-body.about .fullwidth-gallery .person:hover .image-hover { opacity:1; }
+body.about .fullwidth-gallery .person:hover .image-hover{ opacity:1; }
 
-/* ===== Überschrift-Bild in About (links ausgerichtet) ===== */
-body.about .section-title {
-  display: block;       /* kein flex mehr */
-  margin: 0 0 1.5rem 0; /* nur unten Abstand */
-  padding-top: 0;    /* Abstand zum Header */
+body.about .section-title{ display:block; margin:0 0 1.5rem 0; padding-top:0; }
+body.about .section-title img{ max-width:320px; width:100%; height:auto; display:block; }
+
+@media (max-width:900px){
+  body.about .fullwidth-gallery{ grid-template-columns:repeat(2,1fr); }
+  body.about .about-intro{ text-align:justify; hyphens:auto; padding:0 2rem; }
 }
+@media (max-width:560px){ body.about .fullwidth-gallery{ grid-template-columns:1fr; } }
 
-body.about .section-title img {
-  max-width: 320px;     /* gewünschte Maximalbreite */
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ===== Kein Abstand über/unter den Überschrift-Bildern ===== */
-body.projekte .section-title,
-body.about .section-title {
-  margin: 0;
-  padding: 0;
-}
-
-body.projekte .section-title img,
-body.about .section-title img {
-  display: block;
-  max-width: 320px; /* ggf. anpassen */
-  width: 100%;
-  height: auto;
-}
-
-/* === AUTO-APPEND OVERRIDES === */
-body.projekt-seite .projekt-hero{
-margin: 0 !important;
-padding: 0;
-}
-
-/* === AUTO-APPEND OVERRIDES === */
-body.projekt-seite .projekt-drawing{
-margin: 0 !important;
-padding: 0;
-}
-
-/* === AUTO-APPEND OVERRIDES === */
-body.projekt-seite .projekt-wrap figure{
-margin: 0 !important;
-}
-
-/* === AUTO-APPEND OVERRIDES === */
-body.projekt-seite .lightbox-content{
-max-width: 96vw !important;
-max-height: 96vh !important;
-}
-
-/* === AUTO-APPEND OVERRIDES === */
-body.projekt-seite .lightbox-content img{
-width: 100% !important;
-height: 100% !important;
-object-fit: contain !important;
-}
-
-/* About: Mobile-Autoreveal pro Scrollabschnitt */
-@media (hover: none) and (pointer: coarse) {
-  /* Wechsel durch JS: .inview auf <figure.person> */
-  body.about .about-gallery .person.inview .image-default { opacity: 0; }
-  body.about .about-gallery .person.inview .image-hover  { opacity: 1; }
-
-  /* Weiche, langsamere Transition */
-  body.about .about-gallery .person .image-default,
-  body.about .about-gallery .person .image-hover {
-    transition: opacity 1.5s ease-in-out;
-  }
-}
-
-
-/* ==============================
-   GENERISCHE PROJEKTSEITEN – OVERRIDES v3
-   ============================== */
-
-/* Hero: full-bleed + kein vertikaler Abstand */
-body.projekt-seite .projekt-hero{
-  width: 100vw !important;
-  margin: 0 !important;             /* reset all margins */
-  margin-left: 50% !important;       /* re-center to viewport */
-  transform: translateX(-50%) !important;
-  padding: 0 !important;
-}
-body.projekt-seite .projekt-hero img{
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  object-fit: contain !important;
-}
-
-/* Zeichnung: weiterhin ohne vertikale Abstände */
-body.projekt-seite .projekt-drawing{
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Lightbox: Container und Bild strikt auf Viewport begrenzen */
-body.projekt-seite .lightbox-content{
-  width: 96vw !important;
-  max-width: 96vw !important;
-  max-height: 92vh !important;   /* etwas Platz für Caption und Buttons */
-  padding: 0 !important;
-}
-body.projekt-seite .lightbox-content img{
-  width: auto !important;
-  height: auto !important;
-  max-width: 96vw !important;
-  max-height: 86vh !important;   /* unterhalb der 92vh des Containers */
-  object-fit: contain !important;
-  display: block !important;
-  margin: 0 auto !important;
-}
-
-
-/* ==============================
-   GENERISCHE PROJEKTSEITEN – OVERRIDES v4
-   - Drawing bündig (kein Abstand)
-   - Grid ohne Abstand nach oben
-   - Credits auf gleicher Höhe wie Textblock
-   ============================== */
-
-/* Drawing ohne Abstände (Figur hat oft Browser-Default-Margins) */
-body.projekt-seite .projekt-drawing{
-  margin: 0 !important;
-  padding: 0 !important;
-}
-body.projekt-seite .projekt-drawing img{
-  display: block;
-}
-
-/* Grid direkt unter dem Drawing (kein Abstand) */
-body.projekt-seite .projekt-maingrid{
-  margin-top: 0 !important;
-}
-
-/* Credits-Spalte bündig oben mit dem Textblock */
-body.projekt-seite .projekt-sidebar{
-  margin-top: 0 !important;
-  align-self: start !important;
-}
-
-
-/* ==============================
-   GENERISCHE PROJEKTSEITEN – OVERRIDES v5
-   - Entfernt kollabierende Top-Margins im Textblock
-   - Stellt gleiche Oberkante für Text & Credits her
-   ============================== */
-
-/* Sicherheitsnetz: keine zusätzlichen Ränder am Wrapper/Blöcken */
-body.projekt-seite .projekt-wrap{ padding-top: 0 !important; }
-body.projekt-seite .projekt-drawing{ margin-bottom: 0 !important; }
-
-/* 1) Verhindere Top-Margin-Kollaps im Textblock */
-body.projekt-seite .content-left,
-body.projekt-seite .content-left .projekt-beschreibung{
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-/* Wichtig: erstes Kindelement im Text bekommt KEINEN oberen Rand */
-body.projekt-seite .content-left .projekt-beschreibung > *:first-child{
-  margin-top: 0 !important;
-}
-
-/* 2) Sidebar: ebenfalls keinen Top-Rand beim ersten Kindelement */
-body.projekt-seite .projekt-sidebar{
-  margin-top: 0 !important;
-  align-self: start !important;
-}
-body.projekt-seite .projekt-sidebar > *:first-child{
-  margin-top: 0 !important;
-}
-
-/* 3) Grid selbst darf keinen Top-Abstand haben */
-body.projekt-seite .projekt-maingrid{
-  margin-top: 0 !important;
-}
-
-
-/* ==============================
-   GENERISCHE PROJEKTSEITEN – OVERRIDES v6
-   - Sidebar zweispaltig für Labels und Namen
-   ============================== */
-body.projekt-seite .projekt-sidebar p {
-  display: block !important;
-  margin: 0 0 6px 0 !important;
-}
-
-body.projekt-seite .projekt-sidebar p strong {
-  font-weight: bold !important;
-  margin-right: .4em;   /* kleiner Abstand hinter dem Doppelpunkt */
-}
-
-body.projekt-seite .projekt-beschreibung strong {
-  font-weight: bold !important;
-}
-
-.back-nav {
-  text-align: center;
-  margin: 3em 0 2em;
-}
-
-.back-button {
-  display: inline-block;
-  padding: 0.6em 1.2em;
-  border-radius: 8px;
-  background: #222;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: background 0.2s ease;
-}
-
-.back-button:hover {
-  background: #444;
-}
-
-
-/* ==============================
-   FRONTPAGE VIDEO TWEAKS
-   - Linke Hälfte des Videos fix sichtbar
-   - Halbtransparentes Overlay hinter dem Textbereich
-   ============================== */
-
-/* Video: immer die linke Seite im Fokus */
-.frontpage .video-bg .video{
-  object-fit: cover;
-  object-position: left center; /* linke Hälfte sichtbar */
-}
-
-/* Halbtransparentes Hintergrundfeld nur hinter dem Text */
-.frontpage-content {
-  position: relative;
-  z-index: 5; /* über Video und Overlay */
-  background: rgba(255, 255, 255, 0.9); /* Weiß, 60% transparent */
-  padding: 1.5rem;
-  border-radius: 8px; /* optional: abgerundete Ecken */
-  max-width: 90%;     /* Textblock nicht über die ganze Breite ziehen */
-  margin: 1rem auto;  /* etwas Abstand oben/unten */
-}
-
-/* Auf größeren Screens Hintergrund wieder entfernen, wenn gewünscht */
-@media (min-width: 900px) {
-  .frontpage-content {
-    background: none;
-  }
-}
-
-/* Mobile: Textbereich ist nicht mehr rechts → Overlay über ganze Breite legen (oder anpassen nach Wunsch) */
-@media (max-width: 900px){
-  .frontpage .video-bg::after{
-    left: 0;                /* gesamte Fläche leicht einfärben */
-    background: rgba(0,0,0,0.22);
-  }
-}
-
-
-/* ==============================
-   KONTAKT – Styling
-   ============================== */
-
-/* Header sichtbar & sticky wie auf Projektseiten */
-body.kontakt .site-header{
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  opacity: 1;
-  pointer-events: auto;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: saturate(120%) blur(6px);
-  border-bottom: none;
-}
-
-/* Drawing ohne Abstände, bündig */
-body.kontakt .kontakt-drawing{ margin: 0; padding: 0; }
-body.kontakt .kontakt-drawing img{
-  display: block;
-  width: 100%;
-  max-width: 420px;   /* Größe der Zeichnung, anpassbar */
-  height: auto;
-  margin-left: 20px;  /* leicht eingerückt wie Text */
-}
-
-/* Wrapper Breite wie bei anderen Seiten */
-body.kontakt main{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 80px 20px 60px; /* Platz unter Header */
-}
-
-/* Karte um das Formular: abgehoben */
-body.kontakt .kontakt-card{
-  background: rgba(255,255,255,0.8);
-  border: 1px solid #e6e6e6;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-  padding: 24px;
-  margin-top: 16px;
-}
-
-/* Formular-Layout */
-body.kontakt .kontakt-form{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 20px;
-  margin-top: 12px;
-}
-body.kontakt .kontakt-form .field-full{ grid-column: 1 / -1; }
-
-/* Inputs/Textareas */
-body.kontakt .kontakt-form label{
-  display: block;
-  font-size: .9rem;
-  margin: 0 0 6px;
-}
-body.kontakt .kontakt-form .input,
-body.kontakt .kontakt-form .textarea{
-  width: 100%;
-  padding: .7rem .9rem;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  background: #fff;
-  outline: none;
-  transition: border-color .2s ease, box-shadow .2s ease;
-}
-body.kontakt .kontakt-form .input:focus,
-body.kontakt .kontakt-form .textarea:focus{
-  border-color: #999;
-  box-shadow: 0 0 0 3px rgba(0,0,0,.06);
-}
-
-/* Button-Zeile */
-body.kontakt .submit-row{
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 6px;
-}
-body.kontakt .btn{
-  display: inline-block;
-  padding: .7rem 1.2rem;
-  border-radius: 10px;
-  border: 2px solid #000;
-  background: #000;
-  color: #fff;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background .2s ease, color .2s ease;
-}
-body.kontakt .btn:hover{ background: #333; }
-body.kontakt .note{ color: var(--muted); font-size: .9rem; }
-
-/* Erfolgsmeldung verstecken, bis aktiv */
-body.kontakt .success{ display: none; margin-top: 10px; color: #0a7a3d; font-weight: 600; }
-
-/* Kleine Helfer */
-body.kontakt .sr-only{
-  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,1,1); border: 0;
-}
-
-/* Responsive */
-@media (max-width: 700px){
-  body.kontakt .kontakt-form{ grid-template-columns: 1fr; }
-  body.kontakt .kontakt-drawing img{ margin-left: 20px; max-width: 300px; }
-  body.kontakt .kontakt-card{ padding: 18px; border-radius: 12px; }
-}
-
-
-@media (max-width: 900px){
-  .frontpage .video-bg .video{
-    object-fit: cover !important;
-    object-position: left center !important;
-    height: 12vh !important;   /* 50% kleiner als zuvor */
-  }
-  .frontpage .hero-cover{
-    height: 12vh !important;   /* Platzhalter passend zum Video */
-  }
-}
-/* Mobile: Textblock weiter nach unten */
-@media (max-width: 900px){
-  .frontpage-content{
-    margin: 40vh auto 1rem !important; /* mehr Abstand nach oben */
-  }
-  .right-panel{
-    padding-top: 1rem !important;     /* etwas Luft im Panel */
-  }
-  .right-content h1:first-child{
-  margin-top:0;
-}
-}
-
-
-
-@media (max-width: 900px){
-  .frontpage .video-bg {
-    position: relative !important;  /* statt fixed */
-    height: 50vh !important;        /* nur 25% der Höhe */
-    overflow: hidden;               /* alles außerhalb abschneiden */
-  }
-  .frontpage .video-bg .video {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;                   /* füllt den 25vh-Container */
-    object-fit: cover !important;
-    object-position: left center !important;
-  }
-  .frontpage .hero-cover {
-    height: 50vh !important;        /* Abstandshalter passend */
-  }
-}
-/* Video weiterhin voller Viewport */
-    clip-path: inset(0 0 25% 0); /* nur obere 25% sichtbar */
-  }
-  .frontpage .hero-cover {
-    height: 50vh !important; /* Platzhalter, damit Content unten nicht überlappt */
-  }
-  .frontpage-content {
-    margin-top: 10vh !important; /* Text nach unten verschieben */
-  }
-}
-
-/* -------------------------------------------------
-   Projekte: Zweites Bild auf Mobile beim Einscrollen
-   ------------------------------------------------- */
-@media (hover: none) and (pointer: coarse) {
-  /* Erstes Bild ausblenden, wenn Kachel "inview" */
-  body.projekte .projekte-grid--2x2 a.inview > img:nth-child(1) {
-    opacity: 0;
-  }
-
-  /* Zweites Bild einblenden, wenn Kachel "inview" */
-  body.projekte .projekte-grid--2x2 a.inview > img:nth-child(2) {
-    opacity: 1;
-  }
-
-  /* Sanfte Übergänge */
-  body.projekte .projekte-grid--2x2 a > img {
-    transition: opacity 0.6s ease-in-out;
-  }
-}
-
-/* About: Mobile-Autoreveal – überschreibt Hover dank !important */
-@media (hover: none) and (pointer: coarse) {
-  body.about .fullwidth-gallery .person.inview .image-default { opacity: 0 !important; }
-  body.about .fullwidth-gallery .person.inview .image-hover  { opacity: 1 !important; }
-
-  body.about .fullwidth-gallery .person .image-default,
-  body.about .fullwidth-gallery .person .image-hover {
-    transition: opacity 1.5s ease-in-out !important;
-  }
-}
-
-/* About (Touch): Scroll-Umschaltung – überschreibt Hover dank !important */
-body.about.touch .fullwidth-gallery .person.inview .image-default { opacity: 0 !important; }
-body.about.touch .fullwidth-gallery .person.inview .image-hover  { opacity: 1 !important; }
-
-/* Sanfter Wechsel */
+/* Mobile Touch – About */
+body.about.touch .fullwidth-gallery .person.inview .image-default{ opacity:0 !important; }
+body.about.touch .fullwidth-gallery .person.inview .image-hover{ opacity:1 !important; }
 body.about.touch .fullwidth-gallery .person .image-default,
-body.about.touch .fullwidth-gallery .person .image-hover {
-  transition: opacity 1.5s ease-in-out !important;
-}
+body.about.touch .fullwidth-gallery .person .image-hover{ transition:opacity 1.5s ease-in-out !important; }
 
-/* Mobile (Touch): Hover-Effekt deaktivieren */
 body.touch .fullwidth-gallery .person:hover .image-default,
-body.touch .fullwidth-gallery .person:hover .image-hover {
-  /* verhindert, dass die Hover-Opacity auf Touch greift */
-  opacity: inherit !important;
+body.touch .fullwidth-gallery .person:hover .image-hover{ opacity:inherit !important; }
+
+@media (hover: none) and (pointer: coarse) {
+  body.about .fullwidth-gallery .person.inview .image-default{ opacity:0 !important; }
+  body.about .fullwidth-gallery .person.inview .image-hover{ opacity:1 !important; }
+  body.about .fullwidth-gallery .person .image-default,
+  body.about .fullwidth-gallery .person .image-hover{ transition:opacity 1.5s ease-in-out !important; }
+  body.about .about-gallery .person.inview .image-default{ opacity:0; }
+  body.about .about-gallery .person.inview .image-hover{ opacity:1; }
+  body.about .about-gallery .person .image-default,
+  body.about .about-gallery .person .image-hover{ transition:opacity 1.5s ease-in-out; }
 }
 
-/* Mobile (Touch): Hover-Effekt auf Projekte deaktivieren */
-body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(1),
-body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
-  opacity: inherit !important; /* verhindert das Umschalten beim Antippen */
+/* ===== Zurück-Button ===== */
+body.projekt-seite .back-button,
+body.projekt-seidenkoffer .back-button{ margin-bottom:1rem; }
+body.projekt-seite .back-button a,
+body.projekt-seidenkoffer .back-button a{
+  display:inline-block; padding:.4rem .8rem;
+  border:2px solid var(--ink); color:var(--ink);
+  font-weight:bold; text-decoration:none; border-radius:4px;
+  transition:background-color .3s ease, color .3s ease;
 }
+body.projekt-seite .back-button a:hover,
+body.projekt-seidenkoffer .back-button a:hover{ background-color:var(--ink); color:var(--bg); }
 
-/* Mobile (Touch): Hover-Effekt auf Projekte deaktivieren */
-body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(1),
-body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
-  opacity: inherit !important; /* verhindert das Umschalten beim Antippen */
+.back-nav{ text-align:center; margin:3em 0 2em; }
+.back-button{
+  display:inline-block; padding:0.6em 1.2em;
+  border-radius:8px; background:#222; color:#fff;
+  text-decoration:none; font-size:1rem;
+  transition:background 0.2s ease;
 }
+.back-button:hover{ background:#444; }
 
-/* Mobile (Touch): Kacheln in Projekte größer darstellen */
-@media (max-width: 768px) {
-  body.projekte .projekte-grid--2x2 a {
-    flex: 1 1 100%;       /* jede Kachel nimmt volle Breite */
-    max-width: 100%;
-  }
+/* ==============================
+   FRONTPAGE VIDEO
+   ============================== */
 
-  body.projekte .projekte-grid--2x2 {
-    grid-template-columns: 1fr;  /* statt 2 Spalten nur noch 1 */
-    gap: 2rem;                   /* mehr Abstand dazwischen */
-  }
-
-  body.projekte .projekte-grid--2x2 a img {
-    width: 100%;
-    height: auto;
-  }
-}
-
-/* ---- Mehr Infos -----
-/* Link-Style für "Mehr Infos" */
-.more-info {
-  margin-top: 1rem;
-}
-
-.more-info a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #222;   /* dunkler Hintergrund */
-  color: #fff;              /* weiße Schrift */
-  text-decoration: none;    /* Unterstreichung weg */
-  border-radius: 0.5rem;    /* abgerundete Ecken */
-  transition: background-color 0.3s ease;
-}
-
-.more-info a:hover,
-.more-info a:focus {
-  background-color: #444;   /* beim Hover etwas heller */
-}
-
-/* ===========================================
-   Mobile: Text nicht im Blocksatz + Randabstand
-   =========================================== */
-@media (max-width: 900px) {
-  body.projekt-seite .content-left .projekt-beschreibung {
-    text-align: left;     /* kein Blocksatz */
-    hyphens: none;        /* Silbentrennung aus */
-    padding: 0 1rem;      /* Abstand links/rechts */
-  }
-
-  body.projekt-seite .content-left .projekt-beschreibung p {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
-/* ===========================================
-   Mobile: Kein Blocksatz + Randabstand
-   für Projekt- und About-Seiten
-   =========================================== */
-@media (max-width: 900px) {
-  /* Projektseiten */
-  body.projekt-seite .content-left .projekt-beschreibung {
-    text-align: left;     /* kein Blocksatz */
-    hyphens: none;        /* Silbentrennung aus */
-    padding: 0 1rem;      /* Abstand links/rechts */
-  }
-
-  /* Über uns */
-  body.about .about-intro {
-    text-align: justify;     /* kein Blocksatz */
-    hyphens: auto;        /* Silbentrennung aus */
-    padding: 0 2rem;      /* Abstand links/rechts */
-  }
-}
-
-.frontpage .video-bg,
-.frontpage .hero-cover {
-  margin: 0;
-  padding: 0;
-  border: none;
-}
-
-.frontpage .video-bg .video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* statt contain */
-  object-position: center;
-  display: block;
-}
-/* ===========================================
-   FRONTPAGE VIDEO – randlos fullscreen (bereinigt)
-   =========================================== */
 .frontpage .video-bg {
   position: fixed !important;
   inset: 0 !important;
@@ -1280,8 +628,8 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   margin: 0 !important;
   padding: 0 !important;
   border: none !important;
-  object-fit: cover !important;          /* füllt ohne Ränder */
-  object-position: left center !important; /* Fokus links, wie gewünscht */
+  object-fit: cover !important;
+  object-position: left center !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -1294,27 +642,79 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   position: relative !important;
 }
 
-/* Trailer-Button */
-.trailer a {
-  display: inline-block;        /* passt sich an die Schriftgröße an */
-  background-color: #222;       /* dunkler Hintergrund */
-  color: #fff;                  /* weiße Schrift */
-  text-decoration: none;        /* keine Unterstreichung */
-  border-radius: 0.5rem;        /* runde Ecken */
-  transition: background-color 0.3s ease;
-  padding: 0.2em 0.6em;         /* etwas Luft links/rechts, kaum oben/unten */
-  font-size: 1rem;              /* gleiche Größe wie normaler Text */
-  line-height: 1.2;             /* knappes Zeilenmaß */
-  margin-top: 1rem; /* oder 3rem, je nachdem wie viel Abstand du willst */
+/* ==============================
+   KONTAKT
+   ============================== */
+
+body.kontakt .site-header{
+  position: sticky; top: 0; z-index: 100;
+  opacity: 1; pointer-events: auto;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: none;
 }
 
-.trailer a:hover,
-.trailer a:focus {
-  background-color: #444;       /* beim Hover etwas heller */
+body.kontakt .kontakt-drawing{ margin:0; padding:0; }
+body.kontakt .kontakt-drawing img{
+  display:block; width:100%; max-width:420px; height:auto; margin-left:20px;
 }
 
-/* Pressestimmen-Button */
-.press a {
+body.kontakt main{ max-width:1100px; margin:0 auto; padding:80px 20px 60px; }
+
+body.kontakt .kontakt-card{
+  background:rgba(255,255,255,0.8);
+  border:1px solid #e6e6e6;
+  border-radius:16px;
+  box-shadow:0 8px 30px rgba(0,0,0,0.06);
+  padding:24px; margin-top:16px;
+}
+
+body.kontakt .kontakt-form{
+  display:grid; grid-template-columns:1fr 1fr; gap:16px 20px; margin-top:12px;
+}
+body.kontakt .kontakt-form .field-full{ grid-column:1 / -1; }
+
+body.kontakt .kontakt-form label{ display:block; font-size:.9rem; margin:0 0 6px; }
+body.kontakt .kontakt-form .input,
+body.kontakt .kontakt-form .textarea{
+  width:100%; padding:.7rem .9rem; border-radius:10px;
+  border:1px solid #ddd; background:#fff; outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+body.kontakt .kontakt-form .input:focus,
+body.kontakt .kontakt-form .textarea:focus{
+  border-color:#999; box-shadow:0 0 0 3px rgba(0,0,0,.06);
+}
+
+body.kontakt .submit-row{
+  grid-column:1 / -1; display:flex; align-items:center; gap:12px; margin-top:6px;
+}
+body.kontakt .btn{
+  display:inline-block; padding:.7rem 1.2rem; border-radius:10px;
+  border:2px solid #000; background:#000; color:#fff;
+  font-weight:700; cursor:pointer; transition:background .2s ease, color .2s ease;
+}
+body.kontakt .btn:hover{ background:#333; }
+body.kontakt .note{ color:var(--muted); font-size:.9rem; }
+body.kontakt .success{ display:none; margin-top:10px; color:#0a7a3d; font-weight:600; }
+body.kontakt .sr-only{
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,1,1); border:0;
+}
+
+@media (max-width:700px){
+  body.kontakt .kontakt-form{ grid-template-columns:1fr; }
+  body.kontakt .kontakt-drawing img{ margin-left:20px; max-width:300px; }
+  body.kontakt .kontakt-card{ padding:18px; border-radius:12px; }
+}
+
+/* ==============================
+   BUTTONS (Trailer, Press, Mehr Infos)
+   ============================== */
+
+.trailer a,
+.press a,
+.more-info a {
   display: inline-block;
   background-color: #222;
   color: #fff;
@@ -1324,260 +724,112 @@ body.projekte.touch .projekte-grid--2x2 a:hover > img:nth-child(2) {
   padding: 0.2em 0.6em;
   font-size: 1rem;
   line-height: 1.2;
-  margin-top: 1rem; /* oder 3rem, je nachdem wie viel Abstand du willst */
-
+  margin-top: 1rem;
 }
-}
-
-.press a:hover,
-.press a:focus {
+.trailer a:hover, .trailer a:focus,
+.press a:hover, .press a:focus,
+.more-info a:hover, .more-info a:focus {
   background-color: #444;
 }
 
-/* ===========================================
-   PHANTOM = ENTHAUPTUNG/ORFEO Layout-Alias
-   =========================================== */
-body:is(.projekt-seite, .projekt-phantom) .site-header{ position: sticky; top: 0; z-index: 100; opacity: 1; pointer-events: auto; background: rgba(255,255,255,0.85); backdrop-filter: saturate(120%) blur(6px); border-bottom: none; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-wrap{ max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; display: block; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-hero{ width: 100vw; margin-left: 50%; transform: translateX(-50%); margin-top: 80px; margin-bottom: 0; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-hero img{ display: block; width: 100%; height: auto; object-fit: contain; background: #fff; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-wrap figure{ margin: 0; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-drawing{ margin: 0; padding: 0; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-drawing img{ display: block; width: 100%; max-width: 320px; height: auto; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ display: grid; grid-template-columns: 1fr 320px; gap: 40px; margin-top: 0; align-items: start; }
-body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung{ text-align: justify; hyphens: auto; max-width: none; }
-body:is(.projekt-seite, .projekt-phantom) .content-left .premiere{ margin-top: 1.25em; font-size: 1.05rem; line-height: 1.35; }
-body:is(.projekt-seite, .projekt-phantom) .content-left .premiere .date{ font-weight: 700; }
-body:is(.projekt-seite, .projekt-phantom) .content-left .premiere .place{ margin-top: .15rem; font-weight: 700; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar h2{ font-size: 1.1rem; margin: 0 0 8px; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar p{ margin: 0 0 6px; line-height: 1.35; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos{ display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos img{ max-width: 100%; max-height: 70px; height: auto; object-fit: contain; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-galerie a{ display: block; position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 8px; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-galerie img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-@media (max-width: 900px){ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ grid-template-columns: 1fr; } body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar{ margin-top: 10px; } body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
-@media (max-width: 560px){ body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ grid-template-columns: 1fr; } }
-body:is(.projekt-seite, .projekt-phantom) .projekt-wrap{ padding-top: 0 !important; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-drawing{ margin-bottom: 0 !important; }
+.more-info{ margin-top:1rem; }
+
+/* ==============================
+   PHANTOM / PROJEKT-ALIAS
+   ============================== */
+
+body:is(.projekt-seite, .projekt-phantom) .site-header{ position:sticky; top:0; z-index:100; opacity:1; pointer-events:auto; background:rgba(255,255,255,0.85); backdrop-filter:saturate(120%) blur(6px); border-bottom:none; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-wrap{ max-width:1100px; margin:0 auto; padding:0 20px 60px; display:block; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-hero{ width:100vw; margin-left:50%; transform:translateX(-50%); margin-top:80px; margin-bottom:0; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-hero img{ display:block; width:100%; height:auto; object-fit:contain; background:#fff; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-wrap figure{ margin:0; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-drawing{ margin:0; padding:0; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-drawing img{ display:block; width:100%; max-width:320px; height:auto; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ display:grid; grid-template-columns:1fr 320px; gap:40px; margin-top:0; align-items:start; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung{ text-align:justify; hyphens:auto; max-width:none; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .premiere{ margin-top:1.25em; font-size:1.05rem; line-height:1.35; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .premiere .date{ font-weight:700; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .premiere .place{ margin-top:.15rem; font-weight:700; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar h2{ font-size:1.1rem; margin:0 0 8px; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar p{ margin:0 0 6px; line-height:1.35; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos{ display:grid; grid-template-columns:1fr; gap:10px; margin-top:10px; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos img{ max-width:100%; max-height:70px; height:auto; object-fit:contain; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ margin-top:36px; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-galerie a{ display:block; position:relative; aspect-ratio:1/1; overflow:hidden; border-radius:8px; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-galerie img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-wrap{ padding-top:0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-drawing{ margin:0 !important; padding:0 !important; margin-bottom:0 !important; }
 body:is(.projekt-seite, .projekt-phantom) .content-left,
-body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung{ margin-top: 0 !important; padding-top: 0 !important; }
-body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung > *:first-child{ margin-top: 0 !important; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar{ margin-top: 0 !important; align-self: start !important; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar > *:first-child{ margin-top: 0 !important; }
-body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top: 0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung{ margin-top:0 !important; padding-top:0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .content-left .projekt-beschreibung > *:first-child{ margin-top:0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar{ margin-top:0 !important; align-self:start !important; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar > *:first-child{ margin-top:0 !important; }
+body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top:0 !important; }
 
+@media (max-width:900px){
+  body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ grid-template-columns:1fr; }
+  body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar{ margin-top:10px; }
+  body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
+@media (max-width:560px){
+  body:is(.projekt-seite, .projekt-phantom) .projekt-galerie{ grid-template-columns:1fr; }
+}
 
-/* ===========================================
-   Mobile (≤900px): nur linke 50% des Videos zeigen
-   =========================================== */
+/* ==============================
+   DESKTOP: Header in rechter Hälfte
+   ============================== */
+@media (min-width:900px){
+  .site-header{ justify-content:center; padding-left:50vw; }
+  .site-header .brand{ display:none; }
+  .site-header .navlinks a{ margin:0 .125rem; }
+}
 
-/* ===========================================
-   MOBILE FRONT PAGE – Vollbild, links fokussiert
-   =========================================== */
-@media (max-width: 900px){
-  /* Videolayer füllt den kompletten Viewport */
+/* ==============================
+   MOBILE FRONTPAGE
+   ============================== */
+@media (max-width:900px){
   .frontpage .video-bg{
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 0 !important;
-    overflow: hidden !important;
-    clip-path: none !important;          /* entfernt das Halb-Viewport-Clipping */
-    background: none !important;
+    position:fixed !important;
+    inset:0 !important;
+    z-index:0 !important;
+    overflow:hidden !important;
+    background:none !important;
+    clip-path:none !important;
+    height:100vh !important;
   }
-  .frontpage .video-bg::after{ display: none !important; } /* kein Overlay */
-
-  /* Video selbst: cover + linker Fokus = linker Ausschnitt des Videos */
+  .frontpage .video-bg::after{ display:none !important; }
   .frontpage .video-bg .video{
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;        /* füllt ohne Ränder */
-    object-position: left center !important; /* sichtbarer Ausschnitt: links */
-    opacity: 1 !important;
-    visibility: visible !important;
+    display:block !important;
+    position:absolute !important;
+    top:0; left:0; bottom:0;
+    height:100% !important;
+    width:100% !important;
+    min-width:100% !important;
+    object-fit:cover !important;
+    object-position:left center !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:none !important;
+    margin:0 !important; padding:0 !important; border:0 !important;
   }
-
-  /* Hero auf volle Höhe, damit nichts „darunterrutscht“ */
   .frontpage .hero-cover{
-    height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    height:100vh !important;
+    margin:0 !important;
+    padding:0 !important;
   }
-
-  /* Optional: falls eine weiße Box über dem Video lag */
   .frontpage-content{
-    background: none !important;
+    position:relative;
+    z-index:5;
+    background:none !important;
   }
-}
-
-/* ===========================================
-   MOBILE FRONT PAGE – nur linke Hälfte des Videos
-   =========================================== */
-@media (max-width: 900px){
-  .frontpage .video-bg{
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 0 !important;
-    overflow: hidden !important;
-    background: none !important;
-  }
-
-  .frontpage .video-bg .video{
-    display: block !important;
-    width: 200% !important;             /* Video doppelt so breit */
-    height: 100% !important;
-    object-fit: cover !important;       /* füllt Höhe */
-    object-position: left center !important; /* Fokus auf linke Seite */
-    margin-left: 0 !important;          /* nicht verschieben */
-  }
-
-  .frontpage .hero-cover{
-    height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}
-
-/* ===========================================
-   MOBILE FRONT PAGE – komplette linke Hälfte sichtbar
-   =========================================== */
-@media (max-width: 900px){
-  /* 1) Alte, widersprüchliche Regeln neutralisieren */
-  .frontpage .video-bg {
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 0 !important;
-    overflow: hidden !important;
-    background: none !important;
-    clip-path: none !important;         /* frühere Clippings aus */
-    height: 100vh !important;           /* keine 12/25/50vh mehr */
-  }
-  .frontpage .hero-cover {
-    height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* 2) Trick: Video doppelt so breit + auf halbe Breite skaliert */
-  .frontpage .video-bg .video{
-    display: block !important;
-    width: 200% !important;             /* Element ist 2× so breit wie der Viewport */
-    height: 100% !important;
-    object-fit: cover !important;       /* füllt Höhe, keine weißen Ränder */
-    object-position: left center !important; /* Fokus links */
-    transform-origin: left center !important;
-    transform: scaleX(0.25) !important;  /* zurück auf Viewportbreite -> zeigt linke Hälfte vollständig */
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-  }
-
-  /* Optional: falls noch ein halbtransparentes Overlay vorhanden war */
-  .frontpage .video-bg::after { display:none !important; }
-}
-
-/* ===========================================
-   MOBILE FRONT PAGE – Ausschnitt am linken Rand
-   =========================================== */
-@media (max-width: 900px){
-  .frontpage .video-bg{
-    position: fixed !important;
-    inset: 0 !important;
-    overflow: hidden !important;
-    background: none !important;
-  }
-
-  .frontpage .video-bg .video{
-    position: absolute !important;
-    top: 0; left: 0; bottom: 0;       /* an linken Rand pinnen */
-    height: 100% !important;          /* Höhe bestimmt die Größe */
-    width: auto !important;           /* Breite folgt proportional */
-    min-width: 100% !important;       /* muss min. Viewportbreite füllen */
-    object-fit: cover !important;     /* keine Ränder */
-    object-position: 0% 50% !important; /* Fokus exakt: linke Kante, Mitte vertikal */
-    transform: none !important;       /* frühere scale/translate ausschalten */
-    margin: 0 !important; padding: 0 !important; border: 0 !important;
-  }
-
-  .frontpage .hero-cover{
-    height: 100vh !important;
-    margin: 0 !important; padding: 0 !important;
-  }
-}
-
-@media (max-width: 900px){
-  .frontpage .video-bg{
-    position: fixed !important;
-    inset: 0 !important;
-    overflow: hidden !important;
-    background: none !important;
-  }
-
-  .frontpage .video-bg .video{
-    position: absolute !important;
-    top: 0; left: 0; bottom: 0;
-    height: 100% !important;
-    width: auto !important;
-    transform-origin: left center !important; /* Skalierung vom linken Rand */
-    transform: scale(0.5) !important;         /* auf 50% verkleinern */
-    object-fit: contain !important;           /* Proportionen wahren */
-    object-position: left center !important;
-  }
-
-  .frontpage .hero-cover{
-    height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-}
-
-/* ===========================================
-   MOBIL (Index): Textfeld mit weißem, halbtransparentem Hintergrund
-   =========================================== */
-@media (max-width: 900px){
-  /* Stelle sicher, dass der Text-Container über dem Video liegt */
-  .frontpage-content{
-    position: relative;
-    z-index: 5;
-  }
-
-  /* Box-Optik für den Textbereich */
   .frontpage-content,
   .frontpage .right-panel .right-content{
-    background: rgba(255,255,255,0.85);   /* halbtransparentes Weiß */
-    backdrop-filter: saturate(120%) blur(4px); /* dezent: hebt Text von Video ab */
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:saturate(120%) blur(4px);
+    border-radius:12px;
+    padding:1rem 1.25rem;
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
   }
-
-  /* etwas Luft außen herum */
-  .frontpage .right-panel{
-    padding: 2rem 1.25rem;
-  }
+  .frontpage .right-panel{ margin-left:0; padding:2rem 1.25rem; min-height:auto; }
+  .right-content h1:first-child{ margin-top:0; }
 }
-
-/* ===========================================
-   DESKTOP: Header rechts-zentriert (ohne "Opera Opaque"/Brand)
-   =========================================== */
-@media (min-width: 900px){
-  /* Der Header bleibt volle Breite, aber Inhalt wird
-     in der rechten Bildschirmhälfte zentriert */
-  .site-header{
-    justify-content: center;   /* Inhalt zentrieren */
-    padding-left: 50vw;        /* … innerhalb der rechten Hälfte */
-  }
-
-  /* Optional: Brand ausblenden, wenn "Opera Opaque" entfernt wurde */
-  .site-header .brand{
-    display: none;
-  }
-
-  /* Links im Header leicht zusammenrücken */
-  .site-header .navlinks a{
-    margin: 0 .125rem;
-  }
-}
-
-
