@@ -869,3 +869,40 @@ body.projekt-seite .projekt-galerie img {
 @media (max-width: 560px) {
   body.projekt-seite .projekt-galerie { columns: 1 !important; }
 }
+/* ==============================
+   GALERIE – Spalten-Layout
+   ============================== */
+body.projekt-seite .projekt-galerie {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: flex-end !important;
+  margin-top: 36px;
+  columns: unset !important;
+}
+.galerie-spalte {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.galerie-spalte a {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: unset !important;
+  position: static !important;
+}
+.galerie-spalte img {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: static !important;
+  object-fit: unset !important;
+}
+@media (max-width: 900px) {
+  body.projekt-seite .projekt-galerie { flex-wrap: wrap; }
+  .galerie-spalte { flex: 1 1 45%; }
+}
+@media (max-width: 560px) {
+  .galerie-spalte { flex: 1 1 100%; }
+}
