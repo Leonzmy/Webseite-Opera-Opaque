@@ -507,7 +507,7 @@ body.kontakt .sr-only{ position:absolute; width:1px; height:1px; padding:0; marg
 body.kontakt {
   background-image: url('bilder/kontakt-hintergrund.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-attachment: fixed;
 }
 body.kontakt .kontakt-card {
