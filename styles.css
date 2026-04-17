@@ -906,3 +906,10 @@ body.projekt-seite .projekt-galerie {
 @media (max-width: 560px) {
   .galerie-spalte { flex: 1 1 100%; }
 }
+body.projekt-seite .projekt-galerie {
+  display: flex !important;
+  gap: 12px !important;
+  align-items: flex-start !important;  /* ← war flex-end */
+  margin-top: 36px;
+  columns: unset !important;
+}
