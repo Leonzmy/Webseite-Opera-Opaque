@@ -833,3 +833,32 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ margin-top:0 !impor
   .frontpage .right-panel{ margin-left:0; padding:2rem 1.25rem; min-height:auto; }
   .right-content h1:first-child{ margin-top:0; }
 }
+body.projekt-seite .projekt-galerie {
+  columns: 3;
+  column-gap: 12px;
+  margin-top: 36px;
+}
+
+body.projekt-seite .projekt-galerie a {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+body.projekt-seite .projekt-galerie img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: unset;
+  position: static;
+  inset: auto;
+}
+
+@media (max-width: 900px) {
+  body.projekt-seite .projekt-galerie { columns: 2; }
+}
+@media (max-width: 560px) {
+  body.projekt-seite .projekt-galerie { columns: 1; }
+}
