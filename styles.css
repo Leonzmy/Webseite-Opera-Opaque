@@ -95,7 +95,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 10rem;  /* ← weiter rechts */
+  gap: 4rem;  /* ← weiter rechts */
 }
 
 .lp-when, .lp-where {
