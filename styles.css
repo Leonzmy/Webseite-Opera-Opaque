@@ -57,7 +57,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 .right-panel{
   position:relative;
   margin-left:50vw;
-  min-height:100vh;
+  min-height:50vh;
   display:flex; align-items:flex-start;  /* ← oben ausrichten statt zentriert */
   padding:6rem 3rem 4rem;               /* ← oben mehr Abstand vom Header */
   background:transparent; color:var(--ink);
