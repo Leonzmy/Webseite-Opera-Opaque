@@ -34,8 +34,13 @@ a:hover,a:focus{ color:#222; }
   opacity: 1;
 }
 
-/* ==== Hero-Cover ==== */
-.frontpage .hero-cover{ height:100vh; }
+.frontpage-content.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.frontpage-content {
+  transition: opacity 1.5s ease;
+}
 
 /* ==== Header (per JS ein-/ausblenden) ==== */
 .site-header{
