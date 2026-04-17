@@ -508,7 +508,6 @@ body.kontakt {
   background-image: url('bilder/kontakt-hintergrund.jpg');
   background-size: cover;
   background-position: top center;
-  background-attachment: fixed;
 }
 body.kontakt .kontakt-card {
   background: rgba(255,255,255,0.95);
