@@ -1,10 +1,11 @@
 /* ==============================
-   Smart Galerie – CSS Grid, feste Höhe, Bild 5 über 2 Spalten
+   Smart Galerie – 3 Spalten fix, Bild 5 über Spalte 2+3
    ============================== */
 
 (function () {
   const GALERIE_HOEHE = 900; // px
   const GAP = 12; // px
+  const SPALTEN = 3;
   const SPAN_INDEX = 4; // 0-basiert: Bild 5 = Index 4
 
   function layoutGalerie(links) {
@@ -17,32 +18,18 @@
     }));
 
     const containerBreite = galerie.offsetWidth;
-
-    // Optimale Spaltenanzahl (2–3) berechnen
-    let besteSpalten = 2;
-    let bestScore = Infinity;
-    for (let s = 2; s <= 3; s++) {
-      const sw = (containerBreite - GAP * (s - 1)) / s;
-      const score = bewerteSpalten(bilder, s, sw, SPAN_INDEX);
-      if (score < bestScore) {
-        bestScore = score;
-        besteSpalten = s;
-      }
-    }
-
-    const spaltenBreite = (containerBreite - GAP * (besteSpalten - 1)) / besteSpalten;
+    const spaltenBreite = (containerBreite - GAP * (SPALTEN - 1)) / SPALTEN;
 
     // Grid aufbauen
     galerie.style.cssText = `
       display: grid;
-      grid-template-columns: repeat(${besteSpalten}, 1fr);
+      grid-template-columns: repeat(${SPALTEN}, 1fr);
       gap: ${GAP}px;
       margin-top: 36px;
     `;
 
-    // Bildhöhen berechnen – Bild 5 ist doppelt so breit
     bilder.forEach((b, i) => {
-      const istSpan = (i === SPAN_INDEX) && besteSpalten >= 2;
+      const istSpan = (i === SPAN_INDEX);
       const breite = istSpan ? spaltenBreite * 2 + GAP : spaltenBreite;
       const hoehe = breite / b.ratio;
 
@@ -52,7 +39,7 @@
         height: ${hoehe}px;
         overflow: hidden;
         border-radius: 8px;
-        ${istSpan ? `grid-column: span 2;` : ''}
+        ${istSpan ? 'grid-column: span 2;' : ''}
       `;
 
       const img = b.el.querySelector('img');
@@ -65,28 +52,6 @@
         `;
       }
     });
-  }
-
-  function bewerteSpalten(bilder, anzahl, spaltenBreite, spanIdx) {
-    // Simuliert Höhen mit Grid-Flow (keine echte Grid-Engine, Annäherung)
-    const hoehen = new Array(anzahl).fill(0);
-    bilder.forEach((b, i) => {
-      if (i === spanIdx) {
-        // Span-Bild: geht in die zwei kürzesten Spalten
-        const sorted = [...hoehen].sort((a, b) => a - b);
-        const refHoehe = sorted[0];
-        const bildHoehe = (spaltenBreite * 2 + GAP) / b.ratio + GAP;
-        // vereinfacht: beide Spalten auf gleiche Höhe
-        const idxA = hoehen.indexOf(Math.min(...hoehen));
-        hoehen[idxA] = refHoehe + bildHoehe;
-        const idxB = hoehen.indexOf(Math.min(...hoehen));
-        hoehen[idxB] = refHoehe + bildHoehe;
-      } else {
-        const minIdx = hoehen.indexOf(Math.min(...hoehen));
-        hoehen[minIdx] += spaltenBreite / b.ratio + GAP;
-      }
-    });
-    return Math.max(...hoehen) - Math.min(...hoehen);
   }
 
   function mobileLayout(links) {
@@ -107,7 +72,6 @@
         height: auto;
         overflow: hidden;
         border-radius: 8px;
-        grid-column: unset;
       `;
       const img = a.querySelector('img');
       if (img) {
