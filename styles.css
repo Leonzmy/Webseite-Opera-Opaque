@@ -921,3 +921,26 @@ body.projekt-seite .projekt-galerie {
   margin-top: 36px;
   columns: unset !important;
 }
+
+/* ==============================
+   GALERIE – Smart JS Layout
+   ============================== */
+body.projekt-seite .projekt-galerie {
+  display: block !important; /* JS überschreibt das zu flex */
+  columns: unset !important;
+  grid-template-columns: unset !important;
+  margin-top: 36px;
+}
+
+body.projekt-seite .projekt-galerie a {
+  aspect-ratio: unset !important;
+  position: static !important;
+}
+
+body.projekt-seite .projekt-galerie img {
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
