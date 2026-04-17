@@ -59,7 +59,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   margin-left:50vw;
   min-height:100vh;
   display:flex; align-items:flex-start;  /* ← oben ausrichten statt zentriert */
-  padding:6rem 3rem 4rem;               /* ← oben mehr Abstand vom Header */
+  padding:2rem 3rem 4rem;               /* ← oben mehr Abstand vom Header */
   background:transparent; color:var(--ink);
 }
 .right-content{ max-width:42rem; width:100%; }
