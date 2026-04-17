@@ -102,7 +102,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 }
 .lp-tile {
   flex: 0 0 auto;
-  width: 160px;
+  width: 220px;
   margin-top: 4rem;
 }
 
