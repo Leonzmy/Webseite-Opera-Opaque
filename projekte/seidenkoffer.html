@@ -164,6 +164,65 @@
       });
     })();
   </script>
+  <!-- Justified Layout von Flickr -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/justified-layout/4.1.0/justified-layout.min.js"></script>
+<script>
+(function(){
+  const galerie = document.querySelector('.projekt-galerie');
+  const links = Array.from(galerie.querySelectorAll('a'));
+
+  // Proportionen laden
+  let geladen = 0;
+  const ratios = new Array(links.length);
+
+  links.forEach((a, i) => {
+    const img = a.querySelector('img');
+    function onLoad(){
+      ratios[i] = img.naturalWidth / img.naturalHeight;
+      geladen++;
+      if(geladen === links.length) layout();
+    }
+    if(img.complete && img.naturalWidth > 0) onLoad();
+    else {
+      img.addEventListener('load', onLoad);
+      img.addEventListener('error', () => { ratios[i] = 1.5; geladen++; if(geladen === links.length) layout(); });
+    }
+  });
+
+  function layout(){
+    const containerBreite = galerie.offsetWidth;
+    const result = justifiedLayout(ratios, {
+      containerWidth: containerBreite,
+      targetRowHeight: 280,       // Zeilenhöhe – anpassen nach Wunsch
+      boxSpacing: 12,
+      containerPadding: 0,
+    });
+
+    galerie.style.position = 'relative';
+    galerie.style.height = result.containerHeight + 'px';
+
+    links.forEach((a, i) => {
+      const box = result.boxes[i];
+      a.style.position = 'absolute';
+      a.style.left = box.left + 'px';
+      a.style.top = box.top + 'px';
+      a.style.width = box.width + 'px';
+      a.style.height = box.height + 'px';
+      a.style.overflow = 'hidden';
+      a.style.borderRadius = '8px';
+      const img = a.querySelector('img');
+      if(img){
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'cover';
+        img.style.display = 'block';
+      }
+    });
+  }
+
+  window.addEventListener('resize', layout);
+})();
+</script>
 
 </body>
 </html>
