@@ -39,7 +39,7 @@
         height: ${hoehe}px;
         overflow: hidden;
         border-radius: 8px;
-        ${istSpan ? 'grid-column: span 2;' : ''}
+        ${istSpan ? 'grid-column: span 0;' : ''}
       `;
 
       const img = b.el.querySelector('img');
