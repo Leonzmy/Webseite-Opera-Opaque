@@ -60,7 +60,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 .frontpage-content{ position:relative; z-index:5; }
 .right-panel{
   position:relative;
-  margin-left:50vw;
+  margin-left:100vw;
   min-height:100vh;
   display:flex;
   align-items:flex-start;
