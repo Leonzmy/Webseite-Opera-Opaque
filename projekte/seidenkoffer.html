@@ -176,6 +176,54 @@ links.forEach((a, i) => {
 
 window.addEventListener('resize', layout);
 </script>
+  <script>
+(function(){
+  const lb = document.querySelector('.lightbox');
+  const lbImg = lb.querySelector('img');
+  const cap = lb.querySelector('.lightbox-caption');
+  const btnClose = lb.querySelector('.lightbox-close');
+  const btnPrev = lb.querySelector('.lightbox-prev');
+  const btnNext = lb.querySelector('.lightbox-next');
+  let gallery = [];
+  let idx = 0;
+
+  function open(i){
+    gallery = Array.from(document.querySelectorAll('.projekt-galerie a'));
+    idx = i;
+    const a = gallery[idx];
+    lbImg.src = a.getAttribute('href');
+    lbImg.alt = a.querySelector('img')?.alt || '';
+    cap.textContent = a.getAttribute('data-caption') || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function close(){
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function next(){ open((idx + 1) % gallery.length); }
+  function prev(){ open((idx - 1 + gallery.length) % gallery.length); }
+
+  document.querySelector('.projekt-galerie').addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if(!a) return;
+    e.preventDefault();
+    gallery = Array.from(document.querySelectorAll('.projekt-galerie a'));
+    open(gallery.indexOf(a));
+  });
+
+  btnClose.addEventListener('click', close);
+  btnNext.addEventListener('click', next);
+  btnPrev.addEventListener('click', prev);
+  lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowRight') next();
+    if(e.key === 'ArrowLeft') prev();
+  });
+})();
+</script>
 
 </body>
 </html>
