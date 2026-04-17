@@ -64,7 +64,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   min-height:100vh;
   display:flex;
   align-items:flex-start;
-  padding:8rem 3rem 4rem;
+  padding:12rem 3rem 4rem;
   background:transparent;
   color:var(--ink);
 }
@@ -94,7 +94,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 4rem;
+  gap: 8rem;
 }
 .lp-coming-text {
   flex: 0 0 auto;
