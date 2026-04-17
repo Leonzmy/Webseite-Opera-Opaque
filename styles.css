@@ -60,11 +60,11 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 .frontpage-content{ position:relative; z-index:5; }
 .right-panel{
   position:relative;
-  margin-left:70vw;
+  margin-left:55vw;
   min-height:100vh;
   display:flex;
   align-items:flex-start;
-  padding:4rem 3rem 4rem;
+  padding:8rem 3rem 4rem;
   background:transparent;
   color:var(--ink);
 }
