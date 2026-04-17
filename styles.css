@@ -58,12 +58,22 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   position:relative;
   margin-left:50vw;
   min-height:100vh;
-  display:flex; align-items:flex-start;  /* ← oben ausrichten statt zentriert */
-  padding:0rem 3rem 4rem;               /* ← oben mehr Abstand vom Header */
-  background:transparent; color:var(--ink);
+  display:flex;
+  align-items:flex-start;
+  padding:2rem 3rem 4rem;
+  background:transparent;
+  color:var(--ink);
 }
-.right-content{ max-width:42rem; width:100%; }
 
+.right-content{
+  max-width:42rem;
+  width:100%;
+  margin-top:0;        /* ← sicherstellen, kein versteckter Abstand */
+  padding-top:0;
+}
+.right-content h1:first-child{
+  margin-top:0;
+}
 /* 3x Abstand zwischen Titel und "Demnächst" */
 .lp-title{
   font-size:clamp(1.8rem,3.6vw,3.2rem);
