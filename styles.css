@@ -190,72 +190,35 @@ body.projekt-seite .projekt-sidebar .logos{ display: grid; grid-template-columns
 body.projekt-seite .projekt-sidebar .logos img{ max-width: 100%; max-height: 70px; height: auto; object-fit: contain; }
 
 /* ==============================
-   GALERIE – Smart JS Layout (einzige Galerie-Regel)
+   GALERIE – 3 Spalten, quadratisch
    ============================== */
-body.projekt-seite .projekt-galerie {
+body.projekt-seite .projekt-galerie{
   margin-top: 36px;
-  /* display, gap, height werden vom JS gesetzt */
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
 }
-body.projekt-seite .projekt-galerie a {
-  aspect-ratio: unset !important;
-  position: static !important;
+body.projekt-seite .projekt-galerie a{
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 8px;
 }
-body.projekt-seite .projekt-galerie img {
-  position: static !important;
-  inset: auto !important;
-  object-fit: cover !important;
-  max-width: none;
+body.projekt-seite .projekt-galerie img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
-
-/* Lightbox */
-body.projekt-seite .lightbox{
-  position: fixed; inset: 0; display: none;
-  align-items: center; justify-content: center;
-  background: rgba(0,0,0,.8); z-index: 1000; padding: 20px;
-}
-body.projekt-seite .lightbox.open{ display: flex; }
-body.projekt-seite .lightbox-content{
-  width: 96vw; max-width: 96vw; max-height: 92vh;
-  display: grid; grid-template-rows: 1fr auto; gap: 12px; padding: 0;
-}
-body.projekt-seite .lightbox-content img{
-  width: auto; height: auto;
-  max-width: 96vw; max-height: 86vh;
-  object-fit: contain; display: block; margin: 0 auto;
-}
-body.projekt-seite .lightbox-caption{ color: #fff; font-size: .95rem; line-height: 1.4; text-align: center; }
-body.projekt-seite .lightbox-close,
-body.projekt-seite .lightbox-prev,
-body.projekt-seite .lightbox-next{
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(255,255,255,.9); border: 0; border-radius: 999px;
-  width: 42px; height: 42px; cursor: pointer; font-size: 0;
-}
-body.projekt-seite .lightbox-close{ top: 28px; right: 28px; transform: none; }
-body.projekt-seite .lightbox-prev{ left: 20px; }
-body.projekt-seite .lightbox-next{ right: 20px; }
-body.projekt-seite .lightbox-prev::after,
-body.projekt-seite .lightbox-next::after{
-  content: ''; display: block; width: 100%; height: 100%;
-  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
-  background: #000;
-}
-body.projekt-seite .lightbox-next::after{
-  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" fill="black"/></svg>') center/24px 24px no-repeat;
-}
-body.projekt-seite .lightbox-close::after{ content: '×'; display: block; font-size: 28px; line-height: 42px; text-align: center; color: #000; }
-
-/* Responsive Projektseiten */
-body.projekt-seite .projekt-wrap{ padding-top: 0 !important; }
 @media (max-width: 900px){
-  body.projekt-seite .projekt-maingrid{ grid-template-columns: 1fr; }
-  body.projekt-seite .projekt-sidebar{ margin-top: 10px; }
-  body.projekt-seite .content-left .projekt-beschreibung{ text-align: left; hyphens: none; padding: 0 1rem; }
-  body.projekt-seite .content-left .projekt-beschreibung p{ margin-left: 0; margin-right: 0; }
+  body.projekt-seite .projekt-galerie{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
-
+@media (max-width: 560px){
+  body.projekt-seite .projekt-galerie{ grid-template-columns: 1fr; }
+}
 /* ==============================
    PROJEKTE-ÜBERSICHT
    ============================== */
