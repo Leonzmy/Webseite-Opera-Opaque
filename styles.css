@@ -564,8 +564,8 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos img{ max-width
 }
 
 body.kontakt main {
-  max-width: 600px;  /* schmaler */
-  margin-left: auto; /* rechts ausgerichtet */
-  margin-right: 40px; /* Abstand rechts */
-  padding-top: 120px; /* weiter nach unten */
+  max-width: 900px;  /* war 600px */
+  margin-left: auto;
+  margin-right: 40px;
+  padding-top: 250px;  /* deutlich tiefer */
 }
