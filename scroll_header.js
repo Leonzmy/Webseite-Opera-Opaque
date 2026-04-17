@@ -110,3 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Sofort starten
   tryPlay();
 });
+const video = document.querySelector('.frontpage .video');
+const content = document.querySelector('.frontpage-content');
+
+video.addEventListener('ended', () => {
+  content.classList.remove('hidden');
+});
+
+// Fallback: falls Video nicht lädt
+video.addEventListener('error', () => {
+  content.classList.remove('hidden');
+});
