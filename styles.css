@@ -71,7 +71,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 }
 
 .right-content{
-  max-width:42rem;
+  max-width:52rem;
   width:100%;
   margin-top:0;        /* ← sicherstellen, kein versteckter Abstand */
   padding-top:0;
