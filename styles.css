@@ -91,7 +91,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 8rem;
+  gap: 4rem;
 }
 .lp-coming-text { flex: 0 0 auto; }
 .lp-what{ font-size:1.6rem; font-weight:600; margin:.15rem 0; }
