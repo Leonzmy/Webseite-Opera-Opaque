@@ -281,7 +281,7 @@ body.projekt-seite .projekt-galerie img{
 body.projekt-seite .lightbox{
   position:fixed; inset:0; display:none;
   align-items:center; justify-content:center;
-  background:rgba(0,0,0,.5); z-index:1000; padding:20px;
+  background:rgba(0,0,0,.3); z-index:1000; padding:20px;
 }
 body.projekt-seite .lightbox.open{ display:flex; }
 body.projekt-seite .lightbox-content{
