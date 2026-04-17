@@ -562,3 +562,10 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos img{ max-width
   body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{ grid-template-columns:1fr; }
   body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar{ margin-top:10px; }
 }
+
+body.kontakt main {
+  max-width: 600px;  /* schmaler */
+  margin-left: auto; /* rechts ausgerichtet */
+  margin-right: 40px; /* Abstand rechts */
+  padding-top: 120px; /* weiter nach unten */
+}
