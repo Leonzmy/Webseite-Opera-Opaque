@@ -510,7 +510,9 @@ body.kontakt {
   background-position: center;
   background-attachment: fixed;
 }
-
+body.kontakt .kontakt-card {
+  background: rgba(255,255,255,0.95);
+}
 /* ==============================
    BUTTONS
    ============================== */
