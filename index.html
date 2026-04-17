@@ -9,24 +9,13 @@
   <link rel="icon" href="/bilder/favicon.png" type="image/png">
 </head>
 <body class="frontpage">
-  <!-- Fixiertes Video im Hintergrund -->
   <div class="video-bg" aria-hidden="true">
-    <video 
-      class="video"
-      autoplay 
-      muted 
-      playsinline 
-      webkit-playsinline 
-      preload="auto"
-      style="width:100%;height:100%;object-fit:cover"
-    >
+    <video class="video" autoplay muted playsinline webkit-playsinline preload="auto"
+      style="width:100%;height:100%;object-fit:cover">
       <source src="videos/frontpage.mp4" type="video/mp4">
     </video>
   </div>
 
-  <main class="frontpage-content hidden">
-
-  <!-- Header (blendet per JS ein) -->
   <header class="site-header">
     <div class="brand"></div>
     <nav class="navlinks" aria-label="Hauptnavigation">
@@ -36,8 +25,7 @@
     </nav>
   </header>
 
-  <!-- Hauptinhalt -->
-  <main class="frontpage-content">
+  <main class="frontpage-content hidden">
     <section class="right-panel">
       <div class="right-content">
         <h1 id="lp-title" class="lp-title">
@@ -51,7 +39,6 @@
         </div>
         <figure class="tile lp-tile">
           <img src="bilder/phantom-1.jpg" alt="Phantom – Zeichnung" />
-          <!-- Nur auf Hover sichtbar -->
           <figcaption class="overlay"><span class="overlay-label">mehr Infos</span></figcaption>
           <a class="tile-link" href="projekte/phantom.html"
              aria-label="Zur Projektseite: Phantom"></a>
@@ -64,8 +51,7 @@
     <a href="impressum.html" class="footer-link">Impressum</a>
   </footer>
   <script src="scroll_header.js"></script>
-    <script src="scroll_header.js"></script>
-<script src="frontpage.js"></script>  <!-- neu -->
+  <script src="frontpage.js"></script>
 </body>
 </html>
 
