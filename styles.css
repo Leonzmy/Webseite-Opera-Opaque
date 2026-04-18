@@ -656,3 +656,10 @@ body.projekt-seite .projekt-drawing img {
   font-weight: 700;
 }
 
+.video-embed {
+  margin-top: 2rem;
+  max-width: 800px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
