@@ -654,3 +654,7 @@ body.projekt-seite .projekt-drawing img {
   color: var(--muted);
   padding-left: 0;  /* keine Einrückung */
 }
+
+.press-quote cite strong {
+  font-weight: 700;
+}
