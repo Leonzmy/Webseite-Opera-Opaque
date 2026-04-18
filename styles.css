@@ -639,15 +639,18 @@ body.projekt-seite .projekt-drawing img {
 .press-quote {
   margin: 0 0 2rem 0;
   padding-left: 1.5rem;
-  border-left: 2px solid var(--ink);
+  border-left: none;
 }
 .press-quote p {
   margin: 0 0 .5rem;
   font-style: italic;
   line-height: 1.7;
+  padding-left: 1rem;        /* Einrückung */
+  border-left: 2px solid var(--ink);  /* Strich nur beim Zitat */
 }
 .press-quote cite {
   font-style: normal;
   font-size: .9rem;
   color: var(--muted);
+  padding-left: 1rem;        /* Einrückung passend zum Zitat */
 }
