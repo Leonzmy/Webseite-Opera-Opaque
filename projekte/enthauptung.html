@@ -7,6 +7,47 @@
   <meta name="description" content="Projektseite Einladung zur Enthauptung – Opera Opaque" />
   <link rel="stylesheet" href="../styles.css">
   <link rel="icon" href="/bilder/favicon.png" type="image/png">
+  <style>
+    .pressestimmen {
+      margin-top: 4rem;
+      max-width: 800px;
+    }
+    .press-heading {
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 2rem;
+    }
+    .press-quote {
+      position: relative;
+      margin: 0 0 2.5rem 3rem;
+      padding: 1.2rem 1.5rem;
+    }
+    .press-quote svg.frame {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .press-quote p {
+      margin: 0 0 .6rem;
+      font-style: italic;
+      line-height: 1.7;
+      position: relative;
+    }
+    .press-quote cite {
+      font-style: normal;
+      font-size: .9rem;
+      color: var(--muted);
+      display: block;
+      position: relative;
+    }
+    .press-quote cite strong {
+      font-weight: 700;
+      color: var(--ink);
+    }
+  </style>
 </head>
 <body class="projekt-seite">
 
@@ -60,47 +101,21 @@
       </aside>
     </section>
 
-    <!-- Galerie: Justified Layout -->
+    <!-- Galerie -->
     <section class="projekt-galerie" aria-label="Bildergalerie">
-      <a href="../bilder/Enthauptung-4.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-4.jpg" alt="Einladung zur Enthauptung – Bild 1 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-5.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-5.jpg" alt="Einladung zur Enthauptung – Bild 2 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-6.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-6.jpg" alt="Einladung zur Enthauptung – Bild 3 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-7.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-7.jpg" alt="Einladung zur Enthauptung – Bild 4 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-8.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-8.jpg" alt="Einladung zur Enthauptung – Bild 5 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-9.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-9.jpg" alt="Einladung zur Enthauptung – Bild 6 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-10.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-10.jpg" alt="Einladung zur Enthauptung – Bild 7 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-11.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-11.jpg" alt="Einladung zur Enthauptung – Bild 8 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-12.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-12.jpg" alt="Einladung zur Enthauptung – Bild 9 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-13.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-13.jpg" alt="Einladung zur Enthauptung – Bild 10 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-14.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-14.jpg" alt="Einladung zur Enthauptung – Bild 11 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-15.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-15.jpg" alt="Einladung zur Enthauptung – Bild 12 © Alvise Predieri">
-      </a>
-      <a href="../bilder/Enthauptung-16.jpg" data-caption="">
-        <img src="../bilder/Enthauptung-16.jpg" alt="Einladung zur Enthauptung – Bild 13 © Alvise Predieri">
-      </a>
+      <a href="../bilder/Enthauptung-4.jpg" data-caption=""><img src="../bilder/Enthauptung-4.jpg" alt="Einladung zur Enthauptung – Bild 1 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-5.jpg" data-caption=""><img src="../bilder/Enthauptung-5.jpg" alt="Einladung zur Enthauptung – Bild 2 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-6.jpg" data-caption=""><img src="../bilder/Enthauptung-6.jpg" alt="Einladung zur Enthauptung – Bild 3 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-7.jpg" data-caption=""><img src="../bilder/Enthauptung-7.jpg" alt="Einladung zur Enthauptung – Bild 4 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-8.jpg" data-caption=""><img src="../bilder/Enthauptung-8.jpg" alt="Einladung zur Enthauptung – Bild 5 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-9.jpg" data-caption=""><img src="../bilder/Enthauptung-9.jpg" alt="Einladung zur Enthauptung – Bild 6 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-10.jpg" data-caption=""><img src="../bilder/Enthauptung-10.jpg" alt="Einladung zur Enthauptung – Bild 7 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-11.jpg" data-caption=""><img src="../bilder/Enthauptung-11.jpg" alt="Einladung zur Enthauptung – Bild 8 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-12.jpg" data-caption=""><img src="../bilder/Enthauptung-12.jpg" alt="Einladung zur Enthauptung – Bild 9 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-13.jpg" data-caption=""><img src="../bilder/Enthauptung-13.jpg" alt="Einladung zur Enthauptung – Bild 10 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-14.jpg" data-caption=""><img src="../bilder/Enthauptung-14.jpg" alt="Einladung zur Enthauptung – Bild 11 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-15.jpg" data-caption=""><img src="../bilder/Enthauptung-15.jpg" alt="Einladung zur Enthauptung – Bild 12 © Alvise Predieri"></a>
+      <a href="../bilder/Enthauptung-16.jpg" data-caption=""><img src="../bilder/Enthauptung-16.jpg" alt="Einladung zur Enthauptung – Bild 13 © Alvise Predieri"></a>
     </section>
 
     <!-- Pressestimmen -->
@@ -155,26 +170,21 @@
 
   <script type="module">
   import justifiedLayout from "https://esm.sh/justified-layout";
-
   const galerie = document.querySelector('.projekt-galerie');
   const links = Array.from(galerie.querySelectorAll('a'));
   const ratios = new Array(links.length);
   let geladen = 0;
-
   function layout(){
     const containerBreite = galerie.offsetWidth;
     if(!containerBreite) return;
-
     const result = justifiedLayout(ratios, {
       containerWidth: containerBreite,
       targetRowHeight: 350,
       boxSpacing: 12,
       containerPadding: 0,
     });
-
     galerie.style.position = 'relative';
     galerie.style.height = result.containerHeight + 'px';
-
     links.forEach((a, i) => {
       const box = result.boxes[i];
       a.style.position = 'absolute';
@@ -185,34 +195,101 @@
       a.style.overflow = 'hidden';
       a.style.borderRadius = '8px';
       const img = a.querySelector('img');
-      if(img){
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'cover';
-        img.style.display = 'block';
-        img.style.position = 'static';
-      }
+      if(img){ img.style.width='100%'; img.style.height='100%'; img.style.objectFit='cover'; img.style.display='block'; img.style.position='static'; }
     });
   }
-
   links.forEach((a, i) => {
     const img = a.querySelector('img');
-    function onLoad(){
-      ratios[i] = img.naturalWidth / img.naturalHeight || 1.5;
-      geladen++;
-      if(geladen === links.length) layout();
-    }
+    function onLoad(){ ratios[i] = img.naturalWidth / img.naturalHeight || 1.5; geladen++; if(geladen === links.length) layout(); }
     if(img.complete && img.naturalWidth > 0) onLoad();
-    else{
-      img.addEventListener('load', onLoad);
-      img.addEventListener('error', () => {
-        ratios[i] = 1.5; geladen++;
-        if(geladen === links.length) layout();
-      });
-    }
+    else{ img.addEventListener('load', onLoad); img.addEventListener('error', () => { ratios[i]=1.5; geladen++; if(geladen===links.length) layout(); }); }
   });
-
   window.addEventListener('resize', layout);
+  </script>
+
+  <script>
+  // Handgezeichnete Rahmen für Pressezitate
+  function drawHandrawnFrame(el) {
+    const w = el.offsetWidth;
+    const h = el.offsetHeight;
+    const ns = 'http://www.w3.org/2000/svg';
+
+    // Altes SVG entfernen falls vorhanden
+    const old = el.querySelector('svg.frame');
+    if(old) old.remove();
+
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('class', 'frame');
+    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    svg.setAttribute('preserveAspectRatio', 'none');
+    svg.setAttribute('aria-hidden', 'true');
+
+    // Leicht unregelmäßige Rahmenlinien
+    const p = 4; // padding vom Rand
+    const jitter = () => (Math.random() - 0.5) * 2;
+
+    function makePath(points) {
+      const path = document.createElementNS(ns, 'path');
+      let d = `M ${points[0][0]},${points[0][1]}`;
+      for(let i = 1; i < points.length; i++){
+        d += ` L ${points[i][0]},${points[i][1]}`;
+      }
+      path.setAttribute('d', d);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', 'currentColor');
+      path.setAttribute('stroke-width', '1.3');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-linejoin', 'round');
+      return path;
+    }
+
+    // Vier Seiten mit leichter Unregelmäßigkeit
+    const steps = 8;
+    // Oben
+    const top = [];
+    for(let i = 0; i <= steps; i++){
+      const x = p + (w - 2*p) * i / steps + jitter();
+      const y = p + jitter();
+      top.push([x, y]);
+    }
+    svg.appendChild(makePath(top));
+
+    // Rechts
+    const right = [];
+    for(let i = 0; i <= steps; i++){
+      const x = w - p + jitter();
+      const y = p + (h - 2*p) * i / steps + jitter();
+      right.push([x, y]);
+    }
+    svg.appendChild(makePath(right));
+
+    // Unten (von rechts nach links)
+    const bottom = [];
+    for(let i = 0; i <= steps; i++){
+      const x = (w - p) - (w - 2*p) * i / steps + jitter();
+      const y = h - p + jitter();
+      bottom.push([x, y]);
+    }
+    svg.appendChild(makePath(bottom));
+
+    // Links
+    const left = [];
+    for(let i = 0; i <= steps; i++){
+      const x = p + jitter();
+      const y = (h - p) - (h - 2*p) * i / steps + jitter();
+      left.push([x, y]);
+    }
+    svg.appendChild(makePath(left));
+
+    el.insertBefore(svg, el.firstChild);
+  }
+
+  function drawAllFrames() {
+    document.querySelectorAll('.press-quote').forEach(drawHandrawnFrame);
+  }
+
+  window.addEventListener('load', drawAllFrames);
+  window.addEventListener('resize', drawAllFrames);
   </script>
 
   <script>
@@ -225,42 +302,16 @@
     const btnNext = lb.querySelector('.lightbox-next');
     let gallery = [];
     let idx = 0;
-
-    function open(i){
-      gallery = Array.from(document.querySelectorAll('.projekt-galerie a'));
-      idx = i;
-      const a = gallery[idx];
-      lbImg.src = a.getAttribute('href');
-      lbImg.alt = a.querySelector('img')?.alt || '';
-      cap.textContent = a.getAttribute('data-caption') || '';
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function close(){
-      lb.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    function open(i){ gallery = Array.from(document.querySelectorAll('.projekt-galerie a')); idx = i; const a = gallery[idx]; lbImg.src = a.getAttribute('href'); lbImg.alt = a.querySelector('img')?.alt || ''; cap.textContent = a.getAttribute('data-caption') || ''; lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
     function next(){ open((idx + 1) % gallery.length); }
     function prev(){ open((idx - 1 + gallery.length) % gallery.length); }
-
-    document.querySelector('.projekt-galerie').addEventListener('click', (e) => {
-      const a = e.target.closest('a');
-      if(!a) return;
-      e.preventDefault();
-      gallery = Array.from(document.querySelectorAll('.projekt-galerie a'));
-      open(gallery.indexOf(a));
-    });
-
+    document.querySelector('.projekt-galerie').addEventListener('click', (e) => { const a = e.target.closest('a'); if(!a) return; e.preventDefault(); gallery = Array.from(document.querySelectorAll('.projekt-galerie a')); open(gallery.indexOf(a)); });
     btnClose.addEventListener('click', close);
     btnNext.addEventListener('click', next);
     btnPrev.addEventListener('click', prev);
     lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
-    document.addEventListener('keydown', (e) => {
-      if(!lb.classList.contains('open')) return;
-      if(e.key === 'Escape') close();
-      if(e.key === 'ArrowRight') next();
-      if(e.key === 'ArrowLeft') prev();
-    });
+    document.addEventListener('keydown', (e) => { if(!lb.classList.contains('open')) return; if(e.key === 'Escape') close(); if(e.key === 'ArrowRight') next(); if(e.key === 'ArrowLeft') prev(); });
   })();
   </script>
 
