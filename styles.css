@@ -617,7 +617,7 @@ body.kontakt main {
   }
 }
 body.projekt-seite .projekt-drawing img {
-  max-width: 800px;
+  max-width: 1200px;
   width: 100%;
   height: 180px;  /* alle Zeichnungen gleich hoch */
   object-fit: cover;
