@@ -682,6 +682,7 @@ body.projekt-seite .content-left {
 
 @media (max-width: 900px) {
   .press-group {
-    margin-left: 0;
+    margin-left: 0 !important;
+    padding: 1rem;
   }
 }
