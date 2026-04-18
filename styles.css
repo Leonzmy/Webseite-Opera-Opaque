@@ -679,3 +679,9 @@ body.projekt-seite .content-left {
     max-width: 100%;
   }
 }
+
+@media (max-width: 900px) {
+  .press-group {
+    margin-left: 0;
+  }
+}
