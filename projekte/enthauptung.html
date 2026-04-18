@@ -18,20 +18,23 @@
       letter-spacing: .12em;
       margin-bottom: 2rem;
     }
-    .press-quote {
+    .press-group {
       position: relative;
       margin: 0 0 2.5rem 3rem;
       padding: 1.2rem 1.5rem;
     }
-    .press-quote svg.frame {
+    .press-group svg.frame {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       overflow: visible;
       pointer-events: none;
     }
+    .press-quote {
+      margin: 0 0 0.8rem 0;
+    }
     .press-quote p {
-      margin: 0 0 .6rem;
+      margin: 0 0 .4rem;
       font-style: italic;
       line-height: 1.7;
       position: relative;
@@ -41,6 +44,7 @@
       font-size: .9rem;
       color: var(--muted);
       display: block;
+      margin-top: 0.6rem;
       position: relative;
     }
     .press-quote cite strong {
@@ -101,16 +105,14 @@
       </aside>
     </section>
 
-    <!-- Galerie -->
+    <!-- Galerie (ohne Bild 6 und 11) -->
     <section class="projekt-galerie" aria-label="Bildergalerie">
       <a href="../bilder/Enthauptung-4.jpg" data-caption=""><img src="../bilder/Enthauptung-4.jpg" alt="Einladung zur Enthauptung – Bild 1 © Alvise Predieri"></a>
       <a href="../bilder/Enthauptung-5.jpg" data-caption=""><img src="../bilder/Enthauptung-5.jpg" alt="Einladung zur Enthauptung – Bild 2 © Alvise Predieri"></a>
-      <a href="../bilder/Enthauptung-6.jpg" data-caption=""><img src="../bilder/Enthauptung-6.jpg" alt="Einladung zur Enthauptung – Bild 3 © Alvise Predieri"></a>
       <a href="../bilder/Enthauptung-7.jpg" data-caption=""><img src="../bilder/Enthauptung-7.jpg" alt="Einladung zur Enthauptung – Bild 4 © Alvise Predieri"></a>
       <a href="../bilder/Enthauptung-8.jpg" data-caption=""><img src="../bilder/Enthauptung-8.jpg" alt="Einladung zur Enthauptung – Bild 5 © Alvise Predieri"></a>
       <a href="../bilder/Enthauptung-9.jpg" data-caption=""><img src="../bilder/Enthauptung-9.jpg" alt="Einladung zur Enthauptung – Bild 6 © Alvise Predieri"></a>
       <a href="../bilder/Enthauptung-10.jpg" data-caption=""><img src="../bilder/Enthauptung-10.jpg" alt="Einladung zur Enthauptung – Bild 7 © Alvise Predieri"></a>
-      <a href="../bilder/Enthauptung-11.jpg" data-caption=""><img src="../bilder/Enthauptung-11.jpg" alt="Einladung zur Enthauptung – Bild 8 © Alvise Predieri"></a>
       <a href="../bilder/Enthauptung-12.jpg" data-caption=""><img src="../bilder/Enthauptung-12.jpg" alt="Einladung zur Enthauptung – Bild 9 © Alvise Predieri"></a>
       <a href="../bilder/Enthauptung-13.jpg" data-caption=""><img src="../bilder/Enthauptung-13.jpg" alt="Einladung zur Enthauptung – Bild 10 © Alvise Predieri"></a>
       <a href="../bilder/Enthauptung-14.jpg" data-caption=""><img src="../bilder/Enthauptung-14.jpg" alt="Einladung zur Enthauptung – Bild 11 © Alvise Predieri"></a>
@@ -122,33 +124,47 @@
     <section class="pressestimmen">
       <h2 class="press-heading">Pressestimmen</h2>
 
-      <blockquote class="press-quote">
-        <p>„Abseits der aktuellen Politik wird mit dieser Produktion noch etwas anderes Großes offenbar: Das sind junge Künstler, die die Wirkmacht ihrer Kunst wieder in allen – auch pathetischen – Mitteln ernst nehmen und benutzen. Das ist nach 40 Jahren Ironie, Verweigerung und Postmoderne neu. Ein neues Theater für eine neue Zeit."</p>
-      </blockquote>
+      <!-- Gruppe 1: ohne Quellenangabe -->
+      <div class="press-group">
+        <blockquote class="press-quote">
+          <p>„Abseits der aktuellen Politik wird mit dieser Produktion noch etwas anderes Großes offenbar: Das sind junge Künstler, die die Wirkmacht ihrer Kunst wieder in allen – auch pathetischen – Mitteln ernst nehmen und benutzen. Das ist nach 40 Jahren Ironie, Verweigerung und Postmoderne neu. Ein neues Theater für eine neue Zeit."</p>
+        </blockquote>
+      </div>
 
-      <blockquote class="press-quote">
-        <p>„Ästhetisch erinnert das Bühnenbild der Uraufführung [...] an Lars von Triers Film ‚Dogville'. Denn von Kostüm über Requisiten bis zur emotionalen Affektion wird hier die karge Bühnenlandschaft mit einem ganz ernst gemeinten Realismus aufgefüllt. Die Hauptperson Cincinnatus wird von zwei Schauspielstudierenden als Sprechrolle gespielt aufgeteilt in den pragmatischen David Stancu und die mit dem Leben, den Träumen und der Welt weiterhin stark verbundene Anouk Warter – ein Regietrick, der die emotional unbegreifliche Situation des Gefangenen offenlegt."</p>
-        <cite><strong>Süddeutsche Zeitung</strong>: Brutal nah an der grausamen Realität, 23.02.2024</cite>
-      </blockquote>
+      <!-- Gruppe 2: Süddeutsche Zeitung -->
+      <div class="press-group">
+        <blockquote class="press-quote">
+          <p>„Ästhetisch erinnert das Bühnenbild der Uraufführung [...] an Lars von Triers Film ‚Dogville'. Denn von Kostüm über Requisiten bis zur emotionalen Affektion wird hier die karge Bühnenlandschaft mit einem ganz ernst gemeinten Realismus aufgefüllt. Die Hauptperson Cincinnatus wird von zwei Schauspielstudierenden als Sprechrolle gespielt aufgeteilt in den pragmatischen David Stancu und die mit dem Leben, den Träumen und der Welt weiterhin stark verbundene Anouk Warter – ein Regietrick, der die emotional unbegreifliche Situation des Gefangenen offenlegt."</p>
+        </blockquote>
+        <blockquote class="press-quote">
+          <p>„Das Allererstaunlichste ist: Es handelt sich auf fast jeder Position um eine Nachwuchsarbeit. Zmeltys Partitur ist bewusstes Splitterwerk, sie bewegt sich so mutig wie gewitzt zwischen Akkordeon-Verwehungen (als Widerhall der Vergangenheit), Zither-Einsprengseln (als Begleiter des Titelhelden), Zuspät-Romantik, russischem Volkstum oder verbogenen Walzern. Letztere sind das Attribut von Pierre, dem freundlichen Henker: Countertenor Pieter De Praetere gibt den Entertainer, der beherzt auch Grelles riskiert."</p>
+          <cite><strong>Süddeutsche Zeitung</strong>: Brutal nah an der grausamen Realität, 23.02.2024</cite>
+        </blockquote>
+      </div>
 
-      <blockquote class="press-quote">
-        <p>„Das Allererstaunlichste ist: Es handelt sich auf fast jeder Position um eine Nachwuchsarbeit. Zmeltys Partitur ist bewusstes Splitterwerk, sie bewegt sich so mutig wie gewitzt zwischen Akkordeon-Verwehungen (als Widerhall der Vergangenheit), Zither-Einsprengseln (als Begleiter des Titelhelden), Zuspät-Romantik, russischem Volkstum oder verbogenen Walzern. Letztere sind das Attribut von Pierre, dem freundlichen Henker: Countertenor Pieter De Praetere gibt den Entertainer, der beherzt auch Grelles riskiert."</p>
-      </blockquote>
+      <!-- Gruppe 3: Münchner Merkur -->
+      <div class="press-group">
+        <blockquote class="press-quote">
+          <p>„Es ist eine Leistungsschau der Theaterakademie, der man nur allerhöchsten Respekt zollen kann."</p>
+          <cite><strong>Münchner Merkur</strong>: Beklemmend aktuell, 27.02.2024</cite>
+        </blockquote>
+      </div>
 
-      <blockquote class="press-quote">
-        <p>„Es ist eine Leistungsschau der Theaterakademie, der man nur allerhöchsten Respekt zollen kann."</p>
-        <cite><strong>Münchner Merkur</strong>: Beklemmend aktuell, 27.02.2024</cite>
-      </blockquote>
+      <!-- Gruppe 4: Abendzeitung -->
+      <div class="press-group">
+        <blockquote class="press-quote">
+          <p>„Zmelty hat, das darf nach dieser Uraufführung ohne Risiko behauptet werden, ein starkes Talent für Theater mit Musik. Bei dieser ‚Einladung zu einer Enthauptung' gehörte das Glück den Tüchtigen – und damit sind alle Beteiligten vor und hinter der Bühne und bei der Erarbeitung dieses wirklich aufregenden Abends gemeint."</p>
+          <cite><strong>Abendzeitung München</strong>: Alexey Nawalny stößt den Zuschauer in die Gegenwart, 24.02.2024</cite>
+        </blockquote>
+      </div>
 
-      <blockquote class="press-quote">
-        <p>„Zmelty hat, das darf nach dieser Uraufführung ohne Risiko behauptet werden, ein starkes Talent für Theater mit Musik. Bei dieser ‚Einladung zu einer Enthauptung' gehörte das Glück den Tüchtigen – und damit sind alle Beteiligten vor und hinter der Bühne und bei der Erarbeitung dieses wirklich aufregenden Abends gemeint."</p>
-        <cite><strong>Abendzeitung München</strong>: Alexey Nawalny stößt den Zuschauer in die Gegenwart, 24.02.2024</cite>
-      </blockquote>
-
-      <blockquote class="press-quote">
-        <p>„Und die Musik von Leon Zmelty wird ebenfalls Requisite, zum unterstützenden Element einer schauspielerisch intensiven Suche ohne Ziel, ohne Ende. Er lotet die Grenzen der Instrumente aus, lässt klopfen, quietschen, schnarren klappern und dann wieder melodiös schweben – das aber selten. Meist ist die Musik Kulisse für ein Gefühl, das zu groß ist für einen Körper und sich deshalb die zwei Gefäße Cincinnnatus' erobern musste. Und am Ende steuert all das auf den stärksten und vielleicht wichtigsten Moment des Abends zu. Hinter der Hoffnung wartet die vollkommene Dunkelheit. Zu sehen sind Übertitel und zu hören ist die Stimme von Alexej Nawalny: ‚Für den Fall, dass ich getötet werde, ist meine Botschaft sehr einfach: Gebt nicht auf! Wenn sie sich dazu entschieden haben, mich zu töten, heißt das, dass wir unglaublich stark sind.' Kraftvoller und demütiger hätten Zmelty und Chagina ihre Stimmen in diesen Tagen nicht nutzen können."</p>
-        <cite><strong>Donaukurier</strong>: Hinter der Hoffnung, 24.02.2024</cite>
-      </blockquote>
+      <!-- Gruppe 5: Donaukurier -->
+      <div class="press-group">
+        <blockquote class="press-quote">
+          <p>„Und die Musik von Leon Zmelty wird ebenfalls Requisite, zum unterstützenden Element einer schauspielerisch intensiven Suche ohne Ziel, ohne Ende. Er lotet die Grenzen der Instrumente aus, lässt klopfen, quietschen, schnarren klappern und dann wieder melodiös schweben – das aber selten. Meist ist die Musik Kulisse für ein Gefühl, das zu groß ist für einen Körper und sich deshalb die zwei Gefäße Cincinnnatus' erobern musste. Und am Ende steuert all das auf den stärksten und vielleicht wichtigsten Moment des Abends zu. Hinter der Hoffnung wartet die vollkommene Dunkelheit. Zu sehen sind Übertitel und zu hören ist die Stimme von Alexej Nawalny: ‚Für den Fall, dass ich getötet werde, ist meine Botschaft sehr einfach: Gebt nicht auf! Wenn sie sich dazu entschieden haben, mich zu töten, heißt das, dass wir unglaublich stark sind.' Kraftvoller und demütiger hätten Zmelty und Chagina ihre Stimmen in diesen Tagen nicht nutzen können."</p>
+          <cite><strong>Donaukurier</strong>: Hinter der Hoffnung, 24.02.2024</cite>
+        </blockquote>
+      </div>
     </section>
 
     <nav class="back-nav">
@@ -208,32 +224,24 @@
   </script>
 
   <script>
-  // Handgezeichnete Rahmen für Pressezitate
   function drawHandrawnFrame(el) {
     const w = el.offsetWidth;
     const h = el.offsetHeight;
+    if(!w || !h) return;
     const ns = 'http://www.w3.org/2000/svg';
-
-    // Altes SVG entfernen falls vorhanden
     const old = el.querySelector('svg.frame');
     if(old) old.remove();
-
     const svg = document.createElementNS(ns, 'svg');
     svg.setAttribute('class', 'frame');
     svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
     svg.setAttribute('preserveAspectRatio', 'none');
     svg.setAttribute('aria-hidden', 'true');
-
-    // Leicht unregelmäßige Rahmenlinien
-    const p = 4; // padding vom Rand
+    const p = 4;
     const jitter = () => (Math.random() - 0.5) * 2;
-
     function makePath(points) {
       const path = document.createElementNS(ns, 'path');
       let d = `M ${points[0][0]},${points[0][1]}`;
-      for(let i = 1; i < points.length; i++){
-        d += ` L ${points[i][0]},${points[i][1]}`;
-      }
+      for(let i = 1; i < points.length; i++) d += ` L ${points[i][0]},${points[i][1]}`;
       path.setAttribute('d', d);
       path.setAttribute('fill', 'none');
       path.setAttribute('stroke', 'currentColor');
@@ -242,50 +250,20 @@
       path.setAttribute('stroke-linejoin', 'round');
       return path;
     }
-
-    // Vier Seiten mit leichter Unregelmäßigkeit
-    const steps = 8;
-    // Oben
-    const top = [];
-    for(let i = 0; i <= steps; i++){
-      const x = p + (w - 2*p) * i / steps + jitter();
-      const y = p + jitter();
-      top.push([x, y]);
-    }
+    const steps = 10;
+    const top = []; for(let i=0;i<=steps;i++) top.push([p+(w-2*p)*i/steps+jitter(), p+jitter()]);
+    const right = []; for(let i=0;i<=steps;i++) right.push([w-p+jitter(), p+(h-2*p)*i/steps+jitter()]);
+    const bottom = []; for(let i=0;i<=steps;i++) bottom.push([(w-p)-(w-2*p)*i/steps+jitter(), h-p+jitter()]);
+    const left = []; for(let i=0;i<=steps;i++) left.push([p+jitter(), (h-p)-(h-2*p)*i/steps+jitter()]);
     svg.appendChild(makePath(top));
-
-    // Rechts
-    const right = [];
-    for(let i = 0; i <= steps; i++){
-      const x = w - p + jitter();
-      const y = p + (h - 2*p) * i / steps + jitter();
-      right.push([x, y]);
-    }
     svg.appendChild(makePath(right));
-
-    // Unten (von rechts nach links)
-    const bottom = [];
-    for(let i = 0; i <= steps; i++){
-      const x = (w - p) - (w - 2*p) * i / steps + jitter();
-      const y = h - p + jitter();
-      bottom.push([x, y]);
-    }
     svg.appendChild(makePath(bottom));
-
-    // Links
-    const left = [];
-    for(let i = 0; i <= steps; i++){
-      const x = p + jitter();
-      const y = (h - p) - (h - 2*p) * i / steps + jitter();
-      left.push([x, y]);
-    }
     svg.appendChild(makePath(left));
-
     el.insertBefore(svg, el.firstChild);
   }
 
   function drawAllFrames() {
-    document.querySelectorAll('.press-quote').forEach(drawHandrawnFrame);
+    document.querySelectorAll('.press-group').forEach(drawHandrawnFrame);
   }
 
   window.addEventListener('load', drawAllFrames);
