@@ -620,6 +620,6 @@ body.projekt-seite .projekt-drawing img {
   max-width: 320px;
   width: 100%;
   height: 180px;  /* alle Zeichnungen gleich hoch */
-  object-fit: contain;
+  object-fit: cover;
   object-position: left;
 }
