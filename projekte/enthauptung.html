@@ -189,14 +189,14 @@
       for(let i=1;i<pts.length;i++) d += ` L ${pts[i][0]},${pts[i][1]}`;
     path.setAttribute('d', d);
 path.setAttribute('fill', 'none');
-path.setAttribute('stroke', '#888');
+path.setAttribute('stroke', '#bbb');
 path.setAttribute('stroke-width', '4');
 path.setAttribute('stroke-dasharray', '8 1.5');
 path.setAttribute('stroke-linecap', 'round');
 path.setAttribute('stroke-linejoin', 'round');
 return path;
     }
-    const s = 10;
+    const s = 20;
     const top=[]; for(let i=0;i<=s;i++) top.push([p+(w-2*p)*i/s+j(), p+j()]);
     const right=[]; for(let i=0;i<=s;i++) right.push([w-p+j(), p+(h-2*p)*i/s+j()]);
     const bottom=[]; for(let i=0;i<=s;i++) bottom.push([(w-p)-(w-2*p)*i/s+j(), h-p+j()]);
