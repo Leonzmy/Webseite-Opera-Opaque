@@ -645,7 +645,7 @@ body.projekt-seite .projekt-drawing img {
   margin: 0 0 .5rem;
   font-style: italic;
   line-height: 1.7;
-  padding-left: 1rem;
+  padding-left: 3rem;
   border-left: 2px solid var(--ink);
 }
 .press-quote cite {
