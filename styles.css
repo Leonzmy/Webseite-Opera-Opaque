@@ -622,3 +622,32 @@ body.projekt-seite .projekt-drawing img {
   max-width: none;
   object-fit: unset;
 }
+
+/* ==============================
+   PRESSESTIMMEN
+   ============================== */
+.pressestimmen {
+  margin-top: 4rem;
+  max-width: 800px;
+}
+.press-heading {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin-bottom: 2rem;
+}
+.press-quote {
+  margin: 0 0 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--ink);
+}
+.press-quote p {
+  margin: 0 0 .5rem;
+  font-style: italic;
+  line-height: 1.7;
+}
+.press-quote cite {
+  font-style: normal;
+  font-size: .9rem;
+  color: var(--muted);
+}
