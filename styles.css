@@ -655,3 +655,10 @@ body.projekt-seite .projekt-drawing img {
 .press-quote cite strong {
   font-weight: 700;
 }
+.press-group {
+  position: relative;
+  margin: 0 0 2.5rem 3rem;
+  padding: 1.2rem 1.5rem;
+  background: rgba(0, 0, 0, 0.03);  /* ← ganz leicht dunkler */
+  border-radius: 2px;
+}
