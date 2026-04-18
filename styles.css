@@ -568,3 +568,51 @@ body.kontakt main {
   margin-right: 40px;
   padding-top: 350px;  /* deutlich tiefer */
 }
+
+/* ==============================
+   MOBILE FRONTPAGE – scrollbar
+   ============================== */
+@media (max-width:900px){
+  /* Body scrollbar erlauben */
+  body.frontpage{
+    overflow-y: auto;
+  }
+
+  /* Video als normaler Block, nicht fixed */
+  .frontpage .video-bg{
+    position: relative !important;
+    height: 60vh !important;
+    width: 100% !important;
+  }
+
+  /* Text direkt darunter */
+  .frontpage-content{
+    position: relative !important;
+    z-index: 5;
+    background: #fff;
+    padding: 2rem 1.25rem;
+  }
+
+  /* Right-panel ohne margin-left */
+  .frontpage .right-panel{
+    margin-left: 0 !important;
+    padding: 0 !important;
+    min-height: unset !important;
+  }
+
+  /* Bild unter dem Text */
+  .lp-coming{
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  .lp-tile{
+    margin-top: 0 !important;
+    width: 100% !important;
+  }
+
+  .lp-tile img{
+    width: 100% !important;
+    height: auto !important;
+  }
+}
