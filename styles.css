@@ -663,3 +663,11 @@ body.projekt-seite .projekt-drawing img {
   overflow: hidden;
 }
 
+body.projekt-seite .projekt-maingrid {
+  align-items: start !important;
+}
+
+body.projekt-seite .content-left {
+  display: flex;
+  flex-direction: column;
+}
