@@ -188,8 +188,10 @@
       let d = `M ${pts[0][0]},${pts[0][1]}`;
       for(let i=1;i<pts.length;i++) d += ` L ${pts[i][0]},${pts[i][1]}`;
       path.setAttribute('d', d); path.setAttribute('fill', 'none');
-      path.setAttribute('stroke', 'currentColor'); path.setAttribute('stroke-width', '1.3');
-      path.setAttribute('stroke-linecap', 'round'); path.setAttribute('stroke-linejoin', 'round');
+     path.setAttribute('stroke', '#888');        /* ← grauer */
+path.setAttribute('stroke-width', '2.5');   /* ← dicker */
+path.setAttribute('stroke-dasharray', '8 1.5');  /* ← Struktur/Strichelung */
+      path.setAttribute('stroke-linejoin', 'round');
       return path;
     }
     const s = 10;
