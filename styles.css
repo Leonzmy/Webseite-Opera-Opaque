@@ -645,12 +645,12 @@ body.projekt-seite .projekt-drawing img {
   margin: 0 0 .5rem;
   font-style: italic;
   line-height: 1.7;
-  padding-left: 1rem;        /* Einrückung */
-  border-left: 2px solid var(--ink);  /* Strich nur beim Zitat */
+  padding-left: 1rem;
+  border-left: 2px solid var(--ink);
 }
 .press-quote cite {
   font-style: normal;
   font-size: .9rem;
   color: var(--muted);
-  padding-left: 1rem;        /* Einrückung passend zum Zitat */
+  padding-left: 0;  /* keine Einrückung */
 }
