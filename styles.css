@@ -671,3 +671,11 @@ body.projekt-seite .content-left {
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 900px) {
+  body.projekt-seite .projekt-drawing img {
+    height: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+}
