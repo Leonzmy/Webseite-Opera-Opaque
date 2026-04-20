@@ -37,7 +37,7 @@
 
     // Reststrecke (ab Offset bis 100%) gleichmäßig auf Kacheln verteilen
     const effectiveP = (p - START_OFFSET) / (1 - START_OFFSET); // 0..1
-    let count = Math.floor(effectiveP * tiles.length);
+    let count = Math.round(effectiveP * tiles.length);
 
     if (count < 0) count = 0;
     if (count > tiles.length) count = tiles.length;
