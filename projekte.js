@@ -38,7 +38,7 @@
     if (p < 0) p = 0;
     if (p > 1) p = 1;
 
-    let count = Math.floor(p * tiles.length) + OFFSET; // 0..N
+    let count = Math.round(p * tiles.length) + OFFSET; // 0..N
     if (count < 0) count = 0;
     if (count > tiles.length) count = tiles.length;
     return count;
