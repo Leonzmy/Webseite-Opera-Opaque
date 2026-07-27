@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Propellerinsel – Opera Opaque</title>
+  <meta name="description" content="Projektseite Propellerinsel – Opera Opaque" />
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" href="/bilder/favicon.png" type="image/png">
+</head>
+<body class="projekt-seite">
+
+  <header class="site-header">
+    <!--div class="brand">Opera Opaque</div-->
+    <nav class="navlinks" aria-label="Hauptnavigation">
+      <a href="../index.html">Home</a>
+      <a href="../projekte.html">Projekte</a>
+      <a href="../about.html">Über uns</a>
+      <a href="../kontakt.html">Kontakt</a>
+    </nav>
+  </header>
+  
+  <main class="projekt-wrap">
+    <!-- Hero (volle Breite) -->
+    <figure class="projekt-hero" aria-label="Projekt-Hero">
+      <img src="../bilder/propellerinsel-hero.jpg" alt="Propellerinsel">
+    </figure>
+
+    <!-- Zeichnung / Titelgrafik -->
+    <figure class="projekt-drawing" aria-label="Titelgrafik">
+      <img src="../bilder/propellerinsel-drawing.jpg" alt="Propellerinsel – Zeichnung">
+    </figure>
+
+    <!-- ZWEI SPALTEN: links Inhalt, rechts Sidebar -->
+    <section class="projekt-maingrid">
+      <!-- LINKE SPALTE -->
+      <div class="content-left">
+        <div class="projekt-beschreibung">
+          <p class="projekt-untertitel">
+            Ein investigatives Recherchekonzert frei nach Jules Verne
+          </p>
+          <p>
+            Das berühmte Konzert-Quartett ist verschwunden! Gerade noch auf Tournee durch die USA, fehlt von den vier Musiker:innen auf einmal jede Spur. Ein Journalist macht sich auf die Suche und findet sie auf der Propellerinsel – einer künstlichen Insel, auf der eine Gruppe reicher Amerikaner sich der staatlichen Jurisdiktion entzieht. Hier versorgt das Quartett für ein großzügiges Honorar Milliardäre mit westlicher Hochkultur. Doch auch die Vermögendsten sind sich untereinander nicht ganz grün, und so droht es mitten in internationalen Gewässern zu einer Katastrophe zu kommen …
+          </p>
+          <p>
+            In seinem Roman Die Propellerinsel sah Jules Verne bereits 1895 voraus, wie sich reiche Menschen mit modernster Technologie abschotten und so ihrer Verantwortung für die Gesellschaft entziehen. In Zeiten finanzieller Kürzungen wird Kultur zum Luxusgut, während Ultrareiche klassische Musik wieder als Investitionsobjekt und Mittel der Distinktion entdecken.
+          </p>
+          <p>
+            Opera Opaque überträgt Vernes visionären Roman zusammen mit dem Zentaur-Quartett in die Gegenwart und sucht dafür nach einer neuen Form zwischen Lecture-Performance und Kammerkonzert.
+          </p>
+        </div>
+
+        <div class="premiere">
+          <div class="date">[09.12.2026 | 20:00]</div>
+          <div class="place">[Einstein Kultur | München]</div>
+        </div>
+          <div class="more-info">
+            <a href="[LINK-ZU-MEHR-INFOS]" target="_blank">
+              Mehr Infos in Kürze
+            </a>
+              <!-- <div class="pressestimmen"><a href="LINK-ZU-PRESSE">Pressestimmen</a></div>
+            <div class="trailer"><a href="LINK-ZU-TRAILER">Trailer</a></div>-->
+          </div>
+        </div>
+      </div>
+
+      <!-- RECHTE SPALTE (SIDEBAR) -->
+      <aside class="projekt-sidebar" aria-label="Credits">
+        <p><strong>Komposition:</strong> Leon Zmelty</p>
+        <p><strong>Textfassung:</strong> Sören Sarbeck</p>
+        <p><strong>Szenische Einrichtung:</strong> Maria Chagina</p>
+        <br>
+        <p><strong>mit dem Zentaur-Quartett:</strong></p>
+        <p>Ronja Sophie Putz<br>
+        Marc Kaufmann<br>
+        Katharina Schmauder<br>
+        Caio de Azevedo</p>
+        <br>
+        <h2>Gefördert von</h2>
+        <div class="logos">
+          <img src="../bilder/logo1.png" alt="[Förderer]">
+           <!-- <img src="../logos/logo2.svg" alt="Förderer 2">-->
+        </div>
+      </aside>
+    </section>
+
+    <div class="back-nav">
+      <a href="/projekte" class="back-button">Zurück zur Übersicht</a>
+    </div>
+  </main>
+</body>
+</html>
