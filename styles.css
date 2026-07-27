@@ -628,11 +628,18 @@ body.kontakt main {
     overflow-y: auto;
   }
 
-  /* Video als normaler Block, nicht fixed */
+  /* Video als normaler Block, nicht fixed, vollständig sichtbar */
   .frontpage .video-bg{
     position: relative !important;
-    height: 60vh !important;
+    height: auto !important;
     width: 100% !important;
+  }
+  .frontpage .video-bg .video{
+    position: static !important;
+    top: auto !important; left: auto !important; bottom: auto !important;
+    height: auto !important;
+    width: 100% !important;
+    object-fit: contain !important;
   }
 
   /* Text direkt darunter */
