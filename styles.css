@@ -189,6 +189,45 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 }
 
 /* ==============================
+   DESKTOP: Video als eigene linke Spalte
+   (läuft unabhängig, wird nicht mehr
+   als beschnittener Hintergrund verwendet)
+   ============================== */
+@media (min-width:901px){
+  body.frontpage{
+    display:flex;
+    min-height:100vh;
+  }
+  body.frontpage .site-header{ padding-left:55vw; }
+  .frontpage .video-bg{
+    position:relative !important;
+    inset:auto !important;
+    left:auto !important; top:auto !important;
+    width:55vw !important;
+    height:100vh !important;
+    flex:0 0 55vw;
+    margin:0 !important;
+    padding:0 !important;
+    z-index:1;
+    overflow:hidden;
+    background:transparent !important;
+  }
+  .frontpage .video-bg .video{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    object-position:center !important;
+  }
+  .frontpage-content{
+    flex:1 1 auto;
+    width:auto;
+  }
+  .frontpage .right-panel{
+    margin-left:0 !important;
+  }
+}
+
+/* ==============================
    GENERISCHE PROJEKTSEITEN
    ============================== */
 body.projekt-seite .site-header,
