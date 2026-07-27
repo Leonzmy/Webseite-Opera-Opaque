@@ -194,18 +194,14 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
    als beschnittener Hintergrund verwendet)
    ============================== */
 @media (min-width:901px){
-  body.frontpage{
-    display:flex;
-    min-height:100vh;
-  }
   body.frontpage .site-header{ padding-left:55vw; }
   .frontpage .video-bg{
-    position:relative !important;
+    position:fixed !important;
     inset:auto !important;
-    left:auto !important; top:auto !important;
+    left:0 !important; top:0 !important;
+    right:auto !important; bottom:auto !important;
     width:55vw !important;
     height:100vh !important;
-    flex:0 0 55vw;
     margin:0 !important;
     padding:0 !important;
     z-index:1;
@@ -217,13 +213,6 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
     height:100% !important;
     object-fit:contain !important;
     object-position:center !important;
-  }
-  .frontpage-content{
-    flex:1 1 auto;
-    width:auto;
-  }
-  .frontpage .right-panel{
-    margin-left:0 !important;
   }
 }
 
