@@ -259,6 +259,13 @@ body.projekt-seite .projekt-wrap figure{ margin:0 !important; }
 body.projekt-seite .projekt-drawing{ margin:0 !important; padding:0 !important; }
 body.projekt-seite .projekt-drawing img{ display:block; width:100%; max-width:320px; height:auto; }
 
+body.projekt-seite .projekt-titel{
+  font-size:clamp(1.8rem,3.6vw,3rem);
+  line-height:1.15;
+  font-weight:700;
+  margin:1.5rem 0 2rem;
+}
+
 body.projekt-seite .projekt-maingrid,
 body:is(.projekt-seite, .projekt-phantom) .projekt-maingrid{
   display:grid;
