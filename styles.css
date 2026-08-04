@@ -1449,3 +1449,16 @@ body.projekt-seite .content-left {
   .reservierung-modal-close{ top:14px; right:14px; }
 }
 body.reservierung-modal-open{ overflow:hidden; }
+
+/* ==============================
+   SPRACH-UMSCHALTER (DE/EN)
+   An bestehende styles.css anhängen.
+   ============================== */
+.navlinks a.lang-switch{
+  margin-left: 10px;
+  padding-left: 14px;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-radius: 0;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
