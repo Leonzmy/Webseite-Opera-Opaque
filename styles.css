@@ -929,3 +929,170 @@ body.projekt-seite .content-left {
   .reservierung-card{ padding:18px; border-radius:12px; }
 }
 
+/* ==============================
+   RESERVIERUNG (Propellerinsel)
+   An bestehende styles.css anhängen.
+   Lehnt sich bewusst an .kontakt-form / .kontakt-card an.
+   ============================== */
+
+.reservierung-card{
+  background: rgba(255,255,255,0.8);
+  border: 1px solid #e6e6e6;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+  padding: 28px;
+  margin-top: 2.5rem;
+  max-width: 600px;
+}
+.reservierung-card h2{
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin: 0 0 .3rem;
+}
+.reservierung-intro{
+  color: var(--muted);
+  font-size: .95rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.55;
+}
+
+.reservierung-form .field{ margin-bottom: 14px; }
+.reservierung-form label{
+  display:block; font-size:.9rem; margin:0 0 6px;
+}
+.reservierung-form .input,
+.reservierung-form .textarea{
+  width:100%; padding:.7rem .9rem; border-radius:10px;
+  border:1px solid #ddd; background:#fff; outline:none;
+  font-family: var(--font-base); font-size: 1rem;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.reservierung-form .input:focus,
+.reservierung-form .textarea:focus{
+  border-color:#999; box-shadow:0 0 0 3px rgba(0,0,0,.06);
+}
+.reservierung-form .textarea{ resize:vertical; min-height:60px; }
+
+.reservierung-tiers{
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin: 18px 0;
+  padding: 6px 0;
+}
+.reservierung-tier{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 10px 0;
+}
+.reservierung-tier + .reservierung-tier{ border-top: 1px solid #f2f2f2; }
+.reservierung-tier-name{ font-size: 1rem; }
+.reservierung-tier-price{
+  display:block; font-size:.85rem; color:var(--muted); margin-top:2px;
+}
+.reservierung-stepper{ display:flex; align-items:center; gap:10px; }
+.reservierung-stepper button{
+  width:30px; height:30px; border-radius:50%;
+  border:1.5px solid #000; background:#fff; color:#000;
+  font-size:1rem; line-height:1; cursor:pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.reservierung-stepper button:hover{ background:#000; color:#fff; }
+.reservierung-stepper button:focus-visible{ outline: 2px solid #000; outline-offset:2px; }
+.reservierung-stepper span{
+  min-width: 18px; text-align:center; font-weight:600; font-size:1rem;
+}
+
+.reservierung-total{
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-size:.95rem; color: var(--muted); margin-bottom: 18px;
+}
+.reservierung-total strong{ font-size:1.25rem; color:#000; }
+
+.reservierung-submit{
+  display:inline-block; width:100%; text-align:center;
+  padding:.8rem 1.2rem; border-radius:10px;
+  border:2px solid #000; background:#000; color:#fff;
+  font-weight:700; font-size:1rem; cursor:pointer;
+  transition: background .2s ease;
+}
+.reservierung-submit:hover{ background:#333; }
+.reservierung-submit:disabled{ opacity:.6; cursor:progress; }
+
+.reservierung-note{
+  font-size:.8rem; color: var(--muted); text-align:center;
+  margin-top:10px; line-height:1.5;
+}
+.reservierung-error{
+  font-size:.85rem; color:#a3231a; margin-top:8px; display:none;
+}
+.reservierung-error.show{ display:block; }
+
+.reservierung-success{
+  display:none; text-align:center; padding: 10px 4px 4px;
+}
+.reservierung-success.show{ display:block; }
+.reservierung-success .mark{
+  display:inline-block; font-weight:700; font-size:1.05rem;
+  border:2px solid #0a7a3d; color:#0a7a3d;
+  border-radius:8px; padding:6px 14px; margin-bottom:14px;
+}
+.reservierung-success p{
+  font-size:.9rem; color: var(--muted); line-height:1.6;
+}
+.reservierung-success .resnum{ font-weight:700; color:#000; }
+
+@media (max-width:700px){
+  .reservierung-card{ padding:18px; border-radius:12px; }
+}
+
+/* ==============================
+   RESERVIERUNG ALS POP-UP
+   Angelehnt an die bestehende .lightbox der Galerie.
+   ============================== */
+.reservierung-trigger{
+  display:inline-block; margin-top:1.25rem;
+  padding:.6rem 1.4rem; border-radius:0.5rem;
+  background:#222; color:#fff; border:none;
+  font-family: var(--font-base); font-size:1rem; font-weight:400;
+  cursor:pointer; transition: background-color .3s ease;
+}
+.reservierung-trigger:hover{ background-color:#444; }
+
+.reservierung-modal{
+  position:fixed; inset:0; display:none;
+  align-items:center; justify-content:center;
+  background:rgba(0,0,0,.6); z-index:1000; padding:20px;
+}
+.reservierung-modal.open{ display:flex; }
+.reservierung-modal-inner{
+  position:relative;
+  width:100%; max-width:620px;
+  max-height:90vh; overflow-y:auto;
+  -webkit-overflow-scrolling: touch;
+}
+.reservierung-modal .reservierung-card{
+  margin-top:0; max-width:none;
+}
+.reservierung-modal-close{
+  position:absolute; top:-14px; right:-14px;
+  width:38px; height:38px; border-radius:999px;
+  background:#fff; border:1px solid #e6e6e6;
+  box-shadow:0 4px 14px rgba(0,0,0,.15);
+  cursor:pointer; font-size:0;
+}
+.reservierung-modal-close::after{
+  content:'×'; display:block; font-size:22px; line-height:38px;
+  text-align:center; color:#000;
+}
+@media (max-width:600px){
+  .reservierung-modal{ padding:0; align-items:flex-end; }
+  .reservierung-modal-inner{
+    max-width:100%; max-height:92vh;
+    border-radius:16px 16px 0 0; overflow:hidden;
+  }
+  .reservierung-modal .reservierung-card{
+    border-radius:16px 16px 0 0; max-height:92vh; overflow-y:auto;
+  }
+  .reservierung-modal-close{ top:10px; right:10px; }
+}
+body.reservierung-modal-open{ overflow:hidden; }
