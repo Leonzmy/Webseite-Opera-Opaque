@@ -257,11 +257,13 @@ body.projekt-seite .projekt-hero img{
 
 /* ==============================
    HERO-SLIDESHOW (4 Bilder, individuelle Dauern)
-   Zyklus: 2s + 1s + 1s + 3s = 7s, dann von vorn
+   Basis-Zyklus 2s+1s+1s+3s=7s, mit Faktor 0.6 multipliziert:
+   1.2s + 0.6s + 0.6s + 1.8s = 4.2s, dann von vorn
+   (Prozentanteile der Keyframes bleiben gleich, da relativ)
    ============================== */
 body.projekt-seite .projekt-hero--slideshow{
   position:relative !important;
-  height:60vh; /* Höhe der Slideshow, ggf. anpassen */
+  height:30vh; /* Höhe der Slideshow, ggf. anpassen */
   overflow:hidden;
 }
 body.projekt-seite .projekt-hero--slideshow .hero-slide{
@@ -271,7 +273,7 @@ body.projekt-seite .projekt-hero--slideshow .hero-slide{
   height:100% !important;
   object-fit:cover !important;
   opacity:0;
-  animation-duration:7s;
+  animation-duration:4.2s;
   animation-iteration-count:infinite;
   animation-timing-function:linear;
 }
