@@ -1498,3 +1498,35 @@ html, body{
   background: rgba(255,255,255,0.85);
   border-radius: 8px;
 }
+/* ==============================
+   HOME-LOGO STATT TEXT + KOMPAKTE MOBILE NAV
+   An bestehende styles.css anhängen.
+   ============================== */
+
+.nav-logo-link{
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 6px !important; /* überschreibt .navlinks a padding, Bild braucht weniger */
+}
+.nav-logo{
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+/* Navigation soll nicht mehr umbrechen, sondern in einer Zeile bleiben
+   und bei Bedarf kompakter werden. */
+.navlinks{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px){
+  .navlinks{ gap: 2px; }
+  .navlinks a{ padding: 4px 5px; font-size: 0.72rem; }
+  .navlinks a.lang-switch{ margin-left: 4px; padding-left: 8px; }
+  .nav-logo{ height: 20px; }
+  .nav-logo-link{ padding: 4px 4px !important; }
+}
