@@ -255,6 +255,50 @@ body.projekt-seite .projekt-hero img{
   object-fit:cover !important;
 }
 
+/* ==============================
+   HERO-SLIDESHOW (4 Bilder, individuelle Dauern)
+   Zyklus: 2s + 1s + 1s + 3s = 7s, dann von vorn
+   ============================== */
+body.projekt-seite .projekt-hero--slideshow{
+  position:relative !important;
+  height:60vh; /* Höhe der Slideshow, ggf. anpassen */
+  overflow:hidden;
+}
+body.projekt-seite .projekt-hero--slideshow .hero-slide{
+  position:absolute;
+  inset:0;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  opacity:0;
+  animation-duration:7s;
+  animation-iteration-count:infinite;
+  animation-timing-function:linear;
+}
+.hero-slide-0{ animation-name:heroSlide0; }
+.hero-slide-1{ animation-name:heroSlide1; }
+.hero-slide-2{ animation-name:heroSlide2; }
+.hero-slide-3{ animation-name:heroSlide3; }
+
+@keyframes heroSlide0{
+  0%,28.57%   { opacity:1; }
+  28.58%,100% { opacity:0; }
+}
+@keyframes heroSlide1{
+  0%,28.57%   { opacity:0; }
+  28.58%,42.86%{ opacity:1; }
+  42.87%,100% { opacity:0; }
+}
+@keyframes heroSlide2{
+  0%,42.86%   { opacity:0; }
+  42.87%,57.14%{ opacity:1; }
+  57.15%,100% { opacity:0; }
+}
+@keyframes heroSlide3{
+  0%,57.14%   { opacity:0; }
+  57.15%,100% { opacity:1; }
+}
+
 body.projekt-seite .projekt-wrap figure{ margin:0 !important; }
 body.projekt-seite .projekt-drawing{ margin:0 !important; padding:0 !important; }
 body.projekt-seite .projekt-drawing img{ display:block; width:100%; max-width:320px; height:auto; }
