@@ -1487,3 +1487,14 @@ html, body{
   max-width: 220px;
   width: 100%;
 }
+
+/* ==============================
+   OVERLAY "MEHR INFOS" MIT HALBTRANSPARENTEM HINTERGRUND
+   Überschreibt die bestehende .tile .overlay Regel in styles.css.
+   An bestehende styles.css anhängen (diese Regel steht dann
+   weiter unten in der Kaskade und gewinnt automatisch).
+   ============================== */
+.tile .overlay{
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+}
