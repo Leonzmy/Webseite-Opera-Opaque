@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact – Opera Opaque</title>
+  <meta name="description" content="Get in touch with the Opera Opaque collective." />
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" href="/bilder/favicon.png" type="image/png">
+</head>
+<body class="kontakt">
+
+  <!-- Einheitlicher Header wie auf den anderen Seiten -->
+  <header class="site-header">
+    <!--div class="brand">Opera Opaque</div-->
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo-link"><img src="../bilder/o-drawing.png" alt="Home" class="nav-logo"></a>
+    <div class="navlinks-links">
+      <a href="projekte.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="kontakt.html" aria-current="page">Contact</a>
+      <a href="../kontakt.html" class="lang-switch" hreflang="de">DE</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Zeichnung statt Überschrift, bündig ohne Rand -->
+    <!--figure class="kontakt-drawing" aria-label="Contact">
+      <img src="bilder/kontakt-drawing.jpg" alt="Contact drawing">
+    </figure>
+
+    <!-- Intro + Formular als abgehobene Karte -->
+    <section class="kontakt-wrap" aria-label="Contact form">
+      <div class="kontakt-card">
+        <p class="kontakt-intro">
+          Send us a message – we'll get back to you as soon as possible.
+          Or reach us directly by email:
+          <a class="mail-link" href="mailto:opera.opaque@gmail.com">opera.opaque@gmail.com</a>
+        </p>
+
+        <form id="kontaktForm" class="kontakt-form" novalidate>
+          <div class="field">
+            <label for="name">Name</label>
+            <input class="input" type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input class="input" type="email" id="email" name="email" placeholder="Your email" required>
+          </div>
+          <div class="field field-full">
+            <label for="betreff">Subject</label>
+            <input class="input" type="text" id="betreff" name="betreff" placeholder="What's this about?" required>
+          </div>
+          <div class="field field-full">
+            <label for="message" class="sr-only">Message</label>
+            <textarea class="textarea" id="message" name="message" rows="6" placeholder="Your message" required></textarea>
+          </div>
+
+          <div class="submit-row">
+            <button class="btn" type="submit">Send</button>
+            <span class="note">Your email programme will open when you submit.</span>
+          </div>
+
+          <p id="successMsg" class="success" role="status" aria-live="polite">Thank you! Your email programme has opened.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a href="impressum.html" class="footer-link">Legal Notice</a>
+  </footer>
+
+  <script>
+(function () {{
+    const form = document.getElementById('kontaktForm');
+    const success = document.getElementById('successMsg');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = encodeURIComponent(document.getElementById('betreff').value.trim());
+      const message = encodeURIComponent(document.getElementById('message').value.trim() + (name ? `\n\n— ${name}` : '') + (email ? `\n${email}` : ''));
+      window.location.href = `mailto:opera.opaque@gmail.com?subject=${subject}&body=${message}`;
+      if (success) success.style.display = 'block';
+    }});
+  }})();
+  </script>
+</body>
+</html>
