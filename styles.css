@@ -1462,3 +1462,28 @@ body.reservierung-modal-open{ overflow:hidden; }
   font-weight: 700;
   letter-spacing: .04em;
 }
+
+/* ==============================
+   FIX: KEIN SEITLICHES SCROLLEN
+   An bestehende styles.css anhängen (oder die Regeln an
+   passender Stelle einfügen, falls Reihenfolge/Kaskade wichtig ist).
+   ============================== */
+
+/* Globale Sicherheitsbremse: nirgendwo auf der Seite soll
+   horizontal gescrollt werden müssen. */
+html, body{
+  overflow-x: hidden;
+}
+
+/* Die "soon:"-Kachel (Bild + Text) darf bei mittleren Fensterbreiten
+   umbrechen, statt die Seite zu verbreitern. */
+.lp-coming{
+  flex-wrap: wrap;
+}
+
+/* Die Kachel selbst darf nie breiter werden als ihr Container,
+   auch wenn das Bild von Haus aus breiter wäre. */
+.lp-tile{
+  max-width: 220px;
+  width: 100%;
+}
