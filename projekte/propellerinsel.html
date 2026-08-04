@@ -62,6 +62,94 @@
               <!-- <div class="pressestimmen"><a href="LINK-ZU-PRESSE">Pressestimmen</a></div>
             <div class="trailer"><a href="LINK-ZU-TRAILER">Trailer</a></div>-->
           </div>
+
+          <!-- ============================================================
+               RESERVIERUNGS-BLOCK — PROPELLERINSEL
+               ============================================================ -->
+          <div class="reservierung-card">
+            <h2>Platz reservieren</h2>
+            <p class="reservierung-intro">
+              Reservierung unverbindlich bis 19:45 Uhr am Konzertabend.
+              Bezahlung ausschließlich an der Abendkasse (bar oder Karte).
+            </p>
+
+            <form class="reservierung-form" id="resv-form" novalidate>
+              <div class="field">
+                <label for="resv-name">Name</label>
+                <input class="input" type="text" id="resv-name" name="name" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="resv-email">E-Mail (für Bestätigung)</label>
+                <input class="input" type="email" id="resv-email" name="email" required autocomplete="email">
+              </div>
+
+              <div class="reservierung-tiers">
+                <div class="reservierung-tier">
+                  <div>
+                    <span class="reservierung-tier-name">Reguläres Ticket</span>
+                    <span class="reservierung-tier-price">20 €</span>
+                  </div>
+                  <div class="reservierung-stepper" data-tier="regular" data-price="20">
+                    <button type="button" data-action="minus" aria-label="Regulär: Anzahl verringern">–</button>
+                    <span data-count>0</span>
+                    <button type="button" data-action="plus" aria-label="Regulär: Anzahl erhöhen">+</button>
+                  </div>
+                </div>
+                <div class="reservierung-tier">
+                  <div>
+                    <span class="reservierung-tier-name">Ermäßigtes Ticket</span>
+                    <span class="reservierung-tier-price">10 €</span>
+                  </div>
+                  <div class="reservierung-stepper" data-tier="ermaessigt" data-price="10">
+                    <button type="button" data-action="minus" aria-label="Ermäßigt: Anzahl verringern">–</button>
+                    <span data-count>0</span>
+                    <button type="button" data-action="plus" aria-label="Ermäßigt: Anzahl erhöhen">+</button>
+                  </div>
+                </div>
+                <div class="reservierung-tier">
+                  <div>
+                    <span class="reservierung-tier-name">Kulturförderticket</span>
+                    <span class="reservierung-tier-price">30 €</span>
+                  </div>
+                  <div class="reservierung-stepper" data-tier="kulturfoerder" data-price="30">
+                    <button type="button" data-action="minus" aria-label="Kulturförderticket: Anzahl verringern">–</button>
+                    <span data-count>0</span>
+                    <button type="button" data-action="plus" aria-label="Kulturförderticket: Anzahl erhöhen">+</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="resv-message">Anmerkung (optional)</label>
+                <textarea class="textarea" id="resv-message" name="message" placeholder="z. B. Sitzplatzwunsch, Barrierefreiheit …"></textarea>
+              </div>
+
+              <div class="reservierung-total">
+                <span>Gesamt <span id="resv-total-count">0</span> Tickets</span>
+                <strong id="resv-total-price">0 €</strong>
+              </div>
+
+              <button type="submit" class="reservierung-submit" id="resv-submit-btn">Platz reservieren</button>
+              <p class="reservierung-error" id="resv-error">Bitte Name, E-Mail angeben und mindestens ein Ticket wählen.</p>
+              <p class="reservierung-note">
+                Die Reservierung ist unverbindlich bis 19:45 Uhr am Konzertabend.<br>
+                Bezahlung ausschließlich an der Abendkasse (bar oder Karte).
+              </p>
+            </form>
+
+            <div class="reservierung-success" id="resv-success">
+              <div class="mark">Reserviert ✓</div>
+              <p>
+                Ihre Reservierung <span class="resnum" id="resv-resnum"></span> ist eingetragen.<br>
+                Eine Bestätigung geht an Ihre E-Mail-Adresse.<br>
+                Bitte halten Sie den Betrag am Einlass bereit.
+              </p>
+            </div>
+          </div>
+          <!-- ============================================================
+               ENDE RESERVIERUNGS-BLOCK
+               ============================================================ -->
+
         </div>
       </div>
 
@@ -89,5 +177,105 @@
       <a href="/projekte" class="back-button">Zurück zur Übersicht</a>
     </div>
   </main>
+
+  <script>
+  (function () {
+    // Nach dem Deployment des Google Apps Script (Code.gs) die
+    // Web-App-URL hier eintragen:
+    var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzq7Ge9eARyS3hYReFlPC-1ycGv6q3OvVtLKeAj2xIgQKFa_WZF-JANeRmyr8YImIt44A/exec";
+
+    var form = document.getElementById('resv-form');
+    if (!form) return;
+
+    var steppers = form.querySelectorAll('.reservierung-stepper');
+    var totalCountEl = document.getElementById('resv-total-count');
+    var totalPriceEl = document.getElementById('resv-total-price');
+    var errorEl = document.getElementById('resv-error');
+    var submitBtn = document.getElementById('resv-submit-btn');
+    var successEl = document.getElementById('resv-success');
+    var resnumEl = document.getElementById('resv-resnum');
+
+    function counts() {
+      var c = {};
+      steppers.forEach(function (s) {
+        c[s.dataset.tier] = {
+          count: parseInt(s.querySelector('[data-count]').textContent, 10),
+          price: parseInt(s.dataset.price, 10)
+        };
+      });
+      return c;
+    }
+
+    function updateTotals() {
+      var c = counts();
+      var totalCount = 0, totalPrice = 0;
+      Object.keys(c).forEach(function (k) {
+        totalCount += c[k].count;
+        totalPrice += c[k].count * c[k].price;
+      });
+      totalCountEl.textContent = totalCount;
+      totalPriceEl.textContent = totalPrice + ' €';
+      return { totalCount: totalCount, totalPrice: totalPrice, c: c };
+    }
+
+    steppers.forEach(function (s) {
+      var countEl = s.querySelector('[data-count]');
+      s.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var val = parseInt(countEl.textContent, 10);
+          if (btn.dataset.action === 'plus') val += 1;
+          if (btn.dataset.action === 'minus') val = Math.max(0, val - 1);
+          countEl.textContent = val;
+          updateTotals();
+        });
+      });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var message = form.message.value.trim();
+      var totals = updateTotals();
+
+      if (!name || !email || totals.totalCount < 1) {
+        errorEl.classList.add('show');
+        return;
+      }
+
+      var resNum = 'PI-' + Date.now().toString(36).toUpperCase();
+
+      var payload = new FormData();
+      payload.append('reservierungsnummer', resNum);
+      payload.append('name', name);
+      payload.append('email', email);
+      payload.append('regulaer', totals.c.regular.count);
+      payload.append('ermaessigt', totals.c.ermaessigt.count);
+      payload.append('kulturfoerder', totals.c.kulturfoerder.count);
+      payload.append('gesamtTickets', totals.totalCount);
+      payload.append('gesamtBetrag', totals.totalPrice);
+      payload.append('nachricht', message);
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird eingetragen …';
+
+      fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: payload })
+        .then(function () {
+          resnumEl.textContent = resNum;
+          form.style.display = 'none';
+          successEl.classList.add('show');
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Platz reservieren';
+          errorEl.textContent = 'Da ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.';
+          errorEl.classList.add('show');
+        });
+    });
+  })();
+  </script>
+
 </body>
 </html>
