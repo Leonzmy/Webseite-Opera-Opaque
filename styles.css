@@ -52,7 +52,6 @@ a:hover,a:focus{ color:#222; }
 }
 body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 .brand{ font-weight:600; }
-.navlinks a{ padding:6px 8px; border-radius:8px; }
 
 /* ==== Frontpage Inhalt ==== */
 .frontpage-content{ position:relative; z-index:5; }
@@ -89,6 +88,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   flex-direction:row;
   align-items:flex-start;
   gap:4rem;
+  flex-wrap: wrap;
 }
 .lp-coming-text{ flex:0 0 auto; }
 .lp-what{ font-size:1.6rem; font-weight:600; margin:.15rem 0; }
@@ -100,6 +100,7 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 .lp-tile{
   flex:0 0 auto;
   width:220px;
+  max-width: 220px;
   margin-top:4rem;
 }
 
@@ -109,7 +110,8 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 .tile .overlay{
   position:absolute; left:0; right:0; bottom:0;
   padding:.5rem .75rem;
-  background:transparent; color:var(--ink);
+  background:rgba(255,255,255,0.85); color:var(--ink);
+  border-radius: 8px;
   opacity:0; transition:opacity .25s ease;
   pointer-events:none; text-align:left;
 }
@@ -185,13 +187,10 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
 @media (min-width:900px){
   .site-header{ justify-content:center; padding-left:50vw; }
   .site-header .brand{ display:none; }
-  .site-header .navlinks a{ margin:0 .125rem; }
 }
 
 /* ==============================
    DESKTOP: Video als eigene linke Spalte
-   (läuft unabhängig, wird nicht mehr
-   als beschnittener Hintergrund verwendet)
    ============================== */
 @media (min-width:901px){
   body.frontpage .site-header{ padding-left:55vw; }
@@ -257,13 +256,10 @@ body.projekt-seite .projekt-hero img{
 
 /* ==============================
    HERO-SLIDESHOW (4 Bilder, individuelle Dauern)
-   Basis-Zyklus 2s+1s+1s+3s=7s, mit Faktor 0.6 multipliziert:
-   1.2s + 0.6s + 0.6s + 1.8s = 4.2s, dann von vorn
-   (Prozentanteile der Keyframes bleiben gleich, da relativ)
    ============================== */
 body.projekt-seite .projekt-hero--slideshow{
   position:relative !important;
-  height:30vh; /* Höhe der Slideshow, ggf. anpassen */
+  height:30vh;
   overflow:hidden;
 }
 body.projekt-seite .projekt-hero--slideshow .hero-slide{
@@ -448,7 +444,6 @@ body.projekte .section-title,
 body.about .section-title{ margin:0; padding:0; }
 body.projekte .section-title img,
 body.about .section-title img{ display:block; max-width:320px; width:100%; height:auto; }
-/* 5. Kachel: eigene Reihe, mittig zentriert */
 body.projekte .projekte-grid--2x2 .tile--centered{
   grid-column: 1 / -1;
   max-width: calc(50% - 0px);
@@ -655,22 +650,19 @@ body:is(.projekt-seite, .projekt-phantom) .projekt-sidebar .logos img{ max-width
 }
 
 body.kontakt main {
-  max-width: 600px;  /* war 600px */
+  max-width: 600px;
   margin-left: auto;
   margin-right: 40px;
-  padding-top: 350px;  /* deutlich tiefer */
+  padding-top: 350px;
 }
 
 /* ==============================
    MOBILE FRONTPAGE – scrollbar
    ============================== */
 @media (max-width:900px){
-  /* Body scrollbar erlauben */
   body.frontpage{
     overflow-y: auto;
   }
-
-  /* Video als normaler Block, nicht fixed, vollständig sichtbar */
   .frontpage .video-bg{
     position: relative !important;
     height: auto !important;
@@ -683,41 +675,33 @@ body.kontakt main {
     width: 100% !important;
     object-fit: contain !important;
   }
-
-  /* Text direkt darunter */
   .frontpage-content{
     position: relative !important;
     z-index: 5;
     background: #fff;
     padding: 2rem 1.25rem;
   }
-
-  /* Right-panel ohne margin-left */
   .frontpage .right-panel{
     margin-left: 0 !important;
     padding: 0 !important;
     min-height: unset !important;
   }
-
-  /* Bild unter dem Text */
   .lp-coming{
     flex-direction: column !important;
     gap: 1.5rem !important;
   }
-
   .lp-tile{
     margin-top: 0 !important;
     width: 100% !important;
   }
-
   .lp-tile img{
     width: 100% !important;
     height: auto !important;
   }
 }
 body.projekt-seite .projekt-drawing img {
-  height: 180px;  /* feste Höhe */
-  width: auto;    /* Breite folgt proportional */
+  height: 180px;
+  width: auto;
   max-width: none;
   object-fit: unset;
 }
@@ -736,7 +720,7 @@ body.projekt-seite .projekt-drawing img {
   margin-bottom: 2rem;
 }
 .press-quote {
-  margin: 0 0 2rem 3rem;  /* 3rem Einrückung links */
+  margin: 0 0 2rem 3rem;
 }
 .press-quote p {
   margin: 0 0 .5rem;
@@ -794,7 +778,6 @@ body.projekt-seite .content-left {
     height: auto !important;
     position: relative !important;
   }
-
   body.projekt-seite .projekt-galerie a {
     position: static !important;
     width: 100% !important;
@@ -803,7 +786,6 @@ body.projekt-seite .content-left {
     overflow: hidden !important;
     border-radius: 4px !important;
   }
-
   body.projekt-seite .projekt-galerie img {
     width: 100% !important;
     height: 100% !important;
@@ -815,7 +797,6 @@ body.projekt-seite .content-left {
 
 /* ==============================
    RESERVIERUNG (Propellerinsel)
-   An bestehende styles.css anhängen.
    Lehnt sich bewusst an .kontakt-form / .kontakt-card an.
    ============================== */
 
@@ -840,7 +821,6 @@ body.projekt-seite .content-left {
   margin: 0 0 1.5rem;
   line-height: 1.55;
 }
-
 .reservierung-form .field{ margin-bottom: 14px; }
 .reservierung-form label{
   display:block; font-size:.9rem; margin:0 0 6px;
@@ -857,7 +837,6 @@ body.projekt-seite .content-left {
   border-color:#999; box-shadow:0 0 0 3px rgba(0,0,0,.06);
 }
 .reservierung-form .textarea{ resize:vertical; min-height:60px; }
-
 .reservierung-tiers{
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
@@ -885,13 +864,11 @@ body.projekt-seite .content-left {
 .reservierung-stepper span{
   min-width: 18px; text-align:center; font-weight:600; font-size:1rem;
 }
-
 .reservierung-total{
   display:flex; justify-content:space-between; align-items:baseline;
   font-size:.95rem; color: var(--muted); margin-bottom: 18px;
 }
 .reservierung-total strong{ font-size:1.25rem; color:#000; }
-
 .reservierung-submit{
   display:inline-block; width:100%; text-align:center;
   padding:.8rem 1.2rem; border-radius:10px;
@@ -901,7 +878,6 @@ body.projekt-seite .content-left {
 }
 .reservierung-submit:hover{ background:#333; }
 .reservierung-submit:disabled{ opacity:.6; cursor:progress; }
-
 .reservierung-note{
   font-size:.8rem; color: var(--muted); text-align:center;
   margin-top:10px; line-height:1.5;
@@ -910,7 +886,6 @@ body.projekt-seite .content-left {
   font-size:.85rem; color:#a3231a; margin-top:8px; display:none;
 }
 .reservierung-error.show{ display:block; }
-
 .reservierung-success{
   display:none; text-align:center; padding: 10px 4px 4px;
 }
@@ -924,471 +899,6 @@ body.projekt-seite .content-left {
   font-size:.9rem; color: var(--muted); line-height:1.6;
 }
 .reservierung-success .resnum{ font-weight:700; color:#000; }
-
-@media (max-width:700px){
-  .reservierung-card{ padding:18px; border-radius:12px; }
-}
-
-/* ==============================
-   RESERVIERUNG (Propellerinsel)
-   An bestehende styles.css anhängen.
-   Lehnt sich bewusst an .kontakt-form / .kontakt-card an.
-   ============================== */
-
-.reservierung-card{
-  background: rgba(255,255,255,0.8);
-  border: 1px solid #e6e6e6;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-  padding: 28px;
-  margin-top: 2.5rem;
-  max-width: 600px;
-}
-.reservierung-card h2{
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  margin: 0 0 .3rem;
-}
-.reservierung-intro{
-  color: var(--muted);
-  font-size: .95rem;
-  margin: 0 0 1.5rem;
-  line-height: 1.55;
-}
-
-.reservierung-form .field{ margin-bottom: 14px; }
-.reservierung-form label{
-  display:block; font-size:.9rem; margin:0 0 6px;
-}
-.reservierung-form .input,
-.reservierung-form .textarea{
-  width:100%; padding:.7rem .9rem; border-radius:10px;
-  border:1px solid #ddd; background:#fff; outline:none;
-  font-family: var(--font-base); font-size: 1rem;
-  transition:border-color .2s ease, box-shadow .2s ease;
-}
-.reservierung-form .input:focus,
-.reservierung-form .textarea:focus{
-  border-color:#999; box-shadow:0 0 0 3px rgba(0,0,0,.06);
-}
-.reservierung-form .textarea{ resize:vertical; min-height:60px; }
-
-.reservierung-tiers{
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  margin: 18px 0;
-  padding: 6px 0;
-}
-.reservierung-tier{
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 10px 0;
-}
-.reservierung-tier + .reservierung-tier{ border-top: 1px solid #f2f2f2; }
-.reservierung-tier-name{ font-size: 1rem; }
-.reservierung-tier-price{
-  display:block; font-size:.85rem; color:var(--muted); margin-top:2px;
-}
-.reservierung-stepper{ display:flex; align-items:center; gap:10px; }
-.reservierung-stepper button{
-  width:30px; height:30px; border-radius:50%;
-  border:1.5px solid #000; background:#fff; color:#000;
-  font-size:1rem; line-height:1; cursor:pointer;
-  transition: background .2s ease, color .2s ease;
-}
-.reservierung-stepper button:hover{ background:#000; color:#fff; }
-.reservierung-stepper button:focus-visible{ outline: 2px solid #000; outline-offset:2px; }
-.reservierung-stepper span{
-  min-width: 18px; text-align:center; font-weight:600; font-size:1rem;
-}
-
-.reservierung-total{
-  display:flex; justify-content:space-between; align-items:baseline;
-  font-size:.95rem; color: var(--muted); margin-bottom: 18px;
-}
-.reservierung-total strong{ font-size:1.25rem; color:#000; }
-
-.reservierung-submit{
-  display:inline-block; width:100%; text-align:center;
-  padding:.8rem 1.2rem; border-radius:10px;
-  border:2px solid #000; background:#000; color:#fff;
-  font-weight:700; font-size:1rem; cursor:pointer;
-  transition: background .2s ease;
-}
-.reservierung-submit:hover{ background:#333; }
-.reservierung-submit:disabled{ opacity:.6; cursor:progress; }
-
-.reservierung-note{
-  font-size:.8rem; color: var(--muted); text-align:center;
-  margin-top:10px; line-height:1.5;
-}
-.reservierung-error{
-  font-size:.85rem; color:#a3231a; margin-top:8px; display:none;
-}
-.reservierung-error.show{ display:block; }
-
-.reservierung-success{
-  display:none; text-align:center; padding: 10px 4px 4px;
-}
-.reservierung-success.show{ display:block; }
-.reservierung-success .mark{
-  display:inline-block; font-weight:700; font-size:1.05rem;
-  border:2px solid #0a7a3d; color:#0a7a3d;
-  border-radius:8px; padding:6px 14px; margin-bottom:14px;
-}
-.reservierung-success p{
-  font-size:.9rem; color: var(--muted); line-height:1.6;
-}
-.reservierung-success .resnum{ font-weight:700; color:#000; }
-
-@media (max-width:700px){
-  .reservierung-card{ padding:18px; border-radius:12px; }
-}
-
-/* ==============================
-   RESERVIERUNG (Propellerinsel)
-   An bestehende styles.css anhängen.
-   Lehnt sich bewusst an .kontakt-form / .kontakt-card an.
-   ============================== */
-
-.reservierung-card{
-  background: rgba(255,255,255,0.8);
-  border: 1px solid #e6e6e6;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-  padding: 28px;
-  margin-top: 2.5rem;
-  max-width: 600px;
-}
-.reservierung-card h2{
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  margin: 0 0 .3rem;
-}
-.reservierung-intro{
-  color: var(--muted);
-  font-size: .95rem;
-  margin: 0 0 1.5rem;
-  line-height: 1.55;
-}
-
-.reservierung-form .field{ margin-bottom: 14px; }
-.reservierung-form label{
-  display:block; font-size:.9rem; margin:0 0 6px;
-}
-.reservierung-form .input,
-.reservierung-form .textarea{
-  width:100%; padding:.7rem .9rem; border-radius:10px;
-  border:1px solid #ddd; background:#fff; outline:none;
-  font-family: var(--font-base); font-size: 1rem;
-  transition:border-color .2s ease, box-shadow .2s ease;
-}
-.reservierung-form .input:focus,
-.reservierung-form .textarea:focus{
-  border-color:#999; box-shadow:0 0 0 3px rgba(0,0,0,.06);
-}
-.reservierung-form .textarea{ resize:vertical; min-height:60px; }
-
-.reservierung-tiers{
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  margin: 18px 0;
-  padding: 6px 0;
-}
-.reservierung-tier{
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 10px 0;
-}
-.reservierung-tier + .reservierung-tier{ border-top: 1px solid #f2f2f2; }
-.reservierung-tier-name{ font-size: 1rem; }
-.reservierung-tier-price{
-  display:block; font-size:.85rem; color:var(--muted); margin-top:2px;
-}
-.reservierung-stepper{ display:flex; align-items:center; gap:10px; }
-.reservierung-stepper button{
-  width:30px; height:30px; border-radius:50%;
-  border:1.5px solid #000; background:#fff; color:#000;
-  font-size:1rem; line-height:1; cursor:pointer;
-  transition: background .2s ease, color .2s ease;
-}
-.reservierung-stepper button:hover{ background:#000; color:#fff; }
-.reservierung-stepper button:focus-visible{ outline: 2px solid #000; outline-offset:2px; }
-.reservierung-stepper span{
-  min-width: 18px; text-align:center; font-weight:600; font-size:1rem;
-}
-
-.reservierung-total{
-  display:flex; justify-content:space-between; align-items:baseline;
-  font-size:.95rem; color: var(--muted); margin-bottom: 18px;
-}
-.reservierung-total strong{ font-size:1.25rem; color:#000; }
-
-.reservierung-submit{
-  display:inline-block; width:100%; text-align:center;
-  padding:.8rem 1.2rem; border-radius:10px;
-  border:2px solid #000; background:#000; color:#fff;
-  font-weight:700; font-size:1rem; cursor:pointer;
-  transition: background .2s ease;
-}
-.reservierung-submit:hover{ background:#333; }
-.reservierung-submit:disabled{ opacity:.6; cursor:progress; }
-
-.reservierung-note{
-  font-size:.8rem; color: var(--muted); text-align:center;
-  margin-top:10px; line-height:1.5;
-}
-.reservierung-error{
-  font-size:.85rem; color:#a3231a; margin-top:8px; display:none;
-}
-.reservierung-error.show{ display:block; }
-
-.reservierung-success{
-  display:none; text-align:center; padding: 10px 4px 4px;
-}
-.reservierung-success.show{ display:block; }
-.reservierung-success .mark{
-  display:inline-block; font-weight:700; font-size:1.05rem;
-  border:2px solid #0a7a3d; color:#0a7a3d;
-  border-radius:8px; padding:6px 14px; margin-bottom:14px;
-}
-.reservierung-success p{
-  font-size:.9rem; color: var(--muted); line-height:1.6;
-}
-.reservierung-success .resnum{ font-weight:700; color:#000; }
-
-@media (max-width:700px){
-  .reservierung-card{ padding:18px; border-radius:12px; }
-}
-
-/* ==============================
-   RESERVIERUNG (Propellerinsel)
-   An bestehende styles.css anhängen.
-   Lehnt sich bewusst an .kontakt-form / .kontakt-card an.
-   ============================== */
-
-.reservierung-card{
-  background: rgba(255,255,255,0.8);
-  border: 1px solid #e6e6e6;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-  padding: 28px;
-  margin-top: 2.5rem;
-  max-width: 600px;
-}
-.reservierung-card h2{
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  margin: 0 0 .3rem;
-}
-.reservierung-intro{
-  color: var(--muted);
-  font-size: .95rem;
-  margin: 0 0 1.5rem;
-  line-height: 1.55;
-}
-
-.reservierung-form .field{ margin-bottom: 14px; }
-.reservierung-form label{
-  display:block; font-size:.9rem; margin:0 0 6px;
-}
-.reservierung-form .input,
-.reservierung-form .textarea{
-  width:100%; padding:.7rem .9rem; border-radius:10px;
-  border:1px solid #ddd; background:#fff; outline:none;
-  font-family: var(--font-base); font-size: 1rem;
-  transition:border-color .2s ease, box-shadow .2s ease;
-}
-.reservierung-form .input:focus,
-.reservierung-form .textarea:focus{
-  border-color:#999; box-shadow:0 0 0 3px rgba(0,0,0,.06);
-}
-.reservierung-form .textarea{ resize:vertical; min-height:60px; }
-
-.reservierung-tiers{
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  margin: 18px 0;
-  padding: 6px 0;
-}
-.reservierung-tier{
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 10px 0;
-}
-.reservierung-tier + .reservierung-tier{ border-top: 1px solid #f2f2f2; }
-.reservierung-tier-name{ font-size: 1rem; }
-.reservierung-tier-price{
-  display:block; font-size:.85rem; color:var(--muted); margin-top:2px;
-}
-.reservierung-stepper{ display:flex; align-items:center; gap:10px; }
-.reservierung-stepper button{
-  width:30px; height:30px; border-radius:50%;
-  border:1.5px solid #000; background:#fff; color:#000;
-  font-size:1rem; line-height:1; cursor:pointer;
-  transition: background .2s ease, color .2s ease;
-}
-.reservierung-stepper button:hover{ background:#000; color:#fff; }
-.reservierung-stepper button:focus-visible{ outline: 2px solid #000; outline-offset:2px; }
-.reservierung-stepper span{
-  min-width: 18px; text-align:center; font-weight:600; font-size:1rem;
-}
-
-.reservierung-total{
-  display:flex; justify-content:space-between; align-items:baseline;
-  font-size:.95rem; color: var(--muted); margin-bottom: 18px;
-}
-.reservierung-total strong{ font-size:1.25rem; color:#000; }
-
-.reservierung-submit{
-  display:inline-block; width:100%; text-align:center;
-  padding:.8rem 1.2rem; border-radius:10px;
-  border:2px solid #000; background:#000; color:#fff;
-  font-weight:700; font-size:1rem; cursor:pointer;
-  transition: background .2s ease;
-}
-.reservierung-submit:hover{ background:#333; }
-.reservierung-submit:disabled{ opacity:.6; cursor:progress; }
-
-.reservierung-note{
-  font-size:.8rem; color: var(--muted); text-align:center;
-  margin-top:10px; line-height:1.5;
-}
-.reservierung-error{
-  font-size:.85rem; color:#a3231a; margin-top:8px; display:none;
-}
-.reservierung-error.show{ display:block; }
-
-.reservierung-success{
-  display:none; text-align:center; padding: 10px 4px 4px;
-}
-.reservierung-success.show{ display:block; }
-.reservierung-success .mark{
-  display:inline-block; font-weight:700; font-size:1.05rem;
-  border:2px solid #0a7a3d; color:#0a7a3d;
-  border-radius:8px; padding:6px 14px; margin-bottom:14px;
-}
-.reservierung-success p{
-  font-size:.9rem; color: var(--muted); line-height:1.6;
-}
-.reservierung-success .resnum{ font-weight:700; color:#000; }
-
-@media (max-width:700px){
-  .reservierung-card{ padding:18px; border-radius:12px; }
-}
-
-/* ==============================
-   RESERVIERUNG (Propellerinsel)
-   An bestehende styles.css anhängen.
-   Lehnt sich bewusst an .kontakt-form / .kontakt-card an.
-   ============================== */
-
-.reservierung-card{
-  background: rgba(255,255,255,0.8);
-  border: 1px solid #e6e6e6;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-  padding: 28px;
-  margin-top: 2.5rem;
-  max-width: 600px;
-}
-.reservierung-card h2{
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  margin: 0 0 .3rem;
-}
-.reservierung-intro{
-  color: var(--muted);
-  font-size: .95rem;
-  margin: 0 0 1.5rem;
-  line-height: 1.55;
-}
-
-.reservierung-form .field{ margin-bottom: 14px; }
-.reservierung-form label{
-  display:block; font-size:.9rem; margin:0 0 6px;
-}
-.reservierung-form .input,
-.reservierung-form .textarea{
-  width:100%; padding:.7rem .9rem; border-radius:10px;
-  border:1px solid #ddd; background:#fff; outline:none;
-  font-family: var(--font-base); font-size: 1rem;
-  transition:border-color .2s ease, box-shadow .2s ease;
-}
-.reservierung-form .input:focus,
-.reservierung-form .textarea:focus{
-  border-color:#999; box-shadow:0 0 0 3px rgba(0,0,0,.06);
-}
-.reservierung-form .textarea{ resize:vertical; min-height:60px; }
-
-.reservierung-tiers{
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  margin: 18px 0;
-  padding: 6px 0;
-}
-.reservierung-tier{
-  display:flex; align-items:center; justify-content:space-between;
-  padding: 10px 0;
-}
-.reservierung-tier + .reservierung-tier{ border-top: 1px solid #f2f2f2; }
-.reservierung-tier-name{ font-size: 1rem; }
-.reservierung-tier-price{
-  display:block; font-size:.85rem; color:var(--muted); margin-top:2px;
-}
-.reservierung-stepper{ display:flex; align-items:center; gap:10px; }
-.reservierung-stepper button{
-  width:30px; height:30px; border-radius:50%;
-  border:1.5px solid #000; background:#fff; color:#000;
-  font-size:1rem; line-height:1; cursor:pointer;
-  transition: background .2s ease, color .2s ease;
-}
-.reservierung-stepper button:hover{ background:#000; color:#fff; }
-.reservierung-stepper button:focus-visible{ outline: 2px solid #000; outline-offset:2px; }
-.reservierung-stepper span{
-  min-width: 18px; text-align:center; font-weight:600; font-size:1rem;
-}
-
-.reservierung-total{
-  display:flex; justify-content:space-between; align-items:baseline;
-  font-size:.95rem; color: var(--muted); margin-bottom: 18px;
-}
-.reservierung-total strong{ font-size:1.25rem; color:#000; }
-
-.reservierung-submit{
-  display:inline-block; width:100%; text-align:center;
-  padding:.8rem 1.2rem; border-radius:10px;
-  border:2px solid #000; background:#000; color:#fff;
-  font-weight:700; font-size:1rem; cursor:pointer;
-  transition: background .2s ease;
-}
-.reservierung-submit:hover{ background:#333; }
-.reservierung-submit:disabled{ opacity:.6; cursor:progress; }
-
-.reservierung-note{
-  font-size:.8rem; color: var(--muted); text-align:center;
-  margin-top:10px; line-height:1.5;
-}
-.reservierung-error{
-  font-size:.85rem; color:#a3231a; margin-top:8px; display:none;
-}
-.reservierung-error.show{ display:block; }
-
-.reservierung-success{
-  display:none; text-align:center; padding: 10px 4px 4px;
-}
-.reservierung-success.show{ display:block; }
-.reservierung-success .mark{
-  display:inline-block; font-weight:700; font-size:1.05rem;
-  border:2px solid #0a7a3d; color:#0a7a3d;
-  border-radius:8px; padding:6px 14px; margin-bottom:14px;
-}
-.reservierung-success p{
-  font-size:.9rem; color: var(--muted); line-height:1.6;
-}
-.reservierung-success .resnum{ font-weight:700; color:#000; }
-
 @media (max-width:700px){
   .reservierung-card{ padding:18px; border-radius:12px; }
 }
@@ -1405,7 +915,6 @@ body.projekt-seite .content-left {
   cursor:pointer; transition: background-color .3s ease;
 }
 .reservierung-trigger:hover{ background-color:#444; }
-
 .reservierung-modal{
   position:fixed; inset:0; display:none;
   align-items:center; justify-content:center;
@@ -1423,7 +932,7 @@ body.projekt-seite .content-left {
 }
 .reservierung-modal .reservierung-card{
   margin-top:0; max-width:none;
-  background:#fff; /* komplett blickdicht, im Unterschied zur leicht transparenten Karte im Seitenfluss */
+  background:#fff;
 }
 .reservierung-modal-close{
   position:fixed; top:24px; right:24px;
@@ -1452,146 +961,45 @@ body.reservierung-modal-open{ overflow:hidden; }
 
 /* ==============================
    SPRACH-UMSCHALTER (DE/EN)
-   An bestehende styles.css anhängen.
    ============================== */
-.navlinks a.lang-switch{
+.lang-switch{
   margin-left: 10px;
   padding-left: 14px;
   border-left: 1px solid rgba(0,0,0,0.2);
-  border-radius: 0;
   font-weight: 700;
   letter-spacing: .04em;
 }
 
 /* ==============================
    FIX: KEIN SEITLICHES SCROLLEN
-   An bestehende styles.css anhängen (oder die Regeln an
-   passender Stelle einfügen, falls Reihenfolge/Kaskade wichtig ist).
    ============================== */
-
-/* Globale Sicherheitsbremse: nirgendwo auf der Seite soll
-   horizontal gescrollt werden müssen. */
 html, body{
   overflow-x: hidden;
 }
 
-/* Die "soon:"-Kachel (Bild + Text) darf bei mittleren Fensterbreiten
-   umbrechen, statt die Seite zu verbreitern. */
-.lp-coming{
-  flex-wrap: wrap;
-}
-
-/* Die Kachel selbst darf nie breiter werden als ihr Container,
-   auch wenn das Bild von Haus aus breiter wäre. */
-.lp-tile{
-  max-width: 220px;
-  width: 100%;
-}
-
 /* ==============================
-   OVERLAY "MEHR INFOS" MIT HALBTRANSPARENTEM HINTERGRUND
-   Überschreibt die bestehende .tile .overlay Regel in styles.css.
-   An bestehende styles.css anhängen (diese Regel steht dann
-   weiter unten in der Kaskade und gewinnt automatisch).
+   HEADER-NAVIGATION: Logo + Link-Gruppe
+   .navlinks ist der äußere Container (Logo-Link + navlinks-links-Gruppe).
+   .navlinks-links ist die Gruppe der eigentlichen Textlinks + Sprachumschalter.
+   Beide sitzen zusammen als eine Einheit rechts im Header.
    ============================== */
-.tile .overlay{
-  background: rgba(255,255,255,0.85);
-  border-radius: 8px;
-}
-/* ==============================
-   HOME-LOGO STATT TEXT + KOMPAKTE MOBILE NAV
-   An bestehende styles.css anhängen.
-   ============================== */
-
-.nav-logo-link{
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 6px !important; /* überschreibt .navlinks a padding, Bild braucht weniger */
-}
-.nav-logo{
-  height: 26px;
-  width: auto;
-  display: block;
-}
-
-/* Navigation soll nicht mehr umbrechen, sondern in einer Zeile bleiben
-   und bei Bedarf kompakter werden. */
 .navlinks{
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   white-space: nowrap;
-}
-
-@media (max-width: 600px){
-  .navlinks{ gap: 2px; }
-  .navlinks a{ padding: 4px 5px; font-size: 0.72rem; }
-  .navlinks a.lang-switch{ margin-left: 4px; padding-left: 8px; }
-  .nav-logo{ height: 20px; }
-  .nav-logo-link{ padding: 4px 4px !important; }
-}
-
-/* ==============================
-   LOGO ZURÜCK IN DIE LINK-GRUPPE
-   An bestehende styles.css anhängen (NACH logo-left-fix.css) —
-   hebt die dortige justify-content:space-between Trennung wieder auf,
-   jetzt wo das Logo strukturell wieder Teil von .navlinks-links ist.
-   ============================== */
-.navlinks{
-  justify-content: flex-end;   /* ganze Gruppe (Logo + Links) sitzt rechts */
-  flex: 0 1 auto;
-}
-
-/* ============================================================
-   GESAMMELTE CSS-ERGÄNZUNGEN — an bestehende styles.css anhängen.
-   Ersetzt: lang-switch-addition.css, no-horizontal-scroll-fix.css,
-   overlay-background-fix.css, nav-logo-mobile-fix.css,
-   logo-left-fix.css, logo-inline-fix.css
-   (Diese einzelnen Dateien werden nicht mehr gebraucht.)
-   ============================================================ */
-
-/* ---- 1) Kein seitliches Scrollen auf der ganzen Seite ---- */
-html, body{
-  overflow-x: hidden;
-}
-
-/* ---- 2) "soon:"-Kachel darf bei mittleren Breiten umbrechen ---- */
-.lp-coming{
-  flex-wrap: wrap;
-}
-.lp-tile{
-  max-width: 220px;
-  width: 100%;
-}
-
-/* ---- 3) "Mehr Infos"-Overlay mit halbtransparentem Hintergrund ---- */
-.tile .overlay{
-  background: rgba(255,255,255,0.85);
-  border-radius: 8px;
-}
-
-/* ---- 4) Sprachumschalter-Link (DE/EN) ---- */
-.navlinks a.lang-switch{
-  margin-left: 10px;
-  padding-left: 14px;
-  border-left: 1px solid rgba(0,0,0,0.2);
-  border-radius: 0;
-  font-weight: 700;
-  letter-spacing: .04em;
-}
-
-/* ---- 5) Logo-Bild statt "Home"-Text, alles in einer Zeile ---- */
-.navlinks{
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  gap: 4px;
 }
 .navlinks-links{
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
   white-space: nowrap;
+  gap: 2px;
+}
+.navlinks-links a{
+  padding:6px 8px;
+  border-radius:8px;
 }
 .nav-logo-link{
   display: inline-flex;
@@ -1604,7 +1012,12 @@ html, body{
   display: block;
 }
 
+@media (min-width:900px){
+  .navlinks-links a{ margin:0 .125rem; }
+}
+
 @media (max-width: 600px){
+  .navlinks{ gap: 2px; }
   .navlinks-links{ gap: 2px; }
   .navlinks-links a{ padding: 4px 5px; font-size: 0.72rem; }
   .navlinks-links a.lang-switch{ margin-left: 4px; padding-left: 8px; }
