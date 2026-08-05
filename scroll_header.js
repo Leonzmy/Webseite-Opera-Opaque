@@ -57,12 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (content) content.classList.remove("hidden");
   });
 
-  // --- Header-Scroll, solange Video nicht fertig ---
-  window.addEventListener("scroll", () => {
-    if (videoFinished) return;
-    if (window.scrollY > 50) document.body.classList.add("scrolled");
-    else document.body.classList.remove("scrolled");
-  });
+  // --- Header einblenden: sobald sich die Maus bewegt ODER gescrollt wird ---
+  // (einmalig, bleibt danach sichtbar — kein Wieder-Ausblenden)
+  function revealHeader() {
+    document.body.classList.add("scrolled");
+  }
+  window.addEventListener("mousemove", revealHeader, { once: true, passive: true });
+  window.addEventListener("scroll", revealHeader, { once: true, passive: true });
+  window.addEventListener("touchstart", revealHeader, { once: true, passive: true });
 
   // --- 2) Autoplay-Start + kurze Retries ---
   const tryPlay = async () => {
