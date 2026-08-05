@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Propellerinsel – Opera Opaque</title>
+  <meta name="description" content="Projektseite Propellerinsel – Opera Opaque" />
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" href="/bilder/favicon.png" type="image/png">
+</head>
+<body class="projekt-seite">
+
+  <header class="site-header">
+    <!--div class="brand">Opera Opaque</div-->
+    <nav class="navlinks" aria-label="Hauptnavigation">
+      <div class="navlinks-links"><a href="../projekte.html">Projekte</a>
+      <a href="../about.html">Über uns</a>
+      <a href="../kontakt.html">Kontakt</a>
+      <a href="../en/projekte/propellerinsel.html" class="lang-switch" hreflang="en">EN</a>
+      <a href="../index.html" class="nav-logo-link"><img src="../bilder/o-drawing.png" alt="Home" class="nav-logo"></a></div>
+    </nav>
+  </header>
+  
+  <main class="projekt-wrap">
+    <!-- Zeichnung / Titelgrafik -->
+    <figure class="projekt-drawing" aria-label="Titelgrafik">
+      <img src="../bilder/propellerinsel-drawing.jpg" alt="Propellerinsel – Zeichnung">
+    </figure>
+
+    <!-- Hero (volle Breite) – Slideshow aus 4 Bildern -->
+    <figure class="projekt-hero projekt-hero--slideshow" aria-label="Projekt-Hero">
+      <img class="hero-slide hero-slide-0" src="../bilder/in-process-0.jpg" alt="Propellerinsel">
+      <img class="hero-slide hero-slide-1" src="../bilder/in-process-1.jpg" alt="" aria-hidden="true">
+      <img class="hero-slide hero-slide-2" src="../bilder/in-process-2.jpg" alt="" aria-hidden="true">
+      <img class="hero-slide hero-slide-3" src="../bilder/in-process-3.jpg" alt="" aria-hidden="true">
+    </figure>
+
+    <!-- ZWEI SPALTEN: links Inhalt, rechts Sidebar -->
+    <section class="projekt-maingrid">
+      <!-- LINKE SPALTE -->
+      <div class="content-left">
+        <div class="projekt-beschreibung">
+          <p class="projekt-untertitel">
+            <strong>Ein investigatives Recherchekonzert frei nach Jules Verne</strong>
+          </p>
+          <p>
+            Das berühmte Konzert-Quartett ist verschwunden! Gerade noch auf Tournee durch die USA, fehlt von den vier Musiker:innen auf einmal jede Spur. Ein Journalist macht sich auf die Suche und findet sie auf der Propellerinsel – einer künstlichen Insel, auf der eine Gruppe reicher Amerikaner sich der staatlichen Jurisdiktion entzieht. Hier versorgt das Quartett für ein großzügiges Honorar Milliardäre mit westlicher Hochkultur. Doch auch die Vermögendsten sind sich untereinander nicht ganz grün, und so droht es mitten in internationalen Gewässern zu einer Katastrophe zu kommen …
+          </p>
+          <p>
+            In seinem Roman Die Propellerinsel sah Jules Verne bereits 1895 voraus, wie sich reiche Menschen mit modernster Technologie abschotten und so ihrer Verantwortung für die Gesellschaft entziehen. In Zeiten finanzieller Kürzungen wird Kultur zum Luxusgut, während Ultrareiche klassische Musik wieder als Investitionsobjekt und Mittel der Distinktion entdecken.
+          </p>
+          <p>
+            Opera Opaque überträgt Vernes visionären Roman zusammen mit dem Zentaur-Quartett in die Gegenwart und sucht dafür nach einer neuen Form zwischen Lecture-Performance und Kammerkonzert.
+          </p>
+        </div>
+
+        <div class="premiere">
+          <div class="date">09.12.2026 | 20:00</div>
+          <div class="place">Einstein Kultur | München </div>
+          <button type="button" class="reservierung-trigger" id="resv-open-btn">Tickets reservieren</button>
+        </div>
+          <div class="more-info">
+            Mehr Infos in Kürze
+              <!-- <div class="pressestimmen"><a href="LINK-ZU-PRESSE">Pressestimmen</a></div>
+            <div class="trailer"><a href="LINK-ZU-TRAILER">Trailer</a></div>-->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RECHTE SPALTE (SIDEBAR) -->
+      <aside class="projekt-sidebar" aria-label="Credits">
+        <p><strong>Komposition:</strong> Leon Zmelty</p>
+        <p><strong>Textfassung:</strong> Sören Sarbeck</p>
+        <p><strong>Szenische Einrichtung:</strong> Maria Chagina</p>
+        <br>
+        <p><strong>mit dem Zentaur-Quartett:</strong></p>
+        <p>Ronja Sophie Putz<br>
+        Marc Kaufmann<br>
+        Katharina Schmauder<br>
+        Caio de Azevedo</p>
+        <br>
+        <h2>Gefördert von</h2>
+        <div class="logos">
+          <img src="../bilder/logo1.png" alt="[Förderer]">
+           <!-- <img src="../logos/logo2.svg" alt="Förderer 2">-->
+        </div>
+      </aside>
+    </section>
+
+    <div class="back-nav">
+      <a href="/projekte" class="back-button">Zurück zur Übersicht</a>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       RESERVIERUNGS-POP-UP — PROPELLERINSEL
+       ============================================================ -->
+  <div class="reservierung-modal" id="resv-modal" aria-hidden="true">
+    <button type="button" class="reservierung-modal-close" id="resv-close-btn" aria-label="Schließen"></button>
+    <div class="reservierung-modal-inner">
+      <div class="reservierung-card">
+        <h2>Platz reservieren</h2>
+        <p class="reservierung-intro">
+          Reservierung unverbindlich bis 19:45 Uhr am Konzertabend.
+          Bezahlung ausschließlich an der Abendkasse (bar oder Karte).
+        </p>
+
+        <form class="reservierung-form" id="resv-form" novalidate>
+          <div class="field">
+            <label for="resv-name">Name</label>
+            <input class="input" type="text" id="resv-name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="resv-email">E-Mail (für Bestätigung)</label>
+            <input class="input" type="email" id="resv-email" name="email" required autocomplete="email">
+          </div>
+
+          <div class="reservierung-tiers">
+            <div class="reservierung-tier">
+              <div>
+                <span class="reservierung-tier-name">Reguläres Ticket</span>
+                <span class="reservierung-tier-price">20 €</span>
+              </div>
+              <div class="reservierung-stepper" data-tier="regular" data-price="20">
+                <button type="button" data-action="minus" aria-label="Regulär: Anzahl verringern">–</button>
+                <span data-count>0</span>
+                <button type="button" data-action="plus" aria-label="Regulär: Anzahl erhöhen">+</button>
+              </div>
+            </div>
+            <div class="reservierung-tier">
+              <div>
+                <span class="reservierung-tier-name">Ermäßigtes Ticket</span>
+                <span class="reservierung-tier-price">10 €</span>
+              </div>
+              <div class="reservierung-stepper" data-tier="ermaessigt" data-price="10">
+                <button type="button" data-action="minus" aria-label="Ermäßigt: Anzahl verringern">–</button>
+                <span data-count>0</span>
+                <button type="button" data-action="plus" aria-label="Ermäßigt: Anzahl erhöhen">+</button>
+              </div>
+            </div>
+            <div class="reservierung-tier">
+              <div>
+                <span class="reservierung-tier-name">Kulturförderticket</span>
+                <span class="reservierung-tier-price">30 €</span>
+              </div>
+              <div class="reservierung-stepper" data-tier="kulturfoerder" data-price="30">
+                <button type="button" data-action="minus" aria-label="Kulturförderticket: Anzahl verringern">–</button>
+                <span data-count>0</span>
+                <button type="button" data-action="plus" aria-label="Kulturförderticket: Anzahl erhöhen">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="resv-message">Anmerkung (optional)</label>
+            <textarea class="textarea" id="resv-message" name="message" placeholder="z. B. Sitzplatzwunsch, Barrierefreiheit …"></textarea>
+          </div>
+
+          <div class="reservierung-total">
+            <span>Gesamt <span id="resv-total-count">0</span> Tickets</span>
+            <strong id="resv-total-price">0 €</strong>
+          </div>
+
+          <button type="submit" class="reservierung-submit" id="resv-submit-btn">Platz reservieren</button>
+          <p class="reservierung-error" id="resv-error">Bitte Name, E-Mail angeben und mindestens ein Ticket wählen.</p>
+          <p class="reservierung-note">
+            Die Reservierung ist unverbindlich bis 19:45 Uhr am Konzertabend.<br>
+            Bezahlung ausschließlich an der Abendkasse (bar oder Karte).
+          </p>
+        </form>
+
+        <div class="reservierung-success" id="resv-success">
+          <div class="mark">Reserviert ✓</div>
+          <p>
+            Ihre Reservierung <span class="resnum" id="resv-resnum"></span> ist eingetragen.<br>
+            Eine Bestätigung geht an Ihre E-Mail-Adresse.<br>
+            Bitte halten Sie den Betrag am Einlass bereit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================
+       ENDE RESERVIERUNGS-POP-UP
+       ============================================================ -->
+
+  <script>
+  (function () {
+    // Web-App-URL des Google Apps Script:
+    var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwH11PvYlRBShFrYRdBFtT21EvRJF_o9tkfLRBq6CNnBwJh06VJ015663SjXA6g_7y4gg/exec";
+
+    var modal = document.getElementById('resv-modal');
+    var openBtn = document.getElementById('resv-open-btn');
+    var closeBtn = document.getElementById('resv-close-btn');
+    var form = document.getElementById('resv-form');
+    if (!form || !modal) return;
+
+    var steppers = form.querySelectorAll('.reservierung-stepper');
+    var totalCountEl = document.getElementById('resv-total-count');
+    var totalPriceEl = document.getElementById('resv-total-price');
+    var errorEl = document.getElementById('resv-error');
+    var submitBtn = document.getElementById('resv-submit-btn');
+    var successEl = document.getElementById('resv-success');
+    var resnumEl = document.getElementById('resv-resnum');
+
+    function counts() {
+      var c = {};
+      steppers.forEach(function (s) {
+        c[s.dataset.tier] = {
+          count: parseInt(s.querySelector('[data-count]').textContent, 10),
+          price: parseInt(s.dataset.price, 10)
+        };
+      });
+      return c;
+    }
+
+    function updateTotals() {
+      var c = counts();
+      var totalCount = 0, totalPrice = 0;
+      Object.keys(c).forEach(function (k) {
+        totalCount += c[k].count;
+        totalPrice += c[k].count * c[k].price;
+      });
+      totalCountEl.textContent = totalCount;
+      totalPriceEl.textContent = totalPrice + ' €';
+      return { totalCount: totalCount, totalPrice: totalPrice, c: c };
+    }
+
+    steppers.forEach(function (s) {
+      var countEl = s.querySelector('[data-count]');
+      s.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var val = parseInt(countEl.textContent, 10);
+          if (btn.dataset.action === 'plus') val += 1;
+          if (btn.dataset.action === 'minus') val = Math.max(0, val - 1);
+          countEl.textContent = val;
+          updateTotals();
+        });
+      });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+
+      var name = form.name.value.trim();
+      var email = form.email.value.trim();
+      var message = form.message.value.trim();
+      var totals = updateTotals();
+
+      if (!name || !email || totals.totalCount < 1) {
+        errorEl.classList.add('show');
+        return;
+      }
+
+      var resNum = 'PI-' + Date.now().toString(36).toUpperCase();
+
+      var payload = new FormData();
+      payload.append('reservierungsnummer', resNum);
+      payload.append('name', name);
+      payload.append('email', email);
+      payload.append('regulaer', totals.c.regular.count);
+      payload.append('ermaessigt', totals.c.ermaessigt.count);
+      payload.append('kulturfoerder', totals.c.kulturfoerder.count);
+      payload.append('gesamtTickets', totals.totalCount);
+      payload.append('gesamtBetrag', totals.totalPrice);
+      payload.append('nachricht', message);
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird eingetragen …';
+
+      fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: payload })
+        .then(function () {
+          resnumEl.textContent = resNum;
+          form.style.display = 'none';
+          successEl.classList.add('show');
+        })
+        .catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Platz reservieren';
+          errorEl.textContent = 'Da ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt.';
+          errorEl.classList.add('show');
+        });
+    });
+
+    // ---- Pop-up Öffnen / Schließen ----
+    function resetForm() {
+      form.reset();
+      steppers.forEach(function (s) { s.querySelector('[data-count]').textContent = '0'; });
+      updateTotals();
+      errorEl.classList.remove('show');
+      form.style.display = '';
+      successEl.classList.remove('show');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Platz reservieren';
+    }
+    function openModal() {
+      resetForm();
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('reservierung-modal-open');
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('reservierung-modal-open');
+    }
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal(); // Klick auf Hintergrund
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+  })();
+  </script>
+
+</body>
+</html>
