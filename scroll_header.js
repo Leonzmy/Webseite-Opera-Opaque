@@ -1,7 +1,11 @@
 // scroll_header.js
+// Läuft ausschließlich auf der Startseite (body.frontpage / .frontpage .video-bg .video).
+// Auf allen anderen Seiten passiert nichts (keine Fehler, kein Effekt).
 document.addEventListener("DOMContentLoaded", () => {
   const video = document.querySelector(".frontpage .video-bg .video");
-  if (!video) return;
+  if (!video) return; // nicht die Startseite -> hier abbrechen
+
+  const content = document.querySelector(".frontpage-content");
 
   let videoFinished = false;
   let triedAuto = false;
@@ -27,8 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const sourceEl = video.querySelector("source");
   if (sourceEl && !video.src) {
     video.src = sourceEl.src; // resolved URL
-    // optional: Source-Element entfernen, damit nur noch src zählt
-    // sourceEl.parentNode.removeChild(sourceEl);
   }
 
   // --- Sichtbarkeit: sobald irgendein Frame/Play da ist ---
@@ -44,10 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- KEIN LOOP: am Ende auf letztem Frame stehen bleiben ---
   video.addEventListener("ended", () => {
     video.pause();
-    // auf letztem Frame einfrieren
     try { video.currentTime = Math.max(0, video.duration || 0); } catch {}
     videoFinished = true;
     document.body.classList.add("scrolled");
+    if (content) content.classList.remove("hidden");
+  });
+
+  // Fallback: falls das Video gar nicht lädt, Inhalt trotzdem zeigen.
+  video.addEventListener("error", () => {
+    if (content) content.classList.remove("hidden");
   });
 
   // --- Header-Scroll, solange Video nicht fertig ---
@@ -63,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     hardenAttrs();
 
     try {
-      // frisch laden, dann auf abspielbares Frame warten
       if (video.readyState < 2) {
         video.load();
         await Promise.race([
@@ -80,13 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (retriesLeft-- > 0) {
         setTimeout(tryPlay, RETRY_DELAY);
       } else {
-        // Fallback: erster Touch/Klick IRGENDWO startet das Video
         const onceOpts = { once: true, passive: true, capture: true };
         const trigger = () => tryPlay();
         ["touchstart", "pointerdown", "mousedown", "keydown", "click"].forEach(ev => {
           document.documentElement.addEventListener(ev, trigger, onceOpts);
         });
-        // zusätzlich direkt auf dem Video für den Fall, dass Events „geschluckt“ werden
         ["touchstart", "pointerdown", "click"].forEach(ev => {
           video.addEventListener(ev, trigger, onceOpts);
         });
@@ -94,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Wenn Tab wieder aktiv wird → nochmals probieren
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden && video.paused && !videoFinished) {
       retriesLeft = Math.max(retriesLeft, 2);
@@ -102,22 +105,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // iOS-Safari Spezial: onload nochmal schubsen
   window.addEventListener("load", () => {
     if (!triedAuto && !videoFinished) tryPlay();
   }, { once: true });
 
-  // Sofort starten
   tryPlay();
-});
-const video = document.querySelector('.frontpage .video');
-const content = document.querySelector('.frontpage-content');
-
-video.addEventListener('ended', () => {
-  content.classList.remove('hidden');
-});
-
-// Fallback: falls Video nicht lädt
-video.addEventListener('error', () => {
-  content.classList.remove('hidden');
 });
