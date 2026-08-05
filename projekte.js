@@ -18,9 +18,9 @@
     return;
   }
 
-  const [firstTile, ...restTiles] = tiles;
+  const [firstTile, secondTile, ...restTiles] = tiles;
 
-  // Restliche Kacheln (inkl. letzte): unverändertes Verhalten wie bisher.
+  // Restliche Kacheln (ab der 3.): unverändertes Verhalten wie bisher.
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       entry.target.classList.toggle('inview', entry.isIntersecting);
@@ -32,8 +32,7 @@
   });
   restTiles.forEach(el => observer.observe(el));
 
-  // Erste Kachel: löst erst später aus (muss näher an den oberen Bildrand
-  // kommen), damit man das Ausgangsbild kurz sieht, bevor gewechselt wird.
+  // Erste Kachel: löst erst sehr spät aus.
   const firstObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       entry.target.classList.toggle('inview', entry.isIntersecting);
@@ -44,4 +43,16 @@
     threshold: 0
   });
   if (firstTile) firstObserver.observe(firstTile);
+
+  // Zweite Kachel: eigener Schwellenwert.
+  const secondObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle('inview', entry.isIntersecting);
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -50% 0px',
+    threshold: 0
+  });
+  if (secondTile) secondObserver.observe(secondTile);
 })();
