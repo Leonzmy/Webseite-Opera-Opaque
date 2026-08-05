@@ -964,7 +964,7 @@ body.reservierung-modal-open{ overflow:hidden; }
    ============================== */
 .lang-switch{
   margin-left: 10px;
-  padding-left: 14px;
+  padding-left: 14px !important;
   border-left: 1px solid rgba(0,0,0,0.2);
   font-weight: 700;
   letter-spacing: .04em;
