@@ -12,33 +12,38 @@
   const tiles = Array.from(document.querySelectorAll(SELECTOR));
   if (!tiles.length) return;
 
+  // --- Gecachte Maße: nur bei Load/Resize neu berechnen, NICHT bei jedem
+  // Scroll-Frame — verhindert Ruckeln durch die mobile Adressleiste,
+  // die window.innerHeight während des Scrollens laufend ändert. ---
+  let cachedMaxScroll = 1;
+
   function getScrollTop() {
     const d = document.documentElement, b = document.body;
     return window.pageYOffset || d.scrollTop || b.scrollTop || 0;
   }
-  function getProgressCount() {
+
+  function recalcMaxScroll() {
     const d = document.documentElement, b = document.body;
-    const scrollTop = getScrollTop();
-    const clientH   = window.innerHeight || d.clientHeight || 0;
-    const scrollH   = Math.max(
+    const clientH = window.innerHeight || d.clientHeight || 0;
+    const scrollH = Math.max(
       b.scrollHeight, d.scrollHeight,
       b.offsetHeight, d.offsetHeight,
       b.clientHeight, d.clientHeight
     );
-    const maxScroll = Math.max(1, scrollH - clientH);
-    const p = Math.min(1, Math.max(0, scrollTop / maxScroll)); // 0..1
+    cachedMaxScroll = Math.max(1, scrollH - clientH);
+  }
+
+  function getProgressCount() {
+    const scrollTop = getScrollTop();
+    const p = Math.min(1, Math.max(0, scrollTop / cachedMaxScroll)); // 0..1
 
     // --- Startversatz: erst ab 10% beginnen ---
     const START_OFFSET = 0.1; // = 10%, passe an (0.2 = 20% usw.)
-
     if (p < START_OFFSET) {
       return 0; // noch nichts aktiv
     }
-
-    // Reststrecke (ab Offset bis 100%) gleichmäßig auf Kacheln verteilen
     const effectiveP = (p - START_OFFSET) / (1 - START_OFFSET); // 0..1
     let count = Math.round(effectiveP * tiles.length);
-
     if (count < 0) count = 0;
     if (count > tiles.length) count = tiles.length;
     return count;
@@ -47,22 +52,34 @@
   function applyActive(count) {
     tiles.forEach((el, i) => el.classList.toggle('inview', i < count));
   }
+
   function updateFromScroll() {
     const progressCount = getProgressCount();
     applyActive(progressCount);
   }
 
+  // rAF-Throttle für Scroll
   let ticking = false;
-  function onScrollResize() {
+  function onScroll() {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => { updateFromScroll(); ticking = false; });
   }
 
-  window.addEventListener('scroll', onScrollResize, { passive: true });
-  window.addEventListener('resize', onScrollResize, { passive: true });
-  window.addEventListener('orientationchange', onScrollResize);
+  // Resize/Orientation: Maße neu berechnen (debounced), dann einmal aktualisieren
+  let resizeTimer = null;
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      recalcMaxScroll();
+      updateFromScroll();
+    }, 150);
+  }
 
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize, { passive: true });
+  window.addEventListener('orientationchange', onResize);
+
+  recalcMaxScroll();
   updateFromScroll();
 })();
-
