@@ -1010,7 +1010,7 @@ html, body{
   display: inline-flex;
   align-items: center;
   padding: 4px 6px !important;
-  margin-left: 16px;
+  margin-left: 32px;
 }
 .nav-logo{
   height: 26px;
@@ -1028,5 +1028,5 @@ html, body{
   .navlinks-links a{ padding: 4px 5px; font-size: 0.72rem; }
   .navlinks-links a.lang-switch{ margin-left: 4px; padding-left: 8px; }
   .nav-logo{ height: 20px; }
-  .nav-logo-link{ padding: 4px 4px !important; margin-left: 8px; }
+  .nav-logo-link{ padding: 4px 4px !important; margin-left: 18px; }
 }
