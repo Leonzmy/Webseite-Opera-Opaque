@@ -98,4 +98,18 @@
   // Initial
   recalcMaxScroll();
   updateFromScroll();
+
+  // Nachmessen, sobald wirklich alles geladen ist (Bilder, Web-Fonts) —
+  // vorher gemessene Werte können durch nachträgliche Layout-Verschiebungen
+  // (z.B. Web-Font-Reflow) zu klein/groß sein.
+  window.addEventListener('load', () => {
+    recalcMaxScroll();
+    updateFromScroll();
+  }, { once: true });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      recalcMaxScroll();
+      updateFromScroll();
+    });
+  }
 })();
