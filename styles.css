@@ -1050,3 +1050,23 @@ html, body{
   .nav-logo{ height: 22px; }
   .nav-logo-link{ padding: 4px 4px !important; margin-left: 10px; }
 }
+
+
+/* ==============================
+   PERFORMANCE: Blur auf Mobilgeräten reduzieren
+   Der backdrop-filter blur() auf den Sticky-Headern wird bei jedem
+   Scroll-Frame neu berechnet und kann auf schwächeren Mobilgeräten
+   ruckeln verursachen (u.a. bei den scroll-gesteuerten Bildwechseln
+   in projekte.js / about.js). Auf Mobilgeräten daher deaktiviert.
+   ============================== */
+@media (max-width: 900px){
+  body.projekt-seite .site-header,
+  body:is(.projekt-seite, .projekt-phantom) .site-header,
+  body.projekte .site-header,
+  body.about .site-header,
+  body.kontakt .site-header{
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255,255,255,0.95);
+  }
+}
