@@ -1530,3 +1530,14 @@ html, body{
   .nav-logo{ height: 20px; }
   .nav-logo-link{ padding: 4px 4px !important; }
 }
+
+/* ==============================
+   LOGO ZURÜCK IN DIE LINK-GRUPPE
+   An bestehende styles.css anhängen (NACH logo-left-fix.css) —
+   hebt die dortige justify-content:space-between Trennung wieder auf,
+   jetzt wo das Logo strukturell wieder Teil von .navlinks-links ist.
+   ============================== */
+.navlinks{
+  justify-content: flex-end;   /* ganze Gruppe (Logo + Links) sitzt rechts */
+  flex: 0 1 auto;
+}
