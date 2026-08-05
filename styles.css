@@ -1541,3 +1541,73 @@ html, body{
   justify-content: flex-end;   /* ganze Gruppe (Logo + Links) sitzt rechts */
   flex: 0 1 auto;
 }
+
+/* ============================================================
+   GESAMMELTE CSS-ERGÄNZUNGEN — an bestehende styles.css anhängen.
+   Ersetzt: lang-switch-addition.css, no-horizontal-scroll-fix.css,
+   overlay-background-fix.css, nav-logo-mobile-fix.css,
+   logo-left-fix.css, logo-inline-fix.css
+   (Diese einzelnen Dateien werden nicht mehr gebraucht.)
+   ============================================================ */
+
+/* ---- 1) Kein seitliches Scrollen auf der ganzen Seite ---- */
+html, body{
+  overflow-x: hidden;
+}
+
+/* ---- 2) "soon:"-Kachel darf bei mittleren Breiten umbrechen ---- */
+.lp-coming{
+  flex-wrap: wrap;
+}
+.lp-tile{
+  max-width: 220px;
+  width: 100%;
+}
+
+/* ---- 3) "Mehr Infos"-Overlay mit halbtransparentem Hintergrund ---- */
+.tile .overlay{
+  background: rgba(255,255,255,0.85);
+  border-radius: 8px;
+}
+
+/* ---- 4) Sprachumschalter-Link (DE/EN) ---- */
+.navlinks a.lang-switch{
+  margin-left: 10px;
+  padding-left: 14px;
+  border-left: 1px solid rgba(0,0,0,0.2);
+  border-radius: 0;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+/* ---- 5) Logo-Bild statt "Home"-Text, alles in einer Zeile ---- */
+.navlinks{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+.navlinks-links{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+.nav-logo-link{
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 6px !important;
+}
+.nav-logo{
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+@media (max-width: 600px){
+  .navlinks-links{ gap: 2px; }
+  .navlinks-links a{ padding: 4px 5px; font-size: 0.72rem; }
+  .navlinks-links a.lang-switch{ margin-left: 4px; padding-left: 8px; }
+  .nav-logo{ height: 20px; }
+  .nav-logo-link{ padding: 4px 4px !important; }
+}
