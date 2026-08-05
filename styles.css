@@ -87,20 +87,22 @@ body.scrolled .site-header{ opacity:1; pointer-events:auto; }
   display:flex;
   flex-direction:row;
   align-items:flex-start;
-  gap:4rem;
-  flex-wrap: wrap;
+  gap: clamp(1rem, 4vw, 4rem);
+  flex-wrap: nowrap;
+  min-width: 0;
 }
-.lp-coming-text{ flex:0 0 auto; }
+.lp-coming-text{ flex:1 1 auto; min-width:0; }
 .lp-what{ font-size:1.6rem; font-weight:600; margin:.15rem 0; }
 .lp-when, .lp-where{
   margin:.1rem 0;
   color:var(--ink);
-  white-space:nowrap;
+  white-space:normal;
 }
 .lp-tile{
-  flex:0 0 auto;
-  width:220px;
+  flex:0 1 auto;
+  width: clamp(70px, 18vw, 220px);
   max-width: 220px;
+  min-width: 0;
   margin-top:4rem;
 }
 
@@ -989,6 +991,10 @@ html, body{
    .navlinks-links ist die Gruppe der eigentlichen Textlinks + Sprachumschalter.
    Beide sitzen zusammen als eine Einheit rechts im Header.
    ============================== */
+.navlinks a{
+  padding:6px 8px;
+  border-radius:8px;
+}
 .navlinks{
   display: flex;
   align-items: center;
