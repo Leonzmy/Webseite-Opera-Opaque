@@ -27,7 +27,7 @@
     });
   }, {
     root: null,
-    rootMargin: '0px 0px -85% 0px',
+    rootMargin: '0px 0px -35% 0px',
     threshold: 0
   });
   restTiles.forEach(el => observer.observe(el));
@@ -40,7 +40,7 @@
     });
   }, {
     root: null,
-    rootMargin: '0px 0px -70% 0px',
+    rootMargin: '0px 0px -95% 0px',
     threshold: 0
   });
   if (firstTile) firstObserver.observe(firstTile);
