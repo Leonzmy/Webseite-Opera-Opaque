@@ -27,7 +27,7 @@
     });
   }, {
     root: null,
-    rootMargin: '0px 0px -20% 0px',
+    rootMargin: '0px 0px -85% 0px',
     threshold: 0
   });
   restTiles.forEach(el => observer.observe(el));
