@@ -61,15 +61,14 @@
         <div class="premiere">
           <div class="date">Dec 9, 2026 | 8:00 pm</div>
           <div class="place">Einstein Kultur | Munich </div>
-          <!--button type="button" class="reservierung-trigger" id="resv-open-btn">Reserve tickets</button-->
+          <button type="button" class="reservierung-trigger" id="resv-open-btn">Reserve tickets</button>
         </div>
-          <div class="more-info">
-            More info coming soon
-              <!-- <div class="pressestimmen"><a href="LINK-ZU-PRESSE">Press</a></div>
-            <div class="trailer"><a href="LINK-ZU-TRAILER">Trailer</a></div>-->
-          </div>
+        <div class="more-info">
+          More info coming soon
+            <!-- <div class="pressestimmen"><a href="LINK-ZU-PRESSE">Press</a></div>
+          <div class="trailer"><a href="LINK-ZU-TRAILER">Trailer</a></div>-->
+        </div>
 
-        </div>
       </div>
 
       <!-- RECHTE SPALTE (SIDEBAR) -->
@@ -310,7 +309,7 @@
       modal.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('reservierung-modal-open');
     }
-    openBtn.addEventListener('click', openModal);
+    if (openBtn) openBtn.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', function (e) {
       if (e.target === modal) closeModal(); // Klick auf Hintergrund
